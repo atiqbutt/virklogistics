@@ -84,8 +84,9 @@
                     <th class="paddinglr">W.H.T</th> 
 					<th class="paddinglr">Remaining Commission</th>
 					<th class="paddinglr">Service Charges</th>
+                              <th class="paddinglr">Status</th>
                     <th class="paddinglr">Action</th> 
-                    <th class="paddinglr">Status</th>
+
 					
                     <th class="paddinglr">Expense</th>
 					
@@ -117,10 +118,7 @@
 				<td> <?php echo $amb["servicecharges"];?></td>
 						
                        
-                  <td>
-
-                    <a style="font-size:18px;" href="<?php echo base_url();?>trip/close_trip/<?php echo $amb['id'];?>"><i class="fa fa-window-close" aria-hidden="true"></i></a> 
-                  </td>
+                  
 
                  <td>
                     <?php if ($amb["status"]=="0"){?>                  
@@ -134,9 +132,13 @@
                     <?php } ?>
                                  
                  </td>
+                 <td>
+
+                    <a style="font-size:18px;" href="<?php echo base_url();?>trip/close_trip/<?php echo $amb['id'];?>"><i class="fa fa-window-close" aria-hidden="true"></i></a> 
+                  </td>
 <td>
 
-<div  class="" data-toggle="modal" data-target="#exampleModal1" data-whatever="@mdo">
+<div  class="" data-backdrop="static" data-toggle="modal" data-target="#exampleModal1" data-whatever="@mdo">
                <a>   <i  style="font-size:18px; color:#3C8DBC;" class="fa fa-flask" aria-hidden="true"></i></a>
 </div>
 
@@ -153,7 +155,7 @@
         <h4 class="modal-title" id="exampleModalLabel">Add New Expense</h4>
       </div>
       <div class="modal-body">
-        <?php echo $amb['id'];?>
+<!--         <?php echo $amb['id'];?> -->
          
 
        <div class="col-lg-12">

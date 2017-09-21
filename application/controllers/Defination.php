@@ -248,7 +248,6 @@ public function printhelper($p="")
                     'dl'=>$field['driver'],
                     'status'=>0,
                     'image1'=>$url,
-                    'type'=>$type['type'],
                     'createdAt'=>date("Y-m-d h:i:sa"),
                     'createdBy'=>1,
                     'modifiedAt'=>date("Y-m-d h:i:sa"),

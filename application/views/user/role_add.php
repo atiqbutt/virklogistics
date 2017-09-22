@@ -61,11 +61,13 @@
                 }
         });
         $('._module').click(function() {   
-                if ($(this).is(':checked')) {
+                if ($(this).val()=="0") {
                     $(this).parent().parent().parent().find(':checkbox').prop( "checked", true );
+                    $(this).val("1")
                 } else {
                     $(this).parent().parent().parent().find(':checkbox').prop( "checked", false );
+                    $(this).val("0")
                 }
-        });
+            });
     });
     </script>

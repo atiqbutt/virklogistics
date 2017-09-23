@@ -147,6 +147,9 @@ class unit extends CI_Controller {
 
        $data['units'] = $this->db->select()->from('unit')->where('id',$id)
        ->get()->row();
+       if($data['units']==""){
+                   redirect('Error/dataNotFound');
+       }
        //var_dump( $data['units']);
        //die();
         $data['page']='units/edit';

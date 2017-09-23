@@ -13,7 +13,7 @@ class Load_model extends CI_Model
     public function menu()
     {
         $role = $this->user_model->userInfo('role_id')['role_id'];
-        $per_menu = $this->db->query("SELECT DISTINCT `permission`.`menu_id`,`menu`.`name`,`menu`.`icon` FROM `permission` INNER JOIN `menu` ON `menu`.`id` = `permission`.`menu_id` WHERE `permission`.`role_id`='$role' AND `menu`.`is_delete`='0' ORDER BY `menu`.`order` ASC")->result_array();
+        $per_menu = $this->db->query("SELECT DISTINCT `permission`.`menu_id`,`menu`.`name`,`menu`.`link`,`menu`.`icon` FROM `permission` INNER JOIN `menu` ON `menu`.`id` = `permission`.`menu_id` WHERE `permission`.`role_id`='$role' AND `menu`.`is_delete`='0' ORDER BY `menu`.`order` ASC")->result_array();
         $per_submenu = $this->db->query("SELECT DISTINCT `permission`.`submenu_id`,`permission`.`menu_id`,`submenu`.`name`,`submenu`.`link` FROM `permission` INNER JOIN `submenu` ON `submenu`.`id` = `permission`.`submenu_id` WHERE `permission`.`role_id`='$role' AND `submenu`.`is_delete`='0'")->result_array();
         
         $return = "";
@@ -22,6 +22,8 @@ class Load_model extends CI_Model
             $m_id = $v['menu_id'];
             $m_name = $v['name'];
             $m_icon = $v['icon'];
+            $m_link = $v['link'];
+            if($m_link==""){
             $return .= '<li class="treeview">
                             <a href="#"><i class="fa '.$m_icon.'"></i>
                                 <span>'.$m_name.'</span>
@@ -30,6 +32,19 @@ class Load_model extends CI_Model
                                 </span>
                             </a>
                         <ul class="treeview-menu">';
+                        }
+                        else{
+                            $return .= '<li class="treeview">
+                            <a href="'.$m_link.'"><i class="fa '.$m_icon.'"></i>
+                                <span>'.$m_name.'</span>
+                                <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                        <ul class="treeview-menu">';
+
+                        }
+
             foreach($per_submenu as $key=>$value)
             {
                 $s_id = $value['menu_id'];

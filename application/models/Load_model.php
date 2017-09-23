@@ -35,7 +35,7 @@ class Load_model extends CI_Model
                         }
                         else{
                             $return .= '<li class="treeview">
-                            <a href="'.$m_link.'"><i class="fa '.$m_icon.'"></i>
+                            <a href="'.base_url().$m_link.'"><i class="fa '.$m_icon.'"></i>
                                 <span>'.$m_name.'</span>
                                 <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>

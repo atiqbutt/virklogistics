@@ -23,7 +23,7 @@ class Load_model extends CI_Model
             $m_name = $v['name'];
             $m_icon = $v['icon'];
             $m_link = $v['link'];
-            if($m_link==""){
+            if($m_link=="0"){
             $return .= '<li class="treeview">
                             <a href="#"><i class="fa '.$m_icon.'"></i>
                                 <span>'.$m_name.'</span>

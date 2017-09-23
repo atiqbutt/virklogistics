@@ -12,6 +12,9 @@ class Error extends CI_Controller {
 		$this->userInfo = $this->user_model->userInfo("first_name,last_name");
 	}
 
+
+
+
 	public function _404()
 	{
 

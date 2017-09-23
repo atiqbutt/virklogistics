@@ -50,8 +50,9 @@ class Vehicle extends CI_Controller {
 	            $data["vehicle_type"] = $this->input->post('vehicle_type');
 	            $data["chassisno"] = $this->input->post('chassisno');
 	            $data["engineno"] = $this->input->post('engineno');
-	            $data["numberofchamber1"] = $this->input->post('numberofchamber');
-	            $data["totalfuelcapacity"] = $this->input->post('totalfuelcapacity');
+	            
+                $data["numberofchamber1"] = $this->input->post('numberofchamber');
+                $data["totalfuelcapacity"] = $this->input->post('totalfuelcapacity');
 	            $data["color"] = $this->input->post('color');
 	            $data["company"] = $this->input->post('company');
 	            $data["model"] = $this->input->post('model');
@@ -59,9 +60,9 @@ class Vehicle extends CI_Controller {
 	            $data["scanimage"]=$this->do_upload2();
 	            $data["createdAt"] = date("Y-m-d h:i:sa");
 	            //$data["createdBy"] = $this->session->userdata('dekho_userId');
+                
 
 		   $vehicle_id = $this->vehicle_model->save('vehicle', $data);
-				
 		   $c=$this->input->post();
 
 		   for ($i = 0; $i < count($c['numberofchamber']); $i++) {
@@ -70,13 +71,13 @@ class Vehicle extends CI_Controller {
 					'capacityofchamber'=>$c['totalfuelcapacity'][$i],
 				); 
 					
+
 	            $data1['vehicle_id'] = $vehicle_id;
 	            $data1["createdAt"] = date("Y-m-d h:i:sa");
 	            //$data1["createdBy"] = $this->session->userdata('dekho_userId');
 	            $this->vehicle_model->save("chambers", $data1); 
 
 	          } 
-
 	            $this->session->set_flashdata('msg', "Information has been added successfully");
 		    redirect('Vehicle/show_vehicle');
 
@@ -321,13 +322,13 @@ class Vehicle extends CI_Controller {
 
 
         $this->session->set_flashdata('msg', "Add vehicle status, Information has been added successfully");
-        redirect('Vehicle/add_Vehicle_states');
+        redirect('Vehicle/Vehicle_Status_list');
 
         }
 
         else{
         $this->session->set_flashdata('msg', "Add vehicle status,id reference is missing or incorrect");
-        redirect('Vehicle/add_Vehicle_states');
+        redirect('Vehicle/Vehicle_Status_list');
         }
 
         } 
@@ -439,7 +440,7 @@ class Vehicle extends CI_Controller {
         $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo; 
-        	$data["page"]='Vehicle/add_vehicletype';
+        $data["page"]='Vehicle/add_vehicletype';
         $this->load->view('Template/main',$data);
         }  
 
@@ -458,13 +459,13 @@ class Vehicle extends CI_Controller {
 
 
         $this->session->set_flashdata('msg', "Add vehicle type, Information has been added successfully");
-        redirect('Vehicle/add_Vehicle_type');
+        redirect('Vehicle/show_vehicle');
 
         }
 
         else{
         $this->session->set_flashdata('msg', "Add vehicle type,id reference is missing or incorrect");
-        redirect('Vehicle/add_Vehicle_type');
+        redirect('Vehicle/show_vehicle');
         }
 
         } 

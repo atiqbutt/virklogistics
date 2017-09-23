@@ -259,7 +259,7 @@ public function printhelper($p="")
                 if($done)
                 {
                     $this->session->set_flashdata('msg','Record has been Added Successfully');
-                    redirect('Defination/addhelper');
+                    redirect('Defination/index');
                 
         }
                 }
@@ -608,7 +608,7 @@ public function printhelper($p="")
                 if($done)
                 {
                     $this->session->set_flashdata('msg','Record has been Added Successfully');
-                    redirect('Defination/addcompany');
+                    redirect('Defination/companypage');
                 
         }
                 }
@@ -939,7 +939,7 @@ public function printhelper($p="")
                 if($done)
                 {
                     $this->session->set_flashdata('msg','Record has been Added Successfully');
-                    redirect('Defination/addagent');
+                    redirect('Defination/agentpage');
                 }
         }
                 }
@@ -1252,7 +1252,7 @@ public function printhelper($p="")
                 if($done)
                 {
                     $this->session->set_flashdata('msg','Record has been Added Successfully');
-                    redirect('Defination/addcontractor');
+                    redirect('Defination/savecontractor');
                 }
         
                 }
@@ -1557,7 +1557,7 @@ public function printhelper($p="")
                 if($done)
                 {
                     $this->session->set_flashdata('msg','Record has been Added Successfully');
-                    redirect('Defination/adddriver');
+                    redirect('Defination/driverpage');
                 }
         
          
@@ -2033,7 +2033,7 @@ public function delete_expense($id)
                      if($done)
                        {
                        $this->session->set_flashdata('msg', 'Record is  Added');
-                       redirect('Defination/addlocationtypetype');
+                       redirect('Defination/view_locationtype');
                        }
                
         }

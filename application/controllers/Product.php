@@ -14,7 +14,7 @@ class product extends CI_Controller {
         // }
 		
          $this->load->model('generic_model');
-  $this->load->model('Generic_model');
+        $this->load->model('Generic_model');
          $this->load->library('form_validation');
         $this->load->model('user_model');
         $this->load->model('load_model');
@@ -76,14 +76,14 @@ class product extends CI_Controller {
 
 
         $this->session->set_flashdata('msg', "Add producttype, Information has been added successfully");
-        redirect('product/add');
+        redirect('product/index');
     
      }
         }
 
         else{
         $this->session->set_flashdata('msg', "Add producttype,id reference is missing or incorrect");
-        redirect('product/add');
+        redirect('product/index');
         }
 
         }

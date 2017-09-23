@@ -72,14 +72,14 @@ class unit extends CI_Controller {
 
 
         $this->session->set_flashdata('msg', "Add unit, Information has been added successfully");
-        redirect('unit/add');
+        redirect('unit/index');
     
      }
         }
 
         else{
         $this->session->set_flashdata('msg', "Add unit,id reference is missing or incorrect");
-        redirect('unit/add');
+        redirect('unit/index');
         }
 
         }

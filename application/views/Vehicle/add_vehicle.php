@@ -6,7 +6,7 @@
                 <div class="box-header">
                   <h3 class="box-title">Add Vehicle</h3>
                 </div>
-          <form id="defaultForm" action="<?php echo base_url('Vehicle/save_vehicle')?>" class="form-horizontal" method="post" enctype="multipart/form-data">
+          <form id="defaultForm" action="<?php echo base_url('Vehicle/save_vehicle')?>" class="form-horizontal" method="post" enctype="multipart/form-data" onload="myFunction()">
                 <div class="box-body">
                       <div class="form-group">
                       <label class="control-label col-sm-3">Vehicle Type:</label>
@@ -44,7 +44,7 @@
                       <div class="form-group">
                        <label class="control-label col-sm-3">No Of Chamber:</label>
                         <div class="col-sm-9">
-                        <input name="numberofchamber" placeholder="Number of chamber...." class="form-control txt_name"  onkeypress='return ValidateNumberOnly()' type="text" required="required"  /> </div></div> 
+                        <input name="numberofchamber" placeholder="Number of chamber...." value="1" class="form-control txt_name"  onkeypress='return ValidateNumberOnly()' type="text" required="required"  /> </div></div> 
                               
                      <div class="form-group">            
                    <label class="control-label col-sm-3">Total Fuel Capacity:</label>
@@ -83,7 +83,7 @@
                                <input id="resetbtn" class="btn btn-warning" type="reset" name="reset" value="Reset" />
                                <a class="btn btn-danger" href="<?php echo base_url() ?>Vehicle/show_vehicle">Cancel</a>
                            </div>
-                        </div>  
+                        </div>
                          
                     
                 </div>
@@ -96,7 +96,17 @@
                       <h3 class="box-title">Chambers</h3>
                     </div>
                     <div class="box-body">
-                        <div class="input_fields_wrap"></div>
+                    <div class="row">
+                      <div class="col-lg-3"><span style="color:red; font-size:20px; font-weight:bold;"></span><label>chamber 1</label>
+                      </div><div class="col-lg-7"><input value="Chamber" text-align:center; readonly class="form-control" style="width:95%; float:left;margin-top:10px;" type="text" name="numberofchamber" required="required"/></div><div class="col-lg-3"><label>capacity 1</label>
+                    </div><div class="col-lg-7"><input class="form-control fc" id="fc" style="width:95%; float:left;margin-top:10px;" type="text" name="capacityofchamber" required="required"/></div></div>
+                        <div class="input_fields_wrap">
+
+ 
+
+
+
+                        </div>
                     </div>
                 </div>
             </div> <!-- col-lg-6 -->
@@ -116,12 +126,12 @@
         
         $(".txt_name").keyup(function(){ 
         var  $num = $(this).val();
-    if ($num== "") {
+     if ($num== "") {
 
-        $('#tfc').val("");
-        } 
+         $('#tfc').val("");
+         } 
         var chamber= "";
-        for($i=1; $i<=$num; $i++){
+        for($i=2; $i<=$num; $i++){
             chamber+='<div class="row"><div class="col-lg-3"><span style="color:red; font-size:20px; font-weight:bold;"></span><label>chamber '+$i+'</label></div><div class="col-lg-7"><input value="Chamber '+$i+'" text-align:center; readonly class="form-control" style="width:95%; float:left;margin-top:10px;" type="text" name="numberofchamber[]" required="required"/></div><div class="col-lg-3"><label>capacity '+$i+'</label></div><div class="col-lg-7"><input class="form-control fc" id="fc'+$i+'" style="width:95%; float:left;margin-top:10px;" type="text" name="capacityofchamber[]" required="required"/></div></div>'; //add input box    
             }
             $(wrapper).html(chamber);
@@ -131,6 +141,8 @@
 
    
 </script>
+
+
 
 <script>
   $(document).on("keyup", ".fc", function () {
@@ -146,7 +158,6 @@
      
 });
 </script>
-
 
 
 
@@ -170,8 +181,8 @@ if ((event.keyCode < 45 || event.keyCode > 57))
    event.returnValue = false;
 }
 }
-
 </script>
+
 
 
 <script type="text/javascript">

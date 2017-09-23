@@ -21,45 +21,29 @@ class trip extends CI_Controller {
             $data['menu'] = $this->load_model->menu();
             $data['base_url'] = base_url();
             $data['userInfo'] = $this->userInfo;  
-        /*    $this->db->select('*');
-            $this->db->from('tripmanagement');
-            $this->db->where('tripmanagement.is_deleted',0);
-            $query=$this->db->get();
-            $data['tripmanagement']=$query->result_array();
-*/
 			$data["expensetype"]=$this->trip_model->getAllRecords("expensetype",array("is_delete"=>0),"id","DESC");	
 			$data["tripmanagement"]=$this->trip_model->GetAllTrips();
 			$data["page"]='Trip/trip_list';
             $this->load->view('Template/main',$data);
 
         }
+
         public function self_long()
         {
             $data['menu'] = $this->load_model->menu();
             $data['base_url'] = base_url();
             $data['userInfo'] = $this->userInfo;  
-        /*    $this->db->select('*');
-            $this->db->from('tripmanagement');
-            $this->db->where('tripmanagement.is_deleted',0);
-            $query=$this->db->get();
-            $data['tripmanagement']=$query->result_array();
-*/
 			$data["tripmanagement"]=$this->trip_model->GetAllTripsSelfLong();
 			$data["page"]='Trip/self_long';
             $this->load->view('Template/main',$data);
 
         }
-		   public function self_short()
+		
+        public function self_short()
         {
             $data['menu'] = $this->load_model->menu();
             $data['base_url'] = base_url();
             $data['userInfo'] = $this->userInfo;  
-        /*    $this->db->select('*');
-            $this->db->from('tripmanagement');
-            $this->db->where('tripmanagement.is_deleted',0);
-            $query=$this->db->get();
-            $data['tripmanagement']=$query->result_array();
-*/
 			$data["tripmanagement"]=$this->trip_model->GetAllTripsSelfShort();
 			$data["page"]='Trip/self_short';
             $this->load->view('Template/main',$data);
@@ -70,12 +54,6 @@ class trip extends CI_Controller {
             $data['menu'] = $this->load_model->menu();
             $data['base_url'] = base_url();
             $data['userInfo'] = $this->userInfo;  
-        /*    $this->db->select('*');
-            $this->db->from('tripmanagement');
-            $this->db->where('tripmanagement.is_deleted',0);
-            $query=$this->db->get();
-            $data['tripmanagement']=$query->result_array();
-*/
 			$data["tripmanagement"]=$this->trip_model->GetAllTripsGeneralLong();
 			$data["page"]='Trip/general_long';
             $this->load->view('Template/main',$data);
@@ -86,12 +64,6 @@ class trip extends CI_Controller {
             $data['menu'] = $this->load_model->menu();
             $data['base_url'] = base_url();
             $data['userInfo'] = $this->userInfo;  
-        /*    $this->db->select('*');
-            $this->db->from('tripmanagement');
-            $this->db->where('tripmanagement.is_deleted',0);
-            $query=$this->db->get();
-            $data['tripmanagement']=$query->result_array();
-*/
 			$data["tripmanagement"]=$this->trip_model->GetAllTripsGeneralShort();
 			$data["page"]='Trip/general_short';
             $this->load->view('Template/main',$data);
@@ -105,18 +77,18 @@ class trip extends CI_Controller {
             $data['base_url'] = base_url();
             $data['userInfo'] = $this->userInfo; 
 			$data['tripid'] = $id;// print_r($id); die();
-             
-  //      $id = $this->uri->segment(3);
-//		 print_r($id); die();
-	//		 $data['trip_info'] = $t2is->db->query("SELECT * FROM `tripmanagement` WHERE id = $id")->row_array();
-  //         $id=58;
+            
 			$data["trip_info"]=$this->trip_model->GetSpecificTrip($id);
 			$data["expensetype"]=$this->trip_model->getAllRecords("expensetype",array("is_delete"=>0),"id","DESC");	
-
-//print_r($data["trip_info"]); die();
 			$data['page'] = 'Trip/close_trip';
             $this->load->view('Template/main', $data);
        } 
+       
+
+
+
+
+
         public function delete()
         {
         $id=$this->uri->segment(3);

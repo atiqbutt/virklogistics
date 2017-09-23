@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Trip_model extends CI_Model {
 
 	
-   function GetAllTrips() {
+function GetAllTrips() {
       $this->db->select('*')->from('get_all_trips');
         $w=$this->db->get();
         if ($w->num_rows() > 0){
@@ -21,7 +21,7 @@ function GetSpecificTrip($id) {
         return $w->result_array();}
         else {return FALSE; }
     }
- function GetAllTripsGeneralShort() {
+function GetAllTripsGeneralShort() {
   $this->db->select()
         ->from('get_all_trips')
         ->where('type',"General-Short");
@@ -31,7 +31,7 @@ function GetSpecificTrip($id) {
         return $w->result_array();}
         else {return FALSE; }
     }
- function GetAllTripsGeneralLong() {
+function GetAllTripsGeneralLong() {
   $this->db->select()
         ->from('get_all_trips')
         ->where('type',"General-Long");
@@ -41,7 +41,7 @@ function GetSpecificTrip($id) {
         return $w->result_array();}
         else {return FALSE; }
     }
- function GetAllTripsSelfLong() {
+function GetAllTripsSelfLong() {
      $this->db->select()
         ->from('get_all_trips')
         ->where('type',"Self-Long");
@@ -51,7 +51,7 @@ function GetSpecificTrip($id) {
         return $w->result_array();}
         else {return FALSE; }
     }
- function GetAllTripsSelfShort() {
+function GetAllTripsSelfShort() {
   $this->db->select()
         ->from('get_all_trips')
         ->where('type',"Self-Short");
@@ -64,7 +64,7 @@ function GetSpecificTrip($id) {
 
 
 
-  public function getAllRecords($table,$where,$by,$order) {
+public function getAllRecords($table,$where,$by,$order) {
         $this->db->select()->from($table)->where($where)->order_by($by,$order);
         $query=$this->db->get();
         if ($query->num_rows() > 0)

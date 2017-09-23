@@ -297,6 +297,9 @@ public function printhelper($p="")
         $data['userInfo'] = $this->userInfo;
         $id=$this->uri->segment(3);
         $data['edit']=$this->db->where('id',$id)->get('helperinformation')->row();
+        if($data['edit']==""){
+                 redirect('Error/dataNotFound');
+        }
         $data['page']='helper/edit';
         $this->load->view('Template/main',$data);
           
@@ -666,6 +669,9 @@ public function printhelper($p="")
         $data['userInfo'] = $this->userInfo;
           $id=$this->uri->segment(3);
           $data['edit']=$this->db->where('id',$id)->get('customerinformation')->row();
+          if($data['edit']==""){
+                 redirect('Error/dataNotFound');
+        }
           $data['page']='Company/edit';
           $this->load->view('Template/main',$data);
           
@@ -976,7 +982,9 @@ public function printhelper($p="")
         $data['userInfo'] = $this->userInfo;
           $id=$this->uri->segment(3);
           $data['edit']=$this->db->where('id',$id)->get('agentinformation')->row();
-        
+        if($data['edit']==""){
+                 redirect('Error/dataNotFound');
+        }
           $data['page']='Agent/edit';
           $this->load->view('Template/main',$data);
           
@@ -1266,6 +1274,9 @@ public function printhelper($p="")
         $data['userInfo'] = $this->userInfo;
           $id=$this->uri->segment(3);
           $data['edit']=$this->db->where('id',$id)->get('contractorinformation')->row();
+          if($data['edit']==""){
+                   redirect('Error/dataNotFound');
+          }
           $data['page']='Contractor/edit';
           $this->load->view('Template/main',$data);
           
@@ -1584,6 +1595,9 @@ public function printhelper($p="")
         $data['userInfo'] = $this->userInfo;
           $id=$this->uri->segment(3);
           $data['edit']=$this->db->where('id',$id)->get('driverinformation')->row();
+          if($data['edit']==""){
+                   redirect('Error/dataNotFound');
+          }
           $data['page']='Driver/edit';
           $this->load->view('Template/main',$data);
           
@@ -1948,6 +1962,9 @@ public function delete_expense($id)
         $data['userInfo'] = $this->userInfo;
           $id=$this->uri->segment(3);
           $data['edit']=$this->db->where('id',$id)->get('expensetype')->row();
+          if($data['edit']==""){
+                   redirect('Error/dataNotFound');
+          }
           $data['page']='expensetype/edit';
           $this->load->view('Template/main',$data);
           

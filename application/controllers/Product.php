@@ -202,6 +202,9 @@ $this->db->join('product_histroy','product_histroy.p_id = product.id');
 
         $data['product'] = $this->db->select()->from('producttype')->where('id',$id)
         ->get()->row();
+               if($data['product']==""){
+                   redirect('Error/dataNotFound');
+       }
         // var_dump( $data['product']);
         // die();
         $data['page']='product/edit';
@@ -343,6 +346,10 @@ $this->db->join('product_histroy','product_histroy.p_id = product.id');
       
         $data['product'] = $this->db->select()->from('product')->where('id',$id)
         ->get()->row();
+        if($data['product']=="")
+        {
+            redirect('Error/dataNotFound');
+            }
 //$a=1;
        
 	   

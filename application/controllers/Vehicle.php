@@ -98,6 +98,10 @@ class Vehicle extends CI_Controller {
             $data['userInfo'] = $this->userInfo; 
             $data['menu'] = $this->load_model->menu();
     		$data['vehicle']=$this->vehicle_model->get_vehicle_by_id($id);
+           // var_dump($data['vehicle']);die;
+            if($data['vehicle']==null){
+                        redirect('Error/dataNotFound');
+            }
     	    //    $data['vehicletype'] = $this->vehicle_model->get_vehicleType();
     	
     		$data['page'] = "Vehicle/edit_vehicle";
@@ -341,6 +345,9 @@ class Vehicle extends CI_Controller {
         $id=$this->uri->segment(3);
         $data['vehiclestatus'] = $this->db->select()->from('vehiclestatus')->where('id',$id)
         ->get()->row();
+        if($data['vehiclestatus']==""){
+                    redirect('Error/dataNotFound');
+        }
         	$data["page"]='Vehicle/edit_list_vechicles';
         $this->load->view('Template/main',$data);
 
@@ -478,6 +485,9 @@ class Vehicle extends CI_Controller {
         $id=$this->uri->segment(3);
         $data['vehicletype']=$this->db->select()->from('vehicletype')->where('id',$id)
         ->get()->row();
+        if($data['vehicletype']==""){
+            redirect('Error/dataNotFound');
+        }
        // var_dump($data['vehicletype']);
         //die();
         	$data["page"]='Vehicle/edit_type_vechicles';

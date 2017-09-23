@@ -24,14 +24,12 @@ class Load_model extends CI_Model
             $m_icon = $v['icon'];
             $m_link = $v['link'];
             if($m_link=="0"){
-            $return .= '<li class="treeview">
+            $return .= '<li class="has-sub">
                             <a href="#"><i class="fa '.$m_icon.'"></i>
                                 <span>'.$m_name.'</span>
-                                <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                                </span>
+                               
                             </a>
-                        <ul class="treeview-menu">';
+                        <ul class="first">';
                         }
                         else{
                             $return .= '<li >
@@ -39,7 +37,7 @@ class Load_model extends CI_Model
                                 <span>'.$m_name.'</span>
                                 
                             </a>
-                        <ul class="treeview-menu">';
+                        <ul class="first">';
 
                         }
 
@@ -52,9 +50,9 @@ class Load_model extends CI_Model
                 if($m_id==$s_id){
                     $per_sub_submenu = $this->db->query("SELECT `permission`.`submenu_id`,`sub_submenu`.`name`,`sub_submenu`.`link` FROM `permission` INNER JOIN `sub_submenu` ON `sub_submenu`.`id` = `permission`.`sub_submenu_id` WHERE `permission`.`role_id`='$role' AND `sub_submenu`.`submenu_id`='$sm_id' AND `sub_submenu`.`is_delete`='0'")->result_array();
                      if(empty($per_sub_submenu) && !empty($s_link)) {
-                        $return .= '<li><a href="'.base_url().$s_link.'"><i class="fa fa-circle-o"></i> '.$s_name.'</a></li>';
+                        $return .= '<li class="has-sub "><a href="'.base_url().$s_link.'"><i class="fa fa-circle-o"></i> '.$s_name.'</a></li>';
                      }else{
-                        $return .= '<li class="treeview">
+                        $return .= '<li class="has-sub ">
                                         <a href="#"><i class="fa fa-circle-o"></i> '.$s_name.
                                             '<span class="pull-right-container">
                                                 <i class="fa fa-angle-left pull-right"></i>

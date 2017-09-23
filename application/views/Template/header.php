@@ -42,7 +42,7 @@
   
   <!-- Multi select -->
   <link href="<?php echo base_url()?>assets/plugins/multiselect/jquery.multiselect.css" rel="stylesheet" type="text/css">
-
+<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/bootstrap/css/custom.css"/>
 
   <script src="https://code.highcharts.com/highcharts.js"></script>
   <script src="https://code.highcharts.com/modules/exporting.js"></script>

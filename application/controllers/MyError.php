@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Error extends CI_Controller {
+class MyError extends CI_Controller {
 
 		public function __construct()
 	{
@@ -54,4 +54,5 @@ log_message('error', 'Some variable did not contain a value11111.');
 
 
 }
+
 ?>

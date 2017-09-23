@@ -63,7 +63,6 @@ function GetAllTripsSelfShort() {
     }	
 
 
-
 public function getAllRecords($table,$where,$by,$order) {
         $this->db->select()->from($table)->where($where)->order_by($by,$order);
         $query=$this->db->get();

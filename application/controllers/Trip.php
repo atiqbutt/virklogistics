@@ -154,7 +154,7 @@ class trip extends CI_Controller {
         $data["routedefination"]=$this->trip_model->getAllRecords("routedefination",array("is_deleted"=>0),"id","DESC");	
 		$data["expensetype"]=$this->trip_model->getAllRecords("expensetype",array("is_delete"=>0),"id","DESC");	
 
-        	$data['page'] = "Trip/add_trip";
+        $data['page'] = "Trip/add_trip";
         $this->load->view('Template/main', $data);
 	   }
 

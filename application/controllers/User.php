@@ -35,4 +35,8 @@ class User extends CI_Controller {
         $this->user_model->logout();
 	}
 
+
+
+
+
 }

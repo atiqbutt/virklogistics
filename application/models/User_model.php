@@ -61,7 +61,13 @@ class User_model extends CI_Model {
     public function check_permissions($l="")
     {
         $role = $this->userInfo('role_id')['role_id'];
+
+        // var_dump ($l);
+        // die();
+
         $submenu = $this->db->query("SELECT id FROM `submenu` WHERE `is_delete`='0' AND `link`='$l'")->result_array()[0]['id'];
+
+
         $permission = $this->db->query("SELECT id FROM `permission` WHERE `role_id`='$role' AND `submenu_id`='$submenu'");
 
         if($permission->num_rows() != 1)

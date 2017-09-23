@@ -2,69 +2,6 @@
 <html>
 <head>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Virk Logistics</title>
@@ -149,7 +86,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="javascript:;" class="btn btn-default btn-flat">Profile</a>
+                  <a href="<?php echo base_url(); ?>Admin/profile" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
                   <a href="<?php echo base_url(); ?>user/logout" class="btn btn-default btn-flat">Logout</a>

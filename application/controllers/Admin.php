@@ -406,4 +406,22 @@ class Admin extends CI_Controller {
         }
     }
 
+
+    public function profile()
+    {
+        $data['menu'] = $this->load_model->menu();
+        $data['base_url'] = base_url();
+        $data['userInfo'] = $this->userInfo;
+
+        $data['admin'] = $this->db->query("SELECT * FROM `admin` WHERE `is_delete` = '0'")->row();
+
+         $data['page']='user/profile';
+        $this->load->view('Template/main',$data);
+
+
+    }
+
+
+
+
 }

@@ -1,4 +1,5 @@
 <script src="<?php echo base_url()?>assets/commonFormValidator.js" type="text/javascript"></script>
+<section class="content">
 <div class="container" style="padding-top:20px">
     <div class="row">
      
@@ -8,7 +9,7 @@
           </div>
            <?php endif; ?>
         <div class="col-md-11">
-  <div class="box box-info">
+         <div class="box box-info">
             <div class="box-header with-border">
               <h2 class="box-title">Update Units</h2>
               
@@ -50,3 +51,4 @@
     </div>
     </div>
 </div>
+</section>

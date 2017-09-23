@@ -1,5 +1,5 @@
 <script src="<?php echo base_url()?>assets/commonFormValidator.js" type="text/javascript"></script>
-
+<section class="content">
 <div class="container" style="padding-top:20px" >
     <div class="row">
         <div class="col-md-11">
@@ -48,7 +48,7 @@
     </div>
     </div>
 </div>
-
+</section>
 
 <script type="text/javascript">
 $(document).ready(function() {

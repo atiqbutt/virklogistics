@@ -2,7 +2,6 @@
 <section class="content">
 
 <div class="row">
-    <div class="row">
         <div class="col-md-12">
            <?php if ($this->session->flashdata('msg' )): ?>
           <div class="alert alert-success">
@@ -18,7 +17,7 @@
             <!-- form start -->
             <form id="defaultForm" class="form-horizontal" action="<?php echo base_url()?>product/update_list_product" method="post" enctype="multipart/formdata">
 
-			<input type="text" name="startdate"  value="<?php echo $product->createdAt?>">             
+			<input type="hidden" name="startdate"  value="<?php echo $product->createdAt?>">             
 			 <div class="box-body">
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
@@ -94,8 +93,7 @@
                         </div>
             </form>
           </div>
-    </div>
-    </div>
+
 </div>
 </section>
 <script type="text/javascript">

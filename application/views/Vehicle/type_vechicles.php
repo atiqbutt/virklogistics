@@ -25,11 +25,8 @@
                                 <tr>
                                    
                                     <th> Name</th>
-                                    
-                                    
-                                    <th>Action</th>
-<th> status</th>
-                                   
+                                    <th> status</th>
+                                    <th>Action</th>                                   
                                     
                                 </tr>
                             </thead>
@@ -41,18 +38,7 @@
                                 <tr class="odd gradeX">
                                 <td><?php echo $amb["heading"];?></td>
                               
-                                 
-                                <td>
-             
-                                          <a class="text-custom1" href="<?php echo base_url();?>Vehicle/type_edit/<?php echo $amb['id'];?>"><i class="fa fa-edit fa-1x"></i></a> 
-               <a class="text-custom1" href="<?php echo base_url();?>Vehicle/type_delete/<?php echo $amb['id'];?>"><i class="fa fa-trash fa-1x"></i></a>
-              <!--    <?php if ($amb["status"]=="0"){?>
-                  <a class="text-custom1" href="<?php echo base_url();?>Vehicle/type_states/<?php echo $amb['id'];?>"><i class="fa fa-times fa-1x"></i></a>
- <?php } elseif($amb["status"]=="1") {?>
-<a class="text-custom1" href="<?php echo base_url();?>Vehicle/type_active/<?php echo $amb['id'];?>"><i class="fa fa-check fa-1x"></i></a>
-   <?php } ?>  -->
-                                </td>
-   <td>
+                                 <td>
                                      
 
   <?php if ($amb["status"]=="0"){?>
@@ -75,6 +61,18 @@
 
 
                                  </td>
+                                 
+                                <td>
+             <a class="text-custom1" href="<?php echo base_url();?>Vehicle/Vehiclestype_eye/<?php echo $amb['id'];?>"><i class="fa fa-eye"></i></a>
+                                          <a class="text-custom1" href="<?php echo base_url();?>Vehicle/type_edit/<?php echo $amb['id'];?>"><i class="fa fa-edit fa-1x"></i></a> 
+               <a class="text-custom1" href="<?php echo base_url();?>Vehicle/type_delete/<?php echo $amb['id'];?>"><i class="fa fa-trash fa-1x"></i></a>
+              <!--    <?php if ($amb["status"]=="0"){?>
+                  <a class="text-custom1" href="<?php echo base_url();?>Vehicle/type_states/<?php echo $amb['id'];?>"><i class="fa fa-times fa-1x"></i></a>
+ <?php } elseif($amb["status"]=="1") {?>
+<a class="text-custom1" href="<?php echo base_url();?>Vehicle/type_active/<?php echo $amb['id'];?>"><i class="fa fa-check fa-1x"></i></a>
+   <?php } ?>  -->
+                                </td>
+   
 
                                 <?php } }?>
                             </tr>

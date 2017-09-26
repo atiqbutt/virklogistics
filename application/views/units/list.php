@@ -16,7 +16,7 @@
             <div class="box-header" style="padding-top:25px" >
               <h2 class="box-title"><b>List Units</b></h2>
             </div>
-             <p style="color:green;font-weight: bold;padding:10px;text-align: center"><?php echo $this->session->flashdata('msg');?></p>
+             <p style="color:green;font-weight: bold;padding:10px;text-align: center"></p>
  
             <!-- /.box-header -->
             <div class="box-body">
@@ -25,11 +25,10 @@
                 <tr>
                                     <th> Name</th>
                                     <th>Description</th>
-                                     <th>Action</th>
+                                    
                                     <th>Status</th>
-                                    
+                                     <th>Action</th>
                                    
-                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,24 +42,7 @@
 
                                   
                                   <td><?php echo $amb["description"];?></td>
-                            
-                      
-                                    <td>
-                                    
-                                       
-
-
-                                          <a class="text-custom1" href="<?php echo base_url();?>unit/edit/<?php echo $amb['id'];?>"><i class="fa fa-edit fa-1x"></i></a> 
-               <a class="text-custom1" href="<?php echo base_url();?>unit/delete/<?php echo $amb['id'];?>"><i class="fa fa-trash fa-1x"></i></a>
-                 <!--   <?php if ($amb["status"]=="0"){?>
-                 <a class="text-custom1" href="<?php echo base_url();?>unit/states/<?php echo $amb['id'];?>"><i class="fa fa-times fa-1x"></i></a>
-                   <?php } elseif($amb["status"]=="1") {?>
-<a class="text-custom1" href="<?php echo base_url();?>unit/active/<?php echo $amb['id'];?>"><i class="fa fa-check fa-1x"></i></a>
-        <?php } ?> -->
- 
-                               
-                                </td>
-                                          <td>
+                            <td>
                                        
                                                 <?php if ($amb["status"]=="0"){?>
                                                                       
@@ -78,6 +60,23 @@
                                     <?php } ?>
                                     
                                 </td>
+                      
+                                    <td>
+                                    
+                                       
+
+<a class="text-custom1" href="<?php echo base_url();?>unit/unit_eye/<?php echo $amb['id'];?>"><i class="fa fa-eye"></i></a>
+                                          <a class="text-custom1" href="<?php echo base_url();?>unit/edit/<?php echo $amb['id'];?>"><i class="fa fa-edit fa-1x"></i></a> 
+               <a class="text-custom1" href="<?php echo base_url();?>unit/delete/<?php echo $amb['id'];?>"><i class="fa fa-trash fa-1x"></i></a>
+                 <!--   <?php if ($amb["status"]=="0"){?>
+                 <a class="text-custom1" href="<?php echo base_url();?>unit/states/<?php echo $amb['id'];?>"><i class="fa fa-times fa-1x"></i></a>
+                   <?php } elseif($amb["status"]=="1") {?>
+<a class="text-custom1" href="<?php echo base_url();?>unit/active/<?php echo $amb['id'];?>"><i class="fa fa-check fa-1x"></i></a>
+        <?php } ?> -->
+ 
+                               
+                                </td>
+                                          
                                  <?php } }?>
                             </tr>
                            

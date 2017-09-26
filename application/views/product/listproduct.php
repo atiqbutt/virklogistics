@@ -64,7 +64,7 @@
                                 </td>
 
                                  <td>
-                <a class="text-custom1" href="<?php echo base_url();?>product/Vehicle_eye/<?php echo $amb['id'];?>"><i class="fa fa-eye"></i></a>
+                <a class="text-custom1" href="<?php echo base_url();?>product/Product_eye/<?php echo $amb['id'];?>"><i class="fa fa-eye"></i></a>
                <a class="text-custom1" href="<?php echo base_url();?>product/List_edit/<?php echo $amb['id'];?>"><i class="fa fa-edit fa-1x"></i></a> 
                <a class="text-custom1" href="<?php echo base_url();?>product/List_delete/<?php echo $amb['id'];?>"><i class="fa fa-trash fa-1x"></i></a>
 

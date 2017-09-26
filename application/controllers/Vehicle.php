@@ -36,7 +36,6 @@ class Vehicle extends CI_Controller {
         $data['userInfo'] = $this->userInfo;
         $id=$this->uri->segment(3);
         $data['view']=$this->Vehicle_model->vehicleDetails($id);
-       
         $data['page']='Vehicle/vehicle_details';
         $this->load->view('Template/main',$data);
           
@@ -274,7 +273,6 @@ class Vehicle extends CI_Controller {
         $data['userInfo'] = $this->userInfo;
         $id=$this->uri->segment(3);
         $data['view']=$this->Vehicle_model->vehiclestatusDetails($id);
-     
         $data['page']='Vehicle/vehiclestatus_details';
         $this->load->view('Template/main',$data);
           
@@ -433,7 +431,6 @@ class Vehicle extends CI_Controller {
         $data['userInfo'] = $this->userInfo;
         $id=$this->uri->segment(3);
         $data['view']=$this->Vehicle_model->vehiclestypeDetails($id);
-
         $data['page']='Vehicle/vehicletype_details';
         $this->load->view('Template/main',$data);
           

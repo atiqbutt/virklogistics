@@ -15,6 +15,7 @@ class Defination extends CI_Controller {
         
     }
 
+
     /*********************************** Helper    ***********************************/
  
    public function image_upload_by()
@@ -119,7 +120,7 @@ class Defination extends CI_Controller {
       	$data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
-	$data['helper']=$this->Defination_Model->viewhelper();
+	    $data['helper']=$this->Defination_Model->viewhelper();
         $data['page']='helper/list';
         $this->load->view('Template/main',$data);
            
@@ -282,7 +283,7 @@ public function printhelper($p="")
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
           $id=$this->uri->segment(3);
-          $data['view']=$this->db->where('id',$id)->get('helperinformation')->row();
+          $data['view']=$this->Defination_Model->helperDetails($id);
           $data['page']='helper/view';
           $this->load->view('Template/main',$data);
           
@@ -628,7 +629,7 @@ public function printhelper($p="")
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
          $data['customer']=$this->Defination_Model->viewcustomer();
-	$data['page']='Company/list';
+	       $data['page']='Company/list';
         $this->load->view('Template/main',$data);
             
             
@@ -640,7 +641,7 @@ public function printhelper($p="")
        $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
-	$data['page']='Company/add';
+	      $data['page']='Company/add';
         $this->load->view('Template/main',$data);
            
 	}
@@ -654,7 +655,7 @@ public function printhelper($p="")
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
           $id=$this->uri->segment(3);
-          $data['view']=$this->db->where('id',$id)->get('customerinformation')->row();
+          $data['view']=$this->Defination_Model->companyDetails($id);
           $data['page']='Company/view';
           $this->load->view('Template/main',$data);
           
@@ -957,7 +958,7 @@ public function printhelper($p="")
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
           $id=$this->uri->segment(3);
-          $data['view']=$this->db->where('id',$id)->get('agentinformation')->row();
+          $data['view']=$this->Defination_Model->agentDetails($id);
           $data['page']='Agent/view';
           $this->load->view('Template/main',$data);
           
@@ -1329,10 +1330,10 @@ public function printhelper($p="")
           public function eyecontractor()
         {
             $data['menu'] = $this->load_model->menu();
-        $data['base_url'] = base_url();
-        $data['userInfo'] = $this->userInfo;
+          $data['base_url'] = base_url();
+          $data['userInfo'] = $this->userInfo;
           $id=$this->uri->segment(3);
-          $data['view']=$this->db->where('id',$id)->get('contractorinformation')->row();
+          $data['view']=$this->Defination_Model->contractorDetails($id);
           $data['page']='Contractor/view';
           $this->load->view('Template/main',$data);
           
@@ -1574,14 +1575,16 @@ public function printhelper($p="")
          
         }
         }
+
+
+        //driver bilal
            public function eyedriver()
         {
-        $data['menu'] = $this->load_model->menu();
-        $data['base_url'] = base_url();
-        $data['userInfo'] = $this->userInfo;
-            
+          $data['menu'] = $this->load_model->menu();
+          $data['base_url'] = base_url();
+          $data['userInfo'] = $this->userInfo;
           $id=$this->uri->segment(3);
-          $data['view']=$this->db->where('id',$id)->get('driverinformation')->row();
+          $data['view']=$this->Defination_Model->driverDetails($id);
           $data['page']='Driver/view';
           $this->load->view('Template/main',$data);
           
@@ -1916,6 +1919,9 @@ public function delete_expense($id)
         $this->load->view('Template/main',$data);
            
   }
+
+
+
         
         public function savexpensetype()
   {
@@ -1936,13 +1942,26 @@ public function delete_expense($id)
                        }
                
         }
-  $data['page']='expensetype/add';
+        $data['page']='expensetype/add';
         $this->load->view('Template/main',$data);
            
   }
         
         
         
+  //expensetype details page bilal
+     public function expensetype_eye($id)
+        {
+        $data['menu'] = $this->load_model->menu();
+        $data['base_url'] = base_url();
+        $data['userInfo'] = $this->userInfo;
+        $id=$this->uri->segment(3);
+        $data['view']=$this->Defination_Model->expensetypeDetails($id);
+        $data['page']='expensetype/expensetype_details';
+        $this->load->view('Template/main',$data);
+          
+        }
+
         
           public function view_expensetype()
   {
@@ -1953,6 +1972,8 @@ public function delete_expense($id)
         $this->load->view('Template/main',$data);
            
   }
+
+
         
         
          public function editexpensetype()

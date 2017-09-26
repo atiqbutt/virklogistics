@@ -25,7 +25,7 @@
                     <tbody>
                      
                          <tr>
-                             <td><strong>Heading:</strong></td>
+                             <td><strong>Name:</strong></td>
                              <td style="padding-right:170px"><?php if(isset($view)){echo ucfirst($view->heading);}  ?></td>
                       </tr>
                         
@@ -86,14 +86,25 @@
                        <tr>
                        <td><strong>Vehicle Image:</strong></td>
                         <td>
-                          <img src="<?php echo base_url().$view->vehicleimage?>">
-                          
+                          <?php
+                          if(!empty($view->vehicleimage))
+                          {
+                            ?>
+                           <img src="<?php echo base_url().$view->vehicleimage?>">
+                           <?php
+                         }
+                          else{
+                            ?>
+                        <img src="">  
+                        
+<?php
+}
+?>                          
                       </tr>
 
                        
 
-
-                     <tr>
+<tr>
                        <td><strong>Status:</strong></td>
                         <td>
                           <?php
@@ -116,14 +127,13 @@
 
                         </td>
                       </tr>
-
                   
                      
                     
                      
                     </tbody>
                   </table>
-                    <a type="submit" name="register" href='<?php echo base_url()?>Vehicle/show_vehicle'; class="btn btn-danger"><i class="fa fa-reply"></i></a>
+                    <a type="submit" name="register" href='<?php echo $base_url()?>Vehicle/show_vehicle'; class="btn btn-danger"><i class="fa fa-reply"></i></a>
                  <a class="btn btn-primary" float:right href="<?php echo $base_url; ?>Vehicle//<?php echo $view->id; ?>" target="_blank"><i class="fa fa-print"></i></a>
                  
                  

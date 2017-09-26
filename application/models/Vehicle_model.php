@@ -20,7 +20,7 @@ class Vehicle_model extends CI_Model {
 	 public function vehicleDetails($id)
 	 {
         
-        $this->db->select('vehicle.id,vehicle.heading,vehicle.vehicle_type,vehicle.registerationno,vehicle.registerationno,vehicle.chassisno,vehicle.engineno,vehicle.chassisno,vehicle.numberofchamber1,vehicle.capacityofchamber,vehicle.totalfuelcapacity,vehicle.color,vehicle.company,vehicle.model,vehicle.vehicleimage,vehicle.scanimage,vehicle.createdAt,vehicle.createdBy,vehicle.modifiedAt,vehicle.modifiedBy,vehicle.is_deleted,vehicle.status as st,chambers.*');
+        $this->db->select('vehicle.*,vehicle.status as st,chambers.*');
 	 	$this->db->from('vehicle');
 	 	$this->db->join('chambers','vehicle.id=chambers.vehicle_id');
 	 	$this->db->where('vehicle.id',$id);
@@ -34,11 +34,7 @@ class Vehicle_model extends CI_Model {
  public function vehiclestatusDetails($id)
 	 { 	
 
-	 	
-
-	 	$this->db->select('vehiclestatus.heading,
-	 vehiclestatus.createdAt,vehiclestatus.createdBy,vehiclestatus.modifiedAt,
-	 vehiclestatus.modifiedBy,vehiclestatus.is_deleted,vehiclestatus.status as st,
+	 	$this->db->select('vehiclestatus.*,vehiclestatus.status as st,
 	 admin.first_name,admin.last_name,admin.first_name as first,admin.last_name as last');
 	 	$this->db->from('vehiclestatus');
 	 	$this->db->join('admin','vehiclestatus.createdBy=admin.id');
@@ -53,8 +49,7 @@ class Vehicle_model extends CI_Model {
  public function vehiclestypeDetails($id)
 	 { 	
 
-	 	$this->db->select('vehicletype.id,vehicletype.heading,vehicletype.createdAt,vehicletype.createdBy,
-	 vehicletype.modifiedAt,vehicletype.modifiedBy,vehicletype.is_deleted,
+	 	$this->db->select('vehicletype.*,
 	 vehicletype.status as st, admin.first_name,admin.last_name,
 	 admin.first_name as first,admin.last_name as last');
 	 	$this->db->from('vehicletype');

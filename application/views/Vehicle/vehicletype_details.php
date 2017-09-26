@@ -24,7 +24,7 @@
                     <tbody>
                      
                          <tr>
-                             <td><strong>Heading:</strong></td>
+                             <td><strong>Name:</strong></td>
                              <td style="padding-right:170px"><?php if(isset($view)){echo ucfirst($view->heading);}  ?></td>
                       </tr>
                         

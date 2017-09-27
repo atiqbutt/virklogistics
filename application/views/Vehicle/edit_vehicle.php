@@ -11,12 +11,23 @@
                       <div class="form-group">
                       <label class="control-label col-sm-3">Vehicle Type:</label>
                       <div class="col-sm-9">
-                        <select class="form-control" name="vehicle_type" selected="selected" required >                  
+                        <select class="form-control" name="vehicle_type"  required >                  
                             <?php if(!empty($vehicletype)){ ?>
                             <option value="" > Select Options</option> 
-                            <?php   foreach ($vehicletype as $v){ ?>        
-                            <option value="<?php  echo  $v["id"]; ?>" ><?php  echo  $v["heading"]; 'selected'?></option>         
-                            <?php } } ?>             
+                            <?php   foreach ($vehicletype as $v){ 
+                              if($vehicle[0]['vehicle_type']==$v['id']){
+                                ?>
+                                <option value="<?php  echo  $v["id"]; ?>" selected="selected" ><?php  echo  $v["heading"]; 'selected'?></option>
+                                <?php
+                              }
+                              else{
+                                ?>
+                             <option value="<?php  echo  $v["id"]; ?>" ><?php  echo  $v["heading"]; ?></option>         
+                              <?php
+                              }
+                               }
+                                }
+                                 ?>             
                         </select>
                        </div>
                       </div>

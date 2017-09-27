@@ -111,10 +111,12 @@ class Vehicle extends CI_Controller {
             $data['userInfo'] = $this->userInfo; 
             $data['menu'] = $this->load_model->menu();
     		$data['vehicle']=$this->vehicle_model->get_vehicle_by_id($id);
+            $data['vehicletype'] = $this->vehicle_model->get_vehicleType();
            // var_dump($data['vehicle']);die;
             if($data['vehicle']==null){
                         redirect('Error/dataNotFound');
             }
+            
     	    //    $data['vehicletype'] = $this->vehicle_model->get_vehicleType();
     	
     		$data['page'] = "Vehicle/edit_vehicle";

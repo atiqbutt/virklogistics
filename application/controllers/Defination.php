@@ -1261,7 +1261,7 @@ public function printhelper($p="")
                 if($done)
                 {
                     $this->session->set_flashdata('msg','Record has been Added Successfully');
-                    redirect('Defination/savecontractor');
+                    redirect('Defination/contractorpage');
                 }
         
                 }

@@ -126,19 +126,18 @@ class Defination extends CI_Controller {
 	}
 	 public function priint($p="")
         {
-     
            $data['view']=$this->db->where('id',$p)->get('agentinformation')->row();
            $this->load->view('Agent/agent_p',$data);
         }
         
         
-        public function printcontracttor($p="")
-        {
-     
-           $data['view']=$this->db->where('id',$p)->get('contractorinformation
+      public function printcontracttor($p="")
+      {
+   
+         $data['view']=$this->db->where('id',$p)->get('contractorinformation
 ')->row();
-           $this->load->view('Contractor/contractor_p',$data);
-        }
+         $this->load->view('Contractor/contractor_p',$data);
+      }
 
 
  public function printcompany($p="")
@@ -2075,9 +2074,9 @@ public function delete_expense($id)
         
          public function eyelocation()
         {
-         $data['menu'] = $this->load_model->menu();
-        $data['base_url'] = base_url();
-        $data['userInfo'] = $this->userInfo;
+          $data['menu'] = $this->load_model->menu();
+          $data['base_url'] = base_url();
+          $data['userInfo'] = $this->userInfo;
           $id=$this->uri->segment(3);
           $data['edit']=$this->db->where('id',$id)->get('locationtype')->row();
           $data['page']='locationtype/mapview';

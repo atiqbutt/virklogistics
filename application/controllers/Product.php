@@ -376,13 +376,13 @@ $this->db->join('product_histroy','product_histroy.p_id = product.id');
         public function List_edit()
         {
             $data['menu'] = $this->load_model->menu();
-        $data['base_url'] = base_url();
-        $data['userInfo'] = $this->userInfo; 
-         $id=$this->uri->segment(3);
-      
-        $data['product'] = $this->db->select()->from('product')->where('id',$id)
-        ->get()->row();
-        if($data['product']=="")
+            $data['base_url'] = base_url();
+            $data['userInfo'] = $this->userInfo; 
+            $id=$this->uri->segment(3);
+
+            $data['product'] = $this->db->select()->from('product')->where('id',$id)
+            ->get()->row();
+            if($data['product']=="")
         {
             redirect('Error/dataNotFound');
             }

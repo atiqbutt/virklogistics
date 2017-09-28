@@ -20,6 +20,10 @@ class User_model extends CI_Model {
             $id = $query->result_array()[0]['id'];
             $this->session->admin = base64_encode(json_encode(array('id' => $id, 'username' => $u)));
             // $this->sendDetails($u);
+             if($this->session->refer!="" && $this->session->refer!=null){
+                    redirect($this->session->refer);
+                }
+             // var_dump($this->session->refer+'not in if');die();
             redirect("home","refresh");
         }else{
             return "Invalid Credientials";
@@ -39,11 +43,15 @@ class User_model extends CI_Model {
         $admin = $this->session->admin;
         if($admin != array())
         {
-            if($p=="login")
+            if($p=="login"){
                 redirect("home","refresh");
+            }
         }else{
             if($p!="login")
+            {
+                                    $this->session->refer = $_SERVER['HTTP_REFERER'];
                 redirect("user/index","refresh");
+            }
         }
 	}
 

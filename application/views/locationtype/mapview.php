@@ -1,69 +1,61 @@
 <!-- /.row -->
  <section class="content">
       <div class="row">
-           <div class="col-md-12">
-           <?php if ($this->session->flashdata('msg' )): ?>
+
+          <div class="col-md-12">
+          <?php if ($this->session->flashdata('msg' )): ?>
           <div class="alert alert-success">
           <?php echo $this->session->flashdata('msg'); ?>  
           </div>
-           <?php endif; ?> 
-        <div class="col-xs-12">
-          <div class="box col-sm-12">
+          <?php endif; ?> 
+          </div>
+
+        <div class="col-md-12">
+          <div class="box">
             <div class="box-header" >
               <h3 class="box-title">Update Location</h3>
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-                 
-                    <table class="table table-striped table-bordered table-responsive">
-                      
-                        		<tr>
-                            <td class="wi150">
-                                Address: 
-                            </td>
-                            <td class="wi200" >
+
+            <div class="box-body">         
+                
+                <table class="table table-striped table-bordered table-responsive">
+          
+            		<tr>
+                <td class="wi150">
+                    Address: 
+                </td>
+                <td class="wi200" >
                                 
-                      <form class="form-inline" id="address"   onsubmit="showAddress(this.address.value);
+               <form class="form-inline" id="address"   onsubmit="showAddress(this.address.value);
                                           ga('send', 'event', 'form', 'submit', 'address');return false">
                                                       
-                          <input onkeyup="test11()" id="input2" type="textbox"  name="address" placeholder="Pakistan"   style="width:50%;" Class="username_input"   required class="form-control" /> 
+                <input onkeyup="test11()" id="input2" type="textbox"  name="address" placeholder="Pakistan"   style="width:50%;" Class="username_input"   required class="form-control" /> 
                       <input type="submit"  onclick="test()" value="Search" class="btn btn-primary btn-mondeca" />           
-                      
-                      </td>
-                        </tr>
-                        
-				
-                            
-         <div >
-               
-             
-      </div>
-      </form>
-                                   
-                        </tr>
-                    </table>  
+                </form>
+
+               </td>
+              </tr>
+                                                   
+              </table>  
 				 
 				 <form class="form-horizontal" id="expense" action="<?php echo base_url()?>Defination/updatelocationtype" method="post">
                      
-<div style="display:flex;flex-wrap:wrap; margin-top: 2%; margin-bottom: 2%;">
     <div align="center" id="map" style="min-width:100%; min-height:300px; width:100%;"></div>
-    <div style="display: flex; flex-wrap:wrap; flex-direction:column;
-                
-              max-width: 100%; justify-content:flex-start; min-width:300px; width:100%; ">
-      
-    </div>
-  </div>
+
+
   
-<div class="col-lg-12">
-    <div class="col-lg-12" style="padding-left:0px; margin-left:0px;">
+<div class="row">
+    <div class="col-md-12">
+
    <form  enctype="multipart/form-data" method="post" action="<?php echo base_url()?>Defination/savelocationtype" >
-      <table class="table" style="    margin-left:-5%; margin-top:5%; width:50%;">
-            <tbody>
-              <tr><th>Latitude</th><th>Longitude</th></tr>
-              <tr>
-                 <!-- <td style="font-size: 48px; color: green;" id="lat"><label id="lat" name="a1"/>&nbsp;</td>
-                  <td style="font-size: 48px; color: green;" id="lng"><label  id="lng" name="a2"/>&nbsp;</td>-->
-                  
+            <table class="table">
+              <tbody>
+                  <tr>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                  </tr>
+                  <tr>
+
                   <th> <textarea   name="latitude" id="lat" style="height:27px;">
                     
                     </textarea></th>
@@ -73,52 +65,56 @@
                     </textarea>
                   </th>
                   </td>
-      </tbody>
-        </table>
+                </tbody>
+              </table>
 
-
-       <input type="hidden" id="username_input2"  name="address">
-
+              <input type="hidden" id="username_input2"  name="address">
 
 							</div>
-                      </div>
+              <!-- col-md-12 -->
+        </div>
+        <!-- row -->
 
 
-				 
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="time">Title<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input readonly id="time_out" name="name" type="text" value="<?php echo $edit->name?>" class="form-control" >                        
-                          </div>
-                      </div>
-                     <input type="hidden" name="id" value="<?php echo $edit->id?>">
-					<div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="time">Address<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input readonly id="time_out" name="name" type="text" value="<?php echo $edit->address?>" class="form-control" >                        
-                          </div>
-                      </div>                      
+          <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="time">Title<span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input readonly id="time_out" name="name" type="text" value="<?php echo $edit->name?>" class="form-control" >                        
+              </div>
+          </div>
 
-					  <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="remarks">Remarks </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input readonly type="address" name="remarks" class="form-control"  value="<?php echo $edit->remarks?>" placeholder="remarks" >
-                        </div>
-                      </div>
-                     <input type="submit" name="myform" value="Update" class="col-md-offset-3 btn btn-primary">   
+           <input type="hidden" name="id" value="<?php echo $edit->id?>">
+
+           <div class="item form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="time">Address<span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                  <input readonly id="time_out" name="name" type="text" value="<?php echo $edit->address?>" class="form-control" >                        
+                </div>
+            </div>                      
+
+             <div class="item form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="remarks">Remarks </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input readonly type="address" name="remarks" class="form-control"  value="<?php echo $edit->remarks?>" placeholder="remarks" >
+              </div>
+            </div>
+            
+           <input type="submit" name="myform" value="Update" class="col-md-offset-3 btn btn-primary">   
                
                 </form>
             </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
         </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </section>
+        <!-- col-lg-12 -->
+
+
+
+        </div>
+     </div>
+      <!-- /.box-body -->
+
+  </section>
 
 	
                 

@@ -1,7 +1,8 @@
-
-  <style type="text/css">
+ .content{
+  height: 100vh !important;
+ } 
       
-      .navigation {
+.navigation {
   padding: 0;
   margin: 0;
   border: 0;
@@ -201,4 +202,3 @@
   border-radius: 3px 0 0 3px;
 }
       
-  </style>

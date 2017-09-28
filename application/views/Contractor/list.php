@@ -34,15 +34,16 @@
                                     <th>Contractor Number</th>
                                     <th>Contractor Email</th>
                                     <th>Contractor CNIC</th>
-                                    <th>Action</th>
                                     <th>Status</th>
+                                     <th>Action</th>
                                    
                 </tr>
                 </thead>
                 <?php
                             if(!empty($contractor))
                             {
-                            $i=1;foreach($contractor as $val){ ?>
+                            $i=1;
+                            foreach($contractor as $val){ ?>
                                 <tr class="odd gradeX">
                                <td><?php echo $i++;?></td>
                 
@@ -50,26 +51,34 @@
                                 <td><?php echo $val["number"];?></td>
                                 <td><?php echo $val["email"];?></td>
                                 <td><?php echo $val["cnic"];?></td>
-                                <td> <a href="<?php echo base_url();?>Defination/eyecontractor/<?php echo $val['id']; ?>"><i class="fa fa-eye"></i></a>
-                                    
-                                    <a href="<?php echo base_url();?>Defination/editcontractor/<?php echo $val['id']; ?>"><i class="fa fa-edit"></i>
-                                    
-                                    </a>
-                                
-                                <a href="<?php echo base_url();?>Defination/deletecontractor/<?php echo $val['id']; ?>"><i class="fa fa-trash"></i>
-                                
-                                
-                                
-                                
-                                </td>
-                                
-                               
-                                <td>
-                                     <a href="<?php echo base_url()?>Defination/status_contractor/<?php echo $val['id'];?>">
+                              <td>
+                     <a href="<?php echo base_url()?>Defination/status_contractor/<?php echo $val['id'];?>">
                     <?php echo ($val['status']==0) ? "<img src='../assets/Images/2.png' width='20px'>":"<img src='../assets/Images/3.png' width='20px'>"?>
                    </a>
                                     
                                 </td>
+                                <td>
+                                <?php
+                                $st=$val['status'];
+                                if($st==1)
+                                {
+                                  ?>
+                                  <a href="<?php echo base_url();?>Defination/eyecontractor/<?php echo $val['id']; ?>"><i class="fa fa-eye"></i></a>
+                                      <?php
+                                    }
+                                    else{
+                                      ?>
+                                    
+                                 <a href="<?php echo base_url();?>Defination/eyecontractor/<?php echo $val['id']; ?>"><i class="fa fa-eye"></i></a>
+                                    
+                                    <a href="<?php echo base_url();?>Defination/editcontractor/<?php echo $val['id']; ?>"><i class="fa fa-edit"></i> </a>
+                                     <a href="<?php echo base_url();?>Defination/deletecontractor/<?php echo $val['id']; ?>"><i class="fa fa-trash"></i></a>
+                                <?php
+                              }
+                              ?>
+                              
+                                </td>
+                                
                                 
                                 
                                 

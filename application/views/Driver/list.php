@@ -33,8 +33,8 @@
                  <th>Driver Number</th>
                  <th>Date of Joining</th>
                  <th>Driver License</th>
-                    <th>Action</th>
                      <th>Status</th>
+                      <th>Action</th>
                                    
                 </tr>
                 </thead>
@@ -49,7 +49,26 @@
                                 <td><?php echo $val["number"];?></td>
                                 <td><?php echo $val["doj"];?></td>
                                 <td><?php echo $val["dl"];?></td>
-                                <td> <a href="<?php echo base_url();?>Defination/eyedriver/<?php echo $val['id']; ?>"><i class="fa fa-eye"></i></a>
+                                 <td>
+                                     <a href="<?php echo base_url()?>Defination/status_driver/<?php echo $val['id'];?>">
+                    <?php echo ($val['status']==0) ? "<img src='../assets/Images/2.png' width='20px'>":"<img src='../assets/Images/3.png' width='20px'>"?>
+                   </a>
+                                    
+                                </td>
+
+                                <td>
+                                  <?php
+                                $st=$val['status'];
+                                if($st==1)
+                                {
+                                  ?>
+                  <a href="<?php echo base_url();?>Defination/eyedriver/<?php echo $val['id']; ?>"><i class="fa fa-eye"></i></a>
+                      <?php
+                    }
+                    else{
+                      ?>
+
+                                 <a href="<?php echo base_url();?>Defination/eyedriver/<?php echo $val['id']; ?>"><i class="fa fa-eye"></i></a>
                                     
                                     <a href="<?php echo base_url();?>Defination/editdriver/<?php echo $val['id']; ?>"><i class="fa fa-edit"></i>
                                     
@@ -58,17 +77,14 @@
                                 <a href="<?php echo base_url();?>Defination/deletedriver/<?php echo $val['id']; ?>"><i class="fa fa-trash"></i>
                                 
                                 
-                                
+                                <?php
+                              }
+                              ?>
                                 
                                 </td>
                                 
                                
-                               <td>
-                                     <a href="<?php echo base_url()?>Defination/status_driver/<?php echo $val['id'];?>">
-                    <?php echo ($val['status']==0) ? "<img src='../assets/Images/2.png' width='20px'>":"<img src='../assets/Images/3.png' width='20px'>"?>
-                   </a>
-                                    
-                                </td>
+                              
                             </tr>
                             <?php }
                             

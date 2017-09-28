@@ -63,9 +63,19 @@
                       
                                     <td>
                                     
-                                       
+                                     <?php
+                                $st=$amb['status'];
+                                if($st==1)
+                                {
+                                  ?>                              
+                                          
 
 <a class="text-custom1" href="<?php echo base_url();?>unit/unit_eye/<?php echo $amb['id'];?>"><i class="fa fa-eye"></i></a>
+<?php
+}
+else{
+  ?>
+
                                           <a class="text-custom1" href="<?php echo base_url();?>unit/edit/<?php echo $amb['id'];?>"><i class="fa fa-edit fa-1x"></i></a> 
                <a class="text-custom1" href="<?php echo base_url();?>unit/delete/<?php echo $amb['id'];?>"><i class="fa fa-trash fa-1x"></i></a>
                  <!--   <?php if ($amb["status"]=="0"){?>
@@ -73,7 +83,9 @@
                    <?php } elseif($amb["status"]=="1") {?>
 <a class="text-custom1" href="<?php echo base_url();?>unit/active/<?php echo $amb['id'];?>"><i class="fa fa-check fa-1x"></i></a>
         <?php } ?> -->
- 
+ <?php
+}
+?>
                                
                                 </td>
                                           

@@ -5,17 +5,16 @@
    
           <div class="panel panel-info">
             <div class="panel-heading">
-              <h3 class="panel-title">Helper Information</h3>
+              <h3 class="panel-title">Product Information</h3>
             </div>
 
             <div class="panel-body">
               <div class="row">
-                     <div class="col-md-3 col-lg-3" align="center">
-                  <?php if (empty($view->image1)): ?>
-                    <img src="<?php echo base_url() ?>assets/Images/placeholder.jpg">   
-                  <?php else : ?>
-                   <img alt="User Pic" src="<?php echo base_url().$view->image1; ?>" width="300" height="400" class="img-responsive img-thumbnail">
-                 <?php endif ?>
+                  <div class="col-md-3 col-lg-3" align="center">
+                  
+                   
+                   <img alt="User Pic" src="<?php echo base_url()?>assets/Images/raw/product.jpg" width="300" height="400" class="img-responsive img-thumbnail">
+                
                  </div>
                 
                 
@@ -25,49 +24,36 @@
                     <tbody>
                      
                          <tr>
-                             <td><strong>Name:</strong></td>
-                             <td style="padding-right:170px"><?php if(isset($view)){echo ucfirst($view->name);}  ?></td>
+                             <td><strong>Heading:</strong></td>
+                             <td style="padding-right:170px"><?php if(isset($view)){echo ucfirst($view->heading);}  ?></td>
                       </tr>
-                        
-                        <tr>
-                       <td><strong>Address:</strong></td>
-                       <td><?php if(isset($view)){echo ucfirst($view->address);}  ?></td>
-                      </tr>
-                      
-                      <td><strong>Phone Number:</strong></td>
-                        <td><?php if(isset($view)){echo ucfirst($view->number);}  ?>
-                        </td>
-                      
-                        <tr>
-                       <td><strong>Religion:</strong></td>
-                        <td><?php if(isset($view)){echo ucfirst($view->religion);}  ?></td>
-                      </tr>
-                      
-                        <tr>
-                       <td><strong>Date of Birth:</strong></td>
-                        <td><?php if(isset($view)){echo ucfirst($view->dob);}  ?></td>
-                      </tr>
-                      
-                      
-                        <tr>
-                       <td><strong>Date of Joining:</strong></td>
-                        <td><?php if(isset($view)){echo ucfirst($view->doj);}  ?></td>
-                      </tr>
-                      
-                      
+
+
                        <tr>
-                       <td><strong>Cnic:</strong></td>
-                        <td><?php if(isset($view)){echo ucfirst($view->cnic);}  ?></td>
+                             <td><strong>Product Type:</strong></td>
+                             <td style="padding-right:170px"><?php if(isset($view)){echo ucfirst($view->na);}  ?></td>
                       </tr>
-                     
-                       <tr>
-                       <td><strong>Driver License:</strong></td>
-                        <td><?php if(isset($view)){echo ucfirst($view->dl);}  ?></td>
+
+
+                      <tr>
+                             <td><strong>Unit  :</strong></td>
+                             <td style="padding-right:170px"><?php if(isset($view)){echo ucfirst($view->n);}  ?></td>
                       </tr>
-                     
+
+                      <tr>
+                             <td><strong>Description  :</strong></td>
+                             <td style="padding-right:170px"><?php if(isset($view)){echo ucfirst($view->description  );}  ?></td>
+                      </tr>
+
+                      <tr>
+                             <td><strong>Price:</strong></td>
+                             <td style="padding-right:170px"><?php if(isset($view)){echo ucfirst($view->price  );}  ?></td>
+                      </tr>
+
+
 
                         
-                      <tr>
+                        <tr>
                        <td><strong>Created At:</strong></td>
                        <td><?php if(isset($view)){echo ucfirst($view->createdAt);}  ?></td>
                       </tr>
@@ -89,6 +75,7 @@
                       </tr>
                       
                       
+
 
                      <tr>
                        <td><strong>Status:</strong></td>
@@ -114,17 +101,18 @@
                         </td>
                       </tr>
 
+                  
+                     
                     
                      
                     </tbody>
                   </table>
-                 
-                <a type="submit" name="register" href='<?php echo base_url()?>Defination/index'; class="btn btn-danger"><i class="fa fa-reply"></i></a>
-                 <a class="btn btn-primary" float:right href="<?php echo $base_url; ?>Defination/printhelper/<?php echo $view->id; ?>" target="_blank"><i class="fa fa-print"></i></a>
-                 
+                    <a type="submit" name="register" href='<?php echo base_url()?>product/list_prodcut'; class="btn btn-danger"><i class="fa fa-reply"></i></a>
+                 <a class="btn btn-primary" float:right href="<?php echo $base_url; ?>product/<?php echo $view->id; ?>" target="_blank"><i class="fa fa-print"></i></a>
                  
                  
-                  </div>
+                 
+                </div>
                 <!-- col-md-9 col-lg-9 -->
               </div>
                    <!-- row -->        
@@ -139,4 +127,7 @@
    <!-- row -->
 
 
+</section>
 
+
+           

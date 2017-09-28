@@ -18,6 +18,7 @@ class product extends CI_Controller {
          $this->load->library('form_validation');
         $this->load->model('user_model');
         $this->load->model('load_model');
+        $this->load->model('Product_model');
         $this->user_model->check_login("admin");
         $this->userInfo = $this->user_model->userInfo("first_name,last_name");
 
@@ -49,6 +50,22 @@ class product extends CI_Controller {
         $this->load->view('Template/main',$data);
 
         }
+
+
+
+  //producttype details page bilal
+     public function producttype_eye($id)
+        {
+        $data['menu'] = $this->load_model->menu();
+        $data['base_url'] = base_url();
+        $data['userInfo'] = $this->userInfo;
+        $id=$this->uri->segment(3);
+        $data['view']=$this->Product_model->producttypeDetails($id);
+        $data['page']='product/producttype_details';
+        $this->load->view('Template/main',$data);
+          
+        }
+
 
         public function save()
         {
@@ -248,6 +265,25 @@ $this->db->join('product_histroy','product_histroy.p_id = product.id');
         $data['page']='product/listproduct';
         $this->load->view('Template/main',$data);
         }
+
+
+  //product details page bilal
+     public function Product_eye($id)
+        {
+        $data['menu'] = $this->load_model->menu();
+        $data['base_url'] = base_url();
+        $data['userInfo'] = $this->userInfo;
+        $id=$this->uri->segment(3);
+        $data['view']=$this->Product_model->productDetails($id);
+       
+        $data['page']='product/product_details';
+        $this->load->view('Template/main',$data);
+          
+        }
+
+
+
+
 
         public function add_product()
         {

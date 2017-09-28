@@ -12,6 +12,7 @@ class Vehicle extends CI_Controller {
 	$this->load->library('form_validation');
 	$this->load->library('image_lib');
     $this->load->model('user_model');
+     $this->load->model('Vehicle_model');
     $this->load->model('load_model');
     $this->user_model->check_login("admin");
     $this->userInfo = $this->user_model->userInfo("first_name,last_name");
@@ -27,6 +28,18 @@ class Vehicle extends CI_Controller {
 	$data['page'] = "Vehicle/show";
 	$this->load->view('Template/main', $data);
 	}
+
+   public function Vehicle_eye($id)
+        {
+        $data['menu'] = $this->load_model->menu();
+        $data['base_url'] = base_url();
+        $data['userInfo'] = $this->userInfo;
+        $id=$this->uri->segment(3);
+        $data['view']=$this->Vehicle_model->vehicleDetails($id);
+        $data['page']='Vehicle/vehicle_details';
+        $this->load->view('Template/main',$data);
+          
+        }
 
 
 	public function add_vehicle()
@@ -98,10 +111,12 @@ class Vehicle extends CI_Controller {
             $data['userInfo'] = $this->userInfo; 
             $data['menu'] = $this->load_model->menu();
     		$data['vehicle']=$this->vehicle_model->get_vehicle_by_id($id);
+            $data['vehicletype'] = $this->vehicle_model->get_vehicleType();
            // var_dump($data['vehicle']);die;
             if($data['vehicle']==null){
                         redirect('Error/dataNotFound');
             }
+            
     	    //    $data['vehicletype'] = $this->vehicle_model->get_vehicleType();
     	
     		$data['page'] = "Vehicle/edit_vehicle";
@@ -252,6 +267,21 @@ class Vehicle extends CI_Controller {
         $this->load->view('Template/main',$data);
      }
 
+     //vehicle status details page bilal
+     public function Vehiclestatus_eye($id)
+        {
+        $data['menu'] = $this->load_model->menu();
+        $data['base_url'] = base_url();
+        $data['userInfo'] = $this->userInfo;
+        $id=$this->uri->segment(3);
+        $data['view']=$this->Vehicle_model->vehiclestatusDetails($id);
+        $data['page']='Vehicle/vehiclestatus_details';
+        $this->load->view('Template/main',$data);
+          
+        }
+
+
+
      public function List_delete()
         {
         $id=$this->uri->segment(3);
@@ -392,6 +422,23 @@ class Vehicle extends CI_Controller {
         $data["page"]='Vehicle/type_vechicles';
         $this->load->view('Template/main',$data);
      }
+
+
+
+     //vehicle status details page bilal
+      public function Vehiclestype_eye($id)
+        {
+        $data['menu'] = $this->load_model->menu();
+        $data['base_url'] = base_url();
+        $data['userInfo'] = $this->userInfo;
+        $id=$this->uri->segment(3);
+        $data['view']=$this->Vehicle_model->vehiclestypeDetails($id);
+        $data['page']='Vehicle/vehicletype_details';
+        $this->load->view('Template/main',$data);
+          
+        }
+
+
 
      public function type_delete()
         {

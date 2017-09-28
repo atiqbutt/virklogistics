@@ -11,12 +11,23 @@
                       <div class="form-group">
                       <label class="control-label col-sm-3">Vehicle Type:</label>
                       <div class="col-sm-9">
-                        <select class="form-control" name="vehicle_type" selected="selected" required >                  
+                        <select class="form-control" name="vehicle_type"  required >                  
                             <?php if(!empty($vehicletype)){ ?>
                             <option value="" > Select Options</option> 
-                            <?php   foreach ($vehicletype as $v){ ?>        
-                            <option value="<?php  echo  $v["id"]; ?>" ><?php  echo  $v["heading"]; 'selected'?></option>         
-                            <?php } } ?>             
+                            <?php   foreach ($vehicletype as $v){ 
+                              if($vehicle[0]['vehicle_type']==$v['id']){
+                                ?>
+                                <option value="<?php  echo  $v["id"]; ?>" selected="selected" ><?php  echo  $v["heading"]; 'selected'?></option>
+                                <?php
+                              }
+                              else{
+                                ?>
+                             <option value="<?php  echo  $v["id"]; ?>" ><?php  echo  $v["heading"]; ?></option>         
+                              <?php
+                              }
+                               }
+                                }
+                                 ?>             
                         </select>
                        </div>
                       </div>
@@ -43,12 +54,12 @@
                       <div class="form-group">
                        <label class="control-label col-sm-3">No Of Chamber:</label>
                         <div class="col-sm-9">
-                        <input name="numberofchamber" placeholder="Number of chamber...." class="form-control txt_name"  onkeypress='return ValidateNumberOnly()' type="text" required="required"  /> </div></div> 
+                        <input name="numberofchamber" value="<?php echo $vehicle[0]['numberofchamber1'] ; ?>" placeholder="Number of chamber...." class="form-control txt_name"  onkeypress='return ValidateNumberOnly()' type="text" required="required"  /> </div></div> 
                               
                      <div class="form-group">            
                    <label class="control-label col-sm-3">Total Fuel Capacity:</label>
                         <div class="col-sm-9">
-                        <input class="form-control" id="tfc"  type="text" name="totalfuelcapacity" placeholder=""  onkeypress='return ValidateNumberOnly()' required="required" readonly /> </div> </div>  
+                        <input class="form-control" id="tfc"  value="<?php echo $vehicle[0]['totalfuelcapacity'] ; ?>" type="text" name="totalfuelcapacity" placeholder=""  onkeypress='return ValidateNumberOnly()' required="required" readonly /> </div> </div>  
                             
                          <div class="form-group">     
                          <label class="control-label col-sm-3">Color:</label>
@@ -122,7 +133,19 @@
             chamber+='<div class="row"><div class="col-lg-3"><span style="color:red; font-size:20px; font-weight:bold;"></span><label>chamber '+$i+'</label></div><div class="col-lg-7"><input value="Chamber '+$i+'" text-align:center; readonly class="form-control" style="width:95%; float:left;margin-top:10px;" type="text" name="numberofchamber[]" required="required"/></div><div class="col-lg-3"><label>capacity '+$i+'</label></div><div class="col-lg-7"><input class="form-control fc" id="fc'+$i+'" style="width:95%; float:left;margin-top:10px;" type="text" name="capacityofchamber[]" required="required"/></div></div>'; //add input box    
             }
             $(wrapper).html(chamber);
+      
         });
+
+        var  $num = $(".txt_name").val();
+        if ($num== "") {
+        $('#tfc').val("");
+        } 
+        var chamber= "";
+        for($i=1; $i<=$num; $i++){
+            chamber+='<div class="row"><div class="col-lg-3"><span style="color:red; font-size:20px; font-weight:bold;"></span><label>chamber '+$i+'</label></div><div class="col-lg-7"><input value="Chamber '+$i+'" text-align:center; readonly class="form-control" style="width:95%; float:left;margin-top:10px;" type="text" name="numberofchamber[]" required="required"/></div><div class="col-lg-3"><label>capacity '+$i+'</label></div><div class="col-lg-7"><input class="form-control fc" id="fc'+$i+'" style="width:95%; float:left;margin-top:10px;" type="text" name="capacityofchamber[]" required="required"/></div></div>'; //add input box    
+            }
+            $(wrapper).html(chamber);
+
 
     });
       
@@ -160,6 +183,7 @@ if ((event.keyCode < 45 || event.keyCode > 57))
    event.returnValue = false;
 }
 }
+
 
 </script>
 

@@ -58,7 +58,54 @@
                        <td><strong>Email:</strong></td>
                        <td><a href="<?php echo $view->email?>"><?php if(isset($view)){echo ucfirst($view->email);}  ?></td>
                       </tr>
-                     
+                      
+                      <tr>
+                       <td><strong>Created At:</strong></td>
+                       <td><?php if(isset($view)){echo ucfirst($view->createdAt);}  ?></td>
+                      </tr>
+                      
+                      <td><strong>Created By:</strong></td>
+                        <td><?php if(isset($view)){echo ucfirst($view->first." ".$view->last);}  ?>
+                        </td>
+                      
+                       
+                        <tr>
+                       <td><strong>Modified At:</strong></td>
+                        <td><?php if(isset($view)){echo ucfirst($view->modifiedAt);}  ?></td>
+                      </tr>
+                      
+                      
+                        <tr>
+                       <td><strong>Modified By:</strong></td>
+                        <td><?php if(isset($view)){echo ucfirst($view->first." ".$view->last);}  ?></td>
+                      </tr>
+                      
+                      
+
+                     <tr>
+                       <td><strong>Status:</strong></td>
+                        <td>
+                          <?php
+
+                          $status=$view->st;
+                          if($status==0)
+                          {
+                            ?>
+                             <h4 style="color:red;"><span class="abel label-success">Active</span></h4>
+                          <?php
+                        
+                      }
+                        else{
+                          ?>
+                            <h4 style="color:red;"><span class="label label-danger">De Active</span></h4>
+                        <?php
+                      }
+
+                          ?>
+
+                        </td>
+                      </tr>
+
                     
                      
                     </tbody>

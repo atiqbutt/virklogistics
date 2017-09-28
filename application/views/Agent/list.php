@@ -33,8 +33,9 @@
                                     <th>Agent Number</th>
                                     <th>Agent Email</th>
                                      <th>Agent Cnic</th>
-                                    <th>Action</th>
                                     <th>Status</th>
+                                    <th>Action</th>
+                                  
                                    
                 </tr>
                 </thead>
@@ -49,6 +50,12 @@
                                 <td><?php echo $val["number"];?></td>
                                 <td><?php echo $val["email"];?></td>
                                 <td><?php echo $val["cnic"];?></td>
+                                 <td>
+                                     <a href="<?php echo base_url()?>Defination/status_agent/<?php echo $val['id'];?>">
+                    <?php echo ($val['status']==0) ? "<img src='../assets/Images/2.png' width='20px'>":"<img src='../assets/Images/3.png' width='20px'>"?>
+                   </a>
+                                    
+                                </td>
                                 <td> <a href="<?php echo base_url();?>Defination/eyeagent/<?php echo $val['id']; ?>"><i class="fa fa-eye"></i></a>
                                     
                                     <a href="<?php echo base_url();?>Defination/editagent/<?php echo $val['id']; ?>"><i class="fa fa-edit"></i>
@@ -63,12 +70,7 @@
                                 </td>
                                 
                                
-                               <td>
-                                     <a href="<?php echo base_url()?>Defination/status_agent/<?php echo $val['id'];?>">
-                    <?php echo ($val['status']==0) ? "<img src='../Uploads/2.png' width='20px'>":"<img src='../Uploads/3.png' width='20px'>"?>
-                   </a>
-                                    
-                                </td>
+                              
                             </tr>
                             <?php }
                             

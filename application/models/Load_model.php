@@ -30,17 +30,6 @@ class Load_model extends CI_Model
                                
                             </a>
                         <ul class="first">';
-                        }
-                        else{
-                            $return .= '<li >
-                            <a href="'.base_url().$m_link.'"><i class="fa '.$m_icon.'"></i>
-                                <span>'.$m_name.'</span>
-                                
-                            </a>
-                        <ul class="first">';
-
-                        }
-
             foreach($per_submenu as $key=>$value)
             {
                 $s_id = $value['menu_id'];
@@ -67,7 +56,19 @@ class Load_model extends CI_Model
                      }
                 }
             }
-              $return .= '</ul>
+            $return .='</ul>';
+                        }
+                        else{
+                            $return .= '<li >
+                            <a href="'.base_url().$m_link.'"><i class="fa '.$m_icon.'"></i>
+                                <span>'.$m_name.'</span>
+                                
+                            </a>';
+
+                        }
+
+            
+              $return .= '
                   </li>';
         }
 

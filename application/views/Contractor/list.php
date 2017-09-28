@@ -66,7 +66,7 @@
                                
                                 <td>
                                      <a href="<?php echo base_url()?>Defination/status_contractor/<?php echo $val['id'];?>">
-                    <?php echo ($val['status']==0) ? "<img src='../Uploads/2.png' width='20px'>":"<img src='../Uploads/3.png' width='20px'>"?>
+                    <?php echo ($val['status']==0) ? "<img src='../assets/Images/2.png' width='20px'>":"<img src='../assets/Images/3.png' width='20px'>"?>
                    </a>
                                     
                                 </td>

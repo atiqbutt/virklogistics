@@ -18,6 +18,7 @@ class unit extends CI_Controller {
          $this->load->library('form_validation');
         $this->load->model('user_model');
         $this->load->model('load_model');
+        $this->load->model('Product_model');
         $this->user_model->check_login("admin");
         $this->userInfo = $this->user_model->userInfo("first_name,last_name");
 
@@ -35,6 +36,25 @@ class unit extends CI_Controller {
         $this->load->view('Template/main',$data);
 
         }
+
+
+
+  //unit details page bilal
+     public function unit_eye($id)
+        {
+        $data['menu'] = $this->load_model->menu();
+        $data['base_url'] = base_url();
+        $data['userInfo'] = $this->userInfo;
+        $id=$this->uri->segment(3);
+        $data['view']=$this->Product_model->unitDetails($id);
+        $data['page']='units/unit_details';
+        $this->load->view('Template/main',$data);
+          
+        }
+
+
+
+
 
         public function add()
         {

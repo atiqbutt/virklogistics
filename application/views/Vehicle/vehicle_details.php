@@ -5,7 +5,7 @@
    
           <div class="panel panel-info">
             <div class="panel-heading">
-              <h3 class="panel-title">Contractor Information</h3>
+              <h3 class="panel-title">Vehicle Information</h3>
             </div>
 
             <div class="panel-body">
@@ -26,65 +26,85 @@
                      
                          <tr>
                              <td><strong>Name:</strong></td>
-                             <td style="padding-right:170px"><?php if(isset($view)){echo ucfirst($view->name);}  ?></td>
+                             <td style="padding-right:170px"><?php if(isset($view)){echo ucfirst($view->heading);}  ?></td>
                       </tr>
                         
                         <tr>
-                       <td><strong>Address:</strong></td>
-                       <td><?php if(isset($view)){echo ucfirst($view->address);}  ?></td>
+                       <td><strong>Vehicle Type:</strong></td>
+                       <td><?php if(isset($view)){echo ucfirst($view->vehicle_type);}  ?></td>
                       </tr>
                       
-                      <td><strong>Phone Number:</strong></td>
-                        <td><?php if(isset($view)){echo ucfirst($view->number);}  ?>
+                      <td><strong>Registration No:</strong></td>
+                        <td><?php if(isset($view)){echo ucfirst($view->registerationno);}  ?>
                         </td>
                       
                        
                         <tr>
-                       <td><strong>Contact Person Name:</strong></td>
-                        <td><?php if(isset($view)){echo ucfirst($view->cpname);}  ?></td>
+                       <td><strong>Chasis No:</strong></td>
+                        <td><?php if(isset($view)){echo ucfirst($view->chassisno);}  ?></td>
                       </tr>
                       
                       
                         <tr>
-                       <td><strong>Contact Person Number:</strong></td>
-                        <td><?php if(isset($view)){echo ucfirst($view->cpnumber);}  ?></td>
+                       <td><strong>Engine No:</strong></td>
+                        <td><?php if(isset($view)){echo ucfirst($view->engineno);}  ?></td>
                       </tr>
                       
                       
                        <tr>
-                       <td><strong>Cnic:</strong></td>
-                        <td><?php if(isset($view)){echo ucfirst($view->cnic);}  ?></td>
+                       <td><strong>Number Of Chamber:</strong></td>
+                        <td><?php if(isset($view)){echo ucfirst($view->numberofchamber1);}  ?></td>
                       </tr>
-                     
-                       <tr>
-                       <td><strong>Email:</strong></td>
-                       <td><a href="<?php echo $view->email?>"><?php if(isset($view)){echo ucfirst($view->email);}  ?></td>
-                      </tr>
-                     
-                         <tr>
-                       <td><strong>Created At:</strong></td>
-                       <td><?php if(isset($view)){echo ucfirst($view->createdAt);}  ?></td>
-                      </tr>
-                      
-                      <td><strong>Created By:</strong></td>
-                        <td><?php if(isset($view)){echo ucfirst($view->first." ".$view->last);}  ?>
-                        </td>
-                      
-                       
-                        <tr>
-                       <td><strong>Modified At:</strong></td>
-                        <td><?php if(isset($view)){echo ucfirst($view->modifiedAt);}  ?></td>
-                      </tr>
-                      
-                      
-                        <tr>
-                       <td><strong>Modified By:</strong></td>
-                        <td><?php if(isset($view)){echo ucfirst($view->first." ".$view->last);}  ?></td>
-                      </tr>
-                      
-                      
 
-                     <tr>
+
+                        <tr>
+                       <td><strong>Capacity Of Chamber:</strong></td>
+                        <td><?php if(isset($view)){echo ucfirst($view->capacityofchamber);}  ?></td>
+                      </tr>
+
+                       <tr>
+                       <td><strong>Total Fuel Capacity:</strong></td>
+                        <td><?php if(isset($view)){echo ucfirst($view->totalfuelcapacity);}  ?></td>
+                      </tr>
+
+
+                       <tr>
+                       <td><strong>Colour:</strong></td>
+                        <td><?php if(isset($view)){echo ucfirst($view->color);}  ?></td>
+                      </tr>
+
+                       <tr>
+                       <td><strong>Company:</strong></td>
+                        <td><?php if(isset($view)){echo ucfirst($view->company);}  ?></td>
+                      </tr>
+
+                       <tr>
+                       <td><strong>Model:</strong></td>
+                        <td><?php if(isset($view)){echo ucfirst($view->model);}  ?></td>
+                      </tr>
+
+                       <tr>
+                       <td><strong>Vehicle Image:</strong></td>
+                        <td>
+                          <?php
+                          if(!empty($view->vehicleimage))
+                          {
+                            ?>
+                           <img src="<?php echo base_url().$view->vehicleimage?>">
+                           <?php
+                         }
+                          else{
+                            ?>
+                        <img src="">  
+                        
+<?php
+}
+?>                          
+                      </tr>
+
+                       
+
+<tr>
                        <td><strong>Status:</strong></td>
                         <td>
                           <?php
@@ -107,16 +127,14 @@
 
                         </td>
                       </tr>
-
                   
                      
-                      
                     
                      
                     </tbody>
                   </table>
-                    <a type="submit" name="register" href='<?php echo base_url()?>Defination/contractorpage'; class="btn btn-danger"><i class="fa fa-reply"></i></a>
-                 <a class="btn btn-primary" float:right href="<?php echo $base_url; ?>Defination/printcontracttor/<?php echo $view->id; ?>" target="_blank"><i class="fa fa-print"></i></a>
+                    <a type="submit" name="register" href='<?php echo $base_url()?>Vehicle/show_vehicle'; class="btn btn-danger"><i class="fa fa-reply"></i></a>
+                 <a class="btn btn-primary" float:right href="<?php echo $base_url; ?>Vehicle//<?php echo $view->id; ?>" target="_blank"><i class="fa fa-print"></i></a>
                  
                  
                  

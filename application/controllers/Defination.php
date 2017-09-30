@@ -1531,7 +1531,7 @@ public function printhelper($p="")
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
         $data['driver']=$this->Defination_Model->viewdriver();
-	$data['page']='Driver/list';
+	      $data['page']='Driver/list';
         $this->load->view('Template/main',$data);
             
             
@@ -1625,11 +1625,10 @@ public function printhelper($p="")
         
         public function adddriver()
 	{
-	$data['menu'] = $this->load_model->menu();
+	     $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
-        $data['userInfo'] = $this->userInfo;
-        
-	$data['page']='Driver/add';
+        $data['userInfo'] = $this->userInfo; 
+	     $data['page']='Driver/add';
         $this->load->view('Template/main',$data);
            
 	}
@@ -2064,7 +2063,7 @@ public function delete_expense($id)
        $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
-  $data['page']='locationtype/add';
+        $data['page']='locationtype/add';
         $this->load->view('Template/main',$data);
            
   }

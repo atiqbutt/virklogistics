@@ -41,7 +41,7 @@ jQuery(document).ready(function(){
                 
                             
    
-<!-- /.row -->
+
  <section class="content">
       <div class="row">
            <div class="col-md-12">
@@ -573,7 +573,7 @@ function myBlurFunction() {
     <!-- data tables new js -->
  <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
 
-<
+
 
 <!--    <script src="<?php echo base_url(); ?>assets/js/jquery-2.1.4.min.js"></script>-->
 <script src="<?php echo base_url(); ?>assets/js/highchart.js"></script>

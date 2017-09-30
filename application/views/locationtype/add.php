@@ -1,6 +1,4 @@
-
-
-  <script type="text/javascript">
+ <script type="text/javascript">
 jQuery(window).on('load',  function() {
                 new JCaption('img.caption');
             });
@@ -50,7 +48,7 @@ jQuery(document).ready(function(){
           <?php echo $this->session->flashdata('msg'); ?>  
           </div>
            <?php endif; ?> 
-        <div class="col-xs-12">
+            <div class="col-xs-12">
           <div class="box col-sm-12">
             <div class="box-header" >
               <h3 class="box-title">Add Location</h3>
@@ -64,9 +62,9 @@ jQuery(document).ready(function(){
           
           
           
-<div class="custom"  >
+<!-- <div class="custom"  >
     <LINK REL=StyleSheet HREF="http://mondeca.com/mdc_css/weather.css" TYPE="text/css">
-
+ -->
 
  <script>
       function test11(){
@@ -82,7 +80,7 @@ jQuery(document).ready(function(){
       }
     </script>
                 
-                    <table class="table table-striped table-bordered table-responsive">
+<!--                     <table class="table table-striped table-bordered table-responsive">
                       
                         		<tr>
                             <td class="wi150">
@@ -125,8 +123,8 @@ jQuery(document).ready(function(){
             <tbody>
               <tr><th>Latitude</th><th>Longitude</th></tr>
               <tr>
-                 <!-- <td style="font-size: 48px; color: green;" id="lat"><label id="lat" name="a1"/>&nbsp;</td>
-                  <td style="font-size: 48px; color: green;" id="lng"><label  id="lng" name="a2"/>&nbsp;</td>-->
+                  <td style="font-size: 48px; color: green;" id="lat"><label id="lat" name="a1"/>&nbsp;</td>
+                  <td style="font-size: 48px; color: green;" id="lng"><label  id="lng" name="a2"/>&nbsp;</td>
                   
                   <th> <textarea   name="latitude" id="lat" style="height:27px;">
                     
@@ -141,28 +139,45 @@ jQuery(document).ready(function(){
         </table>
 
 
-       <input type="hidden" id="username_input2"  name="address">
-	   
-    <div class="item form-group col-lg-12" style="margin-bottom:10px;">
- <div class="col-lg-3">Title</div>
-         <div class="col-lg-9">
-                                       <input type="address" name="name" class="form-control"  placeholder="Title" >
-         </div>       
-	</div>
-	
-                      <div class="item form-group  col-lg-12">
-  <div class="col-lg-3">Remarks</div>
-         <div class="col-lg-9">
-                                       <input type="address" name="remarks" class="form-control"  placeholder="remarks" >
-         </div>
-         </div>
+<input type="hidden" id="username_input2"  name="address"> -->
+
+<!--  reqired -->
+
+<div class="col-md-6">
+ <form  enctype="multipart/form-data" method="post" action="<?php echo base_url()?>Defination/savelocationtype" >
+      <div class="item form-group col-lg-12" style="margin-bottom:10px;">
+        <div class="col-lg-3">Title</div>
+           <div class="col-lg-9">
+                  <input type="address" name="name" class="form-control"  placeholder="Title" >
+           </div>       
+      </div>
+      	
+      <div class="item form-group  col-lg-12">
+        <div class="col-lg-3">Remarks</div>
+               <div class="col-lg-9">
+                <input type="address" name="remarks" class="form-control"  placeholder="remarks" >
+               </div>
+        </div>
+ 
+          <div class="form-group">
+            <div class="col-md-offset-3" style="padding-left: 20px">
+              <input class="btn btn-success" type="submit" name="register" value="submit" />
+              <input id="zzz" class="btn btn-warning" type="reset" name="reset" value="Reset" />
+              <a type="submit" name="register" href='<?php echo base_url()?>Defination/view_locationtype'; class="btn btn-danger">Cancel</a>
+
+          </div>
+
+        </form>
+</div>
+
+<!--  reqired -->
          
-         <div class="ln_solid"></div>
+         <!-- <div class="ln_solid"></div>
                       <div class="form-group col-lg-12">
                         <div class="col-md-6 col-md-offset-3">
                           <input class="btn btn-success" type="submit" name="register" value="submit" />
                           <input id="zzz" class="btn btn-warning" type="reset" name="reset" value="Reset" />
-                          <a type="submit" name="register" href='<?php echo base_url()?>Defination/view_locationtype';" class="btn btn-danger">Cancel</a>
+                          <a type="submit" name="register" href='<?php echo base_url()?>Defination/view_locationtype'; class="btn btn-danger">Cancel</a>
             
                         </div>
                       </div>
@@ -180,7 +195,7 @@ jQuery(document).ready(function(){
                         
                         
                     </div>
-            
+             -->
           
           
           
@@ -462,9 +477,7 @@ formaddress.addEventListener("focusin", myFocusFunction);
 formaddress.addEventListener("focusout", myBlurFunction);
 
 function myFocusFunction() {
-    document.getElementById("weather").innerHTML = ""; 
-
-                 
+    document.getElementById("weather").innerHTML = "";                 
 }
 
 function myBlurFunction() {
@@ -474,16 +487,16 @@ function myBlurFunction() {
 </script>
 
  
-    <script>
-        
-      function test(){
-        var f1 = document.getElementById("input2");
-        var f2 = document.getElementById("username_input2");
-        f2.value = f1.value;
-      }
-    </script>
+  <script>
+      
+    function test(){
+      var f1 = document.getElementById("input2");
+      var f2 = document.getElementById("username_input2");
+      f2.value = f1.value;
+    }
+  </script>
  
-              <span  id="ad"  ></span>          
+<span  id="ad"></span>          
 
 
 

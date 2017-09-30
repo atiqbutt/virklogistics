@@ -29,7 +29,6 @@
                 <th>Sr#</th>
                                      <th>Source</th>
                                     <th>Destination</th>
-                                    <th>Kilometers</th>
                                      <th>Action</th>
                                    
                                    
@@ -45,7 +44,6 @@
                 
                                 <td><?php echo $val["source"];?></td>
                                 <td><?php echo $val["destination"];?></td>
-                                <td><?php echo $val["km"];?></td>
                                
                                 <td> 
                                     <a href="<?php echo base_url();?>Defination/editroute/<?php echo $val['id']; ?>"><i class="fa fa-edit"></i>

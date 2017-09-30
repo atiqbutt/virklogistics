@@ -22,10 +22,10 @@
                     <thead>
                         <tr>
                           <th>#</th>
-                          <th>Name</th>
-                          
+                          <th>Name</th> 
                           <th>Remarks</th>
-                          <th>Action</th>
+                          <th>Status</th>
+                         <th>Action</th>
                         </tr>
                       </thead>
 
@@ -41,20 +41,37 @@
                           
                           <td><?php echo $value['name']; ?></td>
                           <td><?php echo $value['remarks']; ?></td>
+                          <td>
+                     <a href="<?php echo base_url()?>Defination/status_expensetype1/<?php echo $value['id'];?>">
+                    <?php echo ($value['status']==0) ? "<img src='../assets/Images/2.png' width='20px'>":"<img src='../assets/Images/3.png' width='20px'>"?>
+                   </a>
+                                    
+                                </td>
                           
                           <td>
+                            <?php 
+                            if($value['status']==1)
+                            {
+                              ?>
+                            
+                            <a class="text-custom1" href="<?php echo base_url();?>Defination/expensetype_eye/<?php echo $value['id'];?>"><i class="fa fa-eye"></i></a>
+                            <?php
+                          }
+                          else{
+                            ?>
                             <a class="text-custom1" href="<?php echo base_url();?>Defination/expensetype_eye/<?php echo $value['id'];?>"><i class="fa fa-eye"></i></a>
                             <a href="<?php echo $base_url; ?>Defination/editexpensetype/<?php echo $value['id']; ?>"><i class="fa fa-edit"></i></a> 
                             <a href="<?php echo $base_url; ?>Defination/deleteexpensetype/<?php echo $value['id']; ?>"><i class="fa fa-trash"></i></a>
-                          </td>
                            <?php  
                           }
-                             }
-                            
-                          else{
-                                 echo '';    
-                          }
+                          ?>
+                          </td>
+                        <?php
+                      }
+                    }
                            ?>
+
+
                         </tr>
                       </tbody>
                 </table>

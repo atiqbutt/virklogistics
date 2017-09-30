@@ -5,7 +5,7 @@
    
           <div class="panel panel-info">
             <div class="panel-heading">
-              <h3 class="panel-title">Unit Information</h3>
+              <h3 class="panel-title">Expense Type Information</h3>
             </div>
 
             <div class="panel-body">
@@ -29,12 +29,12 @@
                       </tr>
 
 
-                       <tr>
-                             <td><strong>Description:</strong></td>
-                             <td style="padding-right:170px"><?php if(isset($view)){echo ucfirst($view->description);}  ?></td>
+                      <tr>
+                             <td><strong>Description  :</strong></td>
+                             <td style="padding-right:170px"><?php if(isset($view)){echo ucfirst($view->remarks);}  ?></td>
                       </tr>
 
-
+                    
 
                         
                         <tr>
@@ -91,8 +91,8 @@
                      
                     </tbody>
                   </table>
-                    <a type="submit" name="register" href='<?php echo base_url()?>unit/index'; class="btn btn-danger"><i class="fa fa-reply"></i></a>
-                 <a class="btn btn-primary" float:right href="<?php echo $base_url; ?>unit/<?php echo $view->id; ?>" target="_blank"><i class="fa fa-print"></i></a>
+                    <a type="submit" name="register" href='<?php echo base_url()?>Defination/view_expensetype'; class="btn btn-danger"><i class="fa fa-reply"></i></a>
+                 <a class="btn btn-primary" float:right href="<?php echo $base_url; ?>Defination/<?php echo $view->id; ?>" target="_blank"><i class="fa fa-print"></i></a>
                  
                  
                  

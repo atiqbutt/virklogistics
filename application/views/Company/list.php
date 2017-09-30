@@ -58,8 +58,17 @@
                                 </td>
                                 
                                 <td> 
+                                  <?php
+                                $st=$val['status'];
+                                if($st==1)
+                                {
+                                  ?>
+                                   <a href="<?php echo base_url();?>Defination/eyecompany/<?php echo $val['id']; ?>"><i class="fa fa-eye"></i>
+                                      <?php
+                                    }
 
-<!--                                    <a data-toggle="modal"  class="btn btn-danger btn-sm eye" data-target="#myModal"  data-id="<?php echo $val['id'];?>"><i class="fa fa-eye"></i></a>-->
+                                    else{
+                                      ?>
                                         <a href="<?php echo base_url();?>Defination/eyecompany/<?php echo $val['id']; ?>"><i class="fa fa-eye"></i>
       
                                     <a href="<?php echo base_url();?>Defination/editcompany/<?php echo $val['id']; ?>"><i class="fa fa-edit"></i>
@@ -67,7 +76,9 @@
                                     </a>
                                 
                                 <a href="<?php echo base_url();?>Defination/deletecompany/<?php echo $val['id']; ?>"><i class="fa fa-trash"></i>
-                                
+                                <?php
+                              }
+                              ?>
                                 
                                 
                                 

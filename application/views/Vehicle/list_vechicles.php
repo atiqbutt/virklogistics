@@ -27,7 +27,6 @@
                                    
                                     <th> Name</th>
                                     <th> status</th>
-                                    
                                     <th>Action</th>
                                    
                                     
@@ -60,10 +59,24 @@
 
                                  </td>
                                 <td>
-             <a class="text-custom1" href="<?php echo base_url();?>Vehicle/Vehiclestatus_eye/<?php echo $amb['id'];?>"><i class="fa fa-eye"></i></a>
-                                          <a class="text-custom1" href="<?php echo base_url();?>Vehicle/List_edit/<?php echo $amb['id'];?>"><i class="fa fa-edit fa-1x"></i></a> 
+                                  <?php
+                                $st=$amb['status'];
+                                if($st==1)
+                                {
+                                  ?>
+
+            
+<?php
+}
+else{
+
+  ?>
+
+                                           <a class="text-custom1" href="<?php echo base_url();?>Vehicle/List_edit/<?php echo $amb['id'];?>"><i class="fa fa-edit fa-1x"></i></a> 
                <a class="text-custom1" href="<?php echo base_url();?>Vehicle/List_delete/<?php echo $amb['id'];?>"><i class="fa fa-trash fa-1x"></i></a>
-              
+              <?php
+            }
+            ?>
                                 </td>
 
 

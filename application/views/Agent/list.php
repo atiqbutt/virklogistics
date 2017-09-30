@@ -56,15 +56,29 @@
                    </a>
                                     
                                 </td>
-                                <td> <a href="<?php echo base_url();?>Defination/eyeagent/<?php echo $val['id']; ?>"><i class="fa fa-eye"></i></a>
+                                <td> 
+                                    <?php
+                                $st=$val['status'];
+                                if($st==1)
+                                {
+                                  ?>
+                             <a href="<?php echo base_url();?>Defination/eyeagent/<?php echo $val['id']; ?>"><i class="fa fa-eye"></i></a>
+                                <?php
+                              }
+                              else{
+                                ?>
+
+                                  <a href="<?php echo base_url();?>Defination/eyeagent/<?php echo $val['id']; ?>"><i class="fa fa-eye"></i></a>
                                     
                                     <a href="<?php echo base_url();?>Defination/editagent/<?php echo $val['id']; ?>"><i class="fa fa-edit"></i>
                                     
                                     </a>
                                 
                                 <a href="<?php echo base_url();?>Defination/deleteagent/<?php echo $val['id']; ?>"><i class="fa fa-trash"></i>
-                                
-                                
+                                <?php
+                                     }
+                                     ?>
+
                                 
                                 
                                 </td>

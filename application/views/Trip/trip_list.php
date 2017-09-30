@@ -4,7 +4,7 @@
   .dataTable > thead > tr > th[class*="sort"]::after{display: none}
   .dataTable > thead > tr > th{ padding:0px; margin:0px;}
   .paddinglr{
-  padding-left:3px !important; padding-right:3px !important; margin-left:0px !important;margin-right:0px !important;
+  padding-left:3px !important; padding-right:15px !important; margin-left:0px !important;margin-right:0px !important;
   }
 </style> 
 
@@ -27,27 +27,27 @@
           <div class=" box col-sm-12" style="padding-top:20px">
               <ul class="nav nav-tabs">
               <li class="active"><a  href="<?php echo base_url();?>Trip/index/">All Trips</a></li>
-                <li><a href="<?php echo base_url();?>Trip/self_long/">Self Long</a></li>
-                <li><a href="<?php echo base_url();?>Trip/self_short/">Self Short</a></li>
-                <li><a href="<?php echo base_url();?>Trip/general_long/">General Long</a></li>
-                <li><a href="<?php echo base_url();?>Trip/general_short/">General Short</a></li>
+                <li><a href="#" onclick="getdata('Self-Long')" >Self Long</a></li>
+                <li><a href="#" onclick="getdata('Self-Short')" >Self Short</a></li>
+                <li><a href="#" onclick="getdata('General-Long')">General Long</a></li>
+                <li><a href="#" onclick="getdata('General-Short')">General Short</a></li>
               </ul>           
       		    <div class="box-header" >
                     <h3 class="box-title">List Trip</h3>
                   </div>
 
             <!-- /.box-header -->
-            <div class="table-responsive box-body">
+            <div class="table-responsive box-body data">
               <table aria-label="Type:  to sort column ascending" id="example2" class="table table-bordered table-hover">
-                <thead  style="font-size:10px; padding:0px; margin:0px;">
-                <tr class="paddinglr0">
+                <thead  style="font-size:12px; padding:0px ; margin:0px;">
+                <tr class="paddinglr">
                     <th class="paddinglr">Id</th>  
                     <th class="paddinglr">Type</th>
-          					<th class="paddinglr">Product Nmae</th>
-          					<th class="paddinglr">Company Name</th>
-          					<th class="paddinglr">Contractor Name</th>
+          					<th class="paddinglr">Product</th>
+          					<th class="paddinglr">Company</th>
+          					<th class="paddinglr">Contractor</th>
           					<th class="paddinglr">Source</th>
-                    <th class="paddinglr">Date Filling</th>                     
+                    <th class="paddinglr">Filling Date</th>                     
                     <th class="paddinglr">Temperature</th>
                     <th class="paddinglr">Meter Reading</th>
           					<th class="paddinglr">Gravity</th>
@@ -58,12 +58,12 @@
                     <th class="paddinglr">W.H.T</th> 
           					<th class="paddinglr">Remaining Commission</th>
           					<th class="paddinglr">Service Charges</th>
-                    <th class="paddinglr">Status</th>
-                    <th class="paddinglr">Action</th> 
+<!--                     <th class="paddinglr">Status</th>
+                    <th class="paddinglr">Action</th> --> 
 				            <th class="paddinglr">Expense</th>
                </tr>
             </thead>
-            <tbody id="all_trips" style="font-size:8px;">
+            <tbody id="all_trips" style="font-size:12px;">
             <?php
             if(!empty($tripmanagement)){
             foreach($tripmanagement as $amb){ 
@@ -75,7 +75,9 @@
         				<td> <?php echo $amb["comname"];?>  </td>
         				<td> <?php echo $amb["conname"];?>  </td>
         				<td> <?php echo $amb["source"];?>  </td>
-                <td> <?php echo $amb["filling_date"];?> </td>
+                <td> <?php
+                $newDate = date("d/m/Y", strtotime($amb["filling_date"]));
+                 echo $newDate;?> </td>
                 <td> <?php echo $amb["temperature"];?> </td>
                 <td> <?php echo $amb["meter_reading"];?> </td>
           			<td> <?php echo $amb["gravity"];?> </td>
@@ -88,7 +90,7 @@
         				<td> <?php echo $amb["servicecharges"];?></td>
 						
                       
-                   <td>
+<!--                    <td>
                       <?php if ($amb["status"]=="0"){?>                  
                       <a style="font-size:18px;" class="text-custom1" href="<?php echo base_url();?>trip/states/<?php echo $amb['id'];?>">
                       <i class="fa fa-check"></i></a>
@@ -98,11 +100,11 @@
                    </td>
                    <td>
                       <a style="font-size:18px;" href="<?php echo base_url();?>trip/close_trip/<?php echo $amb['id'];?>"><i class="fa fa-window-close" aria-hidden="true"></i></a> 
-                    </td>
+                    </td> -->
                     <td>
 
                       <div  class="" data-backdrop="static" data-toggle="modal" data-target="#exampleModal1" data-whatever="@mdo">
-                       <a><i  style="font-size:18px; color:#3C8DBC;" class="fa fa-flask" aria-hidden="true"></i></a>
+                       <a href="#"><i  style="font-size:18px; color:#3C8DBC;" class="fa fa-flask" aria-hidden="true"></i></a>
                       </div>
 
 
@@ -196,7 +198,7 @@ $(document).ready(function() {
     var add_button      = $("#addhelper"); //Add button ID
     
     var x = 1; //initlal text box count
-    $(add_button).click(function(e){ //on add input button click
+    /*$("#addhelper").click(function(e){ //on add input button click
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
@@ -207,14 +209,63 @@ $(document).ready(function() {
     
     $(wrapper).on("click","#helper", function(e){ //user click on remove text
         e.preventDefault(); $(this).parent('div').parent('div').remove(); x--;
-    })
+    })*/
 	
 	
 });
+ function getdata(type){
+  $.ajax({
+  method: "POST",
+  url: "<?php echo base_url();?>Trip/get_data/"+type,
+/*  data: { type1: type },*/
+  success: function(data) {
+ $("#example2").dataTable().fnDestroy();
+                  setTimeout(function(){ 
+                  $("tbody#all_trips").html(data); 
+                       $("#example2").DataTable({
+                      dom: 'Blftipr',
+                      "bPaginate":true,
+                      "paging":   false,
+                      "ordering": false,
+                      "info":     true,
+                      responsive: true,
+                        buttons: [
+                            'csv',
+                            'excel',
+                            'pdf',
+                             {text:'Print',exportOptions:{columns:[0,1,2,3,4,5,6,7,8]},action:function() {var win = window.open('<?php echo base_url() ?>Report/FieldStaff_individual_report_print/'+date+'/'+office+'/'+salesman, '_blank');
+                win.focus();}}
+                        ]
+              });
+            }, 25);
+
+
+   /* $('#example2').DataTable({
+          dom: 'Bfrtip',
+        buttons: [
+             'csv', 'excel', 'pdf', 'print'
+        ]
+        });*/
+              // $(".data").html(data);
+            }
+});
+ }
 
 </script>
 
 <script>
+/*$("#addhelper").click(function(e){ //on add input button click
+        e.preventDefault();
+        if(x < max_fields){ //max input box allowed
+            x++; //text box increment
+                     $(wrapper).append('<div class="form-group"><div class="col-md-10"><label>Expense Type</label><select class="form-control" name="expensetype_id[]" required><option value="">Select Options</option><?php if(!empty($expensetype)){  foreach ($expensetype as $e){  ?><option value="<?php  echo  $e["id"];?>"   ><?php  echo  $e["name"];?></option><?php }} ?></select><div class="col-md-12"><label>Expense Amount</label><input name="amount[]" type="text" class="form-control"></div></div><div class="col-md-2"><button  style="margin-top: 30px" id="helper"><i class="fa fa-minus" aria-hidden="true"></i></button></div></div>'); 
+            //add input box
+        }
+    });
+    
+    $(wrapper).on("click","#helper", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').parent('div').remove(); x--;
+    });*/
   $(document).ready(function() {
     $('#all_trips').click(function(event) {      
      

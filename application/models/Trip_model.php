@@ -4,9 +4,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Trip_model extends CI_Model {
 
 	
-function GetAllTrips() {
+function GetAllTrips($type="") {
+    $w;
+    if($type==""){
       $this->db->select('*')->from('get_all_trips');
+      $w=$this->db->get();
+      }
+      else{
+        $this->db->select()
+        ->from('get_all_trips')
+        ->where('type',$type);
         $w=$this->db->get();
+/*      var_dump($w->result_array());die();*/
+      }
+        
         if ($w->num_rows() > 0){
         return $w->result_array();}
         else {return FALSE; }
@@ -21,7 +32,7 @@ function GetSpecificTrip($id) {
         return $w->result_array();}
         else {return FALSE; }
     }
-function GetAllTripsGeneralShort() {
+/*function GetAllTripsGeneralShort() {
   $this->db->select()
         ->from('get_all_trips')
         ->where('type',"General-Short");
@@ -60,7 +71,7 @@ function GetAllTripsSelfShort() {
         if ($w->num_rows() > 0){
         return $w->result_array();}
         else {return FALSE; }
-    }	
+    }	*/
 
 
 public function getAllRecords($table,$where,$by,$order) {

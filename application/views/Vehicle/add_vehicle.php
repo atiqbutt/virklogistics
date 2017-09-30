@@ -1,3 +1,4 @@
+<form id="defaultForm" action="<?php echo base_url('Vehicle/save_vehicle')?>" class="form-horizontal" method="post" enctype="multipart/form-data">
 <section class="content">
     <div class="row">
         <div class="col-lg-7">
@@ -6,7 +7,7 @@
                 <div class="box-header">
                   <h3 class="box-title">Add Vehicle</h3>
                 </div>
-          <form id="defaultForm" action="<?php echo base_url('Vehicle/save_vehicle')?>" class="form-horizontal" method="post" enctype="multipart/form-data" onload="myFunction()">
+                
                 <div class="box-body">
                       <div class="form-group">
                       <label class="control-label col-sm-3">Vehicle Type:</label>
@@ -44,7 +45,7 @@
                       <div class="form-group">
                        <label class="control-label col-sm-3">No Of Chamber:</label>
                         <div class="col-sm-9">
-                        <input name="numberofchamber" placeholder="Number of chamber...." value="1" class="form-control txt_name"  onkeypress='return ValidateNumberOnly()' type="text" required="required"  /> </div></div> 
+                        <input name="numberofchamber" placeholder="1"  class="form-control txt_name"  onkeypress='return ValidateNumberOnly()' type="text" required="required"  /> </div></div> 
                               
                      <div class="form-group">            
                    <label class="control-label col-sm-3">Total Fuel Capacity:</label>
@@ -99,7 +100,10 @@
                     <div class="row">
                       <div class="col-lg-3"><span style="color:red; font-size:20px; font-weight:bold;"></span><label>chamber 1</label>
                       </div><div class="col-lg-7"><input value="Chamber" text-align:center; readonly class="form-control" style="width:95%; float:left;margin-top:10px;" type="text" name="numberofchamber" required="required"/></div><div class="col-lg-3"><label>capacity 1</label>
-                    </div><div class="col-lg-7"><input class="form-control fc" id="fc" style="width:95%; float:left;margin-top:10px;" type="text" name="capacityofchamber" required="required"/></div></div>
+                    </div><div class="col-lg-7"><input class="form-control fc"  id="fc" style="width:95%; float:left;margin-top:10px;" type="text" name="capacityofchamber[]" required="required"/></div></div>
+                    
+                  
+
                         <div class="input_fields_wrap">
 
  
@@ -111,11 +115,11 @@
                 </div>
             </div> <!-- col-lg-6 -->
     </div>
-        </form>
+        
 
 
  </section>
- 
+ </form>
  
 
  
@@ -123,6 +127,7 @@
     $(document).ready(function(){
     
         var wrapper = $(".input_fields_wrap"); //Fields wrapper
+       
         
         $(".txt_name").keyup(function(){ 
         var  $num = $(this).val();
@@ -134,7 +139,12 @@
         for($i=2; $i<=$num; $i++){
             chamber+='<div class="row"><div class="col-lg-3"><span style="color:red; font-size:20px; font-weight:bold;"></span><label>chamber '+$i+'</label></div><div class="col-lg-7"><input value="Chamber '+$i+'" text-align:center; readonly class="form-control" style="width:95%; float:left;margin-top:10px;" type="text" name="numberofchamber[]" required="required"/></div><div class="col-lg-3"><label>capacity '+$i+'</label></div><div class="col-lg-7"><input class="form-control fc" id="fc'+$i+'" style="width:95%; float:left;margin-top:10px;" type="text" name="capacityofchamber[]" required="required"/></div></div>'; //add input box    
             }
+
+            
             $(wrapper).html(chamber);
+            // $('#defaultForm').bootstrapValidator('update');
+
+           
         });
 
     });
@@ -211,6 +221,7 @@ $(document).ready(function() {
                         }
                     }
                 },
+                                      
                 chassisno: {
                    trigger:'change keyup blur',
                     validators: {
@@ -236,18 +247,7 @@ $(document).ready(function() {
                         }
                     }
                 },
-
-        'capacityofchamber[]': {
-                   trigger:'change keyup  blur',
-                    validators: {
-                        notEmpty: {
-                            message: 'The chamber Field  is required and cannot be empty'
-                        }
-                    }
-                },
-
-
-
+                
               color: {
                    trigger:'change keyup blur',
                     validators: {
@@ -272,6 +272,14 @@ $(document).ready(function() {
                         }
                     }
                 },
+                'capacityofchamber[]': {
+                   trigger:'change keyup blur',
+                    validators: {
+                        notEmpty: {
+                            message: 'The Chassis no Field  is required and cannot be empty'
+                        }
+                    }
+                }
             }
         });
 });

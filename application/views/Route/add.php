@@ -19,80 +19,213 @@ if ((event.keyCode < 48 || event.keyCode > 57))
           <?php echo $this->session->flashdata('msg'); ?>  
           </div>
            <?php endif; ?> 
-        <div class="col-xs-12">
+        <div class="col-lg-12">
           <div class="box col-sm-12">
-            <div class="box-header" >
+      <!--       <div class="box-header" >
               <h3 class="box-title">Add Route Information</h3>
-            </div>
+            </div> -->
             <!-- /.box-header -->
             <div class="box-body">
+
+
+                <div class="col-lg-7">
+
+                <div class="panel panel-default">
+                  <div class="panel-heading">Add Route Information</div>
+                  <div class="panel-body">
+
                  <form class="form-horizontal" id="shippingForm" action="<?php echo base_url()?>Defination/saveroute" method="post">
           
-                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Source <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        
-                          <input type="name" name="source" class="form-control" id="inputEmail3" placeholder="Source" value="<?php echo set_value('source');?>">
-                  
-                        </div>
+                   <div class="form-group">    
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Source <span class="required">*</span>
+                        </label> 
+                      <div class="col-md-9 col-sm-6 col-xs-12">                 
+                        <select id="loc" class="form-control client" name="source" selected="selected" required>
+                             
+                       <option value="">Select Options</option>       
+                         <?php  if(!empty($locations)){
+                            foreach ($locations as $loc){   ?>       
+                            <option value="<?php  echo  $loc["id"];?>"   >
+                            <?php  echo  $loc["name"];?>
+                            </option>               
+                         <?php }} ?>
+                        </select> 
                       </div>
+                    </div>
                     
-                    
-                    
+
+                  <div class="form-group">    
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Destination <span class="required">*</span>
+                        </label> 
+                      <div class="col-md-9 col-sm-6 col-xs-12">                 
+                        <select class="form-control client" name="destination" selected="selected" required>
+                             
+                       <option value="">Select Options</option>       
+                         <?php  if(!empty($locations)){
+                            foreach ($locations as $loc){   ?>       
+                            <option value="<?php  echo  $loc["id"];?>"   >
+                            <?php  echo  $loc["name"];?>
+                            </option>               
+                         <?php }} ?>
+                        </select> 
+                      </div>
+                    </div>
+
+
+
+                  <div class="form-group">    
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Product <span class="required">*</span>
+                        </label> 
+                      <div class="col-md-9 col-sm-6 col-xs-12">                 
+                        <select id="product" class="form-control client" name="product" selected="selected" required>
+                             
+                       <option value="">Select Options</option>       
+                         <?php  if(!empty($products)){
+                            foreach ($products as $prod){   ?>       
+                            <option value="<?php  echo  $prod["id"];?>"   >
+                            <?php  echo  $prod["heading"];?>
+                            </option>               
+                         <?php }} ?>
+                        </select> 
+                      </div>
+                    </div>
                     
                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Destination <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Freight <span class="required">*</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="address" name="dest" class="form-control" onkeypress="return maskAlphaWithSp(this,event);" placeholder="Destination" value="<?php echo set_value('dest');?>">
+                        <div class="col-md-9 col-sm-6 col-xs-12">
+                              <input type="address" name="freight" class="form-control"  placeholder="Destination" value="<?php echo set_value('dest');?>">
                
                         </div>
                       </div>
-                    
-                    
-                     
+
+
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Kilometers <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">From <span class="required">*</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="phone" name="km" class="form-control" id="inputEmail3" placeholder="Kilometers" onkeypress='return ValidateNumberOnly' >
-             
+                        <div class="col-md-9 col-sm-6 col-xs-12">
+                              <input type="date" name="from" class="form-control" onkeypress="return maskAlphaWithSp(this,event);" placeholder="Destination" value="<?php echo set_value('dest');?>">
+               
                         </div>
                       </div>
-                     
-                     
-                    
-                    <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Remarks <span class="required"></span>
+
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">To <span class="required">*</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <textarea class="form-control" rows="3" id="textArea" name="remarks" placeholder="Remarks"></textarea>
-                   
+                        <div class="col-md-9 col-sm-6 col-xs-12">
+                              <input type="date" name="to" class="form-control" onkeypress="return maskAlphaWithSp(this,event);" placeholder="Destination" value="<?php echo set_value('dest');?>">
+               
                         </div>
                       </div>
+
+
+
+                    <div class="form-group">    
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Type <span class="required">*</span>
+                        </label> 
+                      <div class="col-md-9 col-sm-6 col-xs-12">                 
+                        <select class="form-control client" name="type" selected="selected" required>
+                             
+                       <option value="">Select Options</option>             
+                            <option value="Primary">Primary</option>
+                            <option value="secondary">Secondary</option>  
+                            <option value="secondarylocal">Secondary Local</option>   
+                                         
+                        </select> 
+                      </div>
+                    </div>
                     
-                    
-                         
-                      
-                     
                       <div class="ln_solid"></div>
-                      <div class="form-group">
-                        <div class="col-md-6 col-md-offset-3">
-                          <input class="btn btn-success" type="submit" name="register" value="submit" />
-                          <input id="zzz" class="btn btn-warning" type="reset" name="reset" value="Reset" />
-                          <a type="submit" name="register" href='<?php echo base_url()?>Defination/routepage';" class="btn btn-danger">Cancel</a>
-            
-                        </div>
-                      </div>
-               
                       
-                     
-              
-                
-                
+                  <div class="form-group">
+                    <div class="col-md-9 col-md-offset-3">
+                      <input class="btn btn-success" type="submit" name="register" value="Add" />
+                      <input id="zzz" class="btn btn-warning" type="reset" name="reset" value="Reset" />
+                      <a type="submit" name="register" href='<?php echo base_url()?>Defination/routepage'; class="btn btn-danger">Cancel</a>
+        
+                    </div>
+                  </div>
                
-                </form>
+              </form>
+                </div>
+              </div>
+             </div>
+             <!-- col-lg-6 -->
+
+      <div class="col-lg-5">
+             <div class="col-lg-12">
+
+
+                <div class="panel panel-default">
+                  <div class="panel-heading">Add Source/ Destination</div>
+                  <div class="panel-body">
+                    <div class="item form-group">
+
+                      <div class="col-md-12 col-sm-6 col-xs-12" style="padding-bottom: 10px">
+                         <input type="address" id="location" name="name" class="form-control" value="" placeholder="Enter Location">
+             
+                      </div>
+                      </div>
+
+
+                      <div class="form-group">
+                          <div class="col-md-12">
+                            <button id="add_source" class="btn btn-success">Add</button>
+              
+                          </div>
+                      </div>
+
+                  </div>
+                </div>
+
+
+      </div>
+
+
+      <div class="col-lg-12">
+     
+                <div class="panel panel-default">
+                  <div class="panel-heading">Add Product</div>
+                  <div class="panel-body">
+
+                    <div class="col-md-12 col-sm-6 col-xs-12" style="padding-bottom: 10px">
+                        <input id="product_name" type="address" name="name" class="form-control" placeholder="Enter Product">
+           
+                    </div>
+      
+  
+                      <div class="col-md-12 col-sm-6 col-xs-12" style="padding-bottom: 10px">                 
+                        <select id="product_type" class="form-control client" name="product" selected="selected" required>
+                             
+                       <option value="">Product Type</option>       
+                         <?php  if(!empty($productype)){
+                            foreach ($productype as $prod){   ?>       
+                            <option value="<?php  echo  $prod["id"];?>"   >
+                            <?php  echo  $prod["name"];?>
+                            </option>               
+                         <?php }} ?>
+                        </select> 
+                      </div>
+     
+
+                      <div class="col-md-12">
+                        <button id="add_product" class="btn btn-success">Add</button>
+                      </div>
+             
+
+                  </div>
+                </div>
+
+
+        </div>
+        <!-- col-lg-12 -->
+
+
+      </div>
+      <!-- col-lg-5 -->
+
+
             </div>
             <!-- /.box-body -->
           </div>
@@ -131,8 +264,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         }
                     },
                    
-                
-        
+                   
 
                     source: {
                          trigger:'blur',
@@ -171,6 +303,96 @@ if ((event.keyCode < 48 || event.keyCode > 57))
 $("#zzz").click(function(){
    $('#shippingForm').bootstrapValidator("resetForm",true);    
 });
+</script>
+
+
+<script>
+
+    $('#add_product').click(function(event) {      
+      
+      var productName =  $("#product_name").val();
+      var productType =  $("#product_type").val();
+
+     // alert(productName);
+      
+      $.ajax({
+        type: 'POST',
+        url: '<?php echo base_url(); ?>Product/save_product',
+        data : { productName: productName, productType:productType},
+        success:  function (response) {  
+               //alert(response);
+        }
+      }).done(function(){
+
+        $.ajax({
+          type: 'POST',
+          url: '<?php echo base_url() ?>Product/get_all_products',
+          success:  function (response) {  
+
+             $("#product").html("");
+            $("#product").html(response);
+                 
+          }
+
+        });
+      });
+   
+    });
+
+
+    $('#add_source').click(function(event) {      
+      
+      var location =  $("#location").val();
+      
+      $.ajax({
+        type: 'POST',
+        url: '<?php echo base_url(); ?>Defination/savelocationtype',
+        data : { location: location},
+        success:  function (response) {  
+               //alert(response);
+        }
+      }).done(function(){
+
+        $.ajax({
+          type: 'POST',
+          url: '<?php echo base_url() ?>Defination/get_all_location',
+          success:  function (response) {  
+
+             $("#loc").html("");
+            $("#loc").html(response);
+                 
+          }
+
+        });
+      });
+   
+    });
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+<script>
+$(document).ready(function(){
+  $('.route').multiselect({
+      columns: 1,
+      placeholder: 'Select Options',
+      selectAll: true,
+      search: true
+  });
+
+});
+
+
 </script>
 
 

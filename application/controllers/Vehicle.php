@@ -267,19 +267,7 @@ class Vehicle extends CI_Controller {
         $this->load->view('Template/main',$data);
      }
 
-     //vehicle status details page bilal
-     public function Vehiclestatus_eye($id)
-        {
-        $data['menu'] = $this->load_model->menu();
-        $data['base_url'] = base_url();
-        $data['userInfo'] = $this->userInfo;
-        $id=$this->uri->segment(3);
-        $data['view']=$this->Vehicle_model->vehiclestatusDetails($id);
-        $data['page']='Vehicle/vehiclestatus_details';
-        $this->load->view('Template/main',$data);
-          
-        }
-
+     
 
 
      public function List_delete()
@@ -330,6 +318,52 @@ class Vehicle extends CI_Controller {
         }
 
         } 
+
+
+
+         public function List_showstates()
+        {
+        $id=$this->uri->segment(3);
+        $done=$this->db->where('id',$id)->update('vehicle',array('status'=>1));
+        if($done)
+        {
+        $this->session->set_flashdata('msg', 'vechicles is DeActive!');
+        redirect('Vehicle/show_vehicle');
+        }
+        else 
+        {
+        $this->session->set_flashdata('msg',' Error: vechicles is not DeActive');
+        redirect('Vehicle/show_vehicle');
+        }
+
+        }  
+        public function List_showactive()
+        {
+        $id=$this->uri->segment(3);
+        $done=$this->db->where('id',$id)->update('vehicle',array('status'=>0));
+        if($done)
+        {
+        $this->session->set_flashdata('msg', 'vechicles is Active!');
+        redirect('Vehicle/show_vehicle');
+        }
+        else 
+        {
+        $this->session->set_flashdata('msg',' Error: vechicles is not Active');
+        redirect('Vehicle/show_vehicle');
+        }
+
+        } 
+
+
+
+
+
+
+
+
+
+
+
 
         public function add_Vehicle_states()
         {
@@ -423,20 +457,6 @@ class Vehicle extends CI_Controller {
         $this->load->view('Template/main',$data);
      }
 
-
-
-     //vehicle status details page bilal
-      public function Vehiclestype_eye($id)
-        {
-        $data['menu'] = $this->load_model->menu();
-        $data['base_url'] = base_url();
-        $data['userInfo'] = $this->userInfo;
-        $id=$this->uri->segment(3);
-        $data['view']=$this->Vehicle_model->vehiclestypeDetails($id);
-        $data['page']='Vehicle/vehicletype_details';
-        $this->load->view('Template/main',$data);
-          
-        }
 
 
 

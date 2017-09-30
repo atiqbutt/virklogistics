@@ -12,29 +12,52 @@
 .ms-options ul{
   padding-left: 5px;
 }
+.paddinglr0{
+  padding-left:0px; padding-right:0px;
+  margin-left:0px; margin-right:0px;
+}
+.paddinglr5{
+  padding-left:5px; padding-right:5px;
 
+}
+.paddinglr2{
+  padding-left:px; padding-right:2px;
+
+}
+.content{
+  padding-top:40px !important;
+}
 </style>
  
 
-<section class="content">
+<section class="content paddinglr0">
   <div class="box">
 
-      <div class="box-header">
-        <h3 style="padding-left: 30px" class="box-title">Start Trip</h3>
+    <div class="box-header">
+        <h3 style="font-weight:bold; padding-top: 10px" class="box-title pull-left">Start Trip
+     </h3>
+        <div class="col-lg-5 vechinfo pull-right">
+                  
+          <div  style="padding:10px; margin-top: 5px; border: 1px solid  #D3D3D3" id="vech_info" class="panel-body">
+                        
+              <!-- panel-body -->
+            </div>
+            <!-- panel panel-default -->
       </div>
+</div>
 
-
-      <div class="box-body">
+      <div class="box-body paddinglr0">
             <form name="myform" id="myform" action="<?php echo base_url() ?>trip/save_trip" method="post" enctype="multipart/form-data">
           
-        <div class="col-lg-7">
-            <div class="col-lg-12">
-                <div class="panel panel-default">
+        <div class="col-lg-9 paddinglr0">
+            <div class="col-lg-12 paddinglr5">
+                <div class="panel panel-default" style="padding-top:0px;padding-bottom:0px;margin-bottom:3px !important;">
                   <div class="panel-heading"><i class="fa fa-bus" aria-hidden="true"></i>
                    Trip Information
+           
                    </div>
-                  <div class="panel-body">
-
+                  <div class="panel-body paddinglr0" style="padding-top:0px;padding-bottom:0px;">
+<div class="col-lg-3 paddinglr5" style="padding-top:0px;padding-bottom:0px;">
                     <div class="form-group">
                       <label>Type</label>
                       <select class="form-control" name="type" required> 
@@ -45,7 +68,8 @@
                           <option value="General-Short">General-Short</option>
                       </select>
                     </div>
-        
+</div>        
+<div class="col-lg-3  paddinglr5">
                      <div class="form-group"> 
                         <label>Company</label>
                           <select class="form-control" name="company_id" selected="selected" required>
@@ -58,7 +82,8 @@
                             <?php }} ?>
                           </select> 
                       </div>
-
+</div>        
+<div class="col-lg-3 paddinglr5">
                     <div class="form-group">    
                         <label>Contractor</label>
                         <select class="form-control" name="contractor_id" selected="selected" required>          
@@ -71,7 +96,8 @@
                             <?php }} ?>
                         </select> 
                     </div>
-
+</div>        
+<div class="col-lg-3  paddinglr5">
                     <div class="form-group">    
                       <label>Vehicle</label>
                         <select id="veh" class="form-control" name="vehicle_id" required>
@@ -84,7 +110,7 @@
                             <?php }} ?>
                         </select> 
                       </div>
-
+</div>
                   </div>
                   <!-- panel-body -->
                 </div>
@@ -92,14 +118,15 @@
             </div>
               <!-- col-lg-12 -->
 
-    <div class="col-lg-12">
+    <div class="col-lg-12  paddinglr5">
 
-        <div class="panel panel-default">
+        <div class="panel panel-default" style="margin-bottom:3px !important;" >
           <div class="panel-heading"><i class="fa fa-asterisk" aria-hidden="true"></i>
           All Fields Are Required </div>
-            <div class="panel-body"> 
+            <div class="panel-body paddinglr0" style="padding-top:0px;padding-bottom:0px;"> 
                    
 
+                   <div class="col-lg-3 paddinglr5">
                         <div class="form-group"> 
                           <label>Source </label>
                             <select class="form-control" name="source" selected="selected" required> 
@@ -113,6 +140,7 @@
                                 <?php }} ?>
                             </select> 
                         </div>
+            </div>
  <!--                        
                        <div class="form-group"> 
                           <label>Product </label>
@@ -160,55 +188,83 @@
                       
                         
                      </div>
-                                                                      
+                    -->                                                  
           
-                   <div class="col-lg-6">
+                   <div class="col-lg-3 paddinglr5">
                  
                       <div class="form-group"> 
-                        <label>Meter Reading</label>
+                        <label>Start Meter Reading</label>
                           <input class="form-control"  type="text" name="meter_reading" onkeypress='return ValidateNumberOnly()' required="required" />
                       </div>
-
+          </div>
+          
+                   <div class="col-lg-3 paddinglr5">
+                 
                       <div class="form-group"> 
                         <label>Freight Rate</label>
                           <input class="form-control"  type="text" name="freight_rate" onkeypress='return ValidateNumberOnly()' required="required" />
                       </div>
-
+  </div>
+          
+                  
+                   <div class="col-lg-3 paddinglr5">
+                 
                       <div class="form-group"> 
-                      <label>Contract Carriage Commission</label>
+                      <label>Carriage Commission</label>
                         <input class="form-control" type="text" name="carriage_commission" onkeypress='return ValidateNumberOnly()'   required="required" />
                       </div>
-
+  </div>
+          
+                   <div class="col-lg-3 paddinglr5">
+                 
                       <div class="form-group"> 
                         <label>Withholding Tax</label>
                           <input class="form-control" onkeypress='return ValidateNumberOnly()' type="text" name="withholding_tax"  required="required" />
                       </div>
-
+  </div>
+          
+                   <div class="col-lg-3 paddinglr5">
+                 
                         <div class="form-group"> 
                         <label>Company Comission</label>
                           <input id="aa" class="form-control"  onkeypress='return ValidateNumberOnly()' type="text" name="company_commission"  required="required" />
                       </div>  
-
+  </div>
+          
+                   <div class="col-lg-3 paddinglr5">
+                 
                        <div class="form-group"> 
-                        <label>Remaining (for Customer)</label>
+                        <label>for Customer</label>
                           <input class="form-control"  type="text" name="remaining_commission" value="0"  required="required" readonly />
                       </div>
-                                                                        
                   </div>
-                 col-lg-6 -->
-                  
-                   <div class="col-lg-12">
-                     <button class="add_field_button btn btn-success">Fill Product</button>
-                   </div>
 
-                   <div id="more_fields" class="col-lg-12">
-                    
-                   </div>
+                <div class="col-lg-3 paddinglr5">
+                 
+                   <div class="form-group"> 
+                      <label>Add Product</label>
+                      <button class="add_field_button btn btn-success form-control">Click</button>
+                    </div>
 
-
-               </div>
-                <!-- panel-body -->
-              </div>
+                </div>
+                                                                        
+            </div>
+                   
+          </div>
+                
+         <div class="panel panel-default" style="margin-bottom:0px;margin-top:0px;padding-top:0px;padding-bottom:0px;">
+          <div class="panel-heading"><i class="fa fa-bus" aria-hidden="true"></i>
+           Product Information
+   
+           </div>
+            <div class="panel-body paddinglr0" style="padding-top:0px;padding-bottom:0px;">
+           <div id="more_fields" class="col-lg-12 paddinglr0">
+            
+           </div>
+          </div>
+        </div>
+        <!-- panel-body -->
+           
               <!-- panel panel-default -->
 
          </div>
@@ -221,27 +277,17 @@
         <!-- ============================================================= -->
 
 
-      <div class="col-lg-5">
-           <div class="col-lg-12 vechinfo">
-                  <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-truck" aria-hidden="true"></i> Vehicle Information</div>
-                        <div id="vech_info" class="panel-body">
-                          
-                              
-                        </div>
-                        <!-- panel-body -->
-                      </div>
-                      <!-- panel panel-default -->
-                </div>
-              <!-- col-lg-12 -->
+      <div class="col-lg-3 paddinglr5">
+          
 
-  <div class="col-lg-12">
+
+
             <div class="panel panel-default">
-              <div class="panel-heading"><i class="fa fa-car" aria-hidden="true"></i> Drivers & Helpers  Information </div>
-               <div class="panel-body">
+              <div class="panel-heading"><i class="fa fa-car" aria-hidden="true"></i> Drivers & Helpers  Info </div>
+               <div class="panel-body paddinglr0">
                    
-                      <div class="form-group">                      
-                        <div class="col-md-10">
+                      <div class="form-group paddinglr5">                      
+                        <div class="col-md-10 paddinglr5">
                             <label>Driver</label>
 
                           <select class="form-control driver" name="driver[]" required>
@@ -255,15 +301,15 @@
                           </select>
                         </div>  
                         
-                        <div class="col-md-2">  
+                        <div class="col-md-2 paddinglr5">  
                          <button href="javascript:" style="margin-top: 30px" id="driver1" ><i class="fa fa-plus" aria-hidden="true"></i></button>
                         </div>
                       </div>
-                    <div id="driver_1"></div>
+                    <div class="paddinglr0" id="driver_1"></div>
 
 
-                     <div class="form-group">                      
-                        <div class="col-md-10">
+                     <div class="form-group paddinglr5">                      
+                        <div class="col-md-10 paddinglr5">
                             <label>Helper</label>
 
                           <select  class="form-control" name="helper[]" required>
@@ -277,22 +323,22 @@
                           </select>
                         </div>  
 
-                        <div class="col-md-2">  
+                        <div class="col-md-2 paddinglr5">  
                          <button style="margin-top: 30px" id="addhelper" ><i class="fa fa-plus" aria-hidden="true"></i></button>
                         </div>
                       </div>
                          
                         
 
-                    <div id="add_helper"></div>
+                    <div class="paddinglr0" id="add_helper"></div>
 
                 </div>
                 <!-- panel-body -->
               </div>
               <!-- panel panel-default -->
-            </div>
-            <!-- col-lg-12 -->
-          <div class="col-lg-12">
+            
+
+ 
             <div class="panel panel-default">
               <div class="panel-heading"><i class="fa fa-clock-o" aria-hidden="true"></i> Date</div>
                   <div class="panel-body">
@@ -332,18 +378,15 @@
                   <!-- panel-body -->
                 </div>
                 <!-- panel panel-default -->
-          </div>
-              <!-- col-lg-12 -->
-
-
-
-            <div style="padding-left: 30px" class="row">
-                <input class="btn btn-primary" type="submit" name="register" value="Save Trip" />
-            </div>    
+         
 
         </div>
-        <!-- col-lg-5 -->
+        <!-- col-lg-4 -->
 
+
+            <div style="padding: 10px" class="col-lg-12 col-md-12 col-sm-12">
+                <input class="btn btn-primary" type="submit" name="register" value="Save Trip" />
+            </div>  
 
         </form>
      </div>
@@ -362,7 +405,7 @@
 </script>
 
 <script>
-  
+        
 $(document).ready(function() {
     var max_fields      = 10; //maximum input boxes allowed
     var wrapper         = $("#more_fields"); //Fields wrapper
@@ -373,7 +416,7 @@ $(document).ready(function() {
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<label class="sum1"></label><hr><div class="col-lg-12"><div class="col-lg-12"><div class="form-group"><label>Product </label><select id="pro"  class="form-control product" name="product_id[]" selected="selected" required><option value="">Select Options</option><?php  if(!empty($product)){foreach ($product as $p){   ?><option value="<?php  echo  $p["id"];?>" ><?php  echo  $p["heading"];?></option><?php }} ?></select></div><div class="form-group"><label>Quantity</label><input onkeyup="sum1()" id="quantity"  class="quantity form-control"  type="text" name="product_quantity[]" required="required" /></div><div class="form-group"><label>Temperature</label><input class="form-control"  type="text" name="product_temperature[]"   required="required" /></div><div class="form-group"><label>Gravity</label><input class="form-control"  type="text" name="product_gravity[]"  required="required" /><div class="form-group"><div class="form-group"><label>Destination </label><select id="destination"  class="form-control source" name="destination[]" selected="selected" required><option value="">Select Options</option><?php  if(!empty($source)){foreach ($source as $d){   ?><option value="<?php  echo  $d["id"];?>" ><?php  echo  $d["name"];?></option><?php }} ?></select></div></div></div><div class="form-group"><label>Start Meter Reading</label><input class="form-control"  name="meter_reading"  required="required"/></div><div class="form-group"><label>Freight Rate</label><input class="form-control"   type="text" id="freight_rate" name="freight_rate[]"  required="required"  /></div><div class="form-group"><label>Contract Carriage Commission</label><input class="form-control"  type="text" name="carriage_commission[]"    required="required" /></div><div class="form-group"><label>Withholding Tax</label><input class="form-control"   type="text" name="withholding_tax[]"  required="required" /></div><div class="form-group"><label>Company Comission</label><input onkeydown="sum1()"  id="companycommission" class="form-control companycommission"     type="text" name="company_comission[]"  required="required" /></div><div class="form-group"><label>Remaining (For Customer)</label><input class="form-control remaining"  type="text" name="remaining_commission[]"  required="required" readonly /><span  class="pro_info"  ></span></div><button class="remove_field btn btn-success">Remove</button>'); 
+            $(wrapper).append('<div class="col-lg-12"><div class=""><div class="col-lg-2 paddinglr2" style="float:left;"><div class="form-group"><label>Product </label><select id="pro"  class="form-control product" name="product_id[]" selected="selected" required><option value="">Select Options</option><?php  if(!empty($product)){foreach ($product as $p){   ?><option value="<?php  echo  $p["id"];?>" ><?php  echo  $p["heading"];?></option><?php }} ?></select></div></div><div class="col-lg-2 paddinglr2"><div class="form-group"><label>Quantity</label><input onkeyup="sum1()" id="quantity"  class="quantity form-control"  type="text" name="product_quantity[]" required="required" /></div></div><div class="col-lg-2 paddinglr2"><div class="form-group"><label>Temperature</label><input class="form-control"  type="text" name="product_temperature[]"   required="required" /></div></div><div class="col-lg-2 paddinglr2"><div class="form-group"><label>Gravity</label><input class="form-control"  type="text" name="product_gravity[]"  required="required" /></div></div><div class="col-lg-2 paddinglr2"><div class="form-group"><label>Destination </label><select id="destination"  class="form-control source" name="destination[]" selected="selected" required><option value="">Select Options</option><?php  if(!empty($source)){foreach ($source as $d){   ?><option value="<?php  echo  $d["id"];?>" ><?php  echo  $d["name"];?></option><?php }} ?></select></div></div>    <div class="col-lg-2 paddinglr2"><div class="form-group"><label>Freight Rate</label><input class="form-control"   type="text" id="freight_rate" name="freight_rate[]"  required="required"  /></div> </div><div class="col-lg-2 paddinglr2"><div class="form-group"><label>Contract Carriage Commission</label><input class="form-control"  type="text" name="carriage_commission[]"    required="required" /></div></div><div class="col-lg-2 paddinglr2"><div class="form-group"><label>Withholding Tax</label><input class="form-control"   type="text" name="withholding_tax[]"  required="required" /></div></div><div class="col-lg-2 paddinglr2"><div class="form-group"><label>Company Comission</label><input onkeydown="sum1()"  id="companycommission" class="form-control companycommission"     type="text" name="company_comission[]"  required="required" /></div></div><div class="col-lg-2 paddinglr2"><div class="form-group"><label>Remaining (For Customer)</label><input class="form-control remaining"  type="text" name="remaining_commission[]"  required="required" readonly /><span  class="pro_info"  ></span></div>  </div><div class="col-lg-2 paddinglr2"><button style="margin-top:24px; " class="remove_field btn btn-success">Remove</button></div></div>'); 
             //add input box
         }
     });
@@ -392,21 +435,21 @@ $(document).ready(function() {
 //alert("#2d");
 //        document.getElementById('2d').innerHTML =document.getElementById("result").value;
  //alert(2d);      
-//	  document.getElementById('4d').innerHTML =document.getElementById("numb").value;
+//    document.getElementById('4d').innerHTML =document.getElementById("numb").value;
        // document.getElementById('customertype').innerHTML =document.getElementById("customertype").value;
  // alert("hi");
 // var name= $('.product').val();
 // var name1= $('.companycommission').val();
 //alert(name1);
-			var quantity = document.getElementsByName("quantity")[0].value;
-			var discountPrct = document.getElementsByName("percent")[0].value;
+      var quantity = document.getElementsByName("quantity")[0].value;
+      var discountPrct = document.getElementsByName("percent")[0].value;
 //             var total = document.myform.quantity.value;
-	 alert(quantity);
+   alert(quantity);
   //           var n = document.myform.number1.value;
           //   alert(n);
-		//	 var sum11 = parseInt(name)*parseInt(name1);
+    //   var sum11 = parseInt(name)*parseInt(name1);
 document.getElementsByClassName('sum1')[0].value=sum11;            
-		// document.myform.b.value = sum1;
+    // document.myform.b.value = sum1;
 //alert(sum1[0].value);   
    }
 
@@ -429,7 +472,7 @@ $(document).ready(function() {
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<div class="form-group"><div class="col-md-10"><label>Helper</label><select class="form-control" name="helper[]" required><option value="">Select Options</option><?php if(!empty($helperinformation)){  foreach ($helperinformation as $v){  ?><option value="<?php  echo  $v["id"];?>"   ><?php  echo  $v["name"];?></option><?php }} ?></select></div><div class="col-md-2"><button  style="margin-top: 30px" id="helper"><i class="fa fa-minus" aria-hidden="true"></i></button></div></div>'); 
+            $(wrapper).append('<div class="form-group paddinglr5"><div class="col-md-10 paddinglr5"><label>Helper</label><select class="form-control" name="helper[]" required><option value="">Select Options</option><?php if(!empty($helperinformation)){  foreach ($helperinformation as $v){  ?><option value="<?php  echo  $v["id"];?>"   ><?php  echo  $v["name"];?></option><?php }} ?></select></div><div class="col-md-2 paddinglr5"><button  style="margin-top: 30px" id="helper"><i class="fa fa-minus" aria-hidden="true"></i></button></div></div>'); 
             //add input box
         }
     });
@@ -437,26 +480,26 @@ $(document).ready(function() {
     $(wrapper).on("click","#helper", function(e){ //user click on remove text
         e.preventDefault(); $(this).parent('div').parent('div').remove(); x--;
     })
-	
-	$(document).on('keyup','#freight_rate',function(){
-		var freight=$(this).val();
-		var quantity=$(this).parent().parent().parent().find('.quantity').val();
-//		var price=$(this).parent().parent().parent().find('.price').val();
-		var remaining=$(this).parent().parent().parent().find('.remaining');
-		//console.log(remaining);
-		//console.log(freight,quantity,price);
-		remaining.val((parseInt(quantity)*parseInt(freight)*(90))/(100));
-		
-	});
-	$(document).on('keyup','.quantity',function(){
-		var quantity=$(this).val();
-		var freight=$(this).parent().parent().parent().find('#freight_rate').val();
-		var price=$(this).parent().parent().parent().find('.price').val();
-		var remaining=$(this).parent().parent().parent().find('.remaining');
-		
-		remaining.val((parseInt(quantity)*parseInt(freight)*(90))/(100));
-		
-	});
+  
+  $(document).on('keyup','#freight_rate',function(){
+    var freight=$(this).val();
+    var quantity=$(this).parent().parent().parent().find('.quantity').val();
+//    var price=$(this).parent().parent().parent().find('.price').val();
+    var remaining=$(this).parent().parent().parent().find('.remaining');
+    //console.log(remaining);
+    //console.log(freight,quantity,price);
+    remaining.val((parseFloat(quantity)*parseFloat(freight)*(100))/(100));
+    
+  });
+  $(document).on('keyup','.quantity',function(){
+    var quantity=$(this).val();
+    var freight=$(this).parent().parent().parent().find('#freight_rate').val();
+    var price=$(this).parent().parent().parent().find('.price').val();
+    var remaining=$(this).parent().parent().parent().find('.remaining');
+    
+    remaining.val((parseFloat(quantity)*parseFloat(freight)*(100))/(100));
+    
+  });
 });
 
 
@@ -478,7 +521,7 @@ $(document).ready(function() {
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<div class="form-group"><div class="col-md-10"><label>Driver</label><select id="helper" class="form-control" name="driver[]" required><option value="">Select Options</option><?php if(!empty($driver1)){  foreach ($driver1 as $v){  ?><option value="<?php  echo  $v["id"];?>"   ><?php  echo  $v["name"];?></option><?php }} ?></select></div><div class="col-md-2"><button style="margin-top: 30px" id="p_driver"><i class="fa fa-minus" aria-hidden="true"></i></button></div></div>'); 
+            $(wrapper).append('<div class="form-group paddinglr5"><div class="col-md-10 paddinglr5"><label>Driver</label><select id="helper" class="form-control" name="driver[]" required><option value="">Select Options</option><?php if(!empty($driver1)){  foreach ($driver1 as $v){  ?><option value="<?php  echo  $v["id"];?>"   ><?php  echo  $v["name"];?></option><?php }} ?></select></div><div class="col-md-2 paddinglr5"><button style="margin-top: 30px" id="p_driver"><i class="fa fa-minus" aria-hidden="true"></i></button></div></div>'); 
             //add input box
         }
     });
@@ -498,7 +541,7 @@ $(document).ready(function() {
 $(document).ready(function() {
   $(document).on('change','#pro',function(event) {
      var id =  $(this).val();
-	 var pro=$(this);
+   var pro=$(this);
 
      
     $.ajax({
@@ -506,15 +549,15 @@ $(document).ready(function() {
       type: 'POST',
       success:  function (response) {
       var result = eval(response);
-	  
-	  var price=pro.parent().parent().parent().find('.pro_info');
-	  console.log(price);
-		pro_info = "<input type='hidden' class='price' value='"+result['price']+"' />";
-	//	pro_info = "<div><p>Product Price&nbsp <input type="text" /></p></div>"
+    
+    var price=pro.parent().parent().parent().find('.pro_info');
+    console.log(price);
+    pro_info = "<input type='hidden' class='price' value='"+result['price']+"' />";
+  //  pro_info = "<div><p>Product Price&nbsp <input type="text" /></p></div>"
 
-	 price.html(pro_info);}
+   price.html(pro_info);}
     })
-	});
+  });
 });
 
 </script>
@@ -533,7 +576,7 @@ $(document).ready(function() {
         
         $('.vechinfo').removeClass('vechinfo');
 
-        vech_info = "<div><p>Chassis Number&nbsp" +"#&nbsp&nbsp;"+ result['chassisno'] +"</p><p>Engine Number&nbsp" +"#&nbsp&nbsp;"+ result['engineno'] +"</p></div>"
+        vech_info = "<div><strong>Chassis Number:</strong>" +"&nbsp;"+ result['chassisno'] +"&nbsp&nbsp&nbsp<strong> Engine Number: </strong>" +"&nbsp"+ result['engineno'] +"</div>"
         
         $('#vech_info').html(vech_info);
 

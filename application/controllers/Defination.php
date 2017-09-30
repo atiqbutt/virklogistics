@@ -1072,7 +1072,7 @@ public function printhelper($p="")
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
       $data['contractor']=$this->Defination_Model->viewcontractor();
-	$data['page']='Contractor/list';
+	     $data['page']='Contractor/list';
         $this->load->view('Template/main',$data);
             
             
@@ -1359,12 +1359,29 @@ public function printhelper($p="")
 					$data=array(
 						'status'=>$new
 						);
-                                        $query=  $this->db->where('id',$id)->update('contractorinformation',$data);
+        $query=  $this->db->where('id',$id)->update('contractorinformation',$data);
 					
 					if($query)
 					{
 						redirect('Defination/contractorpage');
 					}
+                                }
+
+
+                                 public function status_expensetype1($id)
+        {
+          $query=$this->db->where('id',$id)->get('expensetype')->row();
+          
+          $new=($query->status==0) ? 1:0;
+          $data=array(
+            'status'=>$new
+            );
+                                        $query=  $this->db->where('id',$id)->update('expensetype',$data);
+          
+          if($query)
+          {
+            redirect('Defination/view_expensetype');
+          }
                                 }
         
         
@@ -1970,7 +1987,7 @@ public function delete_expense($id)
        $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
-  $data['page']='expensetype/view';
+         $data['page']='expensetype/view';
         $this->load->view('Template/main',$data);
            
   }

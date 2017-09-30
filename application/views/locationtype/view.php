@@ -38,8 +38,6 @@ $(document).ready(function() {
                         <tr>
                           <th>#</th>
                           <th>Title</th>
-
-			<th>Address</th>                          
                           <th>Remarks</th>
                           <th>Action</th>
                         </tr>
@@ -53,11 +51,8 @@ $(document).ready(function() {
                         $i=1;foreach ($data as $value)  { 
                             ?>
                         <tr>
-                          <td><?php echo $i++; ?></td>
-                          
+                          <td><?php echo $i++; ?></td>                          
                           <td><?php echo $value['name']; ?></td>
-
-<td><?php echo $value['address']; ?></td>
                           <td><?php echo $value['remarks']; ?></td>
                           
                           <td>

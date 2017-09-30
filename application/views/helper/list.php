@@ -57,8 +57,20 @@
                    </a>
                                     
                                 </td>
+                                <td>
+                                <?php
+                                $st=$val['status'];
+                                if($st==1)
+                                {
+                                  ?>
+                                    <a href="<?php echo base_url();?>Defination/eyehelper/<?php echo $val['id']; ?>"><i class="fa fa-eye"></i></a>
+                                      <?php
+                                    }
+                                    else{
+                                      ?>
+                                    
 
-                                <td> <a href="<?php echo base_url();?>Defination/eyehelper/<?php echo $val['id']; ?>"><i class="fa fa-eye"></i></a>
+                                <a href="<?php echo base_url();?>Defination/eyehelper/<?php echo $val['id']; ?>"><i class="fa fa-eye"></i></a>
                                     
                                     <a href="<?php echo base_url();?>Defination/edithelper/<?php echo $val['id']; ?>"><i class="fa fa-edit"></i>
                                     
@@ -66,7 +78,9 @@
                                 
                                 <a href="<?php echo base_url();?>Defination/deletehelper/<?php echo $val['id']; ?>"><i class="fa fa-trash"></i>
                                 
-                                
+                                <?php
+                              }
+                              ?>
                                 
                                 
                                 </td>

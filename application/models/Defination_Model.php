@@ -43,9 +43,8 @@ public function expensetypeDetails($id)
 public function contractorDetails($id)
 {
 
-        $this->db->select('contractorinformation.*,contractorinformation.status as st,admin.first_name as first,admin.last_name as last');
+        $this->db->select('*');
         $this->db->from('contractorinformation');
-        $this->db->join('admin','contractorinformation.createdBy=admin.id');
         $this->db->where('contractorinformation.id',$id);
         $this->db->where('contractorinformation.is_deleted',0);
         $result = $this->db->get()->row();
@@ -58,9 +57,8 @@ public function contractorDetails($id)
 public function driverDetails($id)
 {
 
-        $this->db->select('driverinformation.*,driverinformation.status as st,admin.first_name as first,admin.last_name as last');
+        $this->db->select('*');
         $this->db->from('driverinformation');
-        $this->db->join('admin','driverinformation.createdBy=admin.id');
         $this->db->where('driverinformation.id',$id);
         $this->db->where('driverinformation.is_deleted',0);
         $result = $this->db->get()->row();
@@ -73,9 +71,8 @@ public function driverDetails($id)
 public function agentDetails($id)
 {
 
-        $this->db->select('agentinformation.*,agentinformation.status as st,admin.first_name as first,admin.last_name as last');
+        $this->db->select('*');
         $this->db->from('agentinformation');
-        $this->db->join('admin','agentinformation.createdBy=admin.id');
         $this->db->where('agentinformation.id',$id);
         $this->db->where('agentinformation.is_deleted',0);
         $result = $this->db->get()->row();
@@ -87,9 +84,9 @@ public function agentDetails($id)
 public function companyDetails($id)
 {
 
-        $this->db->select('customerinformation.*,customerinformation.status as st,admin.first_name as first,admin.last_name as last');
+        $this->db->select('*');
         $this->db->from('customerinformation');
-        $this->db->join('admin','customerinformation.createdBy=admin.id');
+      
         $this->db->where('customerinformation.id',$id);
         $this->db->where('customerinformation.is_deleted',0);
         $result = $this->db->get()->row();
@@ -101,9 +98,9 @@ public function companyDetails($id)
 public function helperDetails($id)
 {
 
-        $this->db->select('helperinformation.*,helperinformation.status as st,admin.first_name as first,admin.last_name as last');
+        $this->db->select('*');
         $this->db->from('helperinformation');
-        $this->db->join('admin','helperinformation.createdBy=admin.id');
+       
         $this->db->where('helperinformation.id',$id);
         $this->db->where('helperinformation.is_deleted',0);
         $result = $this->db->get()->row();

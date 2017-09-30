@@ -39,23 +39,6 @@ class unit extends CI_Controller {
 
 
 
-  //unit details page bilal
-     public function unit_eye($id)
-        {
-        $data['menu'] = $this->load_model->menu();
-        $data['base_url'] = base_url();
-        $data['userInfo'] = $this->userInfo;
-        $id=$this->uri->segment(3);
-        $data['view']=$this->Product_model->unitDetails($id);
-        $data['page']='units/unit_details';
-        $this->load->view('Template/main',$data);
-          
-        }
-
-
-
-
-
         public function add()
         {
             $data['menu'] = $this->load_model->menu();

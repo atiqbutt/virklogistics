@@ -28,6 +28,15 @@ class trip extends CI_Controller {
 
         }
 
+                public function get_data($type1)
+        {
+                        $data["expensetype"]=$this->trip_model->getAllRecords("expensetype",array("is_delete"=>0),"id","DESC"); 
+            $data["tripmanagement"]=$this->trip_model->GetAllTrips($type1);
+
+            return $this->load->view('Trip/trip_data',$data);
+
+        }
+/*
         public function self_long()
         {
             $data['menu'] = $this->load_model->menu();
@@ -69,7 +78,7 @@ class trip extends CI_Controller {
             $this->load->view('Template/main',$data);
 
         }
-
+*/
 
 		public function close_trip($id)
        {

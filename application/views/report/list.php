@@ -1,4 +1,4 @@
- 
+
 <style>
 .content{
   background-color: #ecf0f5;
@@ -6,7 +6,7 @@
 
 body    {
   overflow-x:scroll;
-background-color: #ecf0f5 !important;
+  background-color: #ecf0f5 !important;
 }
 
 .wrapper{
@@ -22,15 +22,8 @@ box-shadow:none !important;
 
 
 #list{
-  
-    width: 100%;
+   width: 100%;
 }
-
-
-/*html, body{
-    width: 100%; height: 100%;
-    margin: 0; padding: 0;
-}*/
 
 .content-wrapper{
 
@@ -41,23 +34,13 @@ box-shadow:none !important;
 
 
  <section class="content" >
-
-<div class="row">
+   <div class="row">
         <div class="col-lg-12" style="width: auto !important">
           <div class="box col-sm-3" >
 
-                <div class="row">
-           <div class="col-md-12">
-          
-        <div class="col-xs-12">
-          <div class="box col-sm-12">
-            <div class="box-header" >
-           
-              <h3 class="box-title">Filter</h3>
-            </div>
-            <!-- /.box-header -->
             <div class="box-body">
-             <div class="col-md-12">
+
+             <div class="col-md-8">
                    <form class="form-horizontal" id="shippingForm" action="<?php echo base_url()?>Defination/" method="post" enctype="multipart/form-data">
                         
                     <div class="col-md-6">
@@ -65,7 +48,7 @@ box-shadow:none !important;
                         <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Trip id
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-md-8 col-sm-6 col-xs-12">
                              <input class="form-control" type="text" placeholder="trip" name="tripid"/>
                        </div>
                       </div>
@@ -75,7 +58,7 @@ box-shadow:none !important;
                        <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Product Type
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-md-8 col-sm-6 col-xs-12">
                         <select class="form-control" name="producttype" id="producttype">
                            <option value="">Select Product Type</option>
                           <?php
@@ -91,14 +74,10 @@ box-shadow:none !important;
                       </div>
 
 
-                
-
-
-
                        <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Agent
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">                            
+                        <div class="col-md-8 col-sm-6 col-xs-12">                            
                         <select class="form-control" name="agent">
                         <option value="">Select Agent</option>
                          <?php
@@ -116,7 +95,7 @@ box-shadow:none !important;
                     <div class="item form-group">
                       <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Driver
                       </label>
-                      <div class="col-md-6 col-sm-6 col-xs-12">
+                      <div class="col-md-8 col-sm-6 col-xs-12">
                       <select class="form-control" name="driver">
                       <option value="">Select Driver</option>
                        <?php
@@ -132,10 +111,10 @@ box-shadow:none !important;
 
 
 
-                         <div class="item form-group">
+                      <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Vehicle
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">            
+                        <div class="col-md-8 col-sm-6 col-xs-12">            
                         <select class="form-control" name="vehicle">
                         <option value="">Select Vehicle</option>
                          <?php
@@ -149,14 +128,10 @@ box-shadow:none !important;
                         </div>
                       </div>
 
-
-                        
-
-
                        <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Source 
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-md-8 col-sm-6 col-xs-12">
                           <select class="form-control" name="source">
                         <option value="">Select Source</option>
                         <?php
@@ -169,84 +144,52 @@ box-shadow:none !important;
                         </select>
                          </div>
                       </div>
-                    
-
-
-                     
 
                        <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date From 
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-md-8 col-sm-6 col-xs-12">
                           <input class="form-control" type="date" name="datefrom"/>
                          </div>
                       </div>
-                    
-                     <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"> 
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                         </div>
-                      </div>
-                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"> 
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                         </div>
-                      </div>
 
-                        <div class="ln_solid"></div>
-                      <div class="form-group">
-                        <div class="col-md-6 col-md-offset-9">
-                          <input class="btn btn-success" type="submit" name="register" value="submit" />
-                          
-                        </div>
-                      </div>
-
-
-                    
-                    
-                    
-
-
-                    </div>
-
-                       <div class="col-md-6">
-
-
-
-               <div class="item form-group">
+                  <div class="item form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Trip Type
                     </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                   <select class="form-control" name="triptype">
-                      <option value="">Select Trip Type</option>
-                       <option value="Self-Short">Self-Short</option>
+                    <div class="col-md-8 col-sm-6 col-xs-12">
+                      <select class="form-control" name="triptype">
+                        <option value="">Select Trip Type</option>
+                        <option value="Self-Short">Self-Short</option>
                         <option value="Self-Long">Self-Long</option>
-                         <option value="General-Short">General-Short</option>
-                          <option value="General-Long">General-Long</option>
+                        <option value="General-Short">General-Short</option>
+                        <option value="General-Long">General-Long</option>
                       </select>
                       </div>
-                      </div>
+                    </div>
 
-                        
 
-                        <div class="item form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Product
-                    </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                   <select class="form-control" name="product" id="product">
-                      <option value="">Select Product</option>
-                        
-                      </select>
-                      </div>
-                      </div>
+
+                </div>
+               <!-- col-md-6 -->
+
+                  <div class="col-md-6">
+
+                   <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Product
+                      </label>
+                      <div class="col-md-9 col-sm-6 col-xs-12">
+                     <select class="form-control" name="product" id="product">
+                        <option value="">Select Product</option>
+                          
+                        </select>
+                        </div>
+                    </div>
 
                     
                    <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Contractor
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">                              
+                        <div class="col-md-9 col-sm-6 col-xs-12">                              
                         <select class="form-control" name="contractor">
                         <option value="">Select Contractor</option>
                          <?php
@@ -264,7 +207,7 @@ box-shadow:none !important;
                        <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Helper 
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">                                                    
+                        <div class="col-md-9 col-sm-6 col-xs-12">                                                    
                         <select class="form-control" name="helper">
                         <option value="">Select Helper</option>
                          <?php
@@ -279,10 +222,10 @@ box-shadow:none !important;
                       </div>
 
 
-                        <div class="item form-group">
+                      <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Vehicle Type
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-md-9 col-sm-6 col-xs-12">
                         <select class="form-control" name="vehicletype">
                         <option value="">Select Vehicle Type</option>
                         <?php
@@ -294,14 +237,12 @@ box-shadow:none !important;
                           ?>
                         </select>
                       </div>
-                      </div>
-
-
+                    </div>
 
                        <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Destination 
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-md-9 col-sm-6 col-xs-12">
                           <select class="form-control" name="destination">
                         <option value="">Select Destination</option>
                          <?php
@@ -320,65 +261,48 @@ box-shadow:none !important;
                        <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date To
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-md-9 col-sm-6 col-xs-12">
                         <input class="form-control" type="date"  name="dateto"/>
                       </div>
                       </div>
 
-<<<<<<< HEAD
-=======
-
-                     
-
-
                         <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Company
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">                                                    
-                      <select class="form-control" name="company">
-                      <option value="">Select Company</option>
-                       <?php
-                          foreach ($comp as $value) {
-                            ?>
-                            <option value="<?php echo $value['id']?>"><?php echo $value['name']?></option>
-                          <?php
-                        }
-                          ?>
-                       </select>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Company
+                             </label>
+                            <div class="col-md-9 col-sm-6 col-xs-12">         
+                              <select class="form-control" name="company">
+                              <option value="">Select Company</option>
+                               <?php
+                                  foreach ($comp as $value) {
+                                    ?>
+                                    <option value="<?php echo $value['id']?>"><?php echo $value['name']?></option>
+                                  <?php
+                                }
+                                  ?>
+                               </select>
+                            </div>
+                          </div>
+
                         </div>
-                      </div>
+                        <!-- col-md-6 -->
 
+                        <div class="row">
+                          <div class="col-md-6 col-md-offset-6">
+                            <input class="btn btn-success" type="submit" name="register" value="submit" />
+                          </div>
+                        </div>
 
-
-
-                       
-
-
-
-                    
-
-                       
-
->>>>>>> 81dc6296cb281bc0f67bb7fd4be835064a8f49f2
                     </div>
-            
-                      </form>
-                </div>
-                
-                
-                
-                </div>
-
+                    <!-- col-md-12 -->  
             </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
+            <!-- body -->
+         
+       </form>
     
-            
+  
+  
+  <div class="row">
+
   <div class="box-header">
     <h3 class="box-title"><b>List </b></h3>
   </div>
@@ -420,6 +344,7 @@ box-shadow:none !important;
                             ?>
 
     <tr class="odd gradeX">
+      <td><?php echo $i++;?></td>
       <td><?php echo $value['type']?></td>
       <td><?php echo $value['productname']?></td>
       <td><?php echo $value['meter_reading']?></td>
@@ -433,9 +358,10 @@ box-shadow:none !important;
       <td><?php echo $value['servicecharges']?></td>
       <td><?php echo $value['remaining_commission']?></td>
       <td><?php echo $value['status']?></td>
-     <td><?php echo $value['vehicleregisterationno']?></td>
+      <td><?php echo $value['vehicleregisterationno']?></td>
       <td><?php echo $value['vehiclename']?></td>
       <td><?php echo $value['vehicleengineno']?></td>
+      <th><?php echo $value['vehicleengineno']?></th>
       <td><?php echo $value['source']?></td>
       <td><?php echo $value['destination']?></td>
       <td><?php echo $value['comname']?></td>
@@ -473,10 +399,10 @@ var prod=$('#producttype').val();
 
 })
 });
-
-<<<<<<< HEAD
-
-</section>
-=======
 </script>
->>>>>>> 81dc6296cb281bc0f67bb7fd4be835064a8f49f2
+
+</div>
+</section>
+
+
+

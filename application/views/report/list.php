@@ -1,5 +1,52 @@
- <section class="content">
-      <div class="row">
+ 
+<style>
+.content{
+  background-color: #ecf0f5;
+}
+
+body    {
+  overflow-x:scroll;
+background-color: #ecf0f5 !important;
+}
+
+.wrapper{
+
+  overflow-x:unset !important;
+  overflow-y:unset !important;
+}
+
+.box{
+border:none !important;
+box-shadow:none !important;
+}
+
+
+#list{
+  
+    width: 100%;
+}
+
+
+/*html, body{
+    width: 100%; height: 100%;
+    margin: 0; padding: 0;
+}*/
+
+.content-wrapper{
+
+  background-color: #fff !important;
+}
+
+</style>
+
+
+ <section class="content" >
+
+<div class="row">
+        <div class="col-lg-12" style="width: auto !important">
+          <div class="box col-sm-3" >
+
+                <div class="row">
            <div class="col-md-12">
           
         <div class="col-xs-12">
@@ -13,7 +60,6 @@
              <div class="col-md-12">
                    <form class="form-horizontal" id="shippingForm" action="<?php echo base_url()?>Defination/" method="post" enctype="multipart/form-data">
                         
-
                     <div class="col-md-6">
 
                         <div class="item form-group">
@@ -225,28 +271,14 @@
                       </div>
                       </div>
 
-
-                      
-
-                       
-
                     </div>
-
-
-                     
-                   
+            
                       </form>
                 </div>
                 
                 
                 
                 </div>
-
-
-
-
-
-
 
             </div>
             <!-- /.box-body -->
@@ -256,23 +288,17 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
-    </section>
-
-
- <section class="content">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="box col-sm-3" >
+    
             
-            <div class="box-header">
-              <h3 class="box-title"><b>List </b></h3>
-            </div>
-             
+  <div class="box-header">
+    <h3 class="box-title"><b>List </b></h3>
+  </div>
+   
+
+  <!-- /.box-header -->
+  <div class="box-body"  id="list">
  
-            <!-- /.box-header -->
-            <div class="box-body">
- 
-<table class="table table-bordered" style="width:1500px !important;">
+<table class="table table-bordered" >
   <thead>
     <tr>
       <th>#</th>
@@ -347,6 +373,7 @@
         <!-- /.col-lg-12 -->
     </div>
             
- </section>
 
 
+
+</section>

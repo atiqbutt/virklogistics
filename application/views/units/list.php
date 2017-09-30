@@ -69,8 +69,6 @@
                                 {
                                   ?>                              
                                           
-
-<a class="text-custom1" href="<?php echo base_url();?>unit/unit_eye/<?php echo $amb['id'];?>"><i class="fa fa-eye"></i></a>
 <?php
 }
 else{

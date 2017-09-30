@@ -61,26 +61,7 @@
                        <td><a href="<?php echo $view->email?>"><?php if(isset($view)){echo ucfirst($view->email);}  ?></td>
                       </tr>
                      
-                         <tr>
-                       <td><strong>Created At:</strong></td>
-                       <td><?php if(isset($view)){echo ucfirst($view->createdAt);}  ?></td>
-                      </tr>
-                      
-                      <td><strong>Created By:</strong></td>
-                        <td><?php if(isset($view)){echo ucfirst($view->first." ".$view->last);}  ?>
-                        </td>
-                      
                        
-                        <tr>
-                       <td><strong>Modified At:</strong></td>
-                        <td><?php if(isset($view)){echo ucfirst($view->modifiedAt);}  ?></td>
-                      </tr>
-                      
-                      
-                        <tr>
-                       <td><strong>Modified By:</strong></td>
-                        <td><?php if(isset($view)){echo ucfirst($view->first." ".$view->last);}  ?></td>
-                      </tr>
                       
                       
 
@@ -89,7 +70,7 @@
                         <td>
                           <?php
 
-                          $status=$view->st;
+                          $status=$view->status;
                           if($status==0)
                           {
                             ?>

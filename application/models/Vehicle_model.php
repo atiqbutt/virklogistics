@@ -30,39 +30,6 @@ class Vehicle_model extends CI_Model {
 
 	 }
 
-//vehicles status details bilal
- public function vehiclestatusDetails($id)
-	 { 	
-
-	 	$this->db->select('vehiclestatus.*,vehiclestatus.status as st,
-	 admin.first_name,admin.last_name,admin.first_name as first,admin.last_name as last');
-	 	$this->db->from('vehiclestatus');
-	 	$this->db->join('admin','vehiclestatus.createdBy=admin.id');
-	 	$this->db->where('vehiclestatus.id', $id);
-	 	$this->db->where('vehiclestatus.is_deleted', 0);
-		$result = $this->db->get()->row();
-		return $result;
-	 	
-	 }
-
-	 //vehicles type details bilal
- public function vehiclestypeDetails($id)
-	 { 	
-
-	 	$this->db->select('vehicletype.*,
-	 vehicletype.status as st, admin.first_name,admin.last_name,
-	 admin.first_name as first,admin.last_name as last');
-	 	$this->db->from('vehicletype');
-	 	$this->db->join('admin','vehicletype.createdBy=admin.id');
-	 	$this->db->where('vehicletype.id', $id);
-	 	$this->db->where('vehicletype.is_deleted', 0);
-		$result = $this->db->get()->row();
-		return $result;
-	 	
-	 }
-
-
-
 
 	 public function get_vehicleType()
 	 {

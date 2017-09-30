@@ -40,6 +40,7 @@
                   <th> Color</th>
                   <th> Model</th>
                   <th> Company</th>
+                  <th> Status</th>
                   <th>Action</th>
                                    
                 </tr>
@@ -53,14 +54,45 @@
                       <td><?php echo $value["color"];?></td>
                       <td><?php echo $value["model"];?></td>
                       <td><?php echo $value["company"];?></td>
-                      
-                      <td>
+                       <td>
 
+  <?php if ($value["status"]=="0"){?>
+                                                                      
+<a class="text-custom1" href="<?php echo base_url();?>Vehicle/List_showstates/<?php echo $value['id'];?>">
+  <img src="<?php echo base_url();?>assets/Images/2.png" width="20px" height="20px"></a>
+                                              
+                                        
+
+                                    <?php } elseif($value["status"]=="1") {?>
+                                                   
+                                                    <a class="text-custom1" href="<?php echo base_url();?>Vehicle/List_showactive/<?php echo $value['id'];?>"><img src="<?php echo base_url();?>assets/Images/3.png" width="20px" height="20px"></a>
+                                                 
+                                                 
+                                       
+                                    <?php } ?>
+
+                                 </td>
+                      <td>
+                        <?php
+
+                        if($value['status']==1)
+                        {
+
+                          ?>
                           <a class="text-custom1" href="<?php echo base_url();?>Vehicle/Vehicle_eye/<?php echo $value['id'];?>"><i class="fa fa-eye"></i></a>
+                          <?php
+                        }
+                        else
+                        {
+                          ?>
+                          <a class="text-custom1" href="<?php echo base_url();?>Vehicle/Vehicle_eye/<?php echo $value['id'];?>"><i class="fa fa-eye"></i></a>
+                        
                       <a class="text-custom1" href="<?php echo base_url();?>Vehicle/edit_vehicle_show/<?php echo $value['id'];?>"><i class="fa fa-pencil-square-o fa-1x"></i></a>
 
                        <a class="text-custom1" href="<?php echo base_url();?>Vehicle/Vehicle_delete/<?php echo $value['id'];?>"><i class="fa fa-trash-o"></i></a>
-                     
+                     <?php
+                   }
+                   ?>
                 
                       </td>
                     </tr>

@@ -20,21 +20,32 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Trip id
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                             <input class="form-control" type="text" placeholder="trip" name=""/>
+                             <input class="form-control" type="text" placeholder="trip" name="tripid"/>
                        </div>
                       </div>
 
                      
 
-                  <div class="item form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Product
-                    </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                   <select class="form-control">
-                      <option value="">Select Product</option>
-                      </select>
+                       <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Product Type
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <select class="form-control" name="producttype" id="producttype">
+                           <option value="">Select Product Type</option>
+                          <?php
+                          foreach ($protype as $value) {
+                            ?>
+                            <option value="<?php echo $value['id']?>"><?php echo $value['name']?></option>
+                          <?php
+                        }
+                          ?>
+                       
+                        </select>
+                       </div>
                       </div>
-                      </div>
+
+
+                
 
 
 
@@ -42,37 +53,33 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Agent
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">                            
-                        <select class="form-control">
-                        <option value="">Select Product</option>
+                        <select class="form-control" name="agent">
+                        <option value="">Select Agent</option>
+                         <?php
+                          foreach ($agent as $value) {
+                            ?>
+                            <option value="<?php echo $value['id']?>"><?php echo $value['name']?></option>
+                          <?php
+                        }
+                          ?>
                         </select>
                         </div>
                       </div>
 
 
-                    
-                    
-                        <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Customer
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select class="form-control">
-                        <option value="">Select Product</option>
-                        </select>
-                      </div>
-                      </div>
-
-
-
-
-                     
-                  
-
                     <div class="item form-group">
                       <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Driver
                       </label>
                       <div class="col-md-6 col-sm-6 col-xs-12">
-                      <select class="form-control">
-                      <option value="">Select Product</option>
+                      <select class="form-control" name="driver">
+                      <option value="">Select Driver</option>
+                       <?php
+                          foreach ($driver as $value) {
+                            ?>
+                            <option value="<?php echo $value['id']?>"><?php echo $value['name']?></option>
+                          <?php
+                        }
+                          ?>
                         </select>
                       </div>
                       </div>
@@ -83,8 +90,15 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Vehicle
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">            
-                        <select class="form-control">
-                        <option value="">Select Product</option>
+                        <select class="form-control" name="vehicle">
+                        <option value="">Select Vehicle</option>
+                         <?php
+                          foreach ($vehicle as $value) {
+                            ?>
+                            <option value="<?php echo $value['id']?>"><?php echo $value['heading']?></option>
+                          <?php
+                        }
+                          ?>
                         </select>
                         </div>
                       </div>
@@ -97,8 +111,15 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Source 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select class="form-control">
-                        <option value="">Select Product</option>
+                          <select class="form-control" name="source">
+                        <option value="">Select Source</option>
+                        <?php
+                          foreach ($source as $value) {
+                            ?>
+                            <option value="<?php echo $value['id']?>"><?php echo $value['name']?></option>
+                          <?php
+                        }
+                          ?>
                         </select>
                          </div>
                       </div>
@@ -111,14 +132,36 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date From 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select class="form-control">
-                        <option value="">Select Product</option>
-                        </select>
+                          <input class="form-control" type="date" name="datefrom"/>
                          </div>
                       </div>
                     
+                     <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"> 
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                         </div>
+                      </div>
+                       <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"> 
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                         </div>
+                      </div>
 
-                     
+                        <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-9">
+                          <input class="btn btn-success" type="submit" name="register" value="submit" />
+                          
+                        </div>
+                      </div>
+
+
+                    
+                    
+                    
+
 
                     </div>
 
@@ -126,107 +169,145 @@
 
 
 
- <div class="item form-group">
+               <div class="item form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Trip Type
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                   <select class="form-control">
-                      <option value="">Select Product</option>
+                   <select class="form-control" name="triptype">
+                      <option value="">Select Trip Type</option>
+                       <option value="Self-Short">Self-Short</option>
+                        <option value="Self-Long">Self-Long</option>
+                         <option value="General-Short">General-Short</option>
+                          <option value="General-Long">General-Long</option>
                       </select>
                       </div>
                       </div>
 
-                          <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Product Type
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        <select class="form-control">
-                        <option value="">Select Product Type</option>
-                        </select>
-                       </div>
+                        
+
+                        <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Product
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                   <select class="form-control" name="product" id="product">
+                      <option value="">Select Product</option>
+                        
+                      </select>
                       </div>
-
-
+                      </div>
 
                     
                    <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Contractor
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">                              
-                        <select class="form-control">
-                        <option value="">Select Product</option>
+                        <select class="form-control" name="contractor">
+                        <option value="">Select Contractor</option>
+                         <?php
+                          foreach ($contratctor as $value) {
+                            ?>
+                            <option value="<?php echo $value['id']?>"><?php echo $value['name']?></option>
+                          <?php
+                        }
+                          ?>
                         </select>
                         </div>
                       </div>
 
 
+                       <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Helper 
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">                                                    
+                        <select class="form-control" name="helper">
+                        <option value="">Select Helper</option>
+                         <?php
+                          foreach ($helper as $value) {
+                            ?>
+                            <option value="<?php echo $value['id']?>"><?php echo $value['name']?></option>
+                          <?php
+                        }
+                          ?>
+                        </select>
+                        </div>
+                      </div>
+
+
+                        <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Vehicle Type
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <select class="form-control" name="vehicletype">
+                        <option value="">Select Vehicle Type</option>
+                        <?php
+                          foreach ($vehicletype as $value) {
+                            ?>
+                            <option value="<?php echo $value['id']?>"><?php echo $value['heading']?></option>
+                          <?php
+                        }
+                          ?>
+                        </select>
+                      </div>
+                      </div>
+
+
+
+                       <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Destination 
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select class="form-control" name="destination">
+                        <option value="">Select Destination</option>
+                         <?php
+                          foreach ($source as $value) {
+                            ?>
+                            <option value="<?php echo $value['id']?>"><?php echo $value['name']?></option>
+                          <?php
+                        }
+                          ?>
+                        </select>
+                         </div>
+                      </div>
+
+
+
+                       <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date To
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input class="form-control" type="date"  name="dateto"/>
+                      </div>
+                      </div>
+
+
+                     
 
 
                         <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Company
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">                                                    
-                      <select class="form-control">
-                      <option value="">Select Product</option>
+                      <select class="form-control" name="company">
+                      <option value="">Select Company</option>
+                       <?php
+                          foreach ($comp as $value) {
+                            ?>
+                            <option value="<?php echo $value['id']?>"><?php echo $value['name']?></option>
+                          <?php
+                        }
+                          ?>
                        </select>
                         </div>
                       </div>
 
 
 
-                        <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Helper 
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">                                                    
-                        <select class="form-control">
-                        <option value="">Select Product</option>
-                        </select>
-                        </div>
-                      </div>
+
+                       
 
 
 
                     
-                    
-
-
-                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Vehicle Id
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        <select class="form-control">
-                        <option value="">Select Product</option>
-                        </select>
-                      </div>
-                      </div>
-
-
-
-
-                     <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Destination 
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select class="form-control">
-                        <option value="">Select Product</option>
-                        </select>
-                         </div>
-                      </div>
-                    
-
-                    
-                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date To
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        <select class="form-control">
-                        <option value="">Select Product</option>
-                        </select>
-                      </div>
-                      </div>
-
-
-                      
 
                        
 
@@ -349,4 +430,15 @@
             
  </section>
 
+<script type="text/javascript">
+$(document).on('change','#producttype',function(){
+var prod=$('#producttype').val();
+ $.post("<?php echo base_url(); ?>Report/changeproduct/"+prod,{},function(data){
+                        $("#product").html('');
+                        $("#product").html(data);
 
+
+})
+});
+
+</script>

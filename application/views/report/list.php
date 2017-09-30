@@ -25,6 +25,9 @@ box-shadow:none !important;
   
     width: 100%;
 }
+td,th{
+  border: 1px solid grey !important;
+}
 
 
 /*html, body{
@@ -325,11 +328,6 @@ box-shadow:none !important;
                       </div>
                       </div>
 
-<<<<<<< HEAD
-=======
-
-                     
-
 
                         <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Company
@@ -349,17 +347,6 @@ box-shadow:none !important;
                       </div>
 
 
-
-
-                       
-
-
-
-                    
-
-                       
-
->>>>>>> 81dc6296cb281bc0f67bb7fd4be835064a8f49f2
                     </div>
             
                       </form>
@@ -387,8 +374,8 @@ box-shadow:none !important;
   <!-- /.box-header -->
   <div class="box-body"  id="list">
  
-<table class="table table-bordered" >
-  <thead>
+<table class="table table-bordered" style="width:2100px;border:2px solid grey" >
+  <thead style="background-color:#0292e0;color:white;border:1px solid grey">
     <tr>
       <th>#</th>
       <th>Type</th>
@@ -397,7 +384,7 @@ box-shadow:none !important;
        <th>Filling Date</th>
       <th>Gravity</th>
        <th>Carriage</th>
-      <th>Holding Tax</th>
+      <th>W.H.T</th>
        <th>Temperature</th>
       <th>Freight rate</th>
        <th>Quantity</th>
@@ -414,12 +401,18 @@ box-shadow:none !important;
       <th>Name</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody >
     <?php
       $i=1;foreach ($data as $value)  { 
+        if($i%2==1){
                             ?>
 
-    <tr class="odd gradeX">
+    <tr class="odd gradeX" style="background-color:#ffffff;border:1px solid black">
+<?php
+}else{?>
+    <tr class="odd gradeX" style="background-color:#f4f4f4">
+      <?php }?>
+      <td><?php echo $i?></td>
       <td><?php echo $value['type']?></td>
       <td><?php echo $value['productname']?></td>
       <td><?php echo $value['meter_reading']?></td>
@@ -444,6 +437,7 @@ box-shadow:none !important;
 
     </tr>
     <?php
+    $i +=1;
   }
   ?>
    
@@ -461,7 +455,7 @@ box-shadow:none !important;
         </div>
         <!-- /.col-lg-12 -->
     </div>
-            
+            </section>
 
 <script type="text/javascript">
 $(document).on('change','#producttype',function(){
@@ -474,9 +468,8 @@ var prod=$('#producttype').val();
 })
 });
 
-<<<<<<< HEAD
 
-</section>
-=======
+
+
 </script>
->>>>>>> 81dc6296cb281bc0f67bb7fd4be835064a8f49f2
+

@@ -11,7 +11,7 @@
                
         <div class="col-lg-12">
            
-              <div style="padding-left:0px;" class="panel-heading">
+              <div class="panel-heading">
                   <a class="btn btn-success" href="<?php echo base_url(); ?>Defination/adddriver" alt="View">
                     Add Driver </i>  
                   </a>
@@ -103,7 +103,6 @@
         </div>
         <!-- /.col-lg-12 -->
     </div>
-            
  </section>
 
  

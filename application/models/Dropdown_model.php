@@ -12,6 +12,14 @@ $query=$this->db->get()->result_array();
 
 }	
 
+ function getAllRecords($table,$where) {
+        $this->db->select()->from($table)->where($where);
+        return $query=$this->db->get()->result_array();
+        
+
+
+
+}
 }
 
 

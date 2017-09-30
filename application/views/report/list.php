@@ -43,7 +43,7 @@ td,th{
 
             <div class="box-body">
 
-             <div class="col-md-8">
+             <div class="col-md-5">
                    <form class="form-horizontal" id="shippingForm" action="<?php echo base_url()?>Defination/" method="post" enctype="multipart/form-data">
                         
                     <div class="col-md-6">
@@ -289,15 +289,13 @@ td,th{
                         </div>
                         <!-- col-md-6 -->
 
-<<<<<<< HEAD
                         <div class="row">
                           <div class="col-md-6 col-md-offset-6">
                             <input class="btn btn-success" type="submit" name="register" value="submit" />
                           </div>
                         </div>
 
-=======
->>>>>>> 94da1d00358198a78d7af181ab38a05d93ee01a6
+
                     </div>
                     <!-- col-md-12 -->  
             </div>
@@ -350,17 +348,13 @@ td,th{
         if($i%2==1){
                             ?>
 
-<<<<<<< HEAD
-    <tr class="odd gradeX">
-      <td><?php echo $i++;?></td>
-=======
+   
     <tr class="odd gradeX" style="background-color:#ffffff;border:1px solid black">
 <?php
 }else{?>
     <tr class="odd gradeX" style="background-color:#f4f4f4">
       <?php }?>
       <td><?php echo $i?></td>
->>>>>>> 94da1d00358198a78d7af181ab38a05d93ee01a6
       <td><?php echo $value['type']?></td>
       <td><?php echo $value['productname']?></td>
       <td><?php echo $value['meter_reading']?></td>
@@ -410,24 +404,21 @@ td,th{
 $(document).on('change','#producttype',function(){
 var prod=$('#producttype').val();
  $.post("<?php echo base_url(); ?>Report/changeproduct/"+prod,{},function(data){
-                        $("#product").html('');
-                        $("#product").html(data);
+      $("#product").html('');
+      $("#product").html(data);
 
 
 })
 });
 </script>
 
-<<<<<<< HEAD
 </div>
 </section>
 
 
 
-=======
 
 
 
 </script>
 
->>>>>>> 94da1d00358198a78d7af181ab38a05d93ee01a6

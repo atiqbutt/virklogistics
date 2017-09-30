@@ -23,7 +23,7 @@ class User_model extends CI_Model {
              if($this->session->refer!="" && $this->session->refer!=null){
                     redirect($this->session->refer);
                 }
-              var_dump($this->session->refer+'not in if');die();
+              //var_dump($this->session->refer+'not in if');die();
             redirect("home","refresh");
         }else{
             return "Invalid Credientials";

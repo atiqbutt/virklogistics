@@ -72,30 +72,24 @@ class product extends CI_Controller {
 
         if ($_POST )
         {
-        $this->form_validation->set_rules('name', 'Name no', 'trim|required');
-        $this->form_validation->set_rules('dec', 'Description', 'trim|required');
-    if($this->form_validation->run()==False)
-  {
-      $data['menu'] = $this->load_model->menu();
-        $data['base_url'] = base_url();
-        $data['userInfo'] = $this->userInfo; 
-        $data["page"]='product/add';
-        $this->load->view('Template/main',$data);
-  }  
-  else{  
-        $data["name"]=$this->input->post('name');
-        $data["description"]=$this->input->post('dec');
-        $data["createdAt"]=date("Y-m-d h:i:sa");
-        // $data["createdBy"]=$this->session->userdata('dekho_userId');
+                $url=$_SERVER['HTTP_REFERER'];
+          
+                $data["name"]=$this->input->post('name');
+                $data["description"]=$this->input->post('dec');
+                $data["createdAt"]=date("Y-m-d h:i:sa");
+                // $data["createdBy"]=$this->session->userdata('dekho_userId');
+                $this->db->insert('producttype', $data);
+                ;
 
-        $this->db->insert('producttype', $data);
-        ;
-
-
-        $this->session->set_flashdata('msg', "Add producttype, Information has been added successfully");
-        redirect('product/index');
-    
-     }
+                $this->session->set_flashdata('msg', "Add producttype, Information has been added successfully");
+                $link = base_url()."Product/add";
+                
+                if($url==$link)
+                 redirect('product/index');
+                    else 
+                 redirect($url);
+            
+            
         }
 
         else{
@@ -302,28 +296,18 @@ $this->db->join('product_histroy','product_histroy.p_id = product.id');
 
         if ($_POST )
         {
+            $url=$_SERVER['HTTP_REFERER'];
+
         $this->form_validation->set_rules('heading', 'Name no', 'trim|required');
         $this->form_validation->set_rules('unit_id', 'Unit select', 'trim|required');
          $this->form_validation->set_rules('product_type', 'product type Select', 'trim|required');
         $this->form_validation->set_rules('description', 'Description', 'trim|required');
          $this->form_validation->set_rules('price', 'price', 'trim|required');
       
-    if($this->form_validation->run()==False)
-  {
-      $data['menu'] = $this->load_model->menu();
-        $data['base_url'] = base_url();
-        $data['userInfo'] = $this->userInfo; 
-     $data["productid"]=$this->generic_model->getSpecificRecord("product", array()); 
-        $data["unitid"]=$this->generic_model->getSpecificRecord("unit", array()); 
-        $data["producttype"]=$this->generic_model->getAllRecords("producttype",array("is_deleted"=>0,"status"=>0),"id","DESC"); 
-        $data["unit"]=$this->generic_model->getAllRecords("unit",array("is_deleted"=>0,"status"=>0),"id","DESC"); 
-
-        $data["page"]='product/add_product';
-        $this->load->view('Template/main',$data);
-  }  
-  else{
+   
 
         date_default_timezone_set("Asia/Karachi");
+        if($url==base_url().'Product/add_product'){
         $this->load->model('generic_model');
         $data["heading"]=$this->input->post('heading');
         $data["unit_id"]=$this->input->post('unit_id');
@@ -332,22 +316,29 @@ $this->db->join('product_histroy','product_histroy.p_id = product.id');
         $data["price"]=$this->input->post('price');
         $histroy["price"]=$this->input->post('price');
         $data["createdAt"]=date("m/d/Y");
+        }
+        else{
+            $data["heading"]=$this->input->post('productName');
+            $data["product_type"]=$this->input->post('productType');
+            $data["createdAt"]=date("m/d/Y");
+        }
         // $data["createdBy"]=$this->session->userdata('dekho_userId');
         
          $this->db->insert("product",$data);
-         $history['p_id'] = $this->db->insert_id();
-         $history["price"]=$this->input->post('price');
-         $history["date"]=date("m/d/Y");
-
-
-        
-       $this->db->insert("product_histroy",$history);
-     
-        
+         
+         // $history['p_id'] = $this->db->insert_id();
+         // $history["price"]=$this->input->post('price');
+         // $history["date"]=date("m/d/Y");
+         // $this->db->insert("product_histroy",$history);
+    
         
         $this->session->set_flashdata('msg', "Add product, Information has been added successfully");
-        redirect('product/list_prodcut');
-        }
+
+        if($url==base_url().'Product/add_product')
+         redirect('product/list_prodcut');
+            else 
+            echo "success";
+     
     }
         else{
         $this->session->set_flashdata('msg', "Add product,  reference is missing or incorrect");
@@ -513,5 +504,21 @@ else{
 
         } 
 
+
+    public function get_all_products()
+       {
+         $products = $this->db->select('id,heading')->get('product')->result_array();
+        
+        foreach ($products as $value) {
+            
+            echo '<option value="'. $value["id"] . '" >' . $value["heading"] . '</option>';
+                            
+
+        }
+
+         
+         
+
+       }   
 
 }

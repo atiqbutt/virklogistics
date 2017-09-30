@@ -1687,7 +1687,7 @@ public function printhelper($p="")
 					$data=array(
 						'status'=>$new
 						);
-                                        $query=  $this->db->where('id',$id)->update('driverinformation',$data);
+          $query=  $this->db->where('id',$id)->update('driverinformation',$data);
 					
 					if($query)
 					{
@@ -1695,40 +1695,40 @@ public function printhelper($p="")
 					}
                                 }
         
-    
-    
-    
-        
-         /****************************************** End Driver    ************************************************/
+
         
         
     
-     /****************************************** Start Route    ************************************************/
+     /***************************** Start Route    ***********************************/
           
-         public function routepage()
+        public function routepage()
         {
-        $data['menu'] = $this->load_model->menu();
-        $data['base_url'] = base_url();
-        $data['userInfo'] = $this->userInfo;
-        $data['route']=$this->Defination_Model->viewroute();
-	$data['page']='Route/list';
-        $this->load->view('Template/main',$data);
-         
+          $data['menu'] = $this->load_model->menu();
+          $data['base_url'] = base_url();
+          $data['userInfo'] = $this->userInfo;
+          $data['route']=$this->Defination_Model->viewroute();
+  	      $data['page']='Route/list';
+          $this->load->view('Template/main',$data);           
         }
         
-          public function saveroute()
+        public function saveroute()
         {
+
+          // var_dump ($this->input->post());
+          // die();
        
            if($this->input->post())
             {
-              
-                
+                             
                 $field=$this->input->post();
                 $data=array(
-                     'source'=>$field['source'],
-                     'destination'=>$field['dest'],
-                    'km'=>$field['km'],
-                    'description'=>$field['remarks'],
+                    'source'=>$field['source'],
+                    'destination'=>$field['destination'],
+                    'product'=>$field['product'],
+                    'freight'=>$field['freight'],
+                    'fromdate'=>$field['from'],
+                    'todate'=>$field['to'],
+                    'type'=>$field['type'],
                     'createdAt'=>date("Y-m-d h:i:sa"),
                     'createdBy'=>1,
                     'modifiedAt'=>date("Y-m-d h:i:sa"),
@@ -1738,77 +1738,80 @@ public function printhelper($p="")
                 $done=$this->Defination_Model->insert('routedefination',$data);
                 if($done)
                 {
-                    $this->session->set_flashdata('msg','Record has been Added Successfully');
-                    redirect('Defination/addroute');
+                  $this->session->set_flashdata('msg','Record has been Added Successfully');
+                    redirect('Defination/routepage');
                 }
-        }
+          }
          
         }
         
-        
-        
+      
         public function addroute()
-	{
-       $data['menu'] = $this->load_model->menu();
+        {
+
+        $data['locations'] = $this->db->select('id,name')->get('locationtype')->result_array();
+        $data['products'] = $this->db->select('id,heading')->get('product')->result_array();
+        $data['productype'] = $this->db->select('id,name')->get('producttype')->result_array();
+        $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
-	$data['page']='Route/add';
+        $data['page']='Route/add';
         $this->load->view('Template/main',$data);
-           
-	}
-        
-          public function editroute()
+
+        }
+
+        public function editroute()
         {
-            $data['menu'] = $this->load_model->menu();
+        $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
-          $id=$this->uri->segment(3);
-          $data['edit']=$this->db->where('id',$id)->get('routedefination')->row();
-          $data['page']='Route/edit';
-          $this->load->view('Template/main',$data);
-          
+        $id=$this->uri->segment(3);
+        $data['edit']=$this->db->where('id',$id)->get('routedefination')->row();
+        $data['page']='Route/edit';
+        $this->load->view('Template/main',$data);
+
         }
-        
-          public function updateroute()
+
+        public function updateroute()
         {
-            if($this->input->post())
-		{
-                 $field=$this->input->post();
-               
-              $data=array(
-                    'source'=>$field['source'],
-                     'destination'=>$field['dest'],
-                    'km'=>$field['km'],
-                    'description'=>$field['remarks'],
-                    'createdAt'=>date("Y-m-d h:i:sa"),
-                    'createdBy'=>1,
-                    'modifiedAt'=>date("Y-m-d h:i:sa"),
-                    'modifiedBy'=>1
-                    
-                );
-               
-                    $done=$this->db->where('id',$field['id'])->update('routedefination',$data);
-                    if($done)
-                       {
-                       $this->session->set_flashdata('msg', 'Record is  Updated');
-                       redirect('Defination/routepage');
-                       }
-                
-                }  
-          
-        }
-        
-              public function deleteroute()
-    {
-            $id=$this->uri->segment(3);
-            $done=$this->db->where('id',$id)->update('routedefination',array('is_deleted'=>1));
+        if($this->input->post())
+        {
+         $field=$this->input->post();
+
+        $data=array(
+            'source'=>$field['source'],
+             'destination'=>$field['dest'],
+            'km'=>$field['km'],
+            'description'=>$field['remarks'],
+            'createdAt'=>date("Y-m-d h:i:sa"),
+            'createdBy'=>1,
+            'modifiedAt'=>date("Y-m-d h:i:sa"),
+            'modifiedBy'=>1
+            
+        );
+
+            $done=$this->db->where('id',$field['id'])->update('routedefination',$data);
             if($done)
-                {
-          $this->session->set_flashdata('msg', 'Record is Deleted!');
-           redirect('Defination/routepage');
+               {
+               $this->session->set_flashdata('msg', 'Record is  Updated');
+               redirect('Defination/routepage');
                }
-                       
-    }  
+
+        }  
+
+        }
+
+        public function deleteroute()
+        {
+        $id=$this->uri->segment(3);
+        $done=$this->db->where('id',$id)->update('routedefination',array('is_deleted'=>1));
+        if($done)
+        {
+        $this->session->set_flashdata('msg', 'Record is Deleted!');
+        redirect('Defination/routepage');
+        }
+               
+        }  
          /****************************************** End Route    ************************************************/
    
 
@@ -2052,37 +2055,48 @@ public function delete_expense($id)
            
   }
         
-        public function savelocationtype()
+  public function savelocationtype()
   {
+      $url=$_SERVER['HTTP_REFERER'];
+      $link = base_url()."Defination/addlocationtypetype";
        $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
-        if($this->input->post()){
+
+        if($url == $link){
             $data=$this->input->post();
             $field=array(
                  'name'=>$data['name'],
-				 'address'=>$data['address'],
-				 'latitude'=>$data['latitude'],
-				 'longitude'=>$data['longitude'],
                  'remarks'=>$data['remarks']
                 );
-                $done=$this->Defination_Model->insert('locationtype',$field);
+            }else{
+
+            $data=$this->input->post();
+            $field=array(
+                 'name'=>$data['location']
+                );
+            }
+            $done=$this->Defination_Model->insert('locationtype',$field);
                      if($done)
                        {
                        $this->session->set_flashdata('msg', 'Record is  Added');
-                       redirect('Defination/view_locationtype');
+                            
+                           if($url==$link)
+                           redirect('Defination/view_locationtype');
+                              else 
+                           redirect($url);
                        }
                
-        }
-  $data['page']='locationtype/add';
-        $this->load->view('Template/main',$data);
+      
+         
+         
            
   }
         
         
         
         
-          public function view_locationtype()
+  public function view_locationtype()
   {
        $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
@@ -2093,7 +2107,7 @@ public function delete_expense($id)
   }
         
         
-         public function eyelocation()
+    public function eyelocation()
         {
           $data['menu'] = $this->load_model->menu();
           $data['base_url'] = base_url();
@@ -2158,8 +2172,21 @@ public function delete_expense($id)
                }
                        
     }          
+         
+
+  public function get_all_location()
+     {
+       $products = $this->db->select('id,name')->get('locationtype')->result_array();
+        
+        foreach ($products as $value) {
+            
+            echo '<option value="'. $value["id"] . '" >' . $value["name"] . '</option>';
                             
-                                
+        }
+
+         
+     }     
+          
                                 
                                 
 /****************************************** End Location Type     ************************************************/

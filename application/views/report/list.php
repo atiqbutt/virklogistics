@@ -24,6 +24,9 @@ box-shadow:none !important;
 #list{
    width: 100%;
 }
+td,th{
+  border: 1px solid grey !important;
+}
 
 .content-wrapper{
 
@@ -286,12 +289,15 @@ box-shadow:none !important;
                         </div>
                         <!-- col-md-6 -->
 
+<<<<<<< HEAD
                         <div class="row">
                           <div class="col-md-6 col-md-offset-6">
                             <input class="btn btn-success" type="submit" name="register" value="submit" />
                           </div>
                         </div>
 
+=======
+>>>>>>> 94da1d00358198a78d7af181ab38a05d93ee01a6
                     </div>
                     <!-- col-md-12 -->  
             </div>
@@ -311,8 +317,8 @@ box-shadow:none !important;
   <!-- /.box-header -->
   <div class="box-body"  id="list">
  
-<table class="table table-bordered" >
-  <thead>
+<table class="table table-bordered" style="width:2100px;border:2px solid grey" >
+  <thead style="background-color:#0292e0;color:white;border:1px solid grey">
     <tr>
       <th>#</th>
       <th>Type</th>
@@ -321,7 +327,7 @@ box-shadow:none !important;
        <th>Filling Date</th>
       <th>Gravity</th>
        <th>Carriage</th>
-      <th>Holding Tax</th>
+      <th>W.H.T</th>
        <th>Temperature</th>
       <th>Freight rate</th>
        <th>Quantity</th>
@@ -338,13 +344,23 @@ box-shadow:none !important;
       <th>Name</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody >
     <?php
       $i=1;foreach ($data as $value)  { 
+        if($i%2==1){
                             ?>
 
+<<<<<<< HEAD
     <tr class="odd gradeX">
       <td><?php echo $i++;?></td>
+=======
+    <tr class="odd gradeX" style="background-color:#ffffff;border:1px solid black">
+<?php
+}else{?>
+    <tr class="odd gradeX" style="background-color:#f4f4f4">
+      <?php }?>
+      <td><?php echo $i?></td>
+>>>>>>> 94da1d00358198a78d7af181ab38a05d93ee01a6
       <td><?php echo $value['type']?></td>
       <td><?php echo $value['productname']?></td>
       <td><?php echo $value['meter_reading']?></td>
@@ -370,6 +386,7 @@ box-shadow:none !important;
 
     </tr>
     <?php
+    $i +=1;
   }
   ?>
    
@@ -387,7 +404,7 @@ box-shadow:none !important;
         </div>
         <!-- /.col-lg-12 -->
     </div>
-            
+            </section>
 
 <script type="text/javascript">
 $(document).on('change','#producttype',function(){
@@ -401,8 +418,16 @@ var prod=$('#producttype').val();
 });
 </script>
 
+<<<<<<< HEAD
 </div>
 </section>
 
 
 
+=======
+
+
+
+</script>
+
+>>>>>>> 94da1d00358198a78d7af181ab38a05d93ee01a6

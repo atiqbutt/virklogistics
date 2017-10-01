@@ -17,6 +17,7 @@ class Defination extends CI_Controller {
 
 
     /*********************************** Helper    ***********************************/
+
  
    public function image_upload_by()
     {

@@ -11,7 +11,7 @@
             <!-- /.box-header -->
             <div class="box-body">
              <div class="col-md-12">
-                   <form class="form-horizontal" id="shippingForm" action="<?php echo base_url()?>Defination/" method="post" enctype="multipart/form-data">
+                   <form class="form-horizontal" id="form" action="<?php echo base_url()?>Report/" method="post" enctype="multipart/form-data">
                         
 
                     <div class="col-md-6">
@@ -152,7 +152,7 @@
                         <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-9">
-                          <input class="btn btn-success" type="submit" name="register" value="submit" />
+                          <input class="btn btn-success" type="submit" onsubmit="return validateForm(this)" name="register" value="submit" />
                           
                         </div>
                       </div>
@@ -441,4 +441,55 @@ var prod=$('#producttype').val();
 })
 });
 
+
+function validateForm(form) {
+ 
+ var isValid=false;
+ jq("form").eq(0).find(':text').each(function() {
+  if(this.value!=undefined && this.value!= "")
+  {
+   isValid=true;
+   return false;
+  }
+ });
+ 
+ jq("form").eq(0).find(':selected').each(function() {
+  if(this.value!=undefined && this.value!= "")
+  {
+   isValid=true;
+   return false;
+  }
+ });
+ 
+ if(!isValid){
+  alert("Kindly provide some search criteria");
+  return false;
+ }
+ 
+ var _fDate =undefined;
+ var _tDate = undefined;
+ 
+ if(form.startDate!=undefined)
+ {
+  _fDate = form.startDate.value;
+ }
+ if(form.endDate!=undefined)
+ {
+  _tDate = form.endDate.value;
+ }
+ 
+ var startlbl = "Start Date";
+ var endlbl = "End Date";
+
+ isValid= isValidDateRange(_fDate,_tDate,startlbl,endlbl,serverDate);
+ 
+ if(isValid)
+ {
+  isValid = validateFormChar(form);
+ }
+ 
+ return isValid;
+}
 </script>
+
+

@@ -62,7 +62,7 @@ td,th{
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Product Type
                         </label>
                         <div class="col-md-8 col-sm-6 col-xs-12">
-                        <select class="form-control" name="producttype" id="producttype">
+                        <select class="form-control" name="productid" id="producttype">
                            <option value="">Select Product Type</option>
                           <?php
                           foreach ($protype as $value) {
@@ -118,14 +118,20 @@ td,th{
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Vehicle
                         </label>
                         <div class="col-md-8 col-sm-6 col-xs-12">            
-                        <select class="form-control" name="vehicle">
+                        <select class="form-control" name="vechileid">
                         <option value="">Select Vehicle</option>
                          <?php
                           foreach ($vehicle as $value) {
+                            if($vechileid==$value['id']){
+                              ?>
+                                <option value="<?php echo $value['id']?>" selected="selected"><?php echo $value['heading']?></option>
+                              <?php
+                            }else{
+                            
                             ?>
                             <option value="<?php echo $value['id']?>"><?php echo $value['heading']?></option>
                           <?php
-                        }
+                        }}
                           ?>
                         </select>
                         </div>

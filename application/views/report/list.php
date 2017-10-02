@@ -81,7 +81,7 @@ td,th{
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Agent
                         </label>
                         <div class="col-md-8 col-sm-6 col-xs-12">                            
-                        <select class="form-control sel" name="agent">
+                        <select class="form-control sel" name="">
                         <option value="">Select Agent</option>
                          <?php
                           foreach ($agent as $value) {
@@ -141,7 +141,7 @@ td,th{
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Source 
                         </label>
                         <div class="col-md-8 col-sm-6 col-xs-12">
-                          <select class="form-control sel" name="source">
+                          <select class="form-control sel" name="sourceid">
                         <option value="">Select Source</option>
                         <?php
                           foreach ($source as $value) {
@@ -158,7 +158,7 @@ td,th{
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date From 
                         </label>
                         <div class="col-md-8 col-sm-6 col-xs-12">
-                          <input class="form-control" type="date" style="border-radius:5px !important;border:1px solid grey !important" name="datefrom"/>
+                          <input class="form-control" type="date" style="border-radius:5px !important;border:1px solid grey !important" name=""/>
                          </div>
                       </div>
 
@@ -199,7 +199,7 @@ td,th{
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Contractor
                         </label>
                         <div class="col-md-9 col-sm-6 col-xs-12">                              
-                        <select class="form-control sel" name="conname">
+                        <select class="form-control sel" name="">
                         <option value="">Select Contractor</option>
                          <?php
                           foreach ($contratctor as $value) {
@@ -217,7 +217,7 @@ td,th{
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Helper 
                         </label>
                         <div class="col-md-9 col-sm-6 col-xs-12">                                                    
-                        <select class="form-control sel" name="helper">
+                        <select class="form-control sel" name="">
                         <option value="">Select Helper</option>
                          <?php
                           foreach ($helper as $value) {
@@ -235,7 +235,7 @@ td,th{
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Vehicle Type
                         </label>
                         <div class="col-md-9 col-sm-6 col-xs-12">
-                        <select class="form-control sel" name="vehicletype">
+                        <select class="form-control sel" name="">
                         <option value="">Select Vehicle Type</option>
                         <?php
                           foreach ($vehicletype as $value) {
@@ -252,7 +252,7 @@ td,th{
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Destination 
                         </label>
                         <div class="col-md-9 col-sm-6 col-xs-12">
-                          <select class="form-control sel" name="destination">
+                          <select class="form-control sel" name="destinationid">
                         <option value="">Select Destination</option>
                          <?php
                           foreach ($source as $value) {
@@ -271,7 +271,7 @@ td,th{
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date To
                         </label>
                         <div class="col-md-9 col-sm-6 col-xs-12">
-                        <input class="form-control" style="border-radius:5px !important;border:1px solid grey !important" type="date"  name="dateto"/>
+                        <input class="form-control" style="border-radius:5px !important;border:1px solid grey !important" type="date"  name=""/>
                       </div>
                       </div>
 

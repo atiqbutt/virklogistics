@@ -92,6 +92,13 @@ class Report extends CI_Controller {
               echo $return;
 
     }
+
+    public function reportsp()
+    {
+
+    
+    }
+
 }
 
        

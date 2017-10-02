@@ -175,8 +175,8 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                 </div>
                 
             <div class="col-md-3">
-       		<img src="<?php echo base_url()?>assets/profile.jpg" width="150px" class="img-thumbnail kat"><br><br>
-       		<input type="file" name="image" id="uploaded_image">
+       		<img src="<?php echo base_url()?>assets/profile.jpg" width="150px" class="img-thumbnail"><br><br>
+       		<input type="file" name="image">
        		</div>
                   </form>
             </div>
@@ -190,35 +190,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
     </section>
  
  
- <script type="text/javascript">
-
-$(document).ready(function(){
-    $('#uploaded_image').on('change', function(){ //on file input change
-        if (window.File && window.FileReader && window.FileList && window.Blob) //check File API supported browser
-        {
-             //clear html of output element
-            var data = $(this)[0].files; //this file data
-            
-            $.each(data, function(index, file){ //loop though each file
-                if(/(\.|\/)(gif|jpe?g|png)$/i.test(file.type)){ //check supported file type
-                    var fRead = new FileReader(); //new filereader
-                    fRead.onload = (function(file){ //trigger function on successful read
-                    return function(e) {
-                        var img = $('<img class="img-thumbnail"  width="150px"/>').addClass('thumb').attr('src', e.target.result); //create image element 
-                        $('.kat').attr("src",e.target.result); //append image to output element
-                    };
-                    })(file);
-                    fRead.readAsDataURL(file); //URL representing the file's data.
-                }
-            });
-            
-        }else{
-            alert("Your browser doesn't support File!"); //if File API is absent
-        }
-    });
-});
-
-</script>
+ 
  
  
 

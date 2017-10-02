@@ -12,6 +12,9 @@
             <div class="box-body">
              <div class="col-md-12">
                    <form class="form-horizontal" id="form" action="<?php echo base_url()?>Report/" method="post" enctype="multipart/form-data">
+
+             <div class="col-md-5">
+                   <form class="form-horizontal" id="shippingForm"  onsubmit="return validateForm(this)" action="<?php echo base_url()?>Defination/" method="post" enctype="multipart/form-data">
                         
 
                     <div class="col-md-6">
@@ -405,7 +408,7 @@
       <td><?php echo $value['source']?></td>
       <td><?php echo $value['destination']?></td>
       <td><?php echo $value['comname']?></td>
-      <td><?php echo $value['conname']?></td>
+      <td class="actions"><?php echo $value['conname']?></td>
 
 
     </tr>
@@ -440,6 +443,43 @@ var prod=$('#producttype').val();
 
 })
 });
+<<<<<<< HEAD
+=======
+
+function validateForm(form) {
+  
+  var isValid=false;
+  $("form").eq(0).find(':text').each(function() {
+    if(this.value!=undefined && this.value!= "")
+    {
+      isValid=true;
+      return false;
+    }
+  });
+  
+  $("form").eq(0).find(':selected').each(function() {
+    if(this.value!=undefined && this.value!= "")
+    {
+      isValid=true;
+      return false;
+    }
+  });
+  
+  if(!isValid){
+    alert("Kindly provide some search criteria");
+    return false;
+  }
+}
+
+
+</script>
+
+</div>
+</section>
+
+
+
+>>>>>>> 29de3db26ffad5d0c1e481b863f5d4648f28cec2
 
 
 function validateForm(form) {

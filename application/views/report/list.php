@@ -44,7 +44,7 @@ td,th{
             <div class="box-body">
 
              <div class="col-md-5">
-                   <form class="form-horizontal" id="shippingForm" action="<?php echo base_url()?>Defination/" method="post" enctype="multipart/form-data">
+                   <form class="form-horizontal" id="shippingForm"  onsubmit="return validateForm(this)" action="<?php echo base_url()?>Defination/" method="post" enctype="multipart/form-data">
                         
                     <div class="col-md-6">
 
@@ -375,7 +375,7 @@ td,th{
       <td><?php echo $value['source']?></td>
       <td><?php echo $value['destination']?></td>
       <td><?php echo $value['comname']?></td>
-      <td><?php echo $value['conname']?></td>
+      <td class="actions"><?php echo $value['conname']?></td>
 
 
     </tr>
@@ -410,6 +410,33 @@ var prod=$('#producttype').val();
 
 })
 });
+
+function validateForm(form) {
+  
+  var isValid=false;
+  $("form").eq(0).find(':text').each(function() {
+    if(this.value!=undefined && this.value!= "")
+    {
+      isValid=true;
+      return false;
+    }
+  });
+  
+  $("form").eq(0).find(':selected').each(function() {
+    if(this.value!=undefined && this.value!= "")
+    {
+      isValid=true;
+      return false;
+    }
+  });
+  
+  if(!isValid){
+    alert("Kindly provide some search criteria");
+    return false;
+  }
+}
+
+
 </script>
 
 </div>

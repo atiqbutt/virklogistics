@@ -49,7 +49,6 @@ class Report extends CI_Controller {
         $data['contratctor']=$this->Dropdown_model->getAllRecords('contractorinformation',array('is_deleted'=>0));
         $data['source']=$this->Dropdown_model->getAllRecords('locationtype',array('is_delete'=>0));
         $data['data']=$this->Report_model->get_all_trip();
-        
         $data['page']='report/list';
         $this->load->view('Template/main',$data);
 
@@ -71,6 +70,13 @@ class Report extends CI_Controller {
               echo $return;
 
     }
+
+    public function reportsp()
+    {
+
+    
+    }
+
 }
 
        

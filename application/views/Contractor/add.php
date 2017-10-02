@@ -132,7 +132,7 @@ $(document).ready(function() {
                 </div>
                 
                  <div class="col-md-3">
-       		<img src="<?php echo base_url()?>assets/profile.jpg" width="150px" class="img-thumbnail kat"><br><br>
+       		<img src="<?php echo base_url()?>assets/profile.jpg" style="width:150px;height:150px;" class="img-thumbnail kat"><br><br>
        		<input type="file" name="image" id="uploaded_image">
           
        		</div>
@@ -163,7 +163,7 @@ $(document).ready(function(){
                     var fRead = new FileReader(); //new filereader
                     fRead.onload = (function(file){ //trigger function on successful read
                     return function(e) {
-                        var img = $('<img class="img-thumbnail"  width="150px"/>').addClass('thumb').attr('src', e.target.result); //create image element 
+                        var img = $('<img class="img-thumbnail"  style="width:150px"/>').addClass('thumb').attr('src', e.target.result); //create image element 
                         $('.kat').attr("src",e.target.result); //append image to output element
                     };
                     })(file);

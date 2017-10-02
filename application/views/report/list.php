@@ -1,29 +1,58 @@
- <section class="content">
-      <div class="row">
-           <div class="col-md-12">
-          
-        <div class="col-xs-12">
-          <div class="box col-sm-12">
-            <div class="box-header" >
-           
-              <h3 class="box-title">Filter</h3>
-            </div>
-            <!-- /.box-header -->
+
+<style>
+.content{
+  background-color: #ecf0f5;
+}
+
+body    {
+  overflow-x:scroll;
+  background-color: #ecf0f5 !important;
+}
+
+.wrapper{
+
+  overflow-x:unset !important;
+  overflow-y:unset !important;
+}
+
+.box{
+border:none !important;
+box-shadow:none !important;
+}
+
+
+#list{
+   width: 100%;
+}
+td,th{
+  border: 1px solid grey !important;
+}
+
+.content-wrapper{
+
+  background-color: #fff !important;
+}
+
+</style>
+
+
+ <section class="content" >
+   <div class="row">
+        <div class="col-lg-12" style="width: auto !important">
+          <div class="box col-sm-3" >
+
             <div class="box-body">
-             <div class="col-md-12">
-                   <form class="form-horizontal" id="form" action="<?php echo base_url()?>Report/" method="post" enctype="multipart/form-data">
 
              <div class="col-md-5">
-                   <form class="form-horizontal" id="shippingForm"  onsubmit="return validateForm(this)" action="<?php echo base_url()?>Defination/" method="post" enctype="multipart/form-data">
+                   <form class="form-horizontal" id="shippingForm" action="<?php echo base_url()?>Report/reportsp" method="post" enctype="multipart/form-data">
                         
-
                     <div class="col-md-6">
 
                         <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Trip id
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                             <input class="form-control" type="text" placeholder="trip" name="tripid"/>
+                        <div class="col-md-8 col-sm-6 col-xs-12">
+                             <input class="form-control" type="text" placeholder="trip" name="id"/>
                        </div>
                       </div>
 
@@ -32,8 +61,8 @@
                        <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Product Type
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        <select class="form-control" name="producttype" id="producttype">
+                        <div class="col-md-8 col-sm-6 col-xs-12">
+                        <select class="form-control sel" name="productname" id="type">
                            <option value="">Select Product Type</option>
                           <?php
                           foreach ($protype as $value) {
@@ -48,15 +77,11 @@
                       </div>
 
 
-                
-
-
-
                        <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Agent
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">                            
-                        <select class="form-control" name="agent">
+                        <div class="col-md-8 col-sm-6 col-xs-12">                            
+                        <select class="form-control sel" name="agent">
                         <option value="">Select Agent</option>
                          <?php
                           foreach ($agent as $value) {
@@ -73,8 +98,8 @@
                     <div class="item form-group">
                       <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Driver
                       </label>
-                      <div class="col-md-6 col-sm-6 col-xs-12">
-                      <select class="form-control" name="driver">
+                      <div class="col-md-8 col-sm-6 col-xs-12">
+                      <select class="form-control sel" name="driverid">
                       <option value="">Select Driver</option>
                        <?php
                           foreach ($driver as $value) {
@@ -89,11 +114,11 @@
 
 
 
-                         <div class="item form-group">
+                      <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Vehicle
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">            
-                        <select class="form-control" name="vehicle">
+                        <div class="col-md-8 col-sm-6 col-xs-12">            
+                        <select class="form-control sel" name="vechileid">
                         <option value="">Select Vehicle</option>
                          <?php
                           foreach ($vehicle as $value) {
@@ -106,15 +131,11 @@
                         </div>
                       </div>
 
-
-                        
-
-
                        <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Source 
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select class="form-control" name="source">
+                        <div class="col-md-8 col-sm-6 col-xs-12">
+                          <select class="form-control sel" name="sourceid">
                         <option value="">Select Source</option>
                         <?php
                           foreach ($source as $value) {
@@ -126,85 +147,53 @@
                         </select>
                          </div>
                       </div>
-                    
-
-
-                     
 
                        <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date From 
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input class="form-control" type="date" name="datefrom"/>
-                         </div>
-                      </div>
-                    
-                     <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"> 
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                         </div>
-                      </div>
-                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"> 
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-md-8 col-sm-6 col-xs-12">
+                          <input class="form-control" type="date" style="border-radius:5px !important;border:1px solid grey !important" name="datefrom"/>
                          </div>
                       </div>
 
-                        <div class="ln_solid"></div>
-                      <div class="form-group">
-                        <div class="col-md-6 col-md-offset-9">
-                          <input class="btn btn-success" type="submit" onsubmit="return validateForm(this)" name="register" value="submit" />
-                          
-                        </div>
-                      </div>
 
 
-                    
-                    
-                    
+                </div>
+               <!-- col-md-6 -->
 
+                  <div class="col-md-6">
 
-                    </div>
-
-                       <div class="col-md-6">
-
-
-
-               <div class="item form-group">
+                  <div class="item form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Trip Type
                     </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                   <select class="form-control" name="triptype">
-                      <option value="">Select Trip Type</option>
-                       <option value="Self-Short">Self-Short</option>
+                    <div class="col-md-9 col-sm-6 col-xs-12">
+                      <select class="form-control sel" name="triptype">
+                        <option value="">Select Trip Type</option>
+                        <option value="Self-Short">Self-Short</option>
                         <option value="Self-Long">Self-Long</option>
-                         <option value="General-Short">General-Short</option>
-                          <option value="General-Long">General-Long</option>
+                        <option value="General-Short">General-Short</option>
+                        <option value="General-Long">General-Long</option>
                       </select>
                       </div>
-                      </div>
+                    </div>
 
-                        
-
-                        <div class="item form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Product
-                    </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                   <select class="form-control" name="product" id="product">
-                      <option value="">Select Product</option>
-                        
-                      </select>
-                      </div>
-                      </div>
+                   <div class="item form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Product
+                      </label>
+                      <div class="col-md-9 col-sm-6 col-xs-12">
+                     <select class="form-control" name="productid" id="productid" style="border-radius:5px !important;border:1px solid grey !important height:5px">
+                        <option value="">Select Product</option>
+                          
+                        </select>
+                        </div>
+                    </div>
 
                     
                    <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Contractor
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">                              
-                        <select class="form-control" name="contractor">
+                        <div class="col-md-9 col-sm-6 col-xs-12">                              
+                        <select class="form-control sel" name="contractor_id">
                         <option value="">Select Contractor</option>
                          <?php
                           foreach ($contratctor as $value) {
@@ -221,8 +210,8 @@
                        <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Helper 
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">                                                    
-                        <select class="form-control" name="helper">
+                        <div class="col-md-9 col-sm-6 col-xs-12">                                                    
+                        <select class="form-control sel" name="helper">
                         <option value="">Select Helper</option>
                          <?php
                           foreach ($helper as $value) {
@@ -236,11 +225,11 @@
                       </div>
 
 
-                        <div class="item form-group">
+                      <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Vehicle Type
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        <select class="form-control" name="vehicletype">
+                        <div class="col-md-9 col-sm-6 col-xs-12">
+                        <select class="form-control sel" name="vehicletype">
                         <option value="">Select Vehicle Type</option>
                         <?php
                           foreach ($vehicletype as $value) {
@@ -251,15 +240,13 @@
                           ?>
                         </select>
                       </div>
-                      </div>
-
-
+                    </div>
 
                        <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Destination 
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select class="form-control" name="destination">
+                        <div class="col-md-9 col-sm-6 col-xs-12">
+                          <select class="form-control sel" name="destinationid">
                         <option value="">Select Destination</option>
                          <?php
                           foreach ($source as $value) {
@@ -277,87 +264,59 @@
                        <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date To
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input class="form-control" type="date"  name="dateto"/>
+                        <div class="col-md-9 col-sm-6 col-xs-12">
+                        <input class="form-control" style="border-radius:5px !important;border:1px solid grey !important" type="date"  name="dateto"/>
                       </div>
                       </div>
-
-
-                     
-
 
                         <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Company
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">                                                    
-                      <select class="form-control" name="company">
-                      <option value="">Select Company</option>
-                       <?php
-                          foreach ($comp as $value) {
-                            ?>
-                            <option value="<?php echo $value['id']?>"><?php echo $value['name']?></option>
-                          <?php
-                        }
-                          ?>
-                       </select>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Company
+                             </label>
+                            <div class="col-md-9 col-sm-6 col-xs-12">         
+                              <select class="form-control sel" name="companyid">
+                              <option value="">Select Company</option>
+                               <?php
+                                  foreach ($comp as $value) {
+                                    ?>
+                                    <option value="<?php echo $value['id']?>"><?php echo $value['name']?></option>
+                                  <?php
+                                }
+                                  ?>
+                               </select>
+                            </div>
+                          </div>
+
                         </div>
-                      </div>
+                        <!-- col-md-6 -->
 
+                        <div class="row">
+                          <div class="col-md-6 col-md-offset-5">
+                            <input class="btn btn-success" type="submit" name="register" value="submit" />
+                          </div>
+                        </div>
 
-
-
-                       
-
-
-
-                    
-
-                       
 
                     </div>
-
-
-                     
-                   
-                      </form>
-                </div>
-                
-                
-                
-                </div>
-
-
-
-
-
-
-
+                    <!-- col-md-12 -->  
             </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </section>
+            <!-- body -->
+         
+       </form>
+    
+  
+  
+  <div class="row">
 
+  <div class="box-header">
+    <h3 class="box-title"><b>List </b></h3>
+  </div>
+   
 
- <section class="content">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="box col-sm-3" >
-            
-            <div class="box-header">
-              <h3 class="box-title"><b>List </b></h3>
-            </div>
-             
+  <!-- /.box-header -->
+  <div class="box-body"  id="list">
  
-            <!-- /.box-header -->
-            <div class="box-body">
- 
-<table class="table table-bordered" style="width:1500px !important;">
-  <thead>
+<table class="table table-bordered" style="width:2100px;border:2px solid grey" >
+  <thead style="background-color:#0292e0;color:white;border:1px solid grey">
     <tr>
       <th>#</th>
       <th>Type</th>
@@ -366,7 +325,7 @@
        <th>Filling Date</th>
       <th>Gravity</th>
        <th>Carriage</th>
-      <th>Holding Tax</th>
+      <th>W.H.T</th>
        <th>Temperature</th>
       <th>Freight rate</th>
        <th>Quantity</th>
@@ -383,12 +342,19 @@
       <th>Name</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody >
     <?php
       $i=1;foreach ($data as $value)  { 
+        if($i%2==1){
                             ?>
 
-    <tr class="odd gradeX">
+   
+    <tr class="odd gradeX" style="background-color:#ffffff;border:1px solid black">
+<?php
+}else{?>
+    <tr class="odd gradeX" style="background-color:#f4f4f4">
+      <?php }?>
+      <td><?php echo $i?></td>
       <td><?php echo $value['type']?></td>
       <td><?php echo $value['productname']?></td>
       <td><?php echo $value['meter_reading']?></td>
@@ -402,17 +368,19 @@
       <td><?php echo $value['servicecharges']?></td>
       <td><?php echo $value['remaining_commission']?></td>
       <td><?php echo $value['status']?></td>
-     <td><?php echo $value['vehicleregisterationno']?></td>
+      <td><?php echo $value['vehicleregisterationno']?></td>
       <td><?php echo $value['vehiclename']?></td>
       <td><?php echo $value['vehicleengineno']?></td>
+      <th><?php echo $value['vehicleengineno']?></th>
       <td><?php echo $value['source']?></td>
       <td><?php echo $value['destination']?></td>
       <td><?php echo $value['comname']?></td>
-      <td class="actions"><?php echo $value['conname']?></td>
+      <td><?php echo $value['conname']?></td>
 
 
     </tr>
     <?php
+    $i +=1;
   }
   ?>
    
@@ -430,106 +398,37 @@
         </div>
         <!-- /.col-lg-12 -->
     </div>
-            
- </section>
+            </section>
 
 <script type="text/javascript">
-$(document).on('change','#producttype',function(){
-var prod=$('#producttype').val();
+$(document).on('change','#type',function(){
+var prod=$('#type').val();
  $.post("<?php echo base_url(); ?>Report/changeproduct/"+prod,{},function(data){
-                        $("#product").html('');
-                        $("#product").html(data);
+      $("#productid").html('');
+      $("#productid").html(data);
 
 
 })
 });
-<<<<<<< HEAD
-=======
-
-function validateForm(form) {
-  
-  var isValid=false;
-  $("form").eq(0).find(':text').each(function() {
-    if(this.value!=undefined && this.value!= "")
-    {
-      isValid=true;
-      return false;
-    }
-  });
-  
-  $("form").eq(0).find(':selected').each(function() {
-    if(this.value!=undefined && this.value!= "")
-    {
-      isValid=true;
-      return false;
-    }
-  });
-  
-  if(!isValid){
-    alert("Kindly provide some search criteria");
-    return false;
-  }
-}
-
-
 </script>
-
 </div>
 </section>
 
 
 
->>>>>>> 29de3db26ffad5d0c1e481b863f5d4648f28cec2
+<script>
+$('.sel').select2({
+      // tags: "true",
+    // minimumResultsForSearch: 20 ,
+    selectOnClose: true,
+   placeholder: "Select an option",
+    allowClear: true
 
+});
 
-function validateForm(form) {
- 
- var isValid=false;
- jq("form").eq(0).find(':text').each(function() {
-  if(this.value!=undefined && this.value!= "")
-  {
-   isValid=true;
-   return false;
-  }
- });
- 
- jq("form").eq(0).find(':selected').each(function() {
-  if(this.value!=undefined && this.value!= "")
-  {
-   isValid=true;
-   return false;
-  }
- });
- 
- if(!isValid){
-  alert("Kindly provide some search criteria");
-  return false;
- }
- 
- var _fDate =undefined;
- var _tDate = undefined;
- 
- if(form.startDate!=undefined)
- {
-  _fDate = form.startDate.value;
- }
- if(form.endDate!=undefined)
- {
-  _tDate = form.endDate.value;
- }
- 
- var startlbl = "Start Date";
- var endlbl = "End Date";
-
- isValid= isValidDateRange(_fDate,_tDate,startlbl,endlbl,serverDate);
- 
- if(isValid)
- {
-  isValid = validateFormChar(form);
- }
- 
- return isValid;
-}
 </script>
 
+
+
+</script>
 

@@ -40,6 +40,11 @@
   <!-- jQuery 3.1.1 -->
   <script src="<?php echo base_url()?>assets/plugins/jQuery/jquery-3.1.1.min.js"></script>
   
+   <link rel="stylesheet" href="<?php echo base_url()?>assets/select/css/select2.min.css">
+    <link rel="stylesheet" href="<?php echo base_url()?>assets/select/css/select2.css">
+    <script src="<?php echo base_url()?>assets/select/js/select2.min.js"></script>
+
+  
   <!-- Multi select -->
   <link href="<?php echo base_url()?>assets/plugins/multiselect/jquery.multiselect.css" rel="stylesheet" type="text/css">
   

@@ -62,7 +62,7 @@ td,th{
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Product Type
                         </label>
                         <div class="col-md-8 col-sm-6 col-xs-12">
-                        <select class="form-control" name="productid" id="producttype">
+                        <select class="form-control sel" name="productid" id="producttype">
                            <option value="">Select Product Type</option>
                           <?php
                           foreach ($protype as $value) {
@@ -407,11 +407,11 @@ td,th{
             </section>
 
 <script type="text/javascript">
-$(document).on('change','#type',function(){
-var prod=$('#type').val();
+$(document).on('change','#producttype',function(){
+var prod=$('#producttype').val();
  $.post("<?php echo base_url(); ?>Report/changeproduct/"+prod,{},function(data){
-      $("#product").html('');
-      $("#product").html(data);
+      $("#productid").html('');
+      $("#productid").html(data);
 
 
 })

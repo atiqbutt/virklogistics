@@ -44,7 +44,7 @@ td,th{
             <div class="box-body">
 
              <div class="col-md-5">
-                   <form class="form-horizontal" id="shippingForm" action="<?php echo base_url()?>Report/reportsp" method="post" enctype="multipart/form-data">
+                   <form class="form-horizontal" id="shippingForm"  onsubmit="return validateForm(this)" action="<?php echo base_url()?>Report/trip_reports" method="post" enctype="multipart/form-data">
                         
                     <div class="col-md-6">
 
@@ -166,8 +166,8 @@ td,th{
                   <div class="item form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Trip Type
                     </label>
-                    <div class="col-md-9 col-sm-6 col-xs-12">
-                      <select class="form-control sel" name="triptype">
+                    <div class="col-md-8 col-sm-6 col-xs-12">
+                      <select class="form-control" name="triptype">
                         <option value="">Select Trip Type</option>
                         <option value="Self-Short">Self-Short</option>
                         <option value="Self-Long">Self-Long</option>
@@ -404,12 +404,39 @@ td,th{
 $(document).on('change','#type',function(){
 var prod=$('#type').val();
  $.post("<?php echo base_url(); ?>Report/changeproduct/"+prod,{},function(data){
-      $("#productid").html('');
-      $("#productid").html(data);
+      $("#product").html('');
+      $("#product").html(data);
 
 
 })
 });
+
+function validateForm(form) {
+  
+  var isValid=false;
+  $("form").eq(0).find(':text').each(function() {
+    if(this.value!=undefined && this.value!= "")
+    {
+      isValid=true;
+      return false;
+    }
+  });
+  
+  $("form").eq(0).find(':selected').each(function() {
+    if(this.value!=undefined && this.value!= "")
+    {
+      isValid=true;
+      return false;
+    }
+  });
+  
+  if(!isValid){
+    alert("Kindly provide some search criteria");
+    return false;
+  }
+}
+
+
 </script>
 </div>
 </section>
@@ -431,4 +458,5 @@ $('.sel').select2({
 
 
 </script>
+
 

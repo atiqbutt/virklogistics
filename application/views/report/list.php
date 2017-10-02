@@ -156,6 +156,13 @@ td,th{
                          </div>
                       </div>
 
+
+
+                </div>
+               <!-- col-md-6 -->
+
+                  <div class="col-md-6">
+
                   <div class="item form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Trip Type
                     </label>
@@ -169,13 +176,6 @@ td,th{
                       </select>
                       </div>
                     </div>
-
-
-
-                </div>
-               <!-- col-md-6 -->
-
-                  <div class="col-md-6">
 
                    <div class="item form-group">
                       <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Product
@@ -290,7 +290,7 @@ td,th{
                         <!-- col-md-6 -->
 
                         <div class="row">
-                          <div class="col-md-6 col-md-offset-6">
+                          <div class="col-md-6 col-md-offset-5">
                             <input class="btn btn-success" type="submit" name="register" value="submit" />
                           </div>
                         </div>

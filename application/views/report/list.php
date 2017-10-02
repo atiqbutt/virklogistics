@@ -44,7 +44,7 @@ td,th{
             <div class="box-body">
 
              <div class="col-md-5">
-                   <form class="form-horizontal" id="shippingForm"  onsubmit="return validateForm(this)" action="<?php echo base_url()?>Defination/" method="post" enctype="multipart/form-data">
+                   <form class="form-horizontal" id="shippingForm"  onsubmit="return validateForm(this)" action="<?php echo base_url()?>Report/trip_reports" method="post" enctype="multipart/form-data">
                         
                     <div class="col-md-6">
 

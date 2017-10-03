@@ -188,7 +188,6 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                 <div class="panel panel-default">
                   <div class="panel-heading">Add Product</div>
                   <div class="panel-body">
-
                     <div class="col-md-12 col-sm-6 col-xs-12" style="padding-bottom: 10px">
                         <input id="product_name" type="address" name="name" class="form-control" placeholder="Enter Product">
            
@@ -199,8 +198,8 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <select id="product_type" class="form-control client" name="product" selected="selected" required>
                              
                        <option value="">Product Type</option>       
-                         <?php  if(!empty($productype)){
-                            foreach ($productype as $prod){   ?>       
+                         <?php  if(!empty($producttype)){
+                            foreach ($producttype as $prod){   ?>       
                             <option value="<?php  echo  $prod["id"];?>"   >
                             <?php  echo  $prod["name"];?>
                             </option>               
@@ -211,9 +210,11 @@ if ((event.keyCode < 48 || event.keyCode > 57))
 
                       <div class="col-md-12">
                         <button id="add_product" class="btn btn-success">Add</button>
+                         
+
+                       
                       </div>
              
-
                   </div>
                 </div>
 
@@ -307,29 +308,25 @@ $("#zzz").click(function(){
 
 
 <script>
-
+$(document).ready(function(){
     $('#add_product').click(function(event) {      
-      
+       event.preventDefault();
       var productName =  $("#product_name").val();
       var productType =  $("#product_type").val();
-
-     // alert(productName);
-      
+       
       $.ajax({
         type: 'POST',
-        url: '<?php echo base_url(); ?>Product/save_product',
+        url: '<?php echo base_url(); ?>Defination/save_product',
         data : { productName: productName, productType:productType},
         success:  function (response) {  
-               //alert(response);
         }
       }).done(function(){
 
         $.ajax({
           type: 'POST',
-          url: '<?php echo base_url() ?>Product/get_all_products',
+          url: '<?php echo base_url() ?>Defination/get_all_products',
           success:  function (response) {  
-
-             $("#product").html("");
+            $("#product").html("");
             $("#product").html(response);
                  
           }
@@ -338,15 +335,14 @@ $("#zzz").click(function(){
       });
    
     });
-
+});
 
     $('#add_source').click(function(event) {      
       
       var location =  $("#location").val();
-      
       $.ajax({
         type: 'POST',
-        url: '<?php echo base_url(); ?>Defination/savelocationtype',
+        url: '<?php echo base_url(); ?>Defination/savesour',
         data : { location: location},
         success:  function (response) {  
                //alert(response);

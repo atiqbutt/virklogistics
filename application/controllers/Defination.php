@@ -10,6 +10,7 @@ class Defination extends CI_Controller {
         $this->load->model('user_model');
         $this->load->library('form_validation');
         $this->load->model('load_model');
+         $this->load->model('Generic_model');
         $this->user_model->check_login("admin");
         $this->userInfo = $this->user_model->userInfo("first_name,last_name");
         
@@ -1728,7 +1729,7 @@ public function printhelper($p="")
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
         $data['route']=$this->Defination_Model->viewroute();
-	$data['page']='Route/list';
+	      $data['page']='Route/list';
         $this->load->view('Template/main',$data);
          
         }
@@ -1769,7 +1770,9 @@ public function printhelper($p="")
        $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
-	$data['page']='Route/add';
+	       $data["producttype"]=$this->Generic_model->getAllRecords("producttype",array("is_deleted"=>0)
+        ,"id","DESC");
+        $data['page']='Route/add';
         $this->load->view('Template/main',$data);
            
 	}
@@ -1824,8 +1827,78 @@ public function printhelper($p="")
           $this->session->set_flashdata('msg', 'Record is Deleted!');
            redirect('Defination/routepage');
                }
-                       
+
     }  
+
+//ajax response
+
+    public function save_product()
+    {
+
+       $field=array(
+        'heading'=> $this->input->post('productName'),
+        'product_type'=> $this->input->post('productType')
+        );
+       
+        $done=$this->Defination_Model->insert('product',$field); 
+        if($done)
+        {
+          return true;
+        }
+        else{
+          return false;
+        }
+      }
+  
+
+//ajax response
+
+    public function get_all_products()
+    {
+      $data=$this->db->select()->from('product')->get()->result_array();
+      $return="";
+      foreach ($data as $key => $value) {
+      
+        $return.="<option value='".$value['id']."'>".$value['heading']."</option>";
+       
+            }
+      echo $return;
+
+    }
+
+
+//ajax response
+  public function savesour()
+  {
+    $data=array(
+    'name'=>$this->input->post('location')
+    );
+    $done=$this->Defination_Model->insert('locationtype',$data); 
+        if($done)
+        {
+          return true;
+        }
+        else{
+          return false;
+        }    
+
+  }
+
+  public function get_all_location()
+    {
+      $data=$this->db->select()->from('locationtype')->get()->result_array();
+      $return="";
+      foreach ($data as $key => $value) {
+      
+        $return.="<option value='".$value['id']."'>".$value['name']."</option>";
+       
+            }
+      echo $return;
+
+    }
+
+
+
          /****************************************** End Route    ************************************************/
    
 
@@ -2068,7 +2141,8 @@ public function delete_expense($id)
         $this->load->view('Template/main',$data);
            
   }
-        
+
+
         public function savelocationtype()
   {
        $data['menu'] = $this->load_model->menu();
@@ -2077,7 +2151,7 @@ public function delete_expense($id)
         if($this->input->post()){
             $data=$this->input->post();
             $field=array(
-                 'name'=>$data['name'],
+          'name'=>$data['name'],
 				 'address'=>$data['address'],
 				 'latitude'=>$data['latitude'],
 				 'longitude'=>$data['longitude'],

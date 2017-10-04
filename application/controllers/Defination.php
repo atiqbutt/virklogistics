@@ -1727,7 +1727,7 @@ public function printhelper($p="")
         $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
-        $data['route']=$this->Defination_Model->viewroute();
+        $data['route']=$this->Defination_Model->getroute();
 	      $data['page']='Route/list';
         $this->load->view('Template/main',$data);
          
@@ -1743,9 +1743,12 @@ public function printhelper($p="")
                 $field=$this->input->post();
                 $data=array(
                      'source'=>$field['source'],
-                     'destination'=>$field['dest'],
-                    'km'=>$field['km'],
-                    'description'=>$field['remarks'],
+                     'destination'=>$field['destination'],
+                     'product'=>$field['product'],
+                     'freight'=>$field['freight'],
+                     'fromdate'=>$field['from'],
+                     'todate'=>$field['to'],
+                     'type'=>$field['type'],
                     'createdAt'=>date("Y-m-d h:i:sa"),
                     'createdBy'=>1,
                     'modifiedAt'=>date("Y-m-d h:i:sa"),
@@ -1771,6 +1774,9 @@ public function printhelper($p="")
         $data['userInfo'] = $this->userInfo;
 	       $data["producttype"]=$this->Generic_model->getAllRecords("producttype",array("is_deleted"=>0)
         ,"id","DESC");
+          $data["product"]=$this->Generic_model->getAllRecords("product",array("is_deleted"=>0)
+        ,"id","DESC");
+         $data['location']=$this->db->where('is_delete',0)->get('locationtype')->result_array();
         $data['page']='Route/add';
         $this->load->view('Template/main',$data);
            
@@ -1778,13 +1784,15 @@ public function printhelper($p="")
         
           public function editroute()
         {
-            $data['menu'] = $this->load_model->menu();
+        $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
-          $id=$this->uri->segment(3);
-          $data['edit']=$this->db->where('id',$id)->get('routedefination')->row();
-          $data['page']='Route/edit';
-          $this->load->view('Template/main',$data);
+        $id=$this->uri->segment(3);
+        $data['edit']=$this->Defination_Model->editroute($id);
+        $data['loc']=$this->Defination_Model->loctype();     
+        $data['product']=$this->Defination_Model->product();
+        $data['page']='Route/edit';
+        $this->load->view('Template/main',$data);
           
         }
         
@@ -1794,11 +1802,14 @@ public function printhelper($p="")
 		{
                  $field=$this->input->post();
                
-              $data=array(
-                    'source'=>$field['source'],
-                     'destination'=>$field['dest'],
-                    'km'=>$field['km'],
-                    'description'=>$field['remarks'],
+                    $data=array(
+                     'source'=>$field['source'],
+                     'destination'=>$field['destination'],
+                     'product'=>$field['product'],
+                     'freight'=>$field['freight'],
+                     'fromdate'=>$field['from'],
+                     'todate'=>$field['to'],
+                     'type'=>$field['type'],
                     'createdAt'=>date("Y-m-d h:i:sa"),
                     'createdBy'=>1,
                     'modifiedAt'=>date("Y-m-d h:i:sa"),
@@ -2177,7 +2188,7 @@ public function delete_expense($id)
        $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
-  $data['page']='locationtype/view';
+        $data['page']='locationtype/view';
         $this->load->view('Template/main',$data);
            
   }

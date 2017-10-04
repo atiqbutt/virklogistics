@@ -43,10 +43,10 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <select id="loc" class="form-control client" name="source" selected="selected" required>
                              
                        <option value="">Select Options</option>       
-                         <?php  if(!empty($locations)){
-                            foreach ($locations as $loc){   ?>       
-                            <option value="<?php  echo  $loc["id"];?>"   >
-                            <?php  echo  $loc["name"];?>
+                         <?php  if(!empty($location)){
+                            foreach ($location as $prod){   ?>       
+                            <option value="<?php  echo  $prod["id"];?>"   >
+                            <?php  echo  $prod["name"];?>
                             </option>               
                          <?php }} ?>
                         </select> 
@@ -61,10 +61,10 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <select class="form-control client" name="destination" selected="selected" required>
                              
                        <option value="">Select Options</option>       
-                         <?php  if(!empty($locations)){
-                            foreach ($locations as $loc){   ?>       
-                            <option value="<?php  echo  $loc["id"];?>"   >
-                            <?php  echo  $loc["name"];?>
+                          <?php  if(!empty($location)){
+                            foreach ($location as $prod){   ?>       
+                            <option value="<?php  echo  $prod["id"];?>"   >
+                            <?php  echo  $prod["name"];?>
                             </option>               
                          <?php }} ?>
                         </select> 
@@ -80,8 +80,8 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <select id="product" class="form-control client" name="product" selected="selected" required>
                              
                        <option value="">Select Options</option>       
-                         <?php  if(!empty($products)){
-                            foreach ($products as $prod){   ?>       
+                         <?php  if(!empty($product)){
+                            foreach ($product as $prod){   ?>       
                             <option value="<?php  echo  $prod["id"];?>"   >
                             <?php  echo  $prod["heading"];?>
                             </option>               
@@ -94,7 +94,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Freight <span class="required">*</span>
                         </label>
                         <div class="col-md-9 col-sm-6 col-xs-12">
-                              <input type="address" name="freight" class="form-control"  placeholder="Destination" value="<?php echo set_value('dest');?>">
+                              <input type="address" name="freight" class="form-control"  placeholder="Freight" value="<?php echo set_value('dest');?>">
                
                         </div>
                       </div>

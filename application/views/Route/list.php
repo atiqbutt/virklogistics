@@ -26,13 +26,16 @@
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                <th>Sr#</th>
-                                     <th>Source</th>
-                                    <th>Destination</th>
-                                     <th>Action</th>
-                                   
-                                   
-                                   
+                    <th>Sr#</th>
+                    <th>Source</th>
+                    <th>Destination</th>
+                    <th>Product</th>
+                    <th>Freight</th>
+                    <th>From Date</th>
+                    <th>To Date</th>
+                    <th>Type</th>
+                    <th>Action</th>
+                            
                 </tr>
                 </thead>
                 <?php
@@ -42,9 +45,14 @@
                                 <tr class="odd gradeX">
                                <td><?php echo $i++;?></td>
                 
-                                <td><?php echo $val["source"];?></td>
+                                <td><?php echo $val["loc"];?></td>
                                 <td><?php echo $val["destination"];?></td>
-                               
+                                <td><?php echo $val["name"];?></td>
+                                 <td><?php echo $val["freight"];?></td>
+                                  <td><?php echo $val["fromdate"];?></td>
+                                   
+                                   <td><?php echo $val["todate"];?></td>
+                                   <td><?php echo $val["type"];?></td>
                                 <td> 
                                     <a href="<?php echo base_url();?>Defination/editroute/<?php echo $val['id']; ?>"><i class="fa fa-edit"></i>
                                     

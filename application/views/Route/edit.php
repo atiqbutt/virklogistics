@@ -124,7 +124,7 @@
                               <select id="loc" class="form-control client" name="type" selected="selected" required>
                              
                        <option value="">Select Options</option>       
-                                       <option value="">Select Options</option>             
+                                     
                             <option value="Primary">Primary</option>
                             <option value="secondary">Secondary</option>  
                             <option value="secondarylocal">Secondary Local</option>
@@ -133,7 +133,7 @@
                    </div>
                       </div>
                    
-                
+                <input type="hidden" name="id" value="<?php echo $edit->id?>">
                     
                     
                      

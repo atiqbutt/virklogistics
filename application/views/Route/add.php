@@ -42,7 +42,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                       <div class="col-md-9 col-sm-6 col-xs-12">                 
                         <select id="loc" class="form-control client" name="source" selected="selected" required>
                              
-                       <option value="">Select Options</option>       
+                       <option value="">Select Source</option>       
                          <?php  if(!empty($location)){
                             foreach ($location as $prod){   ?>       
                             <option value="<?php  echo  $prod["id"];?>"   >
@@ -58,9 +58,9 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Destination <span class="required">*</span>
                         </label> 
                       <div class="col-md-9 col-sm-6 col-xs-12">                 
-                        <select class="form-control client" name="destination" selected="selected" required>
+                        <select class="form-control client" name="destination" id="dest" selected="selected" required>
                              
-                       <option value="">Select Options</option>       
+                       <option value="">Select Destination</option>       
                           <?php  if(!empty($location)){
                             foreach ($location as $prod){   ?>       
                             <option value="<?php  echo  $prod["id"];?>"   >
@@ -79,7 +79,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                       <div class="col-md-9 col-sm-6 col-xs-12">                 
                         <select id="product" class="form-control client" name="product" selected="selected" required>
                              
-                       <option value="">Select Options</option>       
+                       <option value="">Select Product</option>       
                          <?php  if(!empty($product)){
                             foreach ($product as $prod){   ?>       
                             <option value="<?php  echo  $prod["id"];?>"   >
@@ -325,9 +325,11 @@ $(document).ready(function(){
         $.ajax({
           type: 'POST',
           url: '<?php echo base_url() ?>Defination/get_all_products',
-          success:  function (response) {  
+          success:  function (response) { 
+           var pre = '<option value="">Select Product</opiton>'; 
+
             $("#product").html("");
-            $("#product").html(response);
+            $("#product").html(pre+response);
                  
           }
 
@@ -353,9 +355,36 @@ $(document).ready(function(){
           type: 'POST',
           url: '<?php echo base_url() ?>Defination/get_all_location',
           success:  function (response) {  
-
+             var pre = '<option value="">Select Source</opiton>';
              $("#loc").html("");
-            $("#loc").html(response);
+            $("#loc").html(pre+response);
+                 
+          }
+
+        });
+      });
+   
+    });
+
+    $('#add_source').click(function(event) {      
+      
+      var location =  $("#location").val();
+      $.ajax({
+        type: 'POST',
+        url: '<?php echo base_url(); ?>Defination/savesour',
+        data : { location: location},
+        success:  function (response) {  
+               //alert(response);
+        }
+      }).done(function(){
+
+        $.ajax({
+          type: 'POST',
+          url: '<?php echo base_url() ?>Defination/get_all_location',
+          success:  function (response) {  
+             var pre = '<option value="">Select Destination</opiton>';
+             $("#des").html("");
+            $("#des").html(pre+response);
                  
           }
 

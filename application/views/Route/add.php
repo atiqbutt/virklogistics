@@ -128,7 +128,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <select class="form-control client" name="type" selected="selected" required>
                              
                        <option value="">Select Options</option>             
-                            <option value="Primary">Primary</option>
+                            <option value="primary">Primary</option>
                             <option value="secondary">Secondary</option>  
                             <option value="secondarylocal">Secondary Local</option>   
                                          

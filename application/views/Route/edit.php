@@ -124,11 +124,9 @@
                               <select id="loc" class="form-control client" name="type" selected="selected" required>
                              
                        <option value="">Select Options</option>       
-                                     
-                            <option value="Primary">Primary</option>
-                            <option value="secondary">Secondary</option>  
-                            <option value="secondarylocal">Secondary Local</option>
-          
+                          <option value="primary"<?php if ($edit->type == 'Primary') echo 'selected="selected"'; ?>>Primary</option>
+                          <option value="secondary"<?php if ($edit->type == 'secondary') echo 'selected="selected"'; ?>>Secondary</option>
+                          <option value="secondarylocal"<?php if ($edit->type == 'secondarylocal') echo 'selected="selected"'; ?>>Secondary Local</option>
                         </select> 
                    </div>
                       </div>
@@ -136,7 +134,7 @@
                 <input type="hidden" name="id" value="<?php echo $edit->id?>">
                     
                     
-                     
+                      <!-- <input type="submit" class="form-control pull-right btn btn-success" name="Datesubmit"> !-->
                     
                      
                       <div class="ln_solid"></div>

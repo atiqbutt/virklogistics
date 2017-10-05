@@ -356,44 +356,21 @@ $(document).ready(function(){
           url: '<?php echo base_url() ?>Defination/get_all_location',
           success:  function (response) {  
              var pre = '<option value="">Select Source</opiton>';
+             var pr = '<option value="">Select Destination</opiton>';
+              $("#dest").html("");
+             $("#dest").html(pr+response);
              $("#loc").html("");
             $("#loc").html(pre+response);
                  
           }
 
         });
+
       });
    
     });
 
-    $('#add_source').click(function(event) {      
-      
-      var location =  $("#location").val();
-      $.ajax({
-        type: 'POST',
-        url: '<?php echo base_url(); ?>Defination/savesour',
-        data : { location: location},
-        success:  function (response) {  
-               //alert(response);
-        }
-      }).done(function(){
-
-        $.ajax({
-          type: 'POST',
-          url: '<?php echo base_url() ?>Defination/get_all_location',
-          success:  function (response) {  
-             var pre = '<option value="">Select Destination</opiton>';
-             $("#des").html("");
-            $("#des").html(pre+response);
-                 
-          }
-
-        });
-      });
-   
-    });
-
-
+  
 
 </script>
 

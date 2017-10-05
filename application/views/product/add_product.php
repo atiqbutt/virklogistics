@@ -44,7 +44,7 @@ if ((event.keyCode < 45 || event.keyCode > 57))
                   <label for="inputEmail3" class="col-sm-2 control-label">Product Type:</label>
 
                   <div class="col-sm-6">
-                   <select class="form-control" name="product_type" selected="selected" required>
+                   <select class="form-control sel" name="product_type" selected="selected" required>
                     <option  value="">Select Product Type</option> 
                             <?php        
                      if(!empty($producttype)){
@@ -65,7 +65,7 @@ if ((event.keyCode < 45 || event.keyCode > 57))
                   <label for="inputEmail3" class="col-sm-2 control-label">Units:</label>
 
                   <div class="col-sm-6">
-             <select class="form-control" name="unit_id" selected="selected" required>
+             <select class="form-control sel" name="unit_id" selected="selected" required>
               <option value="">Select Units   </option>    
                     <?php        
                      if(!empty($unit)){
@@ -168,3 +168,18 @@ $(document).ready(function() {
 
 
 </script>
+
+
+<script>
+$('.sel').select2({
+      // tags: "true",
+    // minimumResultsForSearch: 20 ,
+    selectOnClose: true,
+   placeholder: "Select an option",
+    allowClear: true
+
+});
+
+</script>
+
+

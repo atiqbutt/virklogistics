@@ -275,7 +275,7 @@ $this->db->join('product_histroy','product_histroy.p_id = product.id');
 
         public function add_product()
         {
-            $data['menu'] = $this->load_model->menu();
+        $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo; 
         $data["productid"]=$this->generic_model->getSpecificRecord("product", array()); 

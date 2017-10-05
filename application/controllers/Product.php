@@ -95,25 +95,16 @@ class product extends CI_Controller {
         public function pricehistory()
         {
             $data['menu'] = $this->load_model->menu();
-        $data['base_url'] = base_url();
-        $data['userInfo'] = $this->userInfo; 
-        //$data["product"]=$this->generic_model->getProductPriceHistory();
-        
-           
-
-$this->db->select('product.heading, product_histroy.price,product_histroy.date,product_histroy.startdate');
-$this->db->from('product');
-$this->db->join('product_histroy','product_histroy.p_id = product.id');
+            $data['base_url'] = base_url();
+            $data['userInfo'] = $this->userInfo; 
+            $this->db->select('product.heading, product_histroy.price,product_histroy.date,product_histroy.startdate');
+            $this->db->from('product');
+            $this->db->join('product_histroy','product_histroy.p_id = product.id');
             $this->db->where('product.is_deleted',0);
             $query=$this->db->get();
             $data['product']=$query->result_array();
-
-			
-		
-			
-        $data['page']='product/history';
-        $this->load->view('Template/main',$data);
-        //}
+            $data['page']='product/history';
+            $this->load->view('Template/main',$data);
         }
  public function pricehistorysearch()
         {

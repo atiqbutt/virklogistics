@@ -100,7 +100,8 @@
                     <div class="row">
                       <div class="col-lg-3"><span style="color:red; font-size:20px; font-weight:bold;"></span><label>chamber 1</label>
                       </div><div class="col-lg-7"><input value="Chamber" text-align:center; readonly class="form-control" style="width:95%; float:left;margin-top:10px;" type="text" name="numberofchamber" required="required"/></div><div class="col-lg-3"><label>capacity 1</label>
-                    </div><div class="col-lg-7"><input class="form-control fc"  id="fc" style="width:95%; float:left;margin-top:10px;" type="text" name="capacityofchamber[]" required="required"/></div></div>
+                    </div><div class="col-lg-7"><input class="form-control fc"  id="fc" style="width:95%; float:left;margin-top:10px;" type="text" name="capacityofchamber[]" onkeypress="return ValidateNumberOnly()"
+ required="required"/></div></div>
                     
                   
 

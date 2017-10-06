@@ -20,7 +20,6 @@ border:none !important;
 box-shadow:none !important;
 }
 
-
 #list{
    width: 100%;
 }
@@ -32,6 +31,11 @@ td,th{
 .content-wrapper{
 
   background-color: #fff !important;
+}
+
+.triplist th{
+
+  background: #fff !important;
 }
 
 </style>
@@ -57,7 +61,6 @@ td,th{
                        </div>
                       </div>
 
-                     
 
                        <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Product Type
@@ -198,8 +201,13 @@ td,th{
                   <div class="item form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Trip Type
                     </label>
+<<<<<<< HEAD
                     <div class="col-md-8 col-sm-6 col-xs-12">
                       <select class="form-control" name="type">
+=======
+                    <div class="col-md-9 col-sm-6 col-xs-12">
+                      <select class="form-control" name="triptype">
+>>>>>>> ccde15bb994f87e9b85b6b68704ad65898e68269
                         <option value="">Select Trip Type</option>
                         <option value="Self-Short">Self-Short</option>
                         <option value="Self-Long">Self-Long</option>
@@ -363,6 +371,7 @@ td,th{
    
 
   <!-- /.box-header -->
+<<<<<<< HEAD
   <div class="col-md-3 form-group">
     <button class="btn-primary col-md-6" id="btnExport">
             Export as Excel
@@ -412,6 +421,59 @@ td,th{
       <th>Engine</th> -->
 
       
+=======
+  <div class="box-body "  id="list">
+ <a href="#" id="btn-print" class="btn btn-default pull-right actions" data-toggle="tooltip" title="Print" data-placement="bottom" style="margin-top:10px"><i class="fa fa-print"></i></a>
+<table class="table table-bordered p" style="width:2100px;border:2px solid grey" >
+  <thead style="background-color:#0292e0;color:white;border:1px solid grey">
+    <tr class="triplist l">
+      <th> <input type="checkbox" value="col1"   name="col1" checked></th>
+      <th> <input type="checkbox" value="col2"   name="col2"  checked></th>
+      <th> <input type="checkbox" value="col3"   name="col3"  checked></th>
+      <th> <input type="checkbox" value="col4"   name="col4"  checked></th>
+      <th> <input type="checkbox" value="col5"   name="col5"  checked></th>
+      <th> <input type="checkbox" value="col6"   name="col6"  checked></th>
+      <th> <input type="checkbox" value="col7"   name="col7"  checked></th>
+      <th> <input type="checkbox" value="col8"   name="col8"  checked></th>
+      <th> <input type="checkbox" value="col9"   name="col9"  checked></th>
+      <th> <input type="checkbox" value="col10"  name="col10"  checked></th>
+      <th> <input type="checkbox" value="col11"  name="col11"  checked></th>
+      <th> <input type="checkbox" value="col12"  name="col12"  checked></th>
+      <th> <input type="checkbox" value="col13"  name="col13"  checked></th>
+      <th> <input type="checkbox" value="col14"  name="col14"  checked></th>
+      <th> <input type="checkbox" value="col15"  name="col15"  checked></th>
+      <th> <input type="checkbox" value="col16"  name="col16"  checked></th>
+      <th> <input type="checkbox" value="col17"  name="col17"  checked></th>
+      <th> <input type="checkbox" value="col18"  name="col18"  checked></th>
+      <th> <input type="checkbox" value="col19"  name="col19"  checked></th>
+      <th> <input type="checkbox" value="col20"  name="col20"  checked></th>
+      <th> <input type="checkbox" value="col21"  name="col21"  checked></th>
+      <th> <input type="checkbox" value="col22"  name="col22"  checked></th>
+    </tr>
+    <tr>
+      <th class="col1">#</th>
+      <th class="col2">Type</th>
+      <th class="col3">P Name</th>
+      <th class="col4">Meter Reading</th>
+       <th class="col5">Filling Date</th>
+      <th class="col6">Gravity</th>
+       <th class="col7">Carriage</th>
+      <th class="col8">W.H.T</th>
+       <th class="col9">Temperature</th>
+      <th class="col10">Freight rate</th>
+       <th class="col11">Quantity</th>
+      <th class="col12">Charges</th>
+       <th class="col13">Remaining Commission</th>
+      <th class="col14">Status</th>
+       <th class="col15">Vehicle Reg</th>
+      <th class="col16">Chasis No</th>
+       <th class="col17">Vehicle Name</th>
+      <th class="col18">Engine</th>
+       <th class="col19">Source</th>
+      <th class="col20">Destination</th>
+       <th class="col21">Company</th>
+      <th class="col122">Name</th>
+>>>>>>> ccde15bb994f87e9b85b6b68704ad65898e68269
     </tr>
   </thead>
   <tbody >
@@ -426,6 +488,7 @@ td,th{
 }else{?>
     <tr class="odd gradeX" style="background-color:#f4f4f4">
       <?php }?>
+
       <td><?php echo $i?></td>
       <td><?php echo $value['type']?></td>
       <td><?php echo $value['productname']?></td>
@@ -453,11 +516,9 @@ td,th{
 
 
     </tr>
-    <?php
-    $i +=1;
-  }
-  ?>
-   
+  
+    <?php $i +=1;  }  ?>
+
   </tbody>
 </table> 
 
@@ -476,6 +537,7 @@ td,th{
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
 <script type="text/javascript" src="../assets/dist/js/pdf.js" ></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.2/jspdf.plugin.autotable.js"></script>
+<script src="<?php echo base_url() ?>assets/dist/js/jQuery.print.js"></script>
 <script type="text/javascript">
 $(document).on('change','#producttype',function(){
 var prod=$('#producttype').val();
@@ -487,6 +549,23 @@ var prod=$('#producttype').val();
 })
 });
 
+
+$("#btn-print").click(function () {
+           
+             var tripData = [];
+            $.each($("input:checkbox:not(:checked)"), function(){            
+              dat="."+$(this).val();
+              $(dat).hide();
+            });
+            $(".l").hide();
+            $(".p").print();
+            $.each($("input:checkbox:not(:checked)"), function(){            
+              dat="."+$(this).val();
+              $(dat).show();
+            });
+            $(".l").show();
+            $(".col1").show();
+        });
 function validateForm(form) {
   
   var isValid=false;
@@ -701,7 +780,6 @@ doc.save('sample-file.pdf');
 </script>
 </div>
 </section>
-
 
 
 

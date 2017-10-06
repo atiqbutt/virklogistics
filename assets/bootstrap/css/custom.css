@@ -1,6 +1,10 @@
- .content{
+/* .content{
   height: 100vh !important;
- } 
+ } */
+
+/* body {
+  overflow-y: scroll;
+}*/
       
 .navigation {
   padding: 0;

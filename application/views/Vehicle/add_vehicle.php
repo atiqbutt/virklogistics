@@ -80,7 +80,7 @@
                      
                    <div class="form-group">
                             <div class="col-sm-9 col-sm-offset-3"> 
-                               <input class="btn btn-success" type="submit" name="register" value="submit" />
+                               <input class="btn btn-success" type="submit" name="register" value="Add" />
                                <input id="resetbtn" class="btn btn-warning" type="reset" name="reset" value="Reset" />
                                <a class="btn btn-danger" href="<?php echo base_url() ?>Vehicle/show_vehicle">Cancel</a>
                            </div>
@@ -305,7 +305,7 @@ $(document).ready(function() {
                    trigger:'change keyup blur',
                     validators: {
                         notEmpty: {
-                            message: 'The Chassis no Field  is required and cannot be empty'
+                            message: 'The capacity of chamber is required and cannot be empty'
                         }
                     }
                 }

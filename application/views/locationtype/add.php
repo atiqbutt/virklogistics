@@ -80,68 +80,6 @@ jQuery(document).ready(function(){
       }
     </script>
                 
-<!--                     <table class="table table-striped table-bordered table-responsive">
-                      
-                        		<tr>
-                            <td class="wi150">
-                                Address: 
-                            </td>
-                            <td class="wi200" >
-                                
-                      <form class="form-inline" id="address"   onsubmit="showAddress(this.address.value);
-                                          ga('send', 'event', 'form', 'submit', 'address');return false">
-                                                      
-                          <input onkeyup="test11()" id="input2" type="textbox"  name="address" placeholder="Pakistan"   style="width:50%;" Class="username_input"   required class="form-control" /> 
-                      <input type="submit"  onclick="test()" value="Search" class="btn btn-primary btn-mondeca" />           
-                      
-                      </td>
-                        </tr>
-                        
-				
-                            
-         <div >
-               
-             
-      </div>
-      </form>
-                                   
-                        </tr>
-                    </table>  
-<div style="display:flex;flex-wrap:wrap; margin-top: 2%; margin-bottom: 2%;">
-    <div align="center" id="map" style="min-width:100%; min-height:300px; width:100%;"></div>
-    <div style="display: flex; flex-wrap:wrap; flex-direction:column;
-                
-              max-width: 100%; justify-content:flex-start; min-width:300px; width:100%; ">
-      
-    </div>
-  </div>
-  
-<div class="col-lg-12">
-    <div class="col-lg-12" style="padding-left:0px; margin-left:0px;">
-   <form  enctype="multipart/form-data" method="post" action="<?php echo base_url()?>Defination/savelocationtype" >
-      <table class="table" style=" display:none;   margin-left:-5%; margin-top:5%; width:50%;">
-            <tbody>
-              <tr><th>Latitude</th><th>Longitude</th></tr>
-              <tr>
-                  <td style="font-size: 48px; color: green;" id="lat"><label id="lat" name="a1"/>&nbsp;</td>
-                  <td style="font-size: 48px; color: green;" id="lng"><label  id="lng" name="a2"/>&nbsp;</td>
-                  
-                  <th> <textarea   name="latitude" id="lat" style="height:27px;">
-                    
-                    </textarea></th>
-                    <th>
-                  <textarea name="longitude" id="lng"  style="height:27px;">
-                    
-                    </textarea>
-                  </th>
-                  </td>
-      </tbody>
-        </table>
-
-
-<input type="hidden" id="username_input2"  name="address"> -->
-
-<!--  reqired -->
 
 <div class="col-md-6">
  <form  enctype="multipart/form-data" method="post" action="<?php echo base_url()?>Defination/savelocationtype" >
@@ -161,7 +99,7 @@ jQuery(document).ready(function(){
  
           <div class="form-group">
             <div class="col-md-offset-3" style="padding-left: 20px">
-              <input class="btn btn-success" type="submit" name="register" value="submit" />
+              <input class="btn btn-success" type="submit" name="register" value="Add" />
               <input id="zzz" class="btn btn-warning" type="reset" name="reset" value="Reset" />
               <a type="submit" name="register" href='<?php echo base_url()?>Defination/view_locationtype'; class="btn btn-danger">Cancel</a>
 
@@ -170,41 +108,6 @@ jQuery(document).ready(function(){
         </form>
 </div>
 
-<!--  reqired -->
-         
-         <!-- <div class="ln_solid"></div>
-                      <div class="form-group col-lg-12">
-                        <div class="col-md-6 col-md-offset-3">
-                          <input class="btn btn-success" type="submit" name="register" value="submit" />
-                          <input id="zzz" class="btn btn-warning" type="reset" name="reset" value="Reset" />
-                          <a type="submit" name="register" href='<?php echo base_url()?>Defination/view_locationtype'; class="btn btn-danger">Cancel</a>
-            
-                        </div>
-                      </div>
-
-        </form>
-                    
-                    
-             
-                       <div id="weather"></div>
-                    
-            </div></div>
-                    
-
-                        
-                        
-                        
-                    </div>
-             -->
-          
-          
-          
-          
-          
-          
-          
-          
-          
           
          
           </div>

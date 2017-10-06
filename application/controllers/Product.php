@@ -247,6 +247,27 @@ $this->db->join('product_histroy','product_histroy.p_id = product.id');
         }
 
 
+public function eyelist_product($p='')
+{
+            $this->db->select('product.id,product.price,product.heading,product.description,product.status,unit.name as unitname,producttype.name as pname');
+            $this->db->from('product');
+
+            $this->db->join('producttype','producttype.id=product.product_type');
+            $this->db->join('unit','unit.id=product.unit_id');
+           
+            $this->db->where('product.is_deleted',0);
+            $this->db->where('product.id',$p);
+            $query=$this->db->get();
+            $data['view']=$query->row();
+            
+            // $data['view']=$this->db->where('id',$p)->get('contractorinformation
+            // ')->row();
+         $this->load->view('product/producttype_p',$data);
+
+}
+  
+
+
   //product details page bilal
      public function Product_eye($id)
         {

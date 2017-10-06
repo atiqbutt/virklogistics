@@ -124,7 +124,7 @@ $(document).ready(function() {
                            
                            
       <input type="file" name="doc" />
-                    <?php  
+               <!--      <?php  
 $do=explode('/', $edit->doc);
 
 if(count($do)>1)
@@ -136,7 +136,7 @@ else{
 $do=$do;
 }
 
-  ?>
+  ?> -->
                            
                         </div>
                       </div>

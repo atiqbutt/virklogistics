@@ -10,6 +10,7 @@ class Defination extends CI_Controller {
         $this->load->model('user_model');
         $this->load->library('form_validation');
         $this->load->model('load_model');
+         $this->load->model('Generic_model');
         $this->user_model->check_login("admin");
         $this->userInfo = $this->user_model->userInfo("first_name,last_name");
         
@@ -17,6 +18,7 @@ class Defination extends CI_Controller {
 
 
     /*********************************** Helper    ***********************************/
+
  
    public function image_upload_by()
     {
@@ -237,7 +239,6 @@ public function printhelper($p="")
                 $field=$this->input->post();
                 $data=array(
                     'name'=>$field['name'],
-                   
                      'number'=>implode(',',$field['phone']),
                     'address'=>$field['address'],
                      'religion'=>$field['religion'],
@@ -1726,8 +1727,8 @@ public function printhelper($p="")
         $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
-        $data['route']=$this->Defination_Model->viewroute();
-	$data['page']='Route/list';
+        $data['route']=$this->Defination_Model->getroute();
+	      $data['page']='Route/list';
         $this->load->view('Template/main',$data);
          
         }
@@ -1742,9 +1743,12 @@ public function printhelper($p="")
                 $field=$this->input->post();
                 $data=array(
                      'source'=>$field['source'],
-                     'destination'=>$field['dest'],
-                    'km'=>$field['km'],
-                    'description'=>$field['remarks'],
+                     'destination'=>$field['destination'],
+                     'product'=>$field['product'],
+                     'freight'=>$field['freight'],
+                     'fromdate'=>$field['from'],
+                     'todate'=>$field['to'],
+                     'type'=>$field['type'],
                     'createdAt'=>date("Y-m-d h:i:sa"),
                     'createdBy'=>1,
                     'modifiedAt'=>date("Y-m-d h:i:sa"),
@@ -1768,20 +1772,27 @@ public function printhelper($p="")
        $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
-	$data['page']='Route/add';
+	       $data["producttype"]=$this->Generic_model->getAllRecords("producttype",array("is_deleted"=>0)
+        ,"id","DESC");
+          $data["product"]=$this->Generic_model->getAllRecords("product",array("is_deleted"=>0)
+        ,"id","DESC");
+         $data['location']=$this->db->where('is_delete',0)->get('locationtype')->result_array();
+        $data['page']='Route/add';
         $this->load->view('Template/main',$data);
            
 	}
         
           public function editroute()
         {
-            $data['menu'] = $this->load_model->menu();
+        $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
-          $id=$this->uri->segment(3);
-          $data['edit']=$this->db->where('id',$id)->get('routedefination')->row();
-          $data['page']='Route/edit';
-          $this->load->view('Template/main',$data);
+        $id=$this->uri->segment(3);
+        $data['edit']=$this->Defination_Model->editroute($id);
+        $data['loc']=$this->Defination_Model->loctype();     
+        $data['product']=$this->Defination_Model->product();
+        $data['page']='Route/edit';
+        $this->load->view('Template/main',$data);
           
         }
         
@@ -1791,11 +1802,14 @@ public function printhelper($p="")
 		{
                  $field=$this->input->post();
                
-              $data=array(
-                    'source'=>$field['source'],
-                     'destination'=>$field['dest'],
-                    'km'=>$field['km'],
-                    'description'=>$field['remarks'],
+                    $data=array(
+                     'source'=>$field['source'],
+                     'destination'=>$field['destination'],
+                     'product'=>$field['product'],
+                     'freight'=>$field['freight'],
+                     'fromdate'=>$field['from'],
+                     'todate'=>$field['to'],
+                     'type'=>$field['type'],
                     'createdAt'=>date("Y-m-d h:i:sa"),
                     'createdBy'=>1,
                     'modifiedAt'=>date("Y-m-d h:i:sa"),
@@ -1823,8 +1837,78 @@ public function printhelper($p="")
           $this->session->set_flashdata('msg', 'Record is Deleted!');
            redirect('Defination/routepage');
                }
-                       
+
     }  
+
+//ajax response
+
+    public function save_product()
+    {
+
+       $field=array(
+        'heading'=> $this->input->post('productName'),
+        'product_type'=> $this->input->post('productType')
+        );
+       
+        $done=$this->Defination_Model->insert('product',$field); 
+        if($done)
+        {
+          return true;
+        }
+        else{
+          return false;
+        }
+      }
+  
+
+//ajax response
+
+    public function get_all_products()
+    {
+      $data=$this->db->select()->from('product')->get()->result_array();
+      $return="";
+      foreach ($data as $key => $value) {
+      
+        $return.="<option value='".$value['id']."'>".$value['heading']."</option>";
+       
+            }
+      echo $return;
+
+    }
+
+
+//ajax response
+  public function savesour()
+  {
+    $data=array(
+    'name'=>$this->input->post('location')
+    );
+    $done=$this->Defination_Model->insert('locationtype',$data); 
+        if($done)
+        {
+          return true;
+        }
+        else{
+          return false;
+        }    
+
+  }
+
+  public function get_all_location()
+    {
+      $data=$this->db->select()->from('locationtype')->get()->result_array();
+      $return="";
+      foreach ($data as $key => $value) {
+      
+        $return.="<option value='".$value['id']."'>".$value['name']."</option>";
+       
+            }
+      echo $return;
+
+    }
+
+
+
          /****************************************** End Route    ************************************************/
    
 
@@ -1930,7 +2014,7 @@ public function delete_expense($id)
        $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
-  $data['page']='expensetype/add';
+       $data['page']='expensetype/add';
         $this->load->view('Template/main',$data);
            
   }
@@ -1943,11 +2027,13 @@ public function delete_expense($id)
        $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
+    
         if($this->input->post()){
             $data=$this->input->post();
             $field=array(
                  'name'=>$data['name'],
-                 'remarks'=>$data['remarks']
+                 'remarks'=>$data['remarks'],
+                
                 );
                 $done=$this->Defination_Model->insert('expensetype',$field);
                      if($done)
@@ -2067,20 +2153,22 @@ public function delete_expense($id)
         $this->load->view('Template/main',$data);
            
   }
-        
+
+
         public function savelocationtype()
   {
        $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
+
         if($this->input->post()){
             $data=$this->input->post();
             $field=array(
-                 'name'=>$data['name'],
+          'name'=>$data['name'],
 				 'address'=>$data['address'],
 				 'latitude'=>$data['latitude'],
 				 'longitude'=>$data['longitude'],
-                 'remarks'=>$data['remarks']
+          'remarks'=>$data['remarks']
                 );
                 $done=$this->Defination_Model->insert('locationtype',$field);
                      if($done)
@@ -2090,7 +2178,7 @@ public function delete_expense($id)
                        }
                
         }
-  $data['page']='locationtype/add';
+        $data['page']='locationtype/add';
         $this->load->view('Template/main',$data);
            
   }
@@ -2103,7 +2191,7 @@ public function delete_expense($id)
        $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
-  $data['page']='locationtype/view';
+        $data['page']='locationtype/view';
         $this->load->view('Template/main',$data);
            
   }

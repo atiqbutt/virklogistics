@@ -35,9 +35,10 @@ class Report extends CI_Controller {
 
         public function trip_reports()
         {
+
         $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
-        $data['userInfo'] = $this->userInfo; 
+        $data['userInfo'] =$this->user_model->userInfo("first_name,last_name");
         $data['protype']=$this->Dropdown_model->getAllRecords('producttype',array('is_deleted'=>0));
         $data['product']=$this->Dropdown_model->getAllRecords('product',array('is_deleted'=>0));
         $data['agent']=$this->Dropdown_model->getAllRecords('agentinformation',array('is_deleted'=>0));
@@ -48,15 +49,35 @@ class Report extends CI_Controller {
         $data['vehicle']=$this->Dropdown_model->getAllRecords('vehicle',array('is_deleted'=>0));
         $data['contratctor']=$this->Dropdown_model->getAllRecords('contractorinformation',array('is_deleted'=>0));
         $data['source']=$this->Dropdown_model->getAllRecords('locationtype',array('is_delete'=>0));
+
+                    if($this->input->post()){
+
+                        $formdata=$this->input->post();
+                        $params=array();
+                        
+                        foreach ($formdata as $key => $value) {
+                            if($value!="" && $value!="submit"){
+                                $params[$key] =$value;
+                                $data[$key]=$value;
+                               
+                            }
+                        }
+                      //  var_dump($params); 
+                      $data['data']= $this->Report_model->getReportData($params);
+                        
+                    }
+                else{
         $data['data']=$this->Report_model->get_all_trip();
-        
+        }
         $data['page']='report/list';
+                        
         $this->load->view('Template/main',$data);
 
         }
 
         public function changeproduct($prod="")
         {
+
 
             $this->db->select()->from('product');
             $this->db->where('product_type',$prod);
@@ -71,6 +92,13 @@ class Report extends CI_Controller {
               echo $return;
 
     }
+
+    public function reportsp()
+    {
+
+    
+    }
+
 }
 
        

@@ -95,25 +95,16 @@ class product extends CI_Controller {
         public function pricehistory()
         {
             $data['menu'] = $this->load_model->menu();
-        $data['base_url'] = base_url();
-        $data['userInfo'] = $this->userInfo; 
-        //$data["product"]=$this->generic_model->getProductPriceHistory();
-        
-           
-
-$this->db->select('product.heading, product_histroy.price,product_histroy.date,product_histroy.startdate');
-$this->db->from('product');
-$this->db->join('product_histroy','product_histroy.p_id = product.id');
+            $data['base_url'] = base_url();
+            $data['userInfo'] = $this->userInfo; 
+            $this->db->select('product.heading, product_histroy.price,product_histroy.date,product_histroy.startdate');
+            $this->db->from('product');
+            $this->db->join('product_histroy','product_histroy.p_id = product.id');
             $this->db->where('product.is_deleted',0);
             $query=$this->db->get();
             $data['product']=$query->result_array();
-
-			
-		
-			
-        $data['page']='product/history';
-        $this->load->view('Template/main',$data);
-        //}
+            $data['page']='product/history';
+            $this->load->view('Template/main',$data);
         }
  public function pricehistorysearch()
         {
@@ -256,6 +247,27 @@ $this->db->join('product_histroy','product_histroy.p_id = product.id');
         }
 
 
+public function eyelist_product($p='')
+{
+            $this->db->select('product.id,product.price,product.heading,product.description,product.status,unit.name as unitname,producttype.name as pname');
+            $this->db->from('product');
+
+            $this->db->join('producttype','producttype.id=product.product_type');
+            $this->db->join('unit','unit.id=product.unit_id');
+           
+            $this->db->where('product.is_deleted',0);
+            $this->db->where('product.id',$p);
+            $query=$this->db->get();
+            $data['view']=$query->row();
+            
+            // $data['view']=$this->db->where('id',$p)->get('contractorinformation
+            // ')->row();
+         $this->load->view('product/producttype_p',$data);
+
+}
+  
+
+
   //product details page bilal
      public function Product_eye($id)
         {
@@ -275,7 +287,7 @@ $this->db->join('product_histroy','product_histroy.p_id = product.id');
 
         public function add_product()
         {
-            $data['menu'] = $this->load_model->menu();
+        $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo; 
         $data["productid"]=$this->generic_model->getSpecificRecord("product", array()); 

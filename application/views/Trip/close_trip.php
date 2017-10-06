@@ -12,78 +12,79 @@
 .ms-options ul{
   padding-left: 5px;
 }
+.paddinglr0{
+  padding-left:0px; padding-right:0px;
+  margin-left:0px; margin-right:0px;
+}
+.paddinglr5{
+  padding-left:5px; padding-right:5px;
+
+}
+.paddinglr2{
+  padding-left:px; padding-right:2px;
+}
+.content{
+  padding-top:40px !important;
+}
 
 </style>
-
-<section class="content">
+ 
+<section class="content paddinglr0">
   <div class="box">
 
-    <div class="box-header">
-      <h3 style="padding-left: 30px" class="box-title">Close Trip</h3>
-    </div>
-
-      <div class="box-body">
-            <form id="myform" action="<?php echo base_url() ?>Trip/all_close_trip/<?php echo $tripid ?>" method="post" enctype="multipart/form-data">
-          
-        <div class="col-lg-7">
-            <div class="col-lg-12">
-                <div class="panel panel-default">
-                  <div class="panel-heading"><i class="fa fa-bus" aria-hidden="true"></i>
-                   Trip Information
-                   </div>
-                  <div class="panel-body">
-    
-                    <div class="form-group"> 
-                          <label>Trip id</label>
-                            <input class="form-control" value="<?php echo $tripid ?>"  name="tripid" type="text"  readonly />
-                        </div>
-						
-                    <div class="form-group">
-                      <label>Type</label>
-                      <select class="form-control" name="type" required> 
-                          <option value="<?php  if(!empty($trip_info)){foreach ($trip_info as $c){ ?>        
-                
-                            <?php  echo  $c["type"];?>
-                                        
-                            <?php }} ?>"><?php  if(!empty($trip_info)){
-                            foreach ($trip_info as $c){ ?>        
-               
-                            <?php  echo  $c["type"];?>
-                                        
-                            <?php }} ?></option>       
-                      </select>
-                    </div>
-        
-                     <div class="form-group"> 
+      <div class="box-header" style=" padding-bottom: 0;margin-bottom: 0;">
+          <h3 style="font-weight:bold; padding-top: 10px;" class="box-title pull-left">Close Trip
+       </h3>
+          <div class="col-lg-3 vechinfo pull-right">
                     
-                        <label>Company</label>
-                          <select class="form-control" name="company_id" selected="selected" required>
-
-                            <option value=""   >company
-                            </option>               
+            <div  style="padding:5px; margin-top: 5px; border: 1px solid  #D3D3D3" id="vech_info" class="panel-body">
                           
-                          </select> 
-                      </div>
+                <!-- panel-body -->
+              </div>
+              <!-- panel panel-default -->
+        </div>
+     </div>
 
-                    <div class="form-group">  
-                    
-                        <label>Contractor</label>
-                        <select class="form-control" name="contractor_id" selected="selected" required>          
-                            <option value="">jj
-                            </option>               
-                        </select> 
+      <div class="box-body paddinglr0">
+            <form name="myform" id="myform" action="<?php echo base_url() ?>trip/save_trip" method="post" enctype="multipart/form-data">
+          
+        <div class="col-lg-9 paddinglr0">
+            <div class="col-lg-12 paddinglr5">
+                <div class="panel panel-default" style="padding-top:0px;padding-bottom:0px;margin-bottom:3px !important;">
+                  <div class="panel-heading"><i class="fa fa-bus" aria-hidden="true"></i>
+                   Trip Information</div>
+           
+                   
+            <div class="panel-body paddinglr0" style="padding-top:0px;padding-bottom:0px;">
+               <div class="col-lg-3 paddinglr5" style="padding-top:0px;padding-bottom:0px;">
+                    <div class="form-group">
+                      <label>Trip ID</label>
+                      <input class="form-control" type="text" value="<?php echo  $trip_info['0']['id']  ?>" readonly/>
                     </div>
+              </div>  
 
-                    <div class="form-group"> 
-                        
-                      <label>Vehicle</label>
-                        <select id="veh" class="form-control" name="vehicle_id" required>
-                      
-                            <option value=""   >
-                            </option>               
-                        </select> 
+
+                <div class="col-lg-3  paddinglr5">
+                     <div class="form-group"> 
+                        <label>Company</label>
+                          <input class="form-control" type="text"  value="<?php echo  $trip_info['0']['comname'] ?>" readonly/>
                       </div>
+                  </div>  
 
+
+                <div class="col-lg-3 paddinglr5">
+                    <div class="form-group">    
+                        <label>Contractor</label>
+                     <input class="form-control" type="text"  value="<?php echo  $trip_info['0']['conname'] ?>" readonly/>
+                    </div>
+                </div>    
+
+                  <div class="col-lg-3  paddinglr5">
+                      <div class="form-group">    
+                        <label>Vehicle</label>
+                          <input class="form-control" type="text" value="<?php echo  $trip_info['0']['vehiclename'] ?>" readonly/>
+                        </div>
+                  </div>
                   </div>
                   <!-- panel-body -->
                 </div>
@@ -91,132 +92,112 @@
             </div>
               <!-- col-lg-12 -->
 
-    <div class="col-lg-12">
-
-        <div class="panel panel-default">
+    <div class="col-lg-12  paddinglr5">
+        <div class="panel panel-default" style="margin-bottom:3px !important;" >
           <div class="panel-heading"><i class="fa fa-asterisk" aria-hidden="true"></i>
-          All Fields Are Required </div>
-            <div class="panel-body"> 
-                  
-                  <div class="col-lg-6">
-
-                        <div class="form-group"> 
-                          <label>Source </label>
-                            <select class="form-control" name="source" selected="selected" required> 
-                            <option value="">Select Options</option>       
-
-                              
-                                <option value=""   >
-                              
-                                </option>               
-                            </select> 
-                        </div>
-                         
-                       <div class="form-group"> 
-                          <label>Product </label>
-                            <select class="form-control" name="product_id" selected="selected" required> 
-                            <option value="">Select Options</option>       
-                         
-                               
-                                <option value=""   >
-                              
-                                </option>               
-                            </select> 
-                        </div>
-
-                        <div class="form-group"> 
-                          <label>Quantity</label>
-                            <input class="form-control" value="" name="quantity" type="text" name="product_quantity" onkeypress='return ValidateNumberOnly()' required="required" />
-                        </div>
-
-                        <div class="form-group"> 
-                        <label>Temperature</label>
-                          <input class="form-control" value="" onkeypress='return ValidateNumberOnly()'  type="text" name="temperature"   required="required" />
-                        </div>
-
-                        <div class="form-group"> 
-                          <label>Gravity</label>
-                            <input class="form-control" value=""  onkeypress='return ValidateNumberOnly()'  type="text" name="gravity"  required="required" />
-                        </div>
-
-                        <div class="form-group"> 
-                          <label>Destination </label>
-                            <select class="form-control"   name="destination" selected="selected" required> 
-                            <option value="">Select Options</option>       
-
-                            
-                              
-                            </select> 
-                        </div>
-                         
-                      
-                        
-                     </div>
-                     <!-- col-lg-6 -->                                                       
-          
-                   <div class="col-lg-6">
-                 
+          Meter Reading </div>
+            <div class="panel-body paddinglr0" style="padding-top:0px;padding-bottom:0px;"> 
+                   
+                   <div class="col-lg-3 paddinglr5">           
                       <div class="form-group"> 
-                        <label>Meter Reading</label>        
-               
-                          <input class="form-control" value="<?php  if(!empty($trip_info)){foreach ($trip_info as $c){ ?><?php  echo  $c["meter_reading"];?><?php }} ?>"  type="text" name="meter_reading" onkeypress='return ValidateNumberOnly()' required="required" />
+                        <label>Start Meter Reading</label>
+                         <input class="form-control" type="text" value="<?php echo $trip_info['0']['start_meter_reading']  ?>" readonly/>
                       </div>
-
-                      <div class="form-group"> 
-                        <label>Freight Rate</label>
-                          <input class="form-control" value="<?php  if(!empty($trip_info)){foreach ($trip_info as $c){ ?><?php  echo  $c["freight_rate"];?><?php }} ?>"  type="text" name="freight_rate" onkeypress='return ValidateNumberOnly()' required="required" />
-                      </div>
-
-                      <div class="form-group"> 
-                      <label>Contract Carriage Commission</label>
-                        <input class="form-control" type="text" value="" name="carriage_commission" onkeypress='return ValidateNumberOnly()'   required="required" />
-                      </div>
-
-                      <div class="form-group"> 
-                        <label>Withholding Tax</label>
-                          <input class="form-control" value="" onkeypress='return ValidateNumberOnly()' type="text" name="withholding_tax"  required="required" />
-                      </div>
-
-                        <div class="form-group"> 
-                        <label>Company Comission</label>
-                          <input class="form-control"  value="" onkeypress='return ValidateNumberOnly()' type="text" name="remaining_commission"  required="required" />
-                      </div>  
-
-                       <div class="form-group"> 
-                        <label>Remaining (for Customer)</label>
-                          <input class="form-control"  type="text" name="remaining_commission" value=""  required="required" readonly />
-                      </div>
-
-                      
-                                                                        
                   </div>
-                 <!-- col-lg-6 -->
 
-                  <div class="col-lg-12">
-                    
-                     <div class="form-group"> 
-                        <label>Shortage/ Gain</label>
-                          <input class="form-control"  onkeypress='return ValidateNumberOnly()' type="text" name="remaining_commission"  required="required" />
-                      </div> 
+                 <div class="col-lg-3 paddinglr5">           
+                      <div class="form-group"> 
+                        <label>End Meter Reading</label>
+                          <input class="form-control"  type="number" name="end_meter_reading" onkeypress='return ValidateNumberOnly()'  />
+                      </div>
                   </div>
-                  
-                   <div class="col-lg-12">
-                     <button class="add_field_button btn btn-success">Add More</button>
-                   </div>
 
-                   <div id="more_fields" class="col-lg-12">
-                    
-                   </div>
-                    
-    
 
-               </div>
-                <!-- panel-body -->
+                  <div class="col-lg-3 paddinglr5">           
+                      <div class="form-group"> 
+                        <label>Fuel</label>
+                          <input class="form-control" placeholder="Fuel Consumption"  type="number" name="fuel" onkeypress='return ValidateNumberOnly()' />
+                      </div>
+                  </div>
+
+
+              <div class="col-lg-3 paddinglr5">           
+                <div class="form-group"> 
+                  <label>STN Number</label>
+                    <input class="form-control"  type="number" name="stn_no" onkeypress='return ValidateNumberOnly()'  />
+                </div>
+             </div>
+
+      </div>            
+    </div>
+
+      <!--Add Product -->
+                
+         <div class="panel panel-default" style="margin-bottom:0px;margin-top:0px;padding-top:0px;padding-bottom:0px;">
+          <div class="panel-heading"><i class="fa fa-bus" aria-hidden="true"></i>
+           Add Product </div>
+
+          <div class="panel-body paddinglr0" style="padding-top:0px;padding-bottom:0px;">
+
+            <div class="col-lg-12" style="margin-top: 20px">
+
+                <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Email</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>John</td>
+                        <td>Doe</td>
+                        <td>john@example.com</td>
+                      </tr>
+                    
+                    </tbody>
+                  </table>                      
+            </div>  
+         
+          </div>
+        </div>
+        <!-- panel-body -->
+           
+     </div>
+     <!-- col-lg-12 -->  
+        <div id="addpro" class="col-md-12" style="display: none">
+          <div class="row" style="padding-left: 5px; padding-right: 5px; margin-top: 10px">
+              <div class="panel panel-default">
+              <div class="panel-heading">Products View</div>
+                <div class="panel-body" style="padding-left: 0">
+
+                  <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Product</th>
+                      <th>Product Quantity</th>
+                      <th>Product Temperature</th>
+                      <th>Product Gravity</th>
+                      <th>Destination</th>
+                      <th>Freight Rate</th>
+                      <th>Carriage Commission</th>
+                      <th>Withholding Tax</th>
+                      <th>Company Commission</th>
+                      <th>Remaining Commission</th>
+                    </tr>
+                  </thead>
+                  <tbody id="prod_info" >
+                
+                  </tbody>
+                </table>
+
+                </div>
               </div>
-              <!-- panel panel-default -->
+                    
+              </div>
 
-         </div>
-         <!-- col-lg-12 -->  
+            </div>
 
 
     </div>
@@ -225,148 +206,91 @@
         <!-- ============================================================= -->
 
 
-      <div class="col-lg-5">
-           
-		   
-		   <div class="col-lg-12 vechinfo">
-                  <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-truck" aria-hidden="true"></i> Vehicle Information</div>
-                        <div id="vech_info" class="panel-body">
-                          
-                              
-                        </div>
-                        <!-- panel-body -->
-                      </div>
-                      <!-- panel panel-default -->
-                </div>
-				 <div class="col-lg-12">
-                  <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-truck" aria-hidden="true"></i> Add Expense</div>
-<div  class="" data-toggle="modal" data-target="#exampleModal1" data-whatever="@mdo">
-              <input value="Add Expense" type="button" class="form-control btn btn-primary">
-</div>
-                        <!-- panel-body -->
-                      </div>
-                      <!-- panel panel-default -->
-                </div>
-              <!-- col-lg-12 -->
-
-  <div class="col-lg-12">
+      <div class="col-lg-3 paddinglr5">
+      
             <div class="panel panel-default">
-              <div class="panel-heading"><i class="fa fa-car" aria-hidden="true"></i> Vehicle Information </div>
-               <div class="panel-body">
+              <div class="panel-heading"><i class="fa fa-car" aria-hidden="true"></i> Drivers & Helpers  Info </div>
+               <div class="panel-body paddinglr0">
                    
-                      <div class="form-group">                      
-						 <div class="col-md-10">
-                            <label>Vehicle Name:</label>
-								
-<?php  if(!empty($trip_info)){foreach ($trip_info as $c){ ?><?php  echo  $c["vehiclename"];?><?php }} ?>                        
-                       
-                      </div>
-					   <div class="col-md-10">
-                            <label>Registeration No:</label>
-								
-<?php  if(!empty($trip_info)){foreach ($trip_info as $c){ ?><?php  echo  $c["vehicleregisterationno"];?><?php }} ?>                        
-                       
-                      </div>
-					  <div class="col-md-10">
-                            <label>Chassis No:</label>
-								
-<?php  if(!empty($trip_info)){foreach ($trip_info as $c){ ?><?php  echo  $c["chassisno"];?><?php }} ?>                        
-                       
-                      </div>
-					  					  <div class="col-md-10">
-                            <label>Engine No:</label>
-								
-<?php  if(!empty($trip_info)){foreach ($trip_info as $c){ ?><?php  echo  $c["vehicleengineno"];?><?php }} ?>                        
-                       
-                      </div>
-                  
-
-                </div>
-                <!-- panel-body -->
-						</div>
-              </div>
-			<div class="panel panel-default">
-              <div class="panel-heading"><i class="fa fa-car" aria-hidden="true"></i> Drivers & Helpers  Information </div>
-               <div class="panel-body">
-                   
-                      <div class="form-group">                      
-                        <div class="col-md-10">
-                            <label>Driver</label>
-
-                          <select class="form-control driver" name="driver1" required>
-                             <option value="">Select Options</option>       
+                      <div class="form-group paddinglr5">                      
+                        <div class="col-md-10 paddinglr5">
+                            <p><Strong>Driver</Strong>: <?php echo $trip_info['0']['drivername']; ?></p>
                            
-
-                                      
-                          </select>
                         </div>  
-                        
-                        <div class="col-md-2">  
-                         <button href="javascript:" style="margin-top: 30px" id="driver1" ><i class="fa fa-plus" aria-hidden="true"></i></button>
-                        </div>
                       </div>
-                    <div id="driver_1"></div>
 
 
-                     <div class="form-group">                      
-                        <div class="col-md-10">
-                            <label>Helper</label>
 
-                          <select  class="form-control" name="helper" required>
-                             <option value="">Select Options</option>       
-                              <?php if(!empty($helperinformation)){
-                              foreach ($helperinformation as $v){  ?>      
-                              <option value="<?php  echo  $v["id"];?>"   >
-                              <?php  echo  $v["name"];?>
-                              </option>               
-                              <?php }} ?>
-                          </select>
+                     <div class="form-group paddinglr5">                      
+                        <div class="col-md-10 paddinglr5">
+                            <p><Strong>Helper</Strong>: <?php echo $helper['name']; ?></p>
                         </div>  
 
-                        <div class="col-md-2">  
-                         <button style="margin-top: 30px" id="addhelper" ><i class="fa fa-plus" aria-hidden="true"></i></button>
-                        </div>
+
                       </div>
                          
-                        
 
-                    <div id="add_helper"></div>
 
                 </div>
                 <!-- panel-body -->
               </div>
               <!-- panel panel-default -->
-            </div>
-            <!-- col-lg-12 -->
-          <div class="col-lg-12">
+            
+
+ 
             <div class="panel panel-default">
               <div class="panel-heading"><i class="fa fa-clock-o" aria-hidden="true"></i> Date</div>
                   <div class="panel-body">
                     <div class="form-group">
+                      <p><Strong>Entry Date</Strong>: <?php echo $trip_info['0']['entry_date']; ?></p>                      
+                    </div>  
+
+                    <div class="form-group">
+                      <p><Strong>Email Date</Strong>: <?php //echo $trip_info['0']['email_date']; ?></p>                        
+                    </div> 
+
+                     <div class="form-group">
+                      <p><Strong>Filling date</Strong>: <?php echo $trip_info['0']['filling_date']; ?></p>
+                    </div> 
+
+                   <div class="form-group">    
+                      <p><Strong>Filled By</Strong>: <?php //echo $trip_info['0']['filled_by']; ?></p>
+                    </div>
+
+      
+                  </div>
+                  <!-- panel-body -->
+                </div>
+                <!-- panel panel-default -->
+
+
+
+         <div class="panel panel-default">
+              <div class="panel-heading"><i class="fa fa-clock-o" aria-hidden="true"></i> Closing Date</div>
+                  <div class="panel-body">
+                    <div class="form-group">
                       <label>Entry Date</label>
                       <?php  $date = date('Y-m-d'); ?>
-                      <input class="form-control" type="date" name="entry_date" value="<?php echo $date; ?>" palceholder="" required>
+                      <input class="form-control" type="date" name="entry_date" value="<?php echo $date; ?>" palceholder="" >
                     </div>  
 
                     <div class="form-group">
                       <label>Email Date</label>
-                      <input class="form-control" type="date" name="email_date" value="<?php echo $date; ?>" required>
+                      <input class="form-control" type="date" name="email_date" value="<?php echo $date; ?>" >
                     </div> 
 
                      <div class="form-group">
-                      <label>Filling date</label>
-                      <input class="form-control" type="date" name="filling_date" value="<?php echo $date; ?>" required>
+                      <label>Uncanned date</label>
+                      <input class="form-control" type="date" name="filling_date" value="<?php echo $date; ?>" >
                     </div> 
 
 
                     <div class="form-group">    
-                        <label>Un Filled By</label>
-                          <select  class="form-control" name="unfilled_by" required>
+                        <label>Uncanned By</label>
+                          <select  class="form-control" name="filled_by" >
                              <option value="">Select Options</option>       
-                              <?php if(!empty($driver2)){
-                              foreach ($driverinformation as $v){  ?>      
+                              <?php if(!empty($driver1)){
+                              foreach ($driver1 as $v){  ?>      
                               <option value="<?php  echo  $v["id"];?>"   >
                               <?php  echo  $v["name"];?>
                               </option>               
@@ -374,27 +298,21 @@
                           </select> 
                       </div>
 
-                    <div class="form-group">
-                      <label>STN Number</label>
-                      <input class="form-control" type="text" name="stn"  required>
-                    </div>
+
                        
                   </div>
                   <!-- panel-body -->
                 </div>
                 <!-- panel panel-default -->
-          </div>
-              <!-- col-lg-12 -->
-
-
-
-            <div style="padding-left: 30px" class="row">
-                <input class="btn btn-primary" type="submit" name="register" value="Close Trip" />
-            </div>    
+         
+         
 
         </div>
-        <!-- col-lg-5 -->
+        <!-- col-lg-4 -->
 
+            <div class="col-lg-12 col-md-12 col-sm-12" style="margin: 10px 0">
+                <input id="trip_close" class="btn btn-primary" type="submit" name="register" value="Close Trip" />
+            </div>  
 
         </form>
      </div>
@@ -403,41 +321,14 @@
   <!-- box -->
 </section>
 
+  <!-- =================================================    -->
 
-  <!-- ==============================================================================    -->
+
 
 <script>
   
 $(document).ready(function() {
-    var max_fields      = 10; //maximum input boxes allowed
-    var wrapper         = $("#more_fields"); //Fields wrapper
-    var add_button      = $(".add_field_button"); //Add button ID
-    
-    var x = 1; //initlal text box count
-    $(add_button).click(function(e){ //on add input button click
-        e.preventDefault();
-        if(x < max_fields){ //max input box allowed
-            x++; //text box increment
-            $(wrapper).append('<hr><div class="form-group"><label>Product </label><select class="form-control" name="product" selected="selected" required><option value="">Select Options</option><?php  if(!empty($product)){foreach ($product as $p){   ?><option value="<?php  echo  $p["id"];?>" ><?php  echo  $p["heading"];?></option><?php }} ?></select></div><div class="form-group"><label>Quantity</label><input class="form-control" name="quantity" type="text" name="product_quantity" required="required" /></div><div class="form-group"><label>Temperature</label><input class="form-control"  type="text" name="temperature"   required="required" /></div><div class="form-group"><label>Gravity</label><input class="form-control"  type="text" name="gravity"  required="required" /><div class="form-group"><div class="form-group"><label>Destination </label><select class="form-control" name="destination" selected="selected" required><option value="">Select Options</option><?php  if(!empty($source)){foreach ($product as $p){ ?><option value="<?php  echo  $p["id"];?>">  <?php  echo  $p["heading"];?></option><?php }} ?></select></div></div><button class="remove_field btn btn-success">Remove</button>'); 
-            //add input box
-        }
-    });
-    
-    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-        e.preventDefault(); $(this).parent('div').parent('div').remove(); x--;
-    })
-});
-
-
-
-
-
-</script>
-
-<script>
-  
-$(document).ready(function() {
-    var max_fields      = 10; //maximum input boxes allowed
+    var max_fields      = 2; //maximum input boxes allowed
     var wrapper         = $("#add_helper"); //Fields wrapper
     var add_button      = $("#addhelper"); //Add button ID
     
@@ -446,7 +337,7 @@ $(document).ready(function() {
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<div class="form-group"><div class="col-md-10"><label>Helper</label><select class="form-control" name="helper[]" required><option value="">Select Options</option><?php if(!empty($helperinformation)){  foreach ($helperinformation as $v){  ?><option value="<?php  echo  $v["id"];?>"   ><?php  echo  $v["name"];?></option><?php }} ?></select></div><div class="col-md-2"><button  style="margin-top: 30px" id="helper"><i class="fa fa-minus" aria-hidden="true"></i></button></div></div>'); 
+            $(wrapper).append('<div class="form-group paddinglr5"><div class="col-md-10 paddinglr5"><label>Helper</label><select class="form-control" name="helper[]" required><option value="">Select Options</option><?php if(!empty($helperinformation)){  foreach ($helperinformation as $v){  ?><option value="<?php  echo  $v["id"];?>"   ><?php  echo  $v["name"];?></option><?php }} ?></select></div><div class="col-md-2 paddinglr5"><button  style="margin-top: 30px" id="helper"><i class="fa fa-minus" aria-hidden="true"></i></button></div></div>'); 
             //add input box
         }
     });
@@ -454,19 +345,16 @@ $(document).ready(function() {
     $(wrapper).on("click","#helper", function(e){ //user click on remove text
         e.preventDefault(); $(this).parent('div').parent('div').remove(); x--;
     })
-});
 
-
-
-
-
+    });
+  
 </script>
 
 
 <script>
 // add more driver 
 $(document).ready(function() {
-    var max_fields      = 10; //maximum input boxes allowed
+    var max_fields      = 2; //maximum input boxes allowed
     var wrapper         = $("#driver_1"); //Fields wrapper
     var add_button      = $("#driver1"); //Add button ID
     
@@ -475,12 +363,13 @@ $(document).ready(function() {
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<div class="form-group"><div class="col-md-10"><label>Driver</label><select id="helper" class="form-control" name="driver1" required><option value="">Select Options</option><?php if(!empty($driver1)){  foreach ($driver1 as $v){  ?><option value="<?php  echo  $v["id"];?>"   ><?php  echo  $v["name"];?></option><?php }} ?></select></div><div class="col-md-2"><button style="margin-top: 30px" id="p_driver"><i class="fa fa-minus" aria-hidden="true"></i></button></div></div>'); 
+            $(wrapper).append('<div class="form-group paddinglr5"><div class="col-md-10 paddinglr5"><label>Driver</label><select id="helper" class="form-control" name="driver[]" required><option value="">Select Options</option><?php if(!empty($driver1)){  foreach ($driver1 as $v){  ?><option value="<?php  echo  $v["id"];?>"   ><?php  echo  $v["name"];?></option><?php }} ?></select></div><div class="col-md-2 paddinglr5"><button style="margin-top: 30px" id="p_driver"><i class="fa fa-minus" aria-hidden="true"></i></button></div></div>'); 
             //add input box
         }
     });
-    
-    $(wrapper).on("click","#p_driver", function(e){ //user click on remove text
+
+    //user click on remove text
+    $(wrapper).on("click","#p_driver", function(e){ 
         e.preventDefault(); $(this).parent('div').parent('div').remove(); x--;
     })
 });
@@ -490,17 +379,17 @@ $(document).ready(function() {
 
 
 </script>
+<script>
 
 
-
-
-
+</script>
 <script>
 
 $(document).ready(function() {
   $('#veh').change(function(event) {
      var id =  $(this).val();
 
+     
     $.ajax({
       url: '<?php echo base_url(); ?>Vehicle/get_vehicle_by_id/'+id,
       type: 'POST',
@@ -509,28 +398,113 @@ $(document).ready(function() {
         
         $('.vechinfo').removeClass('vechinfo');
 
-        vech_info = "<div><p>Chassis Number&nbsp" +"#&nbsp&nbsp;"+ result['chassisno'] +"</p><p>Engine Number&nbsp" +"#&nbsp&nbsp;"+ result['engineno'] +"</p></div>"
+        vech_info = "<div><strong>Chassis Number:</strong>" +"&nbsp;"+ result['chassisno'] +"&nbsp&nbsp&nbsp<strong> Engine Number: </strong>" +"&nbsp"+ result['engineno'] +"</div>"
         
         $('#vech_info').html(vech_info);
 
            
         }
     })
-    .done(function() {
-      console.log("success");
-    })
-    .fail(function() {
-      console.log("error");
-    })
-    .always(function() {
-      console.log("complete");
-    });
+ 
     
 
   });
 });
 
+
+
+
 </script>
+
+
+<!-- add product ajax -->
+<script>
+
+    $(document).ready(function() { 
+      $("#add_pro").on('click', function(e){
+      var product_id = $("#product_id option:selected").val();
+      var product_name = $("#product_id option:selected").text();
+      var source_id = $("#source option:selected").val();
+      var source_name = $("#source option:selected").text();
+      var destination_id = $("#destination option:selected").val();
+      var destination_name = $("#destination option:selected").text();
+      var product_quantity = $("#product_quantity").val();
+      var product_temperature = $("#product_temperature").val();
+      var product_gravity = $("#product_gravity").val();
+      var freight_rate = $("#freight_rate").val();
+      var carriage_commission = $("#carriage_commission").val();
+      var withholding_tax = $("#withholding_tax").val();
+      var companycommission = $("#companycommission").val();
+      var remaining_commission = $("#remaining_commission").val();
+
+
+      var proInfo = "<tr><td><input type='hidden' class='proSource' name='source[]'  value='' >"+ source_name +"</td><td><input type='hidden' class='proDest' name='destination[]'  value='' >"+ destination_name +"</td><td><input type='hidden' id='proID' class='proID' name='product_id[]'  value=''>"+ product_name +"</td><td><input type='hidden' class='proQty' name='product_quantity[]'  value=''>"+ product_quantity +"</td><td><input type='hidden' class='proTemp' name='product_temperature[]'  value=''>"+ product_temperature +"</td><td><input type='hidden' class='proGrav' name='product_gravity[]'  value=''>"+ product_gravity +"</td><td><input type='hidden' class='proFret' name='freight_rate[]'  value=''>"+ freight_rate +"</td><td><input type='hidden' class='proCarrg' name='carriage_commission[]'  value=''>"+ carriage_commission +"</td><td><input type='hidden' class='proWtax' name='withholding_tax[]'  value=''>"+ withholding_tax +"</td><td><input type='hidden' class='proCC' name='companycommission[]'  value=''>"+ companycommission +"</td><td><input type='hidden' class='proRecomm' name='remaining_commission[]'  value=''>"+ remaining_commission +"</td></tr>";
+
+
+        $("#addpro").removeAttr('style');
+
+        if (product_id == "") {
+          alert("Please fill all fields");
+        }else{
+
+         $('#prod_info').append(proInfo);
+
+        }
+
+
+        $(".proID").val(product_id);
+        $(".proSource").val(source_id);
+        $(".proDest").val(destination_id);
+        $(".proQty").val(product_quantity);
+        $(".proTemp").val(product_temperature);
+        $(".proGrav").val(product_gravity);
+        $(".proFret").val(freight_rate);
+        $(".proCarrg").val(carriage_commission);
+        $(".proWtax").val(withholding_tax);
+        $(".proCC").val(companycommission);
+        $(".proRecomm").val(remaining_commission);
+
+
+        $("#product_id").val("");
+        $("#source").val("");
+        $("#destination").val("");
+        $("#product_quantity").val("");
+        $("#product_temperature").val("");
+        $("#product_gravity").val("");
+        $("#freight_rate").val("");
+        $("#carriage_commission").val("");
+        $("#withholding_tax").val("");
+        $("#companycommission").val("");
+        $("#remaining_commission").val("");
+
+
+        $("#trip_save").removeAttr('disabled');
+
+    });
+  });
+
+
+
+$(document).ready(function() {
+  $('#myform').on('submit', function (e) {   
+        console.log($("#proID").length);
+      if($("#proID").length == 0){  
+        alert("Please add atleat one product !");
+        e.preventDefault();
+      }
+      else{
+        $(this).unbind('submit').submit();
+        $(this).submit();
+      }
+
+
+    });
+
+});
+
+
+</script>
+
 
 
 <script>
@@ -545,116 +519,6 @@ if ((event.keyCode < 45 || event.keyCode > 57))
 
 </script>
 
-
-
- 
- 
- <form name="myform" id="myform" action="<?php echo base_url() ?>trip/saveexpense_trip/<?php echo $tripid ?>" method="post" enctype="multipart/form-data">
-
-<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-    
-          
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="exampleModalLabel">Add New Expense</h4>
-      </div>
-      <div class="modal-body">
-        
-         
-
-       <div class="col-lg-12">
-                        <div class="col-md-10">
-                            <label>Expense Type</label>
-
-                          <select  class="form-control" name="expensetype_id[]" required>
-                             <option value="">Select Options</option>       
-                              <?php if(!empty($expensetype)){
-                              foreach ($expensetype as $e){  ?>      
-                              <option value="<?php  echo  $e["id"];?>"   >
-                              <?php  echo  $e["name"];?>
-                              </option>               
-                              <?php }} ?>
-                          </select>
-                        </div>  
-						<div class="col-md-10"><label>Expense Amount</label><input name="amount[]" type="text" class="form-control">
- 
-                       
-                      </div>
-<div class="col-md-2">  
-                         <button style="margin-top: 30px" id="addhelper1" ><i class="fa fa-plus" aria-hidden="true"></i></button>
-                        </div>
-</div>		
-   <div class="col-lg-12" style="padding-top:20px;margin-top:20px;">				
- <div id="add_helper1"></div>
- </div>
-      <br />
-      <div class="modal-footer" style="padding-top:20px;margin-top:20px;">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <input type="submit" class="btn btn-primary" value="add">
-      </div>
-     
-    </div>
-  </div>
-</div>
- </form>
- 
- 
-
- 
- 
- 
-   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-       
- 
- <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
- 
- 
-<script>
-  
-$(document).ready(function() {
-    var max_fields      = 10; //maximum input boxes allowed
-    var wrapper         = $("#add_helper1"); //Fields wrapper
-    var add_button      = $("#addhelper1"); //Add button ID
-    
-    var x = 1; //initlal text box count
-    $(add_button).click(function(e){ //on add input button click
-        e.preventDefault();
-        if(x < max_fields){ //max input box allowed
-            x++; //text box increment
-            $(wrapper).append('<div class="form-group"><div class="col-md-10"><label>Expense Type</label><select class="form-control" name="expensetype_id[]" required><option value="">Select Options</option><?php if(!empty($expensetype)){  foreach ($expensetype as $e){  ?><option value="<?php  echo  $e["id"];?>"   ><?php  echo  $e["name"];?></option><?php }} ?></select><div class="col-md-12"><label>Expense Amount</label><input name="amount[]" type="text" class="form-control"></div></div><div class="col-md-2"><button  style="margin-top: 30px" id="helper"><i class="fa fa-minus" aria-hidden="true"></i></button></div></div>'); 
-            //add input box
-        }
-    });
-    
-    $(wrapper).on("click","#helper", function(e){ //user click on remove text
-        e.preventDefault(); $(this).parent('div').parent('div').remove(); x--;
-    })
-	
-	
-});
-
-
-
-
-
-</script>
- 
- 
- 
- 
- 
-
-
-
-
-
-
-
 <script type="text/javascript">
 $(document).ready(function() {
     $('#myform')
@@ -666,15 +530,15 @@ $(document).ready(function() {
             },
             fields: {
                 type: {
-                   trigger:'change keyup blur',
+                   trigger:'change  blur',
                     validators: {
                         notEmpty: {
                             message: 'field  is required and cannot be empty'
                         }
                     }
                 },
-                company: {
-                   trigger:'change keyup blur',
+                company_id: {
+                   trigger:'change  blur',
                     validators: {
                         notEmpty: {
                             message: 'field  is required and cannot be empty'
@@ -682,7 +546,7 @@ $(document).ready(function() {
                     }
                 },
                     contractor_id: {
-                   trigger:'change keyup blur',
+                   trigger:'change  blur',
                     validators: {
                         notEmpty: {
                             message: 'field  is required and cannot be empty'
@@ -691,39 +555,7 @@ $(document).ready(function() {
                 },
 
                vehicle_id: {
-                   trigger:'change keyup blur',
-                    validators: {
-                        notEmpty: {
-                            message: 'field  is required and cannot be empty'
-                        }
-                    }
-                },
-                  source: {
-                   trigger:'change keyup blur',
-                    validators: {
-                        notEmpty: {
-                            message: 'field  is required and cannot be empty'
-                        }
-                    }
-                },
-                product: {
-                   trigger:'change keyup change keyup blur',
-                    validators: {
-                        notEmpty: {
-                            message: 'field  is required and cannot be empty'
-                        }
-                    }
-                },
-              temperature: {
-                   trigger:'change keyup change keyup blur',
-                    validators: {
-                        notEmpty: {
-                            message: 'field  is required and cannot be empty'
-                        }
-                    }
-                },
-               gravity: {
-                   trigger:'change keyup change keyup blur',
+                   trigger:'change  blur',
                     validators: {
                         notEmpty: {
                             message: 'field  is required and cannot be empty'
@@ -731,25 +563,8 @@ $(document).ready(function() {
                     }
                 },
 
-            product_id: {
-                   trigger:'change keyup change keyup blur',
-                    validators: {
-                        notEmpty: {
-                            message: 'field  is required and cannot be empty'
-                        }
-                    }
-                },
-
-               destination: {
-                   trigger:'change keyup change keyup blur',
-                    validators: {
-                        notEmpty: {
-                            message: 'field  is required and cannot be empty'
-                        }
-                    }
-                },
                  entry_date: {
-                   trigger:'change keyup blur',
+                   trigger:'change  blur',
                     validators: {
                         notEmpty: {
                             message: 'field  is required and cannot be empty'
@@ -757,7 +572,7 @@ $(document).ready(function() {
                     }
                 },
                  email_date: {
-                   trigger:'change keyup blur',
+                   trigger:'change  blur',
                     validators: {
                         notEmpty: {
                             message: 'field  is required and cannot be empty'
@@ -765,7 +580,7 @@ $(document).ready(function() {
                     }
                 },
                  filling_date: {
-                   trigger:'change keyup blur',
+                   trigger:'change  blur',
                     validators: {
                         notEmpty: {
                             message: 'field  is required and cannot be empty'
@@ -773,39 +588,24 @@ $(document).ready(function() {
                     }
                 },
                  filled_by: {
-                   trigger:'change keyup blur',
+                   trigger:'change  blur',
                     validators: {
                         notEmpty: {
                             message: 'field  is required and cannot be empty'
                         }
                     }
                 },
-              meter_reading: {
-                   trigger:'change keyup blur',
+              start_meter_reading: {
+                   trigger:'change  blur',
                     validators: {
                         notEmpty: {
                             message: 'field  is required and cannot be empty'
                         }
                     }
                 },
-              gravity : {
-                   trigger:'change keyup blur',
-                    validators: {
-                        notEmpty: {
-                            message: 'field  is required and cannot be empty'
-                        }
-                    }
-                },
-              freight_rate: {
-                   trigger:'change keyup blur',
-                    validators: {
-                        notEmpty: {
-                            message: 'field  is required and cannot be empty'
-                        }
-                    }
-                },
-             carriage_commission: {
-                   trigger:'change keyup blur',
+
+              end_meter_reading: {
+                   trigger:'change  blur',
                     validators: {
                         notEmpty: {
                             message: 'field  is required and cannot be empty'
@@ -814,7 +614,7 @@ $(document).ready(function() {
                 },
 
              'driver[]': {
-                   trigger:'change keyup blur',
+                   trigger:'change  blur',
                     validators: {
                         notEmpty: {
                             message: 'field  is required and cannot be empty'
@@ -823,7 +623,7 @@ $(document).ready(function() {
                 },
 
             'helper[]': {
-                   trigger:'change keyup blur',
+                   trigger:'change  blur',
                     validators: {
                         notEmpty: {
                             message: 'field  is required and cannot be empty'
@@ -831,7 +631,43 @@ $(document).ready(function() {
                     }
                 },
 
-                 'helper[]': {
+
+
+              // Add product
+
+              source: {
+                   trigger:'change  blur',
+                    validators: {
+                        notEmpty: {
+                            message: 'field  is required and cannot be empty'
+                        }
+                    }
+                },
+                destination: {
+                   trigger:'change    blur',
+                    validators: {
+                        notEmpty: {
+                            message: 'field  is required and cannot be empty'
+                        }
+                    }
+                },
+              product_id: {
+                   trigger:'change    blur',
+                    validators: {
+                        notEmpty: {
+                            message: 'field  is required and cannot be empty'
+                        }
+                    }
+                },
+                product_quantity: {
+                   trigger:'change blur',
+                    validators: {
+                        notEmpty: {
+                            message: 'field  is required and cannot be empty'
+                        }
+                    }
+                },
+              product_temperature: {
                    trigger:'change keyup blur',
                     validators: {
                         notEmpty: {
@@ -839,9 +675,34 @@ $(document).ready(function() {
                         }
                     }
                 },
+               product_gravity: {
+                   trigger:'change blur',
+                    validators: {
+                        notEmpty: {
+                            message: 'field  is required and cannot be empty'
+                        }
+                    }
+                },
 
-          'withholding_tax': {
-                   trigger:'change keyup blur',
+              freight_rate: {
+                   trigger:'change  blur',
+                    validators: {
+                        notEmpty: {
+                            message: 'field  is required and cannot be empty'
+                        }
+                    }
+                },
+             carriage_commission: {
+                   trigger:'change  blur',
+                    validators: {
+                        notEmpty: {
+                            message: 'field  is required and cannot be empty'
+                        }
+                    }
+                },
+
+            'withholding_tax': {
+                   trigger:'change  blur',
                     validators: {
                         notEmpty: {
                             message: 'field  is required and cannot be empty'
@@ -850,19 +711,21 @@ $(document).ready(function() {
                 },
 
            'company_comission': {
-                   trigger:'change keyup blur',
+                   trigger:'change  blur',
                     validators: {
                         notEmpty: {
                             message: 'field  is required and cannot be empty'
                         }
                     }
-                },
-        
+                }
 
 
             }
         });
 });
+
+
+
 
 
 </script>

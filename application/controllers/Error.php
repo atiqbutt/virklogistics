@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Error extends CI_Controller {
+class MyError extends CI_Controller {
 
 		public function __construct()
 	{
@@ -42,7 +42,7 @@ log_message('error', 'Some variable did not contain a value11111.');
 
 		$data['menu']=$this->load_model->menu();
 		$data['base_url'] = base_url();
-                $data['userInfo'] = $this->userInfo;
+        $data['userInfo'] = $this->userInfo;
 		$data['total_trips']=$this->home_model->total_trips();
 		$data['active_trips']=$this->home_model->active_trips();
 		$data['total_contractors']=$this->home_model->total_contractors();

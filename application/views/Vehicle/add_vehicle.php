@@ -80,7 +80,7 @@
                      
                    <div class="form-group">
                             <div class="col-sm-9 col-sm-offset-3"> 
-                               <input class="btn btn-success" type="submit" name="register" value="submit" />
+                               <input class="btn btn-success" type="submit" name="register" value="Add" />
                                <input id="resetbtn" class="btn btn-warning" type="reset" name="reset" value="Reset" />
                                <a class="btn btn-danger" href="<?php echo base_url() ?>Vehicle/show_vehicle">Cancel</a>
                            </div>
@@ -98,9 +98,22 @@
                     </div>
                     <div class="box-body">
                     <div class="row">
-                      <div class="col-lg-3"><span style="color:red; font-size:20px; font-weight:bold;"></span><label>chamber 1</label>
-                      </div><div class="col-lg-7"><input value="Chamber" text-align:center; readonly class="form-control" style="width:95%; float:left;margin-top:10px;" type="text" name="numberofchamber" required="required"/></div><div class="col-lg-3"><label>capacity 1</label>
-                    </div><div class="col-lg-7"><input class="form-control fc"  id="fc" style="width:95%; float:left;margin-top:10px;" type="text" name="capacityofchamber[]" required="required"/></div></div>
+                      <div class="form-group"> 
+                        <div class="col-sm-3 text-right"><label class="control-label">Chamber 1</label>
+                        </div>
+                         <div class="col-sm-8"><input value="Chamber" text-align:center; readonly class="form-control" type="text" name="numberofchamber" required="required"/>
+                         </div>
+                     </div>
+
+                     <div class="form-group"> 
+                        <div class="col-sm-3 text-right"><label class="control-label">capacity 1</label>
+                        </div>
+                         <div class="col-sm-8"><input class="form-control fc"  id="fc"  type="text" name="capacityofchamber[]" onkeypress="return ValidateNumberOnly()"
+                  required="required"/>
+                         </div>
+                     </div>
+
+                      </div>
                     
                   
 
@@ -120,7 +133,9 @@
 
  </section>
  </form>
- 
+            
+        
+
 
  
 <script type="text/javascript">
@@ -137,13 +152,27 @@
          } 
         var chamber= "";
         for($i=2; $i<=$num; $i++){
-            chamber+='<div class="row"><div class="col-lg-3"><span style="color:red; font-size:20px; font-weight:bold;"></span><label>chamber '+$i+'</label></div><div class="col-lg-7"><input value="Chamber '+$i+'" text-align:center; readonly class="form-control" style="width:95%; float:left;margin-top:10px;" type="text" name="numberofchamber[]" required="required"/></div><div class="col-lg-3"><label>capacity '+$i+'</label></div><div class="col-lg-7"><input class="form-control fc" id="fc'+$i+'" style="width:95%; float:left;margin-top:10px;" type="text" name="capacityofchamber[]" required="required"/></div></div>'; //add input box    
+
+            chamber+='<div class="row">'+
+            '<div class="form-group">'+
+            '<div class="col-sm-3 text-right"><label class="control-label">Chamber '+$i+'</label>'+
+            '</div>'+
+            '<div class="col-sm-8">'+
+          '<input value="Chamber '+$i+'" text-align:center; readonly class="form-control" type="text" name="numberofchamber[]" required="required"/>'+
+            '</div>'+
+            '</div>'+
+            '<div class="form-group">'+ 
+            '<div class="col-sm-3 text-right"><label class="control-label">capacity '+$i+'</label>'
+            +'</div>'+
+            '<div class="col-sm-8"><input class="form-control fc"  id="fc'+$i+'"  type="text" name="capacityofchamber[]" onkeypress="return ValidateNumberOnly()" required="required"/>'
+            +'</div>'+
+            '</div>'+
+            '</div>'; //add input box    
             }
 
-            
-            $(wrapper).html(chamber);
-            // $('#defaultForm').bootstrapValidator('update');
-
+            $appended = $(wrapper).html(chamber);
+            $newfields = $appended.find('[name="capacityofchamber[]"]');
+            $('#defaultForm').bootstrapValidator('addField',$newfields);
            
         });
 
@@ -276,7 +305,7 @@ $(document).ready(function() {
                    trigger:'change keyup blur',
                     validators: {
                         notEmpty: {
-                            message: 'The Chassis no Field  is required and cannot be empty'
+                            message: 'The capacity of chamber is required and cannot be empty'
                         }
                     }
                 }

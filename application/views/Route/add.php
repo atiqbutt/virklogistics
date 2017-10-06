@@ -42,11 +42,11 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                       <div class="col-md-9 col-sm-6 col-xs-12">                 
                         <select id="loc" class="form-control client" name="source" selected="selected" required>
                              
-                       <option value="">Select Options</option>       
-                         <?php  if(!empty($locations)){
-                            foreach ($locations as $loc){   ?>       
-                            <option value="<?php  echo  $loc["id"];?>"   >
-                            <?php  echo  $loc["name"];?>
+                       <option value="">Select Source</option>       
+                         <?php  if(!empty($location)){
+                            foreach ($location as $prod){   ?>       
+                            <option value="<?php  echo  $prod["id"];?>"   >
+                            <?php  echo  $prod["name"];?>
                             </option>               
                          <?php }} ?>
                         </select> 
@@ -58,13 +58,13 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Destination <span class="required">*</span>
                         </label> 
                       <div class="col-md-9 col-sm-6 col-xs-12">                 
-                        <select class="form-control client" name="destination" selected="selected" required>
+                        <select class="form-control client" name="destination" id="dest" selected="selected" required>
                              
-                       <option value="">Select Options</option>       
-                         <?php  if(!empty($locations)){
-                            foreach ($locations as $loc){   ?>       
-                            <option value="<?php  echo  $loc["id"];?>"   >
-                            <?php  echo  $loc["name"];?>
+                       <option value="">Select Destination</option>       
+                          <?php  if(!empty($location)){
+                            foreach ($location as $prod){   ?>       
+                            <option value="<?php  echo  $prod["id"];?>"   >
+                            <?php  echo  $prod["name"];?>
                             </option>               
                          <?php }} ?>
                         </select> 
@@ -79,9 +79,9 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                       <div class="col-md-9 col-sm-6 col-xs-12">                 
                         <select id="product" class="form-control client" name="product" selected="selected" required>
                              
-                       <option value="">Select Options</option>       
-                         <?php  if(!empty($products)){
-                            foreach ($products as $prod){   ?>       
+                       <option value="">Select Product</option>       
+                         <?php  if(!empty($product)){
+                            foreach ($product as $prod){   ?>       
                             <option value="<?php  echo  $prod["id"];?>"   >
                             <?php  echo  $prod["heading"];?>
                             </option>               
@@ -94,7 +94,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Freight <span class="required">*</span>
                         </label>
                         <div class="col-md-9 col-sm-6 col-xs-12">
-                              <input type="address" name="freight" class="form-control"  placeholder="Destination" value="<?php echo set_value('dest');?>">
+                              <input type="address" name="freight" class="form-control"  placeholder="Freight" value="<?php echo set_value('dest');?>">
                
                         </div>
                       </div>
@@ -128,7 +128,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <select class="form-control client" name="type" selected="selected" required>
                              
                        <option value="">Select Options</option>             
-                            <option value="Primary">Primary</option>
+                            <option value="primary">Primary</option>
                             <option value="secondary">Secondary</option>  
                             <option value="secondarylocal">Secondary Local</option>   
                                          
@@ -188,7 +188,6 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                 <div class="panel panel-default">
                   <div class="panel-heading">Add Product</div>
                   <div class="panel-body">
-
                     <div class="col-md-12 col-sm-6 col-xs-12" style="padding-bottom: 10px">
                         <input id="product_name" type="address" name="name" class="form-control" placeholder="Enter Product">
            
@@ -199,8 +198,8 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <select id="product_type" class="form-control client" name="product" selected="selected" required>
                              
                        <option value="">Product Type</option>       
-                         <?php  if(!empty($productype)){
-                            foreach ($productype as $prod){   ?>       
+                         <?php  if(!empty($producttype)){
+                            foreach ($producttype as $prod){   ?>       
                             <option value="<?php  echo  $prod["id"];?>"   >
                             <?php  echo  $prod["name"];?>
                             </option>               
@@ -211,9 +210,11 @@ if ((event.keyCode < 48 || event.keyCode > 57))
 
                       <div class="col-md-12">
                         <button id="add_product" class="btn btn-success">Add</button>
+                         
+
+                       
                       </div>
              
-
                   </div>
                 </div>
 
@@ -307,30 +308,28 @@ $("#zzz").click(function(){
 
 
 <script>
-
+$(document).ready(function(){
     $('#add_product').click(function(event) {      
-      
+       event.preventDefault();
       var productName =  $("#product_name").val();
       var productType =  $("#product_type").val();
-
-     // alert(productName);
-      
+       
       $.ajax({
         type: 'POST',
-        url: '<?php echo base_url(); ?>Product/save_product',
+        url: '<?php echo base_url(); ?>Defination/save_product',
         data : { productName: productName, productType:productType},
         success:  function (response) {  
-               //alert(response);
         }
       }).done(function(){
 
         $.ajax({
           type: 'POST',
-          url: '<?php echo base_url() ?>Product/get_all_products',
-          success:  function (response) {  
+          url: '<?php echo base_url() ?>Defination/get_all_products',
+          success:  function (response) { 
+           var pre = '<option value="">Select Product</opiton>'; 
 
-             $("#product").html("");
-            $("#product").html(response);
+            $("#product").html("");
+            $("#product").html(pre+response);
                  
           }
 
@@ -338,15 +337,14 @@ $("#zzz").click(function(){
       });
    
     });
-
+});
 
     $('#add_source').click(function(event) {      
       
       var location =  $("#location").val();
-      
       $.ajax({
         type: 'POST',
-        url: '<?php echo base_url(); ?>Defination/savelocationtype',
+        url: '<?php echo base_url(); ?>Defination/savesour',
         data : { location: location},
         success:  function (response) {  
                //alert(response);
@@ -357,21 +355,24 @@ $("#zzz").click(function(){
           type: 'POST',
           url: '<?php echo base_url() ?>Defination/get_all_location',
           success:  function (response) {  
-
+             var pre = '<option value="">Select Source</opiton>';
+             var pr = '<option value="">Select Destination</opiton>';
+              $("#dest").html("");
+             $("#dest").html(pr+response);
              $("#loc").html("");
-            $("#loc").html(response);
+            $("#loc").html(pre+response);
                  
           }
 
         });
+
       });
    
     });
 
-
+  
 
 </script>
-
 
 
 

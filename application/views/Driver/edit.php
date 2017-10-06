@@ -163,19 +163,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                          <input type="file" name="doc" />
-                    <?php  
-$do=explode('/', $edit->doc);
-
-if(count($do)>1)
-{
-echo $do[1];
-}
-
-else{
-$do=$do;
-}
-
-  ?>
+                 
                      </div>
                       </div>
                     

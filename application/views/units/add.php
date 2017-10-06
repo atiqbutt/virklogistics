@@ -1,22 +1,27 @@
 <script src="<?php echo base_url()?>assets/commonFormValidator.js" type="text/javascript"></script>
 
-<div class="container" style="padding-top:20px" >
-    <div class="row">
-     
+
+
+
+
+
+
+ <section class="content">
+      <div class="row">
+           <div class="col-md-12">
            <?php if ($this->session->flashdata('msg' )): ?>
           <div class="alert alert-success">
           <?php echo $this->session->flashdata('msg'); ?>  
           </div>
-           <?php endif; ?>
-        <div class="col-md-11">
-  <div class="box box-info">
-            <div class="box-header with-border">
-              <h2 class="box-title">Add Units</h2>
-             
+           <?php endif; ?> 
+        <div class="col-xs-12">
+          <div class="box col-sm-12">
+            <div class="box-header" >
+              <h3 class="box-title">Add Units</h3>
             </div>
             <!-- /.box-header -->
-            <!-- form start -->
-            <form id="defaultForm" class="form-horizontal" action="<?php echo base_url()?>unit/save" method="post" enctype="multipart/formdata">
+            <div class="box-body">
+                   <form id="defaultForm" class="form-horizontal" action="<?php echo base_url()?>unit/save" method="post" enctype="multipart/formdata">
               <div class="box-body">
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
@@ -38,17 +43,27 @@
               <!-- /.box-body -->
                         <div class="form-group" style="padding-bottom: 10px ">
                             <div class="col-sm-10 col-sm-offset-2"> 
-                               <input class="btn btn-success" type="submit" name="register" value="submit" />
+                               <input class="btn btn-success" type="submit" name="register" value="Add" />
                                <input class="btn btn-warning" type="submit" name="reset" value="Reset" />
                                <a class="btn btn-danger"href="<?php echo base_url() ?>unit/index">Cancel</a>
                            </div>
                         </div>
                          
             </form>
+            </div>
+            <!-- /.box-body -->
           </div>
-    </div>
-    </div>
-</div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+
+
+
+
+
 
 <script type="text/javascript">
 $(document).ready(function() {

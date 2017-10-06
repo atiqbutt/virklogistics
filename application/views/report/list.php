@@ -48,7 +48,7 @@ td,th{
             <div class="box-body">
 
              <div class="col-md-5">
-                   <form class="form-horizontal" id="shippingForm" action="<?php echo base_url()?>Defination/" method="post" enctype="multipart/form-data">
+                   <form class="form-horizontal" id="shippingForm"  onsubmit="return validateForm(this)" action="<?php echo base_url()?>Report/trip_reports" method="post" enctype="multipart/form-data">
                         
                     <div class="col-md-6">
 
@@ -56,7 +56,7 @@ td,th{
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Trip id
                         </label>
                         <div class="col-md-8 col-sm-6 col-xs-12">
-                             <input class="form-control" type="text" placeholder="trip" name="tripid"/>
+                             <input class="form-control" type="text" placeholder="trip" name="id"/>
                        </div>
                       </div>
 
@@ -65,7 +65,7 @@ td,th{
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Product Type
                         </label>
                         <div class="col-md-8 col-sm-6 col-xs-12">
-                        <select class="form-control" name="producttype" id="producttype">
+                        <select class="form-control sel" name="productid" id="producttype">
                            <option value="">Select Product Type</option>
                           <?php
                           foreach ($protype as $value) {
@@ -84,7 +84,7 @@ td,th{
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Agent
                         </label>
                         <div class="col-md-8 col-sm-6 col-xs-12">                            
-                        <select class="form-control" name="agent">
+                        <select class="form-control sel" name="">
                         <option value="">Select Agent</option>
                          <?php
                           foreach ($agent as $value) {
@@ -102,7 +102,7 @@ td,th{
                       <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Driver
                       </label>
                       <div class="col-md-8 col-sm-6 col-xs-12">
-                      <select class="form-control" name="driver">
+                      <select class="form-control sel" name="driverid">
                       <option value="">Select Driver</option>
                        <?php
                           foreach ($driver as $value) {
@@ -121,14 +121,20 @@ td,th{
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Vehicle
                         </label>
                         <div class="col-md-8 col-sm-6 col-xs-12">            
-                        <select class="form-control" name="vehicle">
+                        <select class="form-control sel" name="vechileid">
                         <option value="">Select Vehicle</option>
                          <?php
                           foreach ($vehicle as $value) {
+                            if($vechileid==$value['id']){
+                              ?>
+                                <option value="<?php echo $value['id']?>" selected="selected"><?php echo $value['heading']?></option>
+                              <?php
+                            }else{
+                            
                             ?>
                             <option value="<?php echo $value['id']?>"><?php echo $value['heading']?></option>
                           <?php
-                        }
+                        }}
                           ?>
                         </select>
                         </div>
@@ -138,7 +144,7 @@ td,th{
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Source 
                         </label>
                         <div class="col-md-8 col-sm-6 col-xs-12">
-                          <select class="form-control" name="source">
+                          <select class="form-control sel" name="sourceid">
                         <option value="">Select Source</option>
                         <?php
                           foreach ($source as $value) {
@@ -155,7 +161,7 @@ td,th{
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date From 
                         </label>
                         <div class="col-md-8 col-sm-6 col-xs-12">
-                          <input class="form-control" type="date" name="datefrom"/>
+                          <input class="form-control" type="date" style="border-radius:5px !important;border:1px solid grey !important" name=""/>
                          </div>
                       </div>
 
@@ -184,7 +190,7 @@ td,th{
                       <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Product
                       </label>
                       <div class="col-md-9 col-sm-6 col-xs-12">
-                     <select class="form-control" name="product" id="product">
+                     <select class="form-control" name="productname" id="productid" style="border-radius:5px !important;border:1px solid grey !important height:5px">
                         <option value="">Select Product</option>
                           
                         </select>
@@ -196,7 +202,7 @@ td,th{
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Contractor
                         </label>
                         <div class="col-md-9 col-sm-6 col-xs-12">                              
-                        <select class="form-control" name="contractor">
+                        <select class="form-control sel" name="">
                         <option value="">Select Contractor</option>
                          <?php
                           foreach ($contratctor as $value) {
@@ -214,7 +220,7 @@ td,th{
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Helper 
                         </label>
                         <div class="col-md-9 col-sm-6 col-xs-12">                                                    
-                        <select class="form-control" name="helper">
+                        <select class="form-control sel" name="">
                         <option value="">Select Helper</option>
                          <?php
                           foreach ($helper as $value) {
@@ -232,7 +238,7 @@ td,th{
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Vehicle Type
                         </label>
                         <div class="col-md-9 col-sm-6 col-xs-12">
-                        <select class="form-control" name="vehicletype">
+                        <select class="form-control sel" name="">
                         <option value="">Select Vehicle Type</option>
                         <?php
                           foreach ($vehicletype as $value) {
@@ -249,7 +255,7 @@ td,th{
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Destination 
                         </label>
                         <div class="col-md-9 col-sm-6 col-xs-12">
-                          <select class="form-control" name="destination">
+                          <select class="form-control sel" name="destinationid">
                         <option value="">Select Destination</option>
                          <?php
                           foreach ($source as $value) {
@@ -268,7 +274,7 @@ td,th{
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date To
                         </label>
                         <div class="col-md-9 col-sm-6 col-xs-12">
-                        <input class="form-control" type="date"  name="dateto"/>
+                        <input class="form-control" style="border-radius:5px !important;border:1px solid grey !important" type="date"  name=""/>
                       </div>
                       </div>
 
@@ -276,7 +282,7 @@ td,th{
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Company
                              </label>
                             <div class="col-md-9 col-sm-6 col-xs-12">         
-                              <select class="form-control" name="company">
+                              <select class="form-control sel" name="companyid">
                               <option value="">Select Company</option>
                                <?php
                                   foreach ($comp as $value) {
@@ -429,12 +435,13 @@ td,th{
 $(document).on('change','#producttype',function(){
 var prod=$('#producttype').val();
  $.post("<?php echo base_url(); ?>Report/changeproduct/"+prod,{},function(data){
-      $("#product").html('');
-      $("#product").html(data);
+      $("#productid").html('');
+      $("#productid").html(data);
 
 
 })
 });
+<<<<<<< HEAD
 
 
 $("#btn-print").click(function () {
@@ -454,11 +461,52 @@ $("#btn-print").click(function () {
             $(".col1").show();
         });
 </script>
+=======
+>>>>>>> 8330fdb0aee10582466a8b06c2f509134803eb1e
 
+function validateForm(form) {
+  
+  var isValid=false;
+  $("form").eq(0).find(':text').each(function() {
+    if(this.value!=undefined && this.value!= "")
+    {
+      isValid=true;
+      return false;
+    }
+  });
+  
+  $("form").eq(0).find(':selected').each(function() {
+    if(this.value!=undefined && this.value!= "")
+    {
+      isValid=true;
+      return false;
+    }
+  });
+  
+  if(!isValid){
+    alert("Kindly provide some search criteria");
+    return false;
+  }
+}
+
+
+</script>
 </div>
 </section>
 
 
+
+<script>
+$('.sel').select2({
+      // tags: "true",
+    // minimumResultsForSearch: 20 ,
+    selectOnClose: true,
+   placeholder: "Select an option",
+    allowClear: true
+
+});
+
+</script>
 
 
 

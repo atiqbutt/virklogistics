@@ -11,11 +11,34 @@ class Defination_Model extends CI_Model {
 	}
 
 
-         public function getcontractorcnic($search)
+  public function getcontractorcnic($search)
 {
    
     $query = $this->db->query("SELECT * FROM contractorinformation where cnic like '$search' ");
     return $query->row();
+}
+
+public function loctype()
+{
+return $this->db->where('is_delete',0)->get('locationtype')->result();     
+
+}
+
+public function product()
+{
+     return $this->db->where('is_deleted',0)->get('product')->result(); 
+}
+
+
+public function getroute()
+{
+    return $this->db->select()->from('get_route_def')->get()->result_array();
+}
+
+
+public function editroute($id)
+{
+    return $this->db->select()->from('get_route_def')->where('id',$id)->get()->row();
 }
 
 
@@ -418,10 +441,7 @@ where cnic like '$search' ");
         return $this->db->select()->from('driverinformation')->where('is_deleted',0)->order_by("id", "desc")->get()->result_array();
 	}	
 	
-         public function viewroute()
-	{
-        return $this->db->select()->from('routedefination')->where('is_deleted',0)->order_by("id", "desc")->get()->result_array();
-	}	
+      
         
          public function viewcontractor()
 	{

@@ -356,15 +356,6 @@ class Vehicle extends CI_Controller {
 
 
 
-
-
-
-
-
-
-
-
-
         public function add_Vehicle_states()
         {
         $data['menu'] = $this->load_model->menu();
@@ -379,19 +370,18 @@ class Vehicle extends CI_Controller {
         {
         if ($_POST )
         {
-
+        $admin=json_decode(base64_decode($this->session->admin),true);
+        $id=$admin['id'];
         $this->load->model('generic_model');
         $data["heading"]=$this->input->post('name');
         $data["createdAt"]=date("Y-m-d h:i:sa");
-        // $data["createdBy"]=$this->session->userdata('dekho_userId');
-
+        $data["createdBy"]=$id;
+         $data["modifiedAt"]=date("Y-m-d h:i:sa");
+        $data["modifiedBy"]=$id;
         $this->db->insert('vehiclestatus', $data);
-        // $this->generic_model->insert("producttype",$data,array("id"=>$id));
-
-
+        $this->generic_model->insert("producttype",$data,array("id"=>$id));
         $this->session->set_flashdata('msg', "Add vehicle status, Information has been added successfully");
         redirect('Vehicle/Vehicle_Status_list');
-
         }
 
         else{
@@ -522,12 +512,14 @@ class Vehicle extends CI_Controller {
         {
         if ($_POST )
         {
-
+             $admin=json_decode(base64_decode($this->session->admin),true);
+        $id=$admin['id'];
         $this->load->model('generic_model');
         $data["heading"]=$this->input->post('name');
         $data["createdAt"]=date("Y-m-d h:i:sa");
-        // $data["createdBy"]=$this->session->userdata('dekho_userId');
-
+        $data["createdBy"]=$id;
+            $data["modifiedAt"]=date("Y-m-d h:i:sa");
+            $data["modifiedBy"]=$id;
         $this->db->insert('vehicletype', $data);
         // $this->generic_model->insert("producttype",$data,array("id"=>$id));
 

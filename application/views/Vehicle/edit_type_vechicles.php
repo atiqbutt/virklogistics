@@ -32,7 +32,7 @@
             
                          <div class="form-group" style="padding-bottom: 10px ">
                             <div class="col-sm-10 col-sm-offset-2"> 
-                               <input class="btn btn-success" type="submit" name="register" value="submit" />
+                               <input class="btn btn-success" type="submit" name="register" value="Update" />
                                <input class="btn btn-warning" type="reset" name="reset" value="Reset" />
                                <a class="btn btn-danger"href="<?php echo base_url() ?>Vehicle/Vehicle_type_list">Cancel</a>
                            </div>

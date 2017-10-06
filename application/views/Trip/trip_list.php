@@ -69,17 +69,17 @@
             foreach($tripmanagement as $amb){ 
                ?>
                 <tr class="odd gradeX">
-                <td> <?php echo $amb["id"];?>  </td>
+                <td><a href="<?php echo base_url();?>Trip/close_trip/<?php echo $amb["id"];?>"><?php echo $amb["id"];?></a>   </td>
                 <td> <?php echo $amb["type"];?>  </td>
         				<td> <?php echo $amb["productname"];?>  </td>
         				<td> <?php echo $amb["comname"];?>  </td>
         				<td> <?php echo $amb["conname"];?>  </td>
-        				<td> <?php echo $amb["source"];?>  </td>
+        				<!-- <td> <?php echo $amb["source"];?>  </td> -->
                 <td> <?php
                 $newDate = date("d/m/Y", strtotime($amb["filling_date"]));
                  echo $newDate;?> </td>
                 <td> <?php echo $amb["temperature"];?> </td>
-                <td> <?php echo $amb["meter_reading"];?> </td>
+                <td> <?php echo $amb["start_meter_reading"];?> </td>
           			<td> <?php echo $amb["gravity"];?> </td>
                 <td> <?php echo $amb["vehicleregisterationno"];?> </td>
           			<td> <?php echo $amb["quantity"];?> </td>

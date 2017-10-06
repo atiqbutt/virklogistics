@@ -201,13 +201,8 @@ td,th{
                   <div class="item form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Trip Type
                     </label>
-<<<<<<< HEAD
                     <div class="col-md-8 col-sm-6 col-xs-12">
                       <select class="form-control" name="type">
-=======
-                    <div class="col-md-9 col-sm-6 col-xs-12">
-                      <select class="form-control" name="triptype">
->>>>>>> ccde15bb994f87e9b85b6b68704ad65898e68269
                         <option value="">Select Trip Type</option>
                         <option value="Self-Short">Self-Short</option>
                         <option value="Self-Long">Self-Long</option>
@@ -371,7 +366,6 @@ td,th{
    
 
   <!-- /.box-header -->
-<<<<<<< HEAD
   <div class="col-md-3 form-group">
     <button class="btn-primary col-md-6" id="btnExport">
             Export as Excel
@@ -421,7 +415,6 @@ td,th{
       <th>Engine</th> -->
 
       
-=======
   <div class="box-body "  id="list">
  <a href="#" id="btn-print" class="btn btn-default pull-right actions" data-toggle="tooltip" title="Print" data-placement="bottom" style="margin-top:10px"><i class="fa fa-print"></i></a>
 <table class="table table-bordered p" style="width:2100px;border:2px solid grey" >

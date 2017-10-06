@@ -1,3 +1,6 @@
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.dataTables.min.css">
+
 
 <script type="text/javascript">
 
@@ -57,8 +60,8 @@ $(document).ready(function() {
                           
                           <td>
 						  <a href="<?php echo base_url();?>Defination/eyelocation/<?php echo $value['id']; ?>"><i class="fa fa-eye"></i></a>
-                       <!--     <a href="<?php echo $base_url; ?>Defination/editlocationtype/<?php echo $value['id']; ?>"><i class="fa fa-edit"></i></a> 
-                           --> <a href="<?php echo $base_url; ?>Defination/deletelocationtype/<?php echo $value['id']; ?>"><i class="fa fa-trash"></i></a>
+                           <!-- <a href="<?php echo $base_url; ?>Defination/editlocationtype/<?php echo $value['id']; ?>"><i class="fa fa-edit"></i></a> --> 
+                            <a href="<?php echo $base_url; ?>Defination/deletelocationtype/<?php echo $value['id']; ?>"><i class="fa fa-trash"></i></a>
                           </td>
                            <?php  
                           }

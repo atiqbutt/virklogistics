@@ -239,7 +239,6 @@ public function printhelper($p="")
                 $field=$this->input->post();
                 $data=array(
                     'name'=>$field['name'],
-                   
                      'number'=>implode(',',$field['phone']),
                     'address'=>$field['address'],
                      'religion'=>$field['religion'],
@@ -2015,7 +2014,7 @@ public function delete_expense($id)
        $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
-  $data['page']='expensetype/add';
+       $data['page']='expensetype/add';
         $this->load->view('Template/main',$data);
            
   }
@@ -2028,11 +2027,13 @@ public function delete_expense($id)
        $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
+    
         if($this->input->post()){
             $data=$this->input->post();
             $field=array(
                  'name'=>$data['name'],
-                 'remarks'=>$data['remarks']
+                 'remarks'=>$data['remarks'],
+                
                 );
                 $done=$this->Defination_Model->insert('expensetype',$field);
                      if($done)
@@ -2159,6 +2160,7 @@ public function delete_expense($id)
        $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
+
         if($this->input->post()){
             $data=$this->input->post();
             $field=array(
@@ -2166,7 +2168,7 @@ public function delete_expense($id)
 				 'address'=>$data['address'],
 				 'latitude'=>$data['latitude'],
 				 'longitude'=>$data['longitude'],
-                 'remarks'=>$data['remarks']
+          'remarks'=>$data['remarks']
                 );
                 $done=$this->Defination_Model->insert('locationtype',$field);
                      if($done)
@@ -2176,7 +2178,7 @@ public function delete_expense($id)
                        }
                
         }
-  $data['page']='locationtype/add';
+        $data['page']='locationtype/add';
         $this->load->view('Template/main',$data);
            
   }

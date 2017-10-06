@@ -25,9 +25,9 @@
                 <tr>
                                     <th> Name</th>
                                     <th>Price</th>
-                                      <th>From Date</th>
+                                    <th>From Date</th>
                                     <th>To Date</th>
-                                   
+                                 
                                    
                                     
                                 </tr>
@@ -38,16 +38,12 @@
                             {
                             foreach($product as $amb){ ?>
                                 <tr class="odd gradeX">
-                                <td><?php echo $amb["heading"];?></td>
-
-
-                                  
-                                  <td><?php echo $amb["price"];?></td>
-								   <td><?php echo $amb["startdate"];?></td>
+                                <td><?php echo $amb["heading"];?></td>    
+                              <td><?php echo $amb["price"];?></td>
+								              <td><?php echo $amb["startdate"];?></td>
                              <td><?php echo $amb["date"];?></td>
-                          
-                                    
-                                </td>
+                            
+                           
                                   <?php } }?>
                             </tr>
                           

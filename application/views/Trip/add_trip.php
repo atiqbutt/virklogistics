@@ -72,7 +72,7 @@
 <div class="col-lg-3  paddinglr5">
                      <div class="form-group"> 
                         <label>Company</label>
-                          <select class="form-control" name="company_id" selected="selected" required>
+                          <select class="form-control sel" name="company_id" selected="selected" required>
                           <option value="">Select Options</option>       
                            <?php  if(!empty($customer)){
                             foreach ($customer as $c){ ?>        
@@ -86,8 +86,8 @@
 <div class="col-lg-3 paddinglr5">
                     <div class="form-group">    
                         <label>Contractor</label>
-                        <select class="form-control" name="contractor_id" selected="selected" required>          
-                       <option value="">Select Options</option>       
+                        <select class="form-control sel" name="contractor_id" selected="selected" required>          
+                       <option value="" >Select Options</option>       
                          <?php  if(!empty($contractor)){
                             foreach ($contractor as $con){   ?>       
                             <option value="<?php  echo  $con["id"];?>"   >
@@ -100,7 +100,7 @@
 <div class="col-lg-3  paddinglr5">
                     <div class="form-group">    
                       <label>Vehicle</label>
-                        <select id="veh" class="form-control" name="vehicle_id" required>
+                        <select id="veh" class="form-control sel" name="vehicle_id" required>
                            <option value="">Select Options</option>       
                             <?php if(!empty($vehicle)){
                             foreach ($vehicle as $v){  ?>      
@@ -129,7 +129,7 @@
                    <div class="col-lg-3 paddinglr5">
                         <div class="form-group"> 
                           <label>Source </label>
-                            <select class="form-control" name="source" selected="selected" required> 
+                            <select class="form-control sel" name="source" selected="selected" required> 
                             <option value="">Select Options</option>       
 
                              <?php  if(!empty($source)){
@@ -290,7 +290,7 @@
                         <div class="col-md-10 paddinglr5">
                             <label>Driver</label>
 
-                          <select class="form-control driver" name="driver[]" required>
+                          <select class="form-control driver sel" name="driver[]" required>
                              <option value="">Select Options</option>       
                               <?php if(!empty($driver1)){
                               foreach ($driver1 as $v){  ?>      
@@ -312,7 +312,7 @@
                         <div class="col-md-10 paddinglr5">
                             <label>Helper</label>
 
-                          <select  class="form-control" name="helper[]" required>
+                          <select  class="form-control sel" name="helper[]" required>
                              <option value="">Select Options</option>       
                               <?php if(!empty($helperinformation)){
                               foreach ($helperinformation as $v){  ?>      
@@ -361,7 +361,7 @@
 
                     <div class="form-group">    
                         <label>Filled By</label>
-                          <select  class="form-control" name="filled_by" required>
+                          <select  class="form-control sel" name="filled_by" required>
                              <option value="">Select Options</option>       
                               <?php if(!empty($driver1)){
                               foreach ($driver1 as $v){  ?>      
@@ -460,6 +460,18 @@ document.getElementsByClassName('sum1')[0].value=sum11;
 <label Class="c1"></label>
 <label Class="sum1"></label>
 
+
+<script>
+$('.sel').select2({
+      // tags: "true",
+    // minimumResultsForSearch: 20 ,
+    selectOnClose: true,
+   placeholder: "Select an option",
+    allowClear: true
+
+});
+
+</script>
 <script>
   
 $(document).ready(function() {
@@ -472,7 +484,7 @@ $(document).ready(function() {
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<div class="form-group paddinglr5"><div class="col-md-10 paddinglr5"><label>Helper</label><select class="form-control" name="helper[]" required><option value="">Select Options</option><?php if(!empty($helperinformation)){  foreach ($helperinformation as $v){  ?><option value="<?php  echo  $v["id"];?>"   ><?php  echo  $v["name"];?></option><?php }} ?></select></div><div class="col-md-2 paddinglr5"><button  style="margin-top: 30px" id="helper"><i class="fa fa-minus" aria-hidden="true"></i></button></div></div>'); 
+            $(wrapper).append('<div class="form-group paddinglr5"><div class="col-md-10 paddinglr5"><label>Helper</label><select class="form-control sel" name="helper[]" required><option value="">Select Options</option><?php if(!empty($helperinformation)){  foreach ($helperinformation as $v){  ?><option value="<?php  echo  $v["id"];?>"   ><?php  echo  $v["name"];?></option><?php }} ?></select></div><div class="col-md-2 paddinglr5"><button  style="margin-top: 30px" id="helper"><i class="fa fa-minus" aria-hidden="true"></i></button></div></div>'); 
             //add input box
         }
     });

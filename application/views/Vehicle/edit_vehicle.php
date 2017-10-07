@@ -1,99 +1,100 @@
+ <form id="defaultForm" action="<?php echo base_url('Vehicle/edit_vehicle_save')?>" class="form-horizontal" method="post" enctype="multipart/form-data">
+           
 <section class="content">
     <div class="row">
         <div class="col-lg-7">
             <div class="box">
 
                 <div class="box-header">
-                  <h3 class="box-title">Edit Vehicle</h3>
+                  <h3 class="box-title">Manage Vehicle</h3>
                 </div>
-          <form id="defaultForm" action="<?php echo base_url('Vehicle/edit_vehicle_save')?>" class="form-horizontal" method="post" enctype="multipart/form-data">
+                
                 <div class="box-body">
                       <div class="form-group">
                       <label class="control-label col-sm-3">Vehicle Type:</label>
                       <div class="col-sm-9">
-                        <select class="form-control" name="vehicle_type"  required >                  
-                            <?php if(!empty($vehicletype)){ ?>
-                            <option value="" > Select Options</option> 
-                            <?php   foreach ($vehicletype as $v){ 
-                              if($vehicle[0]['vehicle_type']==$v['id']){
-                                ?>
-                                <option value="<?php  echo  $v["id"]; ?>" selected="selected" ><?php  echo  $v["heading"]; 'selected'?></option>
-                                <?php
-                              }
-                              else{
-                                ?>
-                             <option value="<?php  echo  $v["id"]; ?>" ><?php  echo  $v["heading"]; ?></option>         
+                        <select class="form-control" name="vehicle_type" selected="selected" required >                  
+                            <?php
+                           
+                            foreach ($data as $value) {
+                              ?>
+                              <option <?php if($edit->vehtypeid==$value->id) echo "selected='selected'"; ?>value="<?php echo $value->id?>"><?php echo $value->heading;?></option>
                               <?php
-                              }
-                               }
-                                }
-                                 ?>             
+                            }
+                            ?>
+
                         </select>
                        </div>
                       </div>
+
                       <div class="form-group">
                       <label class="control-label col-sm-3">Registration No:</label>
                       <div class="col-sm-9">
 
-                        <input class="form-control"  type="text" name="registerationno" value="<?php echo $vehicle[0]['registerationno'] ; ?>"  placeholder="Registration no...." class="form-control num"  required="required"/></div> </div>
-                      
-                   
+                        <input class="form-control"  value="<?php echo $edit->registerationno?>" type="text" name="registerationno"  placeholder="Registration no...." class="form-control num"  required="required"/></div> </div>
+                      <input type="hidden" name="id" value="<?php echo $edit->id?>">
+                   <input type="hidden" name="idd" value="<?php echo $edit->chamid?>">
                       <div class="form-group">
 
                        <label class="control-label col-sm-3">chassis no:</label>
                         <div class="col-sm-9">
-                        <input class="form-control"  type="text" name="chassisno" value="<?php echo $vehicle[0]['chassisno'] ; ?>" placeholder="Chassis no...." required="required"  />
+                        <input class="form-control"  type="text"  value="<?php echo $edit->chassisno?>" name="chassisno" placeholder="Chassis no...." required="required"  />
                         </div> </div>
  
                       <div class="form-group">
                        <label class="control-label col-sm-3">Engine No:</label>
                         <div class="col-sm-9">
-                        <input class="form-control"  type="text" name="engineno" value="<?php echo $vehicle[0]['engineno'] ; ?>" placeholder="Engine no...."  required="required" />
+                        <input class="form-control"  type="text"  value="<?php echo $edit->engineno?>" name="engineno" placeholder="Engine no...."  required="required" />
                         </div> </div> 
 
                       <div class="form-group">
                        <label class="control-label col-sm-3">No Of Chamber:</label>
                         <div class="col-sm-9">
-                        <input name="numberofchamber" value="<?php echo $vehicle[0]['numberofchamber1'] ; ?>" placeholder="Number of chamber...." class="form-control txt_name"  onkeypress='return ValidateNumberOnly()' type="text" required="required"  /> </div></div> 
+                        <input name="numberofchambe" placeholder="1"   value="<?php echo $edit->numveh?>" class="form-control txt_name"  onkeypress='return ValidateNumberOnly()' type="text" required="required"  /> </div></div> 
                               
                      <div class="form-group">            
                    <label class="control-label col-sm-3">Total Fuel Capacity:</label>
                         <div class="col-sm-9">
-                        <input class="form-control" id="tfc"  value="<?php echo $vehicle[0]['totalfuelcapacity'] ; ?>" type="text" name="totalfuelcapacity" placeholder=""  onkeypress='return ValidateNumberOnly()' required="required" readonly /> </div> </div>  
+                        <input class="form-control" id="tfc"  type="text"  value="<?php echo $edit->tot?>" name="totalfuelcapacity" placeholder=""  onkeypress='return ValidateNumberOnly()' required="required" readonly /> </div> </div>  
                             
                          <div class="form-group">     
                          <label class="control-label col-sm-3">Color:</label>
                         <div class="col-sm-9">               
-                        <input class="form-control" type="text" value="<?php echo $vehicle[0]['color'] ; ?>" name="color" onkeypress="return maskAlphaWithSp(this,event);" placeholder="Color...."  required="required" /> </div></div>
+                        <input class="form-control" type="text" name="color"  value="<?php echo $edit->color?>" onkeypress="return maskAlphaWithSp(this,event);" placeholder="Color...."  required="required" /> </div></div>
                        
                          <div class="form-group"> 
                         <label class="control-label col-sm-3">Company:</label>
                         <div class="col-sm-9"> 
-                        <input class="form-control"  type="text" value="<?php echo $vehicle[0]['company'] ; ?>" onkeypress="return maskAlphaWithSp(this,event);" name="company" placeholder="Company...."  required="required" /></div></div>
+                        <input class="form-control"  type="text"  value="<?php echo $edit->company?>" onkeypress="return maskAlphaWithSp(this,event);" name="company" placeholder="Company...."  required="required" /></div></div>
                                 
 
                          <div class="form-group">    
                         <label class="control-label col-sm-3">Model:</label>
                         <div class="col-sm-9"> 
-                        <input class="form-control"  type="text" name="model" value="<?php echo $vehicle[0]['model'] ; ?>"  placeholder="Model...."  /> </div> </div>
+                        <input class="form-control"  type="text"  value="<?php echo $edit->model?>" name="model"  placeholder="Model...."  /> </div> </div>
                          
                        <div class="form-group"> 
                         <label class="control-label col-sm-3">Vehicle Image:</label>
-                        <div class="col-sm-9"> 
-                        <input class="form-control" name="vehicleimage" type="file" id="file" /></div></div>
+                        <div class="col-sm-9">
+                         <?php if (!empty($edit->image)) { ?> 
+                            <img style="border:1px solid #D3D3D3;" alt="User Pic" src="<?php echo base_url().$edit->image; ?>" id="show-picture" width="150px" class="img-responsive img-thumbnail"><br><br>
+                       <?php }?>
+                       <input type="file" name="vehicleimage" id="picture" class="form-control img-responsive img-thumbnail" width="150px">
+                      </div></div>
  
                          <div class="form-group">
                         <label class="control-label col-sm-3">Scan Document:</label>
                         <div class="col-sm-9"> 
-                        <input class="form-control"  name="scanimage" id="file" type="file" /> </div> </div> 
+                        <input class="form-control"  name="doc" id="file" type="file" /> </div> </div> 
                      
-                         <div class="form-group">
+                   <div class="form-group">
                             <div class="col-sm-9 col-sm-offset-3"> 
-                               <input class="btn btn-success" type="submit" name="register" value="submit" />
-                               <input class="btn btn-warning" type="reset" name="reset" value="Reset" />
+                               <input class="btn btn-success" type="submit" name="register" value="Update" />
+                               <input id="resetbtn" class="btn btn-warning" type="reset" name="reset" value="Reset" />
                                <a class="btn btn-danger" href="<?php echo base_url() ?>Vehicle/show_vehicle">Cancel</a>
                            </div>
-                        </div>                         
+                        </div>
+                         
                     
                 </div>
             </div>
@@ -105,51 +106,137 @@
                       <h3 class="box-title">Chambers</h3>
                     </div>
                     <div class="box-body">
-                        <div class="input_fields_wrap"></div>
+                    <div class="row">
+                      <?php 
+                      $i=1;
+                        foreach ($chamber as $val) {
+                          ?>
+                          <?php
+                        if($val->vehicle_id==$edit->id)
+                        {
+                          ?>
+                      <div class="form-group"> 
+                        <div class="col-sm-3 text-right"><label class="control-label">Chamber <?php echo $i;?></label>
+                        </div>
+                        
+                         <div class="col-sm-8"><input value="<?php echo $edit->numcham?>" text-align:center; readonly class="form-control" type="text" name="numberofchamber[]" required="required"/>
+                         </div>
+                     </div>
+
+                     <div class="form-group"> 
+                        <div class="col-sm-3 text-right"><label class="control-label">capacity <?php echo $i;?></label>
+                        </div>
+                         <div class="col-sm-8"><input  value="<?php echo $edit->cham?>" class="form-control fc"  id="fc"  type="text" name="capacityofchamber[]" onkeypress="return ValidateNumberOnly()"
+                               required="required"/>
+                         </div>
+                     </div>
+<?php
+}
+$i++;
+}
+?>
+                      </div>
+                    
+                  
+
+                        <div class="input_fields_wrap">
+
+ 
+
+
+
+                        </div>
                     </div>
                 </div>
             </div> <!-- col-lg-6 -->
     </div>
-        </form>
+        
 
 
  </section>
- 
- 
+ </form>
+            
+        
 
- 
+ <script type="text/javascript">
+
+$(document).ready(function(){
+    $('#picture').on('change', function(){ //on file input change
+        if (window.File && window.FileReader && window.FileList && window.Blob) //check File API supported browser
+        {
+           // $('#show-picture').html(''); //clear html of output element
+            var data = $(this)[0].files; //this file data
+            
+            $.each(data, function(index, file){ //loop though each file
+                if(/(\.|\/)(gif|jpe?g|png)$/i.test(file.type)){ //check supported file type
+                    var fRead = new FileReader(); //new filereader
+                    fRead.onload = (function(file){ //trigger function on successful read
+                    return function(e) {
+                        $('#show-picture').attr('src', e.target.result); //create image element 
+                       // $('#show-picture').append(img); //append image to output element
+                    };
+                    })(file);
+                    fRead.readAsDataURL(file); //URL representing the file's data.
+                }
+            });
+            
+        }else{
+            alert("Your browser doesn't support File API!"); //if File API is absent
+        }
+    });
+});
+
+</script>
+
+
+
 <script type="text/javascript">
     $(document).ready(function(){
     
         var wrapper = $(".input_fields_wrap"); //Fields wrapper
+       
         
         $(".txt_name").keyup(function(){ 
         var  $num = $(this).val();
-        if ($num== "") {
-        $('#tfc').val("");
-        } 
+     if ($num== "") {
+
+         $('#tfc').val("");
+         } 
         var chamber= "";
-        for($i=1; $i<=$num; $i++){
-            chamber+='<div class="row"><div class="col-lg-3"><span style="color:red; font-size:20px; font-weight:bold;"></span><label>chamber '+$i+'</label></div><div class="col-lg-7"><input value="Chamber '+$i+'" text-align:center; readonly class="form-control" style="width:95%; float:left;margin-top:10px;" type="text" name="numberofchamber[]" required="required"/></div><div class="col-lg-3"><label>capacity '+$i+'</label></div><div class="col-lg-7"><input class="form-control fc" id="fc'+$i+'" style="width:95%; float:left;margin-top:10px;" type="text" name="capacityofchamber[]" required="required"/></div></div>'; //add input box    
+        for($i=2; $i<=$num; $i++){
+
+            chamber+='<div class="row">'+
+            '<div class="form-group">'+
+            '<div class="col-sm-3 text-right"><label class="control-label">Chamber '+$i+'</label>'+
+            '</div>'+
+            '<div class="col-sm-8">'+
+          '<input value="Chamber '+$i+'" text-align:center; readonly class="form-control" type="text" name="numberofchamber[]" required="required"/>'+
+            '</div>'+
+            '</div>'+
+            '<div class="form-group">'+ 
+            '<div class="col-sm-3 text-right"><label class="control-label">capacity '+$i+'</label>'
+            +'</div>'+
+            '<div class="col-sm-8"><input class="form-control fc"  id="fc'+$i+'"  type="text" name="capacityofchamber[]" onkeypress="return ValidateNumberOnly()" required="required"/>'
+            +'</div>'+
+            '</div>'+
+            '</div>'; //add input box    
             }
-            $(wrapper).html(chamber);
-      
+
+            $appended = $(wrapper).html(chamber);
+            $newfields = $appended.find('[name="capacityofchamber[]"]');
+            $('#defaultForm').bootstrapValidator('addField',$newfields);
+           
         });
 
-        var  $num = $(".txt_name").val();
-        if ($num== "") {
-        $('#tfc').val("");
-        } 
-        var chamber= "";
-        for($i=1; $i<=$num; $i++){
-            chamber+='<div class="row"><div class="col-lg-3"><span style="color:red; font-size:20px; font-weight:bold;"></span><label>chamber '+$i+'</label></div><div class="col-lg-7"><input value="Chamber '+$i+'" text-align:center; readonly class="form-control" style="width:95%; float:left;margin-top:10px;" type="text" name="numberofchamber[]" required="required"/></div><div class="col-lg-3"><label>capacity '+$i+'</label></div><div class="col-lg-7"><input class="form-control fc" id="fc'+$i+'" style="width:95%; float:left;margin-top:10px;" type="text" name="capacityofchamber[]" required="required"/></div></div>'; //add input box    
-            }
-            $(wrapper).html(chamber);
-
-
     });
-      
+
+   
 </script>
+
+ 
+
+
+
 <script>
   $(document).on("keyup", ".fc", function () {
  
@@ -160,9 +247,13 @@
     });
      
     $('#tfc').val(sum);
+
      
 });
 </script>
+
+
+
 <script src="<?php echo base_url()?>assets/commonFormValidator.js" type="text/javascript"></script>
 <script>
 function maskAlphaWithSp(obj, e) {
@@ -183,9 +274,8 @@ if ((event.keyCode < 45 || event.keyCode > 57))
    event.returnValue = false;
 }
 }
-
-
 </script>
+
 
 
 <script type="text/javascript">
@@ -214,14 +304,16 @@ $(document).ready(function() {
                         }
                     }
                 },
+                                      
                 chassisno: {
                    trigger:'change keyup blur',
                     validators: {
                         notEmpty: {
-                            message: 'The Price Field  is required and cannot be empty'
+                            message: 'The Chassis no Field  is required and cannot be empty'
                         }
                     }
                 },
+                
               engineno: {
                    trigger:'change keyup blur',
                     validators: {
@@ -238,18 +330,7 @@ $(document).ready(function() {
                         }
                     }
                 },
-
-        'capacityofchamber[]': {
-                   trigger:'change keyup  blur',
-                    validators: {
-                        notEmpty: {
-                            message: 'The chamber Field  is required and cannot be empty'
-                        }
-                    }
-                },
-
-
-
+                
               color: {
                    trigger:'change keyup blur',
                     validators: {
@@ -274,8 +355,21 @@ $(document).ready(function() {
                         }
                     }
                 },
+                'capacityofchamber[]': {
+                   trigger:'change keyup blur',
+                    validators: {
+                        notEmpty: {
+                            message: 'The capacity of chamber is required and cannot be empty'
+                        }
+                    }
+                }
             }
         });
+});
+
+
+$("#resetbtn").click(function(){
+   $('#defaultForm').bootstrapValidator("resetForm",true);    
 });
 
 

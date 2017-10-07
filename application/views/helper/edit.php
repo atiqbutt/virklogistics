@@ -172,7 +172,7 @@ $do=$do;
                         <div class="col-md-6 col-md-offset-3">
                           <input class="btn btn-success" type="submit" name="register" value="update" />
                           <input id="zzz" class="btn btn-warning" type="reset" name="reset" value="Reset" />
-                          <a type="submit" name="register" href='<?php echo base_url()?>Defination/index';" class="btn btn-danger">Cancel</a>
+                          <a type="submit" name="register" href='<?php echo base_url()?>Defination/index' class="btn btn-danger">Cancel</a>
             
                         </div>
                       </div>

@@ -143,7 +143,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <div class="col-md-6 col-md-offset-3">
                           <input class="btn btn-success" type="submit" name="register" value="Add" />
                           <input id="zzz" class="btn btn-warning" type="reset" name="reset" value="Reset" />
-                          <a type="submit" name="register" href='<?php echo base_url()?>Defination/agentpage';" class="btn btn-danger">Cancel</a>
+                          <a type="submit" name="register" href='<?php echo base_url()?>Defination/agentpage' class="btn btn-danger">Cancel</a>
             
                         </div>
                       </div>

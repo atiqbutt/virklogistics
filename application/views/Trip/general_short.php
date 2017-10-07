@@ -56,8 +56,8 @@
                     <th class="paddinglr">W.H.T</th> 
 					<th class="paddinglr">Remaining Commission</th>
 					<th class="paddinglr">Service Charges</th>
-                    <th class="paddinglr">Action</th> 
                     <th class="paddinglr">Status</th>
+                    <th class="paddinglr">Action</th> 
 				                    
                </tr>
             </thead>
@@ -85,24 +85,24 @@
 				<td> <?php echo $amb["remaining_commission"];?> </td>
 				<td> <?php echo $amb["servicecharges"];?> </td>
 				
-                       
-                  <td>
-
-                    <a style="font-size:18px;" href="<?php echo base_url();?>trip/close_trip/<?php echo $amb['id'];?>"><i class="fa fa-window-close" aria-hidden="true"></i></a> 
-                  </td>
-
-                 <td>
+                       <td>
                     <?php if ($amb["status"]=="0"){?>                  
                     <a style="font-size:18px;" class="text-custom1" href="<?php echo base_url();?>trip/states/<?php echo $amb['id'];?>">
                     <i class="fa fa-check"></i></a>
                     <?php } elseif($amb["status"]=="1") {?>
 
                     <a class="text-custom1" href="<?php echo base_url();?>trip/active/<?php echo $amb['id'];?>">
-					<i class="fa fa-window-close-o" aria-hidden="true"></i>
-					</a>
+          <i class="fa fa-window-close-o" aria-hidden="true"></i>
+          </a>
                     <?php } ?>
                                  
-                 </td>
+                 </td> 
+                  <td>
+
+                    <a style="font-size:18px;" href="<?php echo base_url();?>trip/close_trip/<?php echo $amb['id'];?>"><i class="fa fa-window-close" aria-hidden="true"></i></a> 
+                  </td>
+
+                
 <!--<td>
 
 <div  class="" data-toggle="modal" data-target="#exampleModal1" data-whatever="@mdo">
@@ -138,15 +138,13 @@
  
  
  
- 
- 
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-       
- 
- <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
  
  
  

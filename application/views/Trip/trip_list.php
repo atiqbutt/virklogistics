@@ -108,12 +108,12 @@
                       </div>
 
 
-                        <form name="myform" id="myform" action="<?php echo base_url() ?>trip/saveexpense_trip/<?php echo $amb['id'];?>" method="post" enctype="multipart/form-data">
+                        <form name="myform" id="myform" action="<?php echo base_url() ?>trip/expenseadd/<?php echo $amb['id'];?>" method="post" enctype="multipart/form-data">
 
                         <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                         <div class="modal-dialog" role="document">
                         <div class="modal-content">
-
+<input type="hidden" name="id" value="<?php echo $amb['id']?>">
                           
                         <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -126,34 +126,35 @@
                                         <div class="col-md-10">
                                             <label>Expense Type</label>
 
-                                          <select  class="form-control" name="expensetype_id[]" required>
+                                          <select  class="form-control alertbox" name="" id="expense" required>
                                              <option value="">Select Options</option>       
                                               <?php if(!empty($expensetype)){
                                               foreach ($expensetype as $e){  ?>      
-                                              <option value="<?php  echo  $e["id"];?>"   >
+                                              <option value="<?php  echo  $e["id"];?>">
                                               <?php  echo  $e["name"];?>
                                               </option>               
                                               <?php }} ?>
                                           </select>
                                         </div>  
 
-                        		            <div class="col-md-10"><label>Expense Amount</label><input name="amount[]" type="text" class="form-control"></div>
-
+                        		            <!-- <div class="col-md-10"><label>Expense Amount</label><input name="amount" type="text" id="amount" class="form-control"></div>
+ -->
                                         <div class="col-md-2">  
-                                         <button style="margin-top: 30px" id="addhelper" ><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                       <button style="margin-top: 30px" id="addhelper" ><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                      
                                         </div>
                                   </div>
 
 
-                                  <div class="col-lg-12" style="padding-top:20px;margin-top:20px;">				
-                                    <div id="add_helper"></div>
+                                  <div class="col-lg-12" style="margin-top:20px;">				
+                                    <div id="add_helpr"></div>
                                   </div>
 
-                                  <br />
+                                 
 
                                 <div class="modal-footer" style="padding-top:20px;margin-top:20px;">
                                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                  <input type="submit" class="btn btn-primary" value="add">
+                                  <button  id="add" class="btn btn-primary">Add</button>
                                 </div>
 
                                 </div>
@@ -266,27 +267,72 @@ $(document).ready(function() {
     $(wrapper).on("click","#helper", function(e){ //user click on remove text
         e.preventDefault(); $(this).parent('div').parent('div').remove(); x--;
     });*/
-  $(document).ready(function() {
-    $('#all_trips').click(function(event) {      
+//   $(document).ready(function() {
+//     $('#all_trips').click(function(event) {      
      
-      $.ajax({
-        type: 'POST',
-        url: '<?php echo base_url() ?>trip/index',
-        data : { id: id},
-        success:  function (response) {  
-        var result = response ;  
+//       $.ajax({
+//         type: 'POST',
+//         url: '<?php echo base_url() ?>trip/index',
+//         data : { id: id},
+//         success:  function (response) {  
+//         var result = response ;  
         
                      
-        }
-      })
+//         }
+//       })
    
-    });
-  });
-</script>
- 
- 
- 
- 
+//     });
+//   });
+
+
+// $(window).load(function(){
+//   $('.alertbox').change(function(){
+  
+
+//         });
+//   })
+
+ </script>
+
+
+
+ <script>
+ // $(document).ready(function(){
+ //                 $("#add").on('click',function(e) {
+ //                  e.preventDefault();
+ //                    var expense=$('#expense').val();
+ //                    var amount=$('#amount').val();
+
+ //                        $.get("<?php echo base_url(); ?>Trip/expenseadd/"+expense+"/"+amount,{},function(data){
+ //                      alert(data);
+ //                       console.log(data);
+
+ //                    }); 
+ //                });
+                   
+ //            });
+$(document).ready(function(){
+ $('#addhelper').click(function(e){
+  e.preventDefault();
+    var a=$('#expense').val();
+    var t=$('#expense option:selected').text();
+        var id=$('#expense option:selected').val();
+
+
+  var ht='<div class="col-md-10">'+
+  '<label>Expense Type</label><input name="expensetype[]" value="'+t+'" type="text" class="form-control"><input type="hidden" name="expensetype_id[]" value="'+id+'" type="text" class="form-control">'+'</div>'
+  +'<div class="col-md-10">'+
+  '<label>Expense Amount</label><input name="amount[]" type="text" class="form-control">'+'</div>'+
+   '<div class="col-md-6">'+'<td><a href="javascript:void(0);" id="remove" class="rem">X</a></td>';
+$('#add_helpr').append(ht);
+ });
+});
+
+$('.rem').on('click',function(){
+
+  $(this).parent().parent().parent().parent().parent().remove();
+});
+ </script>
  
  
  

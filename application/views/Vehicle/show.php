@@ -50,20 +50,20 @@
                       
                     <tr>
                       <td><?php echo $value["registerationno"];?></td>
-                      <td><?php echo $value["totalfuelcapacity"];?></td>
+                      <td><?php echo $value["tot"];?></td>
                       <td><?php echo $value["color"];?></td>
                       <td><?php echo $value["model"];?></td>
                       <td><?php echo $value["company"];?></td>
                        <td>
 
-  <?php if ($value["status"]=="0"){?>
+  <?php if ($value["vehstat"]=="0"){?>
                                                                       
 <a class="text-custom1" href="<?php echo base_url();?>Vehicle/List_showstates/<?php echo $value['id'];?>">
   <img src="<?php echo base_url();?>assets/Images/2.png" width="20px" height="20px"></a>
                                               
                                         
 
-                                    <?php } elseif($value["status"]=="1") {?>
+                                    <?php } elseif($value["vehstat"]=="1") {?>
                                                    
                                                     <a class="text-custom1" href="<?php echo base_url();?>Vehicle/List_showactive/<?php echo $value['id'];?>"><img src="<?php echo base_url();?>assets/Images/3.png" width="20px" height="20px"></a>
                                                  
@@ -75,7 +75,7 @@
                       <td>
                         <?php
 
-                        if($value['status']==1)
+                        if($value['vehstat']==1)
                         {
 
                           ?>

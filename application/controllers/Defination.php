@@ -12,6 +12,7 @@ class Defination extends CI_Controller {
         $this->load->model('load_model');
          $this->load->model('Generic_model');
         $this->user_model->check_login("admin");
+         date_default_timezone_set("Asia/Karachi");
         $this->userInfo = $this->user_model->userInfo("first_name,last_name");
         
     }
@@ -237,6 +238,8 @@ public function printhelper($p="")
                 $url=$this->do_upload();
                  $url2=$this->do_upload2();
                 $field=$this->input->post();
+                 $admin=json_decode(base64_decode($this->session->admin),true);
+        $id=$admin['id'];
                 $data=array(
                     'name'=>$field['name'],
                      'number'=>implode(',',$field['phone']),
@@ -250,9 +253,9 @@ public function printhelper($p="")
                     'status'=>0,
                     'image1'=>$url,
                     'createdAt'=>date("Y-m-d h:i:sa"),
-                    'createdBy'=>1,
+                    'createdBy'=>$id,
                     'modifiedAt'=>date("Y-m-d h:i:sa"),
-                    'modifiedBy'=>1
+                    'modifiedBy'=>$id
                  
                 );
            
@@ -272,7 +275,7 @@ public function printhelper($p="")
        $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
-	$data['page']='helper/add';
+	      $data['page']='helper/add';
         $this->load->view('Template/main',$data);
            
 	}
@@ -313,7 +316,9 @@ public function printhelper($p="")
                     $field=$this->input->post();
                     
                $url=$this->do_upload();
-               $url2=$this->do_upload2();   
+               $url2=$this->do_upload2(); 
+        $admin=json_decode(base64_decode($this->session->admin),true);
+        $id=$admin['id'];  
               $data=array(
                     'name'=>$field['name'],
                      'number'=>implode(',',$field['phone']),
@@ -323,11 +328,8 @@ public function printhelper($p="")
                      'doj'=>$field['doj'],
                     'dob'=>$field['dob'],
                     'dl'=>$field['driver'],
-                    
-                   
                     'modifiedAt'=>date("Y-m-d h:i:sa"),
-                    'modifiedBy'=>1
-                 
+                    'modifiedBy'=>$id
                 );
        
        
@@ -338,7 +340,7 @@ public function printhelper($p="")
                     
                     if($url2!='')
                     {
-                   $data['doc']=url2;
+                   $data['doc']=$url2;
                     }
        
                 $done=$this->db->where('id',$field['id'])->update('helperinformation',$data);
@@ -359,7 +361,7 @@ public function printhelper($p="")
 					$data=array(
 						'status'=>$new
 						);
-                                        $query=  $this->db->where('id',$id)->update('helperinformation',$data);
+       $query=  $this->db->where('id',$id)->update('helperinformation',$data);
 					
 					if($query)
 					{
@@ -369,10 +371,11 @@ public function printhelper($p="")
         
          public function deletehelper()
     {
-            $id=$this->uri->segment(3);
+        $id=$this->uri->segment(3);
         $done=$this->db->where('id',$id)->update('helperinformation',array('is_deleted'=>1));
         if($done)
          {
+
           $this->session->set_flashdata('msg', 'Record is Deleted!');
           redirect('Defination/index');
                        }
@@ -587,6 +590,8 @@ public function printhelper($p="")
             {
                 $field=$this->input->post();
 //                if(!($field['image']=="" || $field['image']==null))
+                 $admin=json_decode(base64_decode($this->session->admin),true);
+        $id=$admin['id'];
                 $url=$this->do_upload();
                 $url2=$this->do_upload2();
                 $data=array(
@@ -602,13 +607,12 @@ public function printhelper($p="")
                     'image1'=>$url,
                     'status'=>0,
                     'createdAt'=>date("Y-m-d h:i:sa"),
-                    'createdBy'=>1,
+                    'createdBy'=>$id,
                     'modifiedAt'=>date("Y-m-d h:i:sa"),
-                    'modifiedBy'=>1
-                 
+                    'modifiedBy'=>$id                 
                 );
                
-                $done=$this->Defination_Model->insert(' customerinformation',$data);
+                $done=$this->Defination_Model->insert('customerinformation',$data);
                 if($done)
                 {
                     $this->session->set_flashdata('msg','Record has been Added Successfully');
@@ -671,7 +675,7 @@ public function printhelper($p="")
           $id=$this->uri->segment(3);
           $data['edit']=$this->db->where('id',$id)->get('customerinformation')->row();
           if($data['edit']==""){
-                 redirect('Error/dataNotFound');
+          redirect('Error/dataNotFound');
         }
           $data['page']='Company/edit';
           $this->load->view('Template/main',$data);
@@ -687,22 +691,20 @@ public function printhelper($p="")
                     
                $url=$this->do_upload();
                $url2=$this->do_upload2(); 
+              $admin=json_decode(base64_decode($this->session->admin),true);
+              $id=$admin['id'];
               $data=array(
                     'name'=>$field['name'],
-                    
                    'number'=>implode(',',$field['phone']),
                     'address'=>$field['address'],
-                    
                     'cnic'=>$field['cnic'],
                      'cpname'=>$field['contactname'],
                     'cpnumber'=>$field['contactnumber'],
                     'email'=>$field['email'],
                     'image1'=>$url,
-                   
                     'modifiedAt'=>date("Y-m-d h:i:sa"),
-                    'modifiedBy'=>1
-                  
-                );
+                    'modifiedBy'=>$id
+                    );
                 if($url!='')
                     {
                    	$data['image1']=$url;
@@ -710,7 +712,7 @@ public function printhelper($p="")
                     
                     if($url2!='')
                     {
-                   $data['doc']=url2;
+                   $data['doc']=$url2;
                     }
                
                     $done=$this->db->where('id',$field['id'])->update('customerinformation',$data);
@@ -924,6 +926,8 @@ public function printhelper($p="")
                 $url=$this->do_upload();
                  $url2=$this->do_upload2();
                 $field=$this->input->post();
+                 $admin=json_decode(base64_decode($this->session->admin),true);
+                 $id=$admin['id'];
                 $data=array(
                     'name'=>$field['name'],
                      'number'=>implode(',',$field['phone']),
@@ -935,11 +939,10 @@ public function printhelper($p="")
                     'email'=>$field['email'],
                     'image1'=>$url,
                     'createdAt'=>date("Y-m-d h:i:sa"),
-                    'createdBy'=>1,
+                    'createdBy'=>$id,
                     'status'=>0,
                     'modifiedAt'=>date("Y-m-d h:i:sa"),
-                    'modifiedBy'=>1
-                 
+                    'modifiedBy'=>$id
                 );
                
                 $done=$this->Defination_Model->insert('agentinformation',$data);
@@ -997,6 +1000,8 @@ public function printhelper($p="")
 		{
                  $field=$this->input->post();
                 $url=$this->do_upload();
+                 $admin=json_decode(base64_decode($this->session->admin),true);
+        $id=$admin['id'];
                if($url=='')
                     {
                    $q=$this->db->select('image1')->where('id',$field['id'])->get('agentinformation')->row();
@@ -1013,7 +1018,7 @@ public function printhelper($p="")
                     'email'=>$field['email'],
                     'image1'=>$url,
                     'modifiedAt'=>date("Y-m-d h:i:sa"),
-                    'modifiedBy'=>1
+                    'modifiedBy'=>$id
                   
                 );
                
@@ -1238,9 +1243,10 @@ public function printhelper($p="")
 //                if(!($field['image']=="" || $field['image']==null))
                 $url=$this->do_upload();
                  $url2=$this->do_upload2();
+                  $admin=json_decode(base64_decode($this->session->admin),true);
+                $id=$admin['id'];
                 $data=array(
                     'name'=>$field['name'],
-                   
                     'number'=>implode(',',$field['phone']),
                     'address'=>$field['address'],
                     'doc'=>$url2, 
@@ -1250,9 +1256,9 @@ public function printhelper($p="")
                     'email'=>$field['email'],
                     'image1'=>$url,
                     'createdAt'=>date("Y-m-d h:i:sa"),
-                    'createdBy'=>1,
+                    'createdBy'=>$id,
                     'modifiedAt'=>date("Y-m-d h:i:sa"),
-                    'modifiedBy'=>1
+                    'modifiedBy'=>$id
                  
                 );
                
@@ -1292,8 +1298,7 @@ public function printhelper($p="")
                     
                $url=$this->do_upload();
                 $url2=$this->do_upload2();
-               
-              $data=array(
+                $data=array(
                     'name'=>$field['name'],
                     
                    'number'=>implode(',',$field['phone']),
@@ -1301,9 +1306,9 @@ public function printhelper($p="")
                     'cnic'=>$field['cnic'],
                      'cpname'=>$field['contactname'],
                     'cpnumber'=>$field['contactnumber'],
-                    'email'=>$field['email'],                  
+                    'email'=>$field['email'],                                    
                     'modifiedAt'=>date("Y-m-d h:i:sa"),
-                    'modifiedBy'=>1
+                    'modifiedBy'=>$id
                   
                 );
                if($url!='')
@@ -1313,7 +1318,7 @@ public function printhelper($p="")
                     
                     if($url2!='')
                     {
-                   $data['doc']=url2;
+                   $data['doc']=$url2;
                     }
                     $done=$this->db->where('id',$field['id'])->update('contractorinformation',$data);
                     if($done)
@@ -1390,8 +1395,7 @@ public function printhelper($p="")
 	{
 	$data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
-        $data['userInfo'] = $this->userInfo;
-      
+        $data['userInfo'] = $this->userInfo;   
 	$data['page']='Contractor/add';
         $this->load->view('Template/main',$data);
            
@@ -1558,11 +1562,11 @@ public function printhelper($p="")
            
            if($this->input->post())
             {
+               $admin=json_decode(base64_decode($this->session->admin),true);
+        $id=$admin['id'];
                 $url=$this->do_upload();
                 $url2=$this->do_upload2();
-                
                 $field=$this->input->post();
-             
                 $data=array(
                      'name'=>$field['name'],
                      'number'=>implode(',',$field['phone']),
@@ -1577,9 +1581,9 @@ public function printhelper($p="")
                     'doc'=>$url2,
                      'type'=>$field['type'],
                     'createdAt'=>date("Y-m-d h:i:sa"),
-                    'createdBy'=>1,
+                    'createdBy'=>$id,
                     'modifiedAt'=>date("Y-m-d h:i:sa"),
-                    'modifiedBy'=>1
+                    'modifiedBy'=>$id
                 );
                
                 $done=$this->Defination_Model->insert('driverinformation',$data);
@@ -1616,7 +1620,7 @@ public function printhelper($p="")
           $id=$this->uri->segment(3);
           $data['edit']=$this->db->where('id',$id)->get('driverinformation')->row();
           if($data['edit']==""){
-                   redirect('Error/dataNotFound');
+          redirect('Error/dataNotFound');
           }
           $data['page']='Driver/edit';
           $this->load->view('Template/main',$data);
@@ -1642,8 +1646,9 @@ public function printhelper($p="")
                    
                 $url=$this->do_upload();
                 $url2=$this->do_upload2();
-               
-              $data=array(
+                $admin=json_decode(base64_decode($this->session->admin),true);
+                $id=$admin['id'];
+                $data=array(
                    'name'=>$field['name'],
                     'number'=>implode(',',$field['number']),
                     'address'=>$field['address'],
@@ -1653,11 +1658,8 @@ public function printhelper($p="")
                     'dob'=>$field['dob'],
                     'dl'=>$field['driver'],
                     'type'=>$field['type'],
-                    'createdAt'=>date("Y-m-d h:i:sa"),
-                    'createdBy'=>1,
                     'modifiedAt'=>date("Y-m-d h:i:sa"),
-                    'modifiedBy'=>1
-                  
+                    'modifiedBy'=>$id                  
                 );
                 if($url!='')
                     {
@@ -1666,7 +1668,7 @@ public function printhelper($p="")
                     
                     if($url2!='')
                     {
-                   $data['doc']=url2;
+                   $data['doc']=$url2;
                     }
                     $done=$this->db->where('id',$field['id'])->update('driverinformation',$data);
                     if($done)
@@ -1704,7 +1706,7 @@ public function printhelper($p="")
 					$data=array(
 						'status'=>$new
 						);
-                                        $query=  $this->db->where('id',$id)->update('driverinformation',$data);
+       $query=  $this->db->where('id',$id)->update('driverinformation',$data);
 					
 					if($query)
 					{
@@ -1739,7 +1741,9 @@ public function printhelper($p="")
            if($this->input->post())
             {
               
-                
+        $admin=json_decode(base64_decode($this->session->admin),true);
+        $id=$admin['id'];
+
                 $field=$this->input->post();
                 $data=array(
                      'source'=>$field['source'],
@@ -1750,11 +1754,10 @@ public function printhelper($p="")
                      'todate'=>$field['to'],
                      'type'=>$field['type'],
                     'createdAt'=>date("Y-m-d h:i:sa"),
-                    'createdBy'=>1,
+                    'createdBy'=>$id,
                     'modifiedAt'=>date("Y-m-d h:i:sa"),
-                    'modifiedBy'=>1
+                    'modifiedBy'=>$id
                 );
-                
                 $done=$this->Defination_Model->insert('routedefination',$data);
                 if($done)
                 {
@@ -1800,8 +1803,9 @@ public function printhelper($p="")
         {
             if($this->input->post())
 		{
-                 $field=$this->input->post();
-               
+              $admin=json_decode(base64_decode($this->session->admin),true);
+              $id=$admin['id'];
+              $field=$this->input->post();
                     $data=array(
                      'source'=>$field['source'],
                      'destination'=>$field['destination'],
@@ -1810,11 +1814,8 @@ public function printhelper($p="")
                      'fromdate'=>$field['from'],
                      'todate'=>$field['to'],
                      'type'=>$field['type'],
-                    'createdAt'=>date("Y-m-d h:i:sa"),
-                    'createdBy'=>1,
                     'modifiedAt'=>date("Y-m-d h:i:sa"),
-                    'modifiedBy'=>1
-                    
+                    'modifiedBy'=>$id                    
                 );
                
                     $done=$this->db->where('id',$field['id'])->update('routedefination',$data);
@@ -2027,14 +2028,21 @@ public function delete_expense($id)
        $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
-    
+      
+        $admin=json_decode(base64_decode($this->session->admin),true);
+        $id=$admin['id'];
+          $date = date("Y-m-d H:i:s");
         if($this->input->post()){
             $data=$this->input->post();
             $field=array(
                  'name'=>$data['name'],
                  'remarks'=>$data['remarks'],
-                
+                  'createdAt '=>$date,
+                 'createdBy'=>$id,
+                 'modifiedAt'=>$date,
+                 'modifiedBy'=>$id
                 );
+         
                 $done=$this->Defination_Model->insert('expensetype',$field);
                      if($done)
                        {
@@ -2085,7 +2093,7 @@ public function delete_expense($id)
           $id=$this->uri->segment(3);
           $data['edit']=$this->db->where('id',$id)->get('expensetype')->row();
           if($data['edit']==""){
-                   redirect('Error/dataNotFound');
+          redirect('Error/dataNotFound');
           }
           $data['page']='expensetype/edit';
           $this->load->view('Template/main',$data);
@@ -2097,17 +2105,24 @@ public function delete_expense($id)
          $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();
         $data['userInfo'] = $this->userInfo;
-
+       $admin=json_decode(base64_decode($this->session->admin),true);
+        $id=$admin['id'];
+          $date = date("Y-m-d H:i:s");
             if($this->input->post())
     {
                  $field=$this->input->post();
                
               $data=array(
+                    
                     'name'=>$field['name'],
-                    'remarks'=>$field['remarks']
+                 'remarks'=>$field['remarks'],
+                  'createdAt '=>$date,
+                 'createdBy'=>$id,
+                 'modifiedAt'=>$date,
+                 'modifiedBy'=>$id
                 );
                 
-               
+             
                     $done=$this->db->where('id',$field['id'])->update('expensetype',$data);
                     if($done)
                        {
@@ -2165,10 +2180,7 @@ public function delete_expense($id)
             $data=$this->input->post();
             $field=array(
           'name'=>$data['name'],
-				 'address'=>$data['address'],
-				 'latitude'=>$data['latitude'],
-				 'longitude'=>$data['longitude'],
-          'remarks'=>$data['remarks']
+				 'remarks'=>$data['remarks']
                 );
                 $done=$this->Defination_Model->insert('locationtype',$field);
                      if($done)
@@ -2197,17 +2209,7 @@ public function delete_expense($id)
   }
         
         
-         public function eyelocation()
-        {
-          $data['menu'] = $this->load_model->menu();
-          $data['base_url'] = base_url();
-          $data['userInfo'] = $this->userInfo;
-          $id=$this->uri->segment(3);
-          $data['edit']=$this->db->where('id',$id)->get('locationtype')->row();
-          $data['page']='locationtype/mapview';
-          $this->load->view('Template/main',$data);
-          
-        }
+       
 		 public function editlocationtype()
         {
          $data['menu'] = $this->load_model->menu();

@@ -316,6 +316,43 @@ $remaining_commissionn["product_id"]=$this->input->post('product_id');
 
 	          
 	   }
+
+
+       // public function expenseadd($a,$b)
+       // {
+        
+       //  $data=array(
+       //      'expensetype_id'=>$a,
+       //          'amount'=>$b
+       //      );
+       //   $this->db->insert('expense',$data);
+
+       // }
+       public function expenseadd()
+       {
+
+        $ex=$this->input->post('expensetype_id[]');
+
+        $id=$this->input->post('id');
+        $am=$this->input->post('amount[]');
+        for($i=0; $i<count($ex); $i++)
+        {
+            var_dump($ex[$i]);
+             $op=array(
+                'trip_id'=>$id,
+                'expensetype_id'=>$ex[$i],
+            'date'=>date("Y-m-d h:i:sa"),
+                    'amount'=>$am[$i]
+                );
+
+         $this->db->insert('expense',$op);   
+        }
+        
+
+       }
+
+
+
 public function all_close_trip()
        {
                 if ($this->input->post()) {

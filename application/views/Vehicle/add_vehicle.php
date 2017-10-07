@@ -14,9 +14,9 @@
                       <div class="col-sm-9">
                         <select class="form-control" name="vehicle_type" selected="selected" required >                  
                             <?php if(!empty($vehicletype)){ ?>
-                            <option value="" > Select Options</option> 
+                            <option value="" >Select Options</option> 
                             <?php   foreach ($vehicletype as $v){ ?>        
-                            <option value="<?php  echo  $v["id"]; ?>" ><?php  echo  $v["heading"]; 'selected'?></option>         
+                            <option value="<?php  echo  $v["id"]; ?>" ><?php  echo  $v["heading"];?></option>         
                             <?php } } ?>             
                         </select>
                        </div>
@@ -45,7 +45,7 @@
                       <div class="form-group">
                        <label class="control-label col-sm-3">No Of Chamber:</label>
                         <div class="col-sm-9">
-                        <input name="numberofchamber" placeholder="1"  class="form-control txt_name"  onkeypress='return ValidateNumberOnly()' type="text" required="required"  /> </div></div> 
+                        <input name="numberofchambe" placeholder="1"  class="form-control txt_name"  onkeypress='return ValidateNumberOnly()' type="text" required="required"  /> </div></div> 
                               
                      <div class="form-group">            
                    <label class="control-label col-sm-3">Total Fuel Capacity:</label>
@@ -71,14 +71,17 @@
                        <div class="form-group"> 
                         <label class="control-label col-sm-3">Vehicle Image:</label>
                         <div class="col-sm-9"> 
-                        <input class="form-control" name="vehicleimage" type="file" id="file" /></div></div>
+                       
+         
+          <input type="file" name="vehicleimage" class="form-control">
+                      </div></div>
  
                          <div class="form-group">
                         <label class="control-label col-sm-3">Scan Document:</label>
                         <div class="col-sm-9"> 
-                        <input class="form-control"  name="scanimage" id="file" type="file" /> </div> </div> 
+                        <input class="form-control"  name="doc[]" multiple="accept" type="file" /> </div> </div> 
                      
-                   <div class="form-group">
+                           <div class="form-group">
                             <div class="col-sm-9 col-sm-offset-3"> 
                                <input class="btn btn-success" type="submit" name="register" value="Add" />
                                <input id="resetbtn" class="btn btn-warning" type="reset" name="reset" value="Reset" />
@@ -101,7 +104,7 @@
                       <div class="form-group"> 
                         <div class="col-sm-3 text-right"><label class="control-label">Chamber 1</label>
                         </div>
-                         <div class="col-sm-8"><input value="Chamber" text-align:center; readonly class="form-control" type="text" name="numberofchamber" required="required"/>
+                         <div class="col-sm-8"><input value="Chamber" text-align:center; readonly class="form-control" type="text" name="numberofchamber[]" required="required"/>
                          </div>
                      </div>
 
@@ -109,7 +112,7 @@
                         <div class="col-sm-3 text-right"><label class="control-label">capacity 1</label>
                         </div>
                          <div class="col-sm-8"><input class="form-control fc"  id="fc"  type="text" name="capacityofchamber[]" onkeypress="return ValidateNumberOnly()"
-                  required="required"/>
+                               required="required"/>
                          </div>
                      </div>
 
@@ -136,7 +139,7 @@
             
         
 
-
+ 
  
 <script type="text/javascript">
     $(document).ready(function(){

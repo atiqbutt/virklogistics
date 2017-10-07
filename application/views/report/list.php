@@ -2,6 +2,8 @@
 <style>
 .content{
   background-color: #ecf0f5;
+    height: 200vh !important;
+
 }
 
 body    {
@@ -38,6 +40,8 @@ td,th{
   background: #fff !important;
 }
 
+
+
 </style>
 
 
@@ -49,6 +53,8 @@ td,th{
             <div class="box-body">
 
              <div class="col-md-12">
+
+             <div class="col-md-5">
                    <form class="form-horizontal" id="shippingForm"  onsubmit="return validateForm(this)" action="<?php echo base_url()?>Report/trip_reports" method="post" enctype="multipart/form-data">
                         
                     <div class="col-md-6">
@@ -548,9 +554,22 @@ var prod=$('#producttype').val();
 
 })
 });
-
-
-
+$("#btn-print").click(function () {
+           
+             var tripData = [];
+            $.each($("input:checkbox:not(:checked)"), function(){            
+              dat="."+$(this).val();
+              $(dat).hide();
+            });
+            $(".l").hide();
+            $(".p").print();
+            $.each($("input:checkbox:not(:checked)"), function(){            
+              dat="."+$(this).val();
+              $(dat).show();
+            });
+            $(".l").show();
+            $(".col1").show();
+        });
 function validateForm(form) {
 
   var isValid=false;

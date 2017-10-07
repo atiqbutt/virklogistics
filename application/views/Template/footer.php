@@ -1,11 +1,9 @@
-<!-- <footer class="main-footer">
-
+<footer class="main-footer" >
     <strong>Copyright &copy; 2017 <a href="http://softvilla.com.pk/">Softvilla Solutions</a>.</strong> All rights
     reserved.
   </footer>
- -->
-</div>
 
+</div>
 
 
 <!-- MetisMenu CSS -->

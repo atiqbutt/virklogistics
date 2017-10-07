@@ -156,15 +156,16 @@
                 width:300px; // or 33% for equal width independent of parent width
                 }
 
-            .first{
+                .first{
 
-                width: 200px;
-            }
+                    width: 200px;
+                }
 
-            .second{
 
-                width: 350px
-            }
+                .second{
+
+                    width: 350px
+                }
 
 </style>
     </head>
@@ -172,13 +173,14 @@
     <body class="clear">
         <?php date_default_timezone_set("Asia/Karachi"); ?>
         <div class="super_container">
-            <!-- <div class="page_break clear"> -->
+            <div class="page_break clear">
                 <div class="watermark_wrapper">
                     <div class="watermark"></div>
                 </div>
                 <div class="super_wrapper">
                     <div class="wrapper left2 left">
                         <div class="header">
+                              <div class="header">
                             <div class="wd-100 clear">
                             <!--     <div class=" text-left left ">  
                                 <img src="<?php //echo base_url()."Uploads/".$logo['picture']; ?>" style="width:50px;height:50px;">
@@ -190,7 +192,7 @@
                                     <!-- <center><h1></h1></center>
                                     <center><h3 style="color:#000 !important;"><i>Softvilla Solutions</i></h3></center>
                                     <center><i><h3 style="color:#000 !important;font-weight:normal;">Smart Workforce Mangement Application</h3></i></center> -->
-                                    <center><h3 class="boxed" style="margin-top:0px !important;font-size:23px;">Contractor Information</h3></center>
+                                    <center><h3 class="boxed" style="margin-top:0px !important;font-size:23px;">Vehicle Information</h3></center>
                                 </div>
 <!--                                 
                                 <div style="padding: 10px 0px 10px 60px" class="container">
@@ -208,9 +210,9 @@
                                     <?php //if (!empty($query)): ?>
                                     <?php //echo $query[0]['mobile']   ?>
                                     <?php //endif ?>
-                                    </div> -->
+                                    </div>
 
-                                </div>
+                                </div> -->
                             </div>
 
 
@@ -223,42 +225,87 @@
                     <tbody>
                      
                      <tr>
-                         <td class="first"><strong>Name:</strong></td>
-                         <td class="second"><?php if(isset($view)){echo ucfirst($view->name);}  ?>
-                         </td>
-                      </tr>
-                        
-                     <tr>
-                       <td class="first"><strong>Address:</strong></td>
-                       <td class="second"><?php if(isset($view)){echo ucfirst($view->address);}  ?></td>
+                       <td><strong>Vehicle Type:</strong></td>
+                       <td><?php if(isset($view)){echo ucfirst($view->head);}  ?></td>
                       </tr>
                       
-                      <td class="first"><strong>Phone Number:</strong></td>
-                        <td class="second"><?php if(isset($view)){echo ucfirst($view->number);}  ?>
+                      <td><strong>Registration No:</strong></td>
+                        <td><?php if(isset($view)){echo ucfirst($view->registerationno);}  ?>
                         </td>
-                                         
+                      
+                       
                         <tr>
-                       <td class="first"><strong>Contact Person Name:</strong></td>
-                        <td class="second"><?php if(isset($view)){echo ucfirst($view->cpname);}  ?></td>
+                       <td><strong>Chasis No:</strong></td>
+                        <td><?php if(isset($view)){echo ucfirst($view->chassisno);}  ?></td>
                       </tr>
                       
                       
                         <tr>
-                       <td class="first"><strong>Contact Person Number:</strong></td>
-                        <td class="second"><?php if(isset($view)){echo ucfirst($view->cpnumber);}  ?></td>
+                       <td><strong>Engine No:</strong></td>
+                        <td><?php if(isset($view)){echo ucfirst($view->engineno);}  ?></td>
                       </tr>
                       
                       
                        <tr>
-                       <td class="first"><strong>Cnic:</strong></td>
-                        <td class="second"><?php if(isset($view)){echo ucfirst($view->cnic);}  ?></td>
+                       <td><strong>Number Of Chamber:</strong></td>
+                        <td><?php if(isset($view)){echo ucfirst($view->numveh);}  ?></td>
                       </tr>
-                     
+
+
+                        <tr>
+                       <td><strong>Capacity Of Chamber:</strong></td>
+                        <td><?php if(isset($view)){echo ucfirst($view->tot);}  ?></td>
+                      </tr>
+
                        <tr>
-                       <td class="first"><strong>Email:</strong></td>
-                       <td class="second"><a href="<?php echo $view->email?>"><?php if(isset($view)){echo ucfirst($view->email);}  ?></td>
+                       <td><strong>Total Fuel Capacity:</strong></td>
+                        <td><?php if(isset($view)){echo ucfirst($view->tot);}  ?></td>
                       </tr>
-                     
+
+
+                       <tr>
+                       <td><strong>Colour:</strong></td>
+                        <td><?php if(isset($view)){echo ucfirst($view->color);}  ?></td>
+                      </tr>
+
+                       <tr>
+                       <td><strong>Company:</strong></td>
+                        <td><?php if(isset($view)){echo ucfirst($view->company);}  ?></td>
+                      </tr>
+
+                       <tr>
+                       <td><strong>Model:</strong></td>
+                        <td><?php if(isset($view)){echo ucfirst($view->model);}  ?></td>
+                      </tr>
+
+                    
+
+                       
+
+<tr>
+                       <td><strong>Status:</strong></td>
+                        <td>
+                          <?php
+
+                          $status=$view->vehstat;
+                          if($status==0)
+                          {
+                            ?>
+                             <h4 style="color:red;"><span class="abel label-success">Active</span></h4>
+                          <?php
+                        
+                      }
+                        else{
+                          ?>
+                            <h4 style="color:red;"><span class="label label-danger">De Active</span></h4>
+                        <?php
+                      }
+
+                          ?>
+
+                        </td>
+                      </tr>
+                  
                     
                      
                     </tbody>
@@ -269,20 +316,28 @@
 
                 <div class="wd-20 left" style="position: relative; top: 15px; left: 10px">
                     
-                        <?php if (!empty($view->image1)) { ?> 
-                            <img style="border:1px solid #D3D3D3;" alt="User Pic" src="<?php echo base_url().$view->image1; ?>" width="200px" class="img-responsive img-thumbnail">
+                        <?php if (!empty($view->image)) { ?> 
+                            <img style="border:1px solid #D3D3D3;" alt="User Pic" src="<?php echo base_url().$view->image; ?>" width="200px" class="img-responsive img-thumbnail">
                        <?php } else { ?>
                         <img style="border:1px solid #D3D3D3;" alt="User Pic" src="<?php echo base_url() ?>assets/Images/placeholder.jpg" width="200px" class="img-responsive img-thumbnail">
                         <?php } ?>
+
+
+                            <?php
+                            foreach ($view2 as $val) {
+                               ?>
+                           
+                        <img style="border:1px solid #D3D3D3;" alt="User Pic" src="<?php echo base_url().$val->pat;?>" width="200px" class="img-responsive img-thumbnail">
+                        <?php } ?>
+
+
                     
                 </div>
-             </div>
-            </div>
-         </div>
-     <!--  </div> -->
-   </div>
 
-    <script>
+
+
+             </div>
+                     <script>
         window.print();
     </script>
     </body>

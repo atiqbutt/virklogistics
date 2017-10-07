@@ -49,21 +49,32 @@ class Report extends CI_Controller {
         $data['vehicle']=$this->Dropdown_model->getAllRecords('vehicle',array('is_deleted'=>0));
         $data['contratctor']=$this->Dropdown_model->getAllRecords('contractorinformation',array('is_deleted'=>0));
         $data['source']=$this->Dropdown_model->getAllRecords('locationtype',array('is_delete'=>0));
-
+        $data['title']="Virk LogisTics Trip Report";
+                      // var_dump($data['source']); 
                     if($this->input->post()){
 
                         $formdata=$this->input->post();
                         $params=array();
+                        $startdate="";
+                        $enddate="";
                         
                         foreach ($formdata as $key => $value) {
-                            if($value!="" && $value!="submit"){
+                            if($value!="" && $value!="submit" && $key!="datefrom" && $key!="dateto"){
                                 $params[$key] =$value;
                                 $data[$key]=$value;
                                
                             }
+                            if($key=="datefrom" && $value!=""){
+                                $startdate=$value;
+                                $data[$key]=$value;
+                            }
+                                                        if($key=="dateto" && $value!=""){
+                                $enddate=$value;
+                                $data[$key]=$value;
+                            }
                         }
-                      //  var_dump($params); 
-                      $data['data']= $this->Report_model->getReportData($params);
+
+                      $data['data']= $this->Report_model->getReportData($params,$startdate,$enddate);
                         
                     }
                 else{

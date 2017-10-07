@@ -48,7 +48,7 @@ td,th{
 
             <div class="box-body">
 
-             <div class="col-md-8">
+             <div class="col-md-12">
                    <form class="form-horizontal" id="shippingForm"  onsubmit="return validateForm(this)" action="<?php echo base_url()?>Report/trip_reports" method="post" enctype="multipart/form-data">
                         
                     <div class="col-md-6">
@@ -201,7 +201,7 @@ td,th{
                   <div class="item form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Trip Type
                     </label>
-                    <div class="col-md-8 col-sm-6 col-xs-12">
+                    <div class="col-md-9 col-sm-6 col-xs-12">
                       <select class="form-control" name="type">
                         <option value="">Select Trip Type</option>
                         <option value="Self-Short">Self-Short</option>
@@ -366,20 +366,25 @@ td,th{
    
 
   <!-- /.box-header -->
-  <div class="col-md-3 form-group">
-    <button class="btn-primary col-md-6" id="btnExport">
-            Export as Excel
+  <div class="col-md-5 form-group">
+    <button class="col-lg-2" style="font-size:18px;margin-right:5px" data-toggle="tooltip" data-original-title="Export Excel" id="btnExport">
+            <i class="fa fa-file-excel-o" ></i>
         </button>
-        <button class="btn-primary col-md-6" id="btnExportpdf">
-            Export as PDF
+        <button class="col-lg-2" style="font-size:18px;margin-right:5px" data-toggle="tooltip" data-original-title="Export PDF" id="btnExportpdf">
+            <i class="fa fa-file-pdf-o"></i>
+        </button>
+        <button class="col-md-2" style="font-size:18px" data-toggle="tooltip" data-original-title="Print" id="btn-print">
+            <i class="fa fa-print"></i>
         </button>
       </div>
 
   <div class="box-body" id="table_wrapper"  >
 
 
+
+
        
-<table class="table table-bordered " id="list" style="width:1080px;border:2px solid grey" >
+<table class="table table-bordered p" id="list" style="width:1080px;border:2px solid grey" >
 <!-- <thead style="background-color:#0292e0;color:white;border:1px solid grey" id="headers">
   <tr>
     <td >
@@ -387,38 +392,7 @@ td,th{
     </td>
   </tr>
 </thead> -->
-
-  <thead style="background-color:#0292e0;color:white;border:1px solid grey" id="headers">
-    <tr>
-      <th>#</th>
-      <th>Type</th>
-      <th>Product</th>
-       <th>Source</th>
-      <th>Destination</th>
-       <th>Company</th>
-       <th>Contractor</th>
-      <th>Vehicle#</th>
-      <th>Meter Reading</th>
-       <th>Filling Date</th>
-<!--       <th>Gravity</th> -->
-       <th>Carriage</th>
-      <th>W.H.T</th>
-<!--        <th>Temperature</th> -->
-      <th>Freight%</th>
-       <th>Quantity</th>
-<!--       <th>Charges</th> -->
-       <th>Commission</th>
-<!--       <th>Status</th> -->
-
-<!--       <th>Chasis No</th>
-       <th>Vehicle Name</th>
-      <th>Engine</th> -->
-
-      
-  <div class="box-body "  id="list">
- <a href="#" id="btn-print" class="btn btn-default pull-right actions" data-toggle="tooltip" title="Print" data-placement="bottom" style="margin-top:10px"><i class="fa fa-print"></i></a>
-<table class="table table-bordered p" style="width:2100px;border:2px solid grey" >
-  <thead style="background-color:#0292e0;color:white;border:1px solid grey">
+ <thead style="background-color:#0292e0;color:white;border:1px solid grey">
     <tr class="triplist l">
       <th> <input type="checkbox" value="col1"   name="col1" checked></th>
       <th> <input type="checkbox" value="col2"   name="col2"  checked></th>
@@ -434,41 +408,73 @@ td,th{
       <th> <input type="checkbox" value="col12"  name="col12"  checked></th>
       <th> <input type="checkbox" value="col13"  name="col13"  checked></th>
       <th> <input type="checkbox" value="col14"  name="col14"  checked></th>
-      <th> <input type="checkbox" value="col15"  name="col15"  checked></th>
-      <th> <input type="checkbox" value="col16"  name="col16"  checked></th>
+       <th> <input type="checkbox" value="col15"  name="col15"  checked></th>
+<!--      <th> <input type="checkbox" value="col16"  name="col16"  checked></th>
       <th> <input type="checkbox" value="col17"  name="col17"  checked></th>
       <th> <input type="checkbox" value="col18"  name="col18"  checked></th>
       <th> <input type="checkbox" value="col19"  name="col19"  checked></th>
       <th> <input type="checkbox" value="col20"  name="col20"  checked></th>
       <th> <input type="checkbox" value="col21"  name="col21"  checked></th>
-      <th> <input type="checkbox" value="col22"  name="col22"  checked></th>
+      <th> <input type="checkbox" value="col22"  name="col22"  checked></th> -->
     </tr>
+      </thead>
+
+
+
+  <thead style="background-color:#0292e0;color:white;border:1px solid grey" id="headers">
     <tr>
       <th class="col1">#</th>
       <th class="col2">Type</th>
-      <th class="col3">P Name</th>
-      <th class="col4">Meter Reading</th>
-       <th class="col5">Filling Date</th>
-      <th class="col6">Gravity</th>
-       <th class="col7">Carriage</th>
-      <th class="col8">W.H.T</th>
-       <th class="col9">Temperature</th>
-      <th class="col10">Freight rate</th>
-       <th class="col11">Quantity</th>
-      <th class="col12">Charges</th>
-       <th class="col13">Remaining Commission</th>
-      <th class="col14">Status</th>
-       <th class="col15">Vehicle Reg</th>
-      <th class="col16">Chasis No</th>
+      <th class="col3">Product</th>
+             <th class="col4">Source</th>
+      <th class="col5">Destination</th>
+       <th class="col6">Company</th>
+      <th class="col7">Contractor</th>
+             <th class="col8">Vehicle#</th>
+      <th class="col9">Meter Reading</th>
+       <th class="col0">Filling Date</th>
+<!--       <th class="col6">Gravity</th> -->
+       <th class="col11">Carriage</th>
+      <th class="col12">W.H.T</th>
+<!--        <th class="col9">Temperature</th> -->
+      <th class="col13">Freight%</th>
+       <th class="col14">Quantity</th>
+<!--       <th class="col12">Charges</th> -->
+       <th class="col15">Commission</th>
+<!--       <th class="col14">Status</th> -->
+
+<!--       <th class="col16">Chasis No</th>
        <th class="col17">Vehicle Name</th>
-      <th class="col18">Engine</th>
-       <th class="col19">Source</th>
-      <th class="col20">Destination</th>
-       <th class="col21">Company</th>
-      <th class="col122">Name</th>
->>>>>>> ccde15bb994f87e9b85b6b68704ad65898e68269
+      <th class="col18">Engine</th> -->
+
     </tr>
-  </thead>
+<!--     <tr>
+      <th>#</th>
+      <th>Type</th>
+      <th>Product</th>
+       <th>Source</th>
+      <th>Destination</th>
+       <th>Company</th>
+       <th>Contractor</th>
+      <th>Vehicle#</th>
+      <th>Meter Reading</th>
+       <th>Filling Date</th>
+    <th>Gravity</th>
+       <th>Carriage</th>
+      <th>W.H.T</th>
+        <th>Temperature</th>
+      <th>Freight%</th>
+       <th>Quantity</th>
+       <th>Charges</th>
+       <th>Commission</th>
+       <th>Status</th>
+
+       <th>Chasis No</th>
+       <th>Vehicle Name</th>
+      <th>Engine</th> --> 
+
+      
+    
   <tbody >
     <?php
       $i=1;foreach ($data as $value)  { 
@@ -482,24 +488,24 @@ td,th{
     <tr class="odd gradeX" style="background-color:#f4f4f4">
       <?php }?>
 
-      <td><?php echo $i?></td>
-      <td><?php echo $value['type']?></td>
-      <td><?php echo $value['productname']?></td>
-            <td><?php echo $value['source']?></td>
-      <td><?php echo $value['destination']?></td>
-      <td><?php echo $value['comname']?></td>
-      <td><?php echo $value['conname']?></td>
-      <td><?php echo $value['meter_reading']?></td>
-      <td><?php echo $value['vehicleregisterationno']?></td>
-      <td><?php echo $value['filling_date']?></td>
+      <td class="col1"><?php echo $i?></td>
+      <td class="col2"><?php echo $value['type']?></td>
+      <td class="col3"><?php echo $value['productname']?></td>
+            <td class="col4"><?php echo $value['source']?></td>
+      <td class="col5"><?php echo $value['destination']?></td>
+      <td class="col6"><?php echo $value['comname']?></td>
+      <td class="col7"><?php echo $value['conname']?></td>
+      <td class="col8"><?php echo $value['meter_reading']?></td>
+      <td class="col9"><?php echo $value['vehicleregisterationno']?></td>
+      <td class="col10"><?php echo $value['filling_date']?></td>
 <!--       <td><?php echo $value['gravity']?></td> -->
-      <td><?php echo $value['carriage']?></td>
-      <td><?php echo $value['withholdingtax']?></td>
+      <td class="col11"><?php echo $value['carriage']?></td>
+      <td class="col12"><?php echo $value['withholdingtax']?></td>
 <!--       <td><?php echo $value['temperature']?></td> -->
-      <td><?php echo $value['freight_rate']?></td>
-      <td><?php echo $value['quantity']?></td>
+      <td class="col13"><?php echo $value['freight_rate']?></td>
+      <td class="col14"><?php echo $value['quantity']?></td>
 <!--       <td><?php echo $value['servicecharges']?></td> -->
-      <td><?php echo $value['remaining_commission']?></td>
+      <td class="col15"><?php echo $value['remaining_commission']?></td>
 <!--       <td><?php echo $value['status']?></td> -->
 
 <!--       <td><?php echo $value['vehiclename']?></td>
@@ -531,6 +537,7 @@ td,th{
 <script type="text/javascript" src="../assets/dist/js/pdf.js" ></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.2/jspdf.plugin.autotable.js"></script>
 <script src="<?php echo base_url() ?>assets/dist/js/jQuery.print.js"></script>
+<script src="<?php echo base_url() ?>assets/dist/js/printAndExportUTIL.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).on('change','#producttype',function(){
 var prod=$('#producttype').val();
@@ -543,28 +550,14 @@ var prod=$('#producttype').val();
 });
 
 
-$("#btn-print").click(function () {
-           
-             var tripData = [];
-            $.each($("input:checkbox:not(:checked)"), function(){            
-              dat="."+$(this).val();
-              $(dat).hide();
-            });
-            $(".l").hide();
-            $(".p").print();
-            $.each($("input:checkbox:not(:checked)"), function(){            
-              dat="."+$(this).val();
-              $(dat).show();
-            });
-            $(".l").show();
-            $(".col1").show();
-        });
+
 function validateForm(form) {
-  
+
   var isValid=false;
   $("form").eq(0).find(':text').each(function() {
     if(this.value!=undefined && this.value!= "")
     {
+
       isValid=true;
       return false;
     }
@@ -573,11 +566,12 @@ function validateForm(form) {
   $("form").eq(0).find(':selected').each(function() {
     if(this.value!=undefined && this.value!= "")
     {
+
       isValid=true;
       return false;
     }
   });
-  var _fDate =undefined;
+    var _fDate =undefined;
   var _tDate = undefined;
 
   if(form.datefrom!=undefined)
@@ -588,16 +582,25 @@ function validateForm(form) {
   {
     _tDate = form.dateto.value;
   }
-  
-  var startlbl = "Start Date";
-  var endlbl = "End Date";
 
-  isValid=  isValidDateRange(_fDate,_tDate,startlbl,endlbl,new Date());
-  
+  if((_fDate==undefined || _fDate=="" || _fDate==null) && ( _tDate==undefined  || _tDate=="" || _tDate==null)){
   if(!isValid){
     alert("Kindly provide some search criteria");
     return false;
   }
+}
+  
+  
+  var startlbl = "Start Date";
+  var endlbl = "End Date";
+if(!isValid){
+  isValid=  isValidDateRange(_fDate,_tDate,startlbl,endlbl,new Date());
+    }
+  if(!isValid){
+    alert("Kindly provide some search criteria");
+    return false;
+  }
+
   
 }
 
@@ -605,9 +608,9 @@ function validateForm(form) {
 
 function isValidDateRange(_fDate,_tDate,startlbl,endlbl,serverDate)
 {   
-    if((_fDate==undefined || _fDate=="" || _fDate==null) && ( _tDate==undefined  || _tDate=="" || _tDate==null))
-      return true;
-  
+    
+  if((_fDate==undefined || _fDate=="" || _fDate==null) && ( _tDate==undefined  || _tDate=="" || _tDate==null))
+    return false;
     var isValid = true;
     serverDate=  serverDate ;
     
@@ -663,107 +666,13 @@ function getJsDate( date )
 
 
 $(document).ready(function() {
-  $("#btnExport").click(function(e) {
-    e.preventDefault();
 
-    //getting data from our table
-    var data_type = 'data:application/vnd.ms-excel';
-    var table_div = document.getElementById('table_wrapper');
-    var table_html = table_div.outerHTML.replace(/ /g, '%20');
-
-    var a = document.createElement('a');
-    a.href = data_type + ', ' + table_html;
-    a.download = 'exported_table_' + Math.floor((Math.random() * 9999999) + 1000000) + '.xls';
-    a.click();
-  });
-}); 
-
-$(document).ready(function() {
-  $("#btnExportxlsx").click(function(e) {
-    e.preventDefault();
-
-    //getting data from our table
-    var data_type = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
-    var table_div = document.getElementById('table_wrapper');
-    var table_html = table_div.outerHTML.replace(/ /g, '%20');
-
-    var a = document.createElement('a');
-    a.href = data_type + ', ' + table_html;
-    a.download = 'exported_table_' + Math.floor((Math.random() * 9999999) + 1000000) + '.xlsx';
-    alert(a.href);
-    a.click();
-  });
-}); 
-
-
-</script> 
-<script>
-    $(function(){
-         var doc = new jsPDF();
-
-    var specialElementHandlers = {
-        '#editor': function (element, renderer) {
-            return true;
-        }
-    };
-
-   $('#btnExportpdf').click(function () {
-
-        var table = $('#list').get(0);
-
-        var data = [];
-
-    // first row needs to be headers
-    var headers = [];
-    for (var i=0; i<table.rows[0].cells.length; i++) {
-        headers[i] = table.rows[0].cells[i].innerHTML.replace(/ /gi,'');
-    }
-
-
-    // go through cells
-    for (var i=1; i<table.rows.length; i++) {
-
-        var tableRow = table.rows[i];
-        var rowData = {};
-
-        for (var j=0; j<tableRow.cells.length; j++) {
-
-            rowData[ j ] = tableRow.cells[j].innerHTML;
-
-        }
-
-        data.push(rowData);
-    }       
-
-    var doc = new jsPDF('l','pt', 'letter', true);
-        doc.text(50, 40, "Virk Logistics\n\n\nTrip Report");
-        doc.cellInitialize();
-        doc.setFontSize(8);
-doc.autoTable(headers,data,{
-    startY: 120,
-    margin:5,
-    rowWidth: 'auto',
-    columnWidth: 'auto',
-    styles: {
-      overflow: 'linebreak',
-      fontSize: 8,
-      halign: 'left', // left, center, right
-    valign: 'middle', // top, middle, bottom
-    
-    },
-    columnStyles: {
-      4:{cellPadding: 0}
-    }
-  });
-doc.output('datauri');
-doc.save('sample-file.pdf');
-        })
 
 
    $('.sel').select2({
       // tags: "true",
-    // minimumResultsForSearch: 20 ,
-    selectOnClose: true,
+     //minimumResultsForSearch: 15 ,
+    selectOnClose: false,
    placeholder: "Select an option",
     allowClear: true
 

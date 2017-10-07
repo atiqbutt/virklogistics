@@ -2165,9 +2165,6 @@ public function delete_expense($id)
             $data=$this->input->post();
             $field=array(
           'name'=>$data['name'],
-				 'address'=>$data['address'],
-				 'latitude'=>$data['latitude'],
-				 'longitude'=>$data['longitude'],
           'remarks'=>$data['remarks']
                 );
                 $done=$this->Defination_Model->insert('locationtype',$field);

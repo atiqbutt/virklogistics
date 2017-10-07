@@ -1,3 +1,10 @@
+<style> 
+.content{
+  height: 150vh !important;
+ } 
+
+</style>
+
 <section class="content">
     <div class="row">
         <div class="col-lg-7">

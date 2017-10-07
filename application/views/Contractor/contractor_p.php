@@ -156,16 +156,15 @@
                 width:300px; // or 33% for equal width independent of parent width
                 }
 
-                .first{
+            .first{
 
-                    width: 200px;
-                }
+                width: 200px;
+            }
 
+            .second{
 
-                .second{
-
-                    width: 350px
-                }
+                width: 350px
+            }
 
 </style>
     </head>
@@ -173,14 +172,13 @@
     <body class="clear">
         <?php date_default_timezone_set("Asia/Karachi"); ?>
         <div class="super_container">
-            <div class="page_break clear">
+            <!-- <div class="page_break clear"> -->
                 <div class="watermark_wrapper">
                     <div class="watermark"></div>
                 </div>
                 <div class="super_wrapper">
                     <div class="wrapper left2 left">
                         <div class="header">
-                              <div class="header">
                             <div class="wd-100 clear">
                             <!--     <div class=" text-left left ">  
                                 <img src="<?php //echo base_url()."Uploads/".$logo['picture']; ?>" style="width:50px;height:50px;">
@@ -210,9 +208,9 @@
                                     <?php //if (!empty($query)): ?>
                                     <?php //echo $query[0]['mobile']   ?>
                                     <?php //endif ?>
-                                    </div>
+                                    </div> -->
 
-                                </div> -->
+                                </div>
                             </div>
 
 
@@ -238,8 +236,7 @@
                       <td class="first"><strong>Phone Number:</strong></td>
                         <td class="second"><?php if(isset($view)){echo ucfirst($view->number);}  ?>
                         </td>
-                      
-                       
+                                         
                         <tr>
                        <td class="first"><strong>Contact Person Name:</strong></td>
                         <td class="second"><?php if(isset($view)){echo ucfirst($view->cpname);}  ?></td>
@@ -279,11 +276,13 @@
                         <?php } ?>
                     
                 </div>
-
-
-
              </div>
-                     <script>
+            </div>
+         </div>
+     <!--  </div> -->
+   </div>
+
+    <script>
         window.print();
     </script>
     </body>

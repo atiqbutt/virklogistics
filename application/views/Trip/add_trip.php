@@ -25,6 +25,7 @@
 }
 .content{
   padding-top:40px !important;
+  height: 150vh !important;
 }
 
 </style>
@@ -168,29 +169,29 @@
                           <input class="form-control"  type="number" name="start_meter_reading" onkeypress='return ValidateNumberOnly()'  />
                       </div>
                   </div>
-
+<!-- 
                  <div class="col-lg-3 paddinglr5">           
                       <div class="form-group"> 
                         <label>End Meter Reading</label>
                           <input class="form-control"  type="number" name="end_meter_reading" onkeypress='return ValidateNumberOnly()'  />
                       </div>
-                  </div>
+                  </div> -->
 
 
-                  <div class="col-lg-3 paddinglr5">           
+             <!--      <div class="col-lg-3 paddinglr5">           
                       <div class="form-group"> 
                         <label>Fuel</label>
                           <input class="form-control" placeholder="Fuel Consumption"  type="number" name="fuel" onkeypress='return ValidateNumberOnly()' />
                       </div>
-                  </div>
+                  </div> -->
 
 
-              <div class="col-lg-3 paddinglr5">           
+        <!--       <div class="col-lg-3 paddinglr5">           
                 <div class="form-group"> 
                   <label>Net Meter</label>
                     <input class="form-control"  type="text" name="net_meter" onkeypress='return ValidateNumberOnly()'  readonly/>
                 </div>
-             </div>
+             </div> -->
 
       </div>            
     </div>
@@ -249,46 +250,47 @@
                       </div>
                     </div>
                     <div class="col-lg-3 paddinglr2">
-                    <div class="form-group"><label>Quantity</label><input onkeyup="sum1()" id="product_quantity"  class="quantity form-control"  type="text" name="product_quantity" />
+                    <div class="form-group"><label>Quantity</label><input onkeyup="sum1()" id="product_quantity"  class="quantity form-control"  type="number" name="product_quantity" />
                     </div>
                     </div>
              </div>
          <div class="row">
          
               <div class="col-lg-3 paddinglr2">
-              <div class="form-group"><label>Temperature</label><input class="form-control" id="product_temperature"   type="text" name="product_temperature"    />
+              <div class="form-group"><label>Temperature</label><input class="form-control" id="product_temperature"   type="number" name="product_temperature"    />
               </div>
               </div>
               <div class="col-lg-3 paddinglr2">
               <div class="form-group"><label>Gravity</label>
-              <input id="product_gravity" class="form-control"  type="text" name="product_gravity"   />
+              <input id="product_gravity" class="form-control"  type="number" name="product_gravity"   />
               </div>
               </div> 
               <div class="col-lg-3 paddinglr2">
               <div class="form-group"><label>Freight Rate</label>
-              <input id="freight_rate" class="form-control"   type="text" id="freight_rate" name="freight_rate"   />
+              <input id="freight_rate" class="form-control"   type="number" id="freight_rate" name="freight_rate"   />
               </div> 
               </div>
               <div class="col-lg-3 paddinglr2">
-              <div class="form-group"><label>Contract Carriage Commission</label><input id="carriage_commission" class="form-control"  type="text" name="carriage_commission"  />
+              <div class="form-group"><label>Carriage Commission</label><input id="carriage_commission" class="form-control"  type="number" name="carriage_commission"  />
               </div>
               </div>
 
           </div>
-         <div class="row">
+
+          <div class="row">
 
               <div class="col-lg-3 paddinglr2">
-              <div class="form-group"><label>Withholding Tax</label><input class="form-control" id="withholding_tax" type="text" name="withholding_tax"   />
-              </div>
-              </div>
-
-              <div class="col-lg-3 paddinglr2">
-              <div class="form-group"><label>Company Comission</label><input onkeydown="sum1()"  id="companycommission" class="form-control companycommission"     type="text" name="company_comission"  />
+              <div class="form-group"><label>Withholding Tax</label><input class="form-control" id="withholding_tax" type="number" name="withholding_tax"   />
               </div>
               </div>
 
               <div class="col-lg-3 paddinglr2">
-              <div class="form-group"><label>Remaining (For Customer)</label><input class="form-control" id="remaining_commission"  type="text" name="remaining_commission"  readonly /><span ></span>
+              <div class="form-group"><label>Company Comission</label><input onkeydown="sum1()"  id="companycommission" class="form-control companycommission"     type="number" name="company_comission"  />
+              </div>
+              </div>
+
+              <div class="col-lg-3 paddinglr2">
+              <div class="form-group"><label>Remaining (For Customer)</label><input class="form-control" id="remaining_commission"  type="number" name="remaining_commission"  readonly /><span ></span>
               </div>  
               </div>
               
@@ -658,63 +660,7 @@ $(document).ready(function() {
   });
 
 
- // function addProduct() {
-    
- //      var product_id = $("#product_id option:selected").val();
- //      var product_name = $("#product_id option:selected").text();
- //      var source_id = $("#source option:selected").val();
- //      var source_name = $("#source option:selected").text();
- //      var destination_id = $("#destination option:selected").val();
- //      var destination_name = $("#destination option:selected").text();
- //      var product_quantity = $("#product_quantity").val();
- //      var product_temperature = $("#product_temperature").val();
- //      var product_gravity = $("#product_gravity").val();
- //      var freight_rate = $("#freight_rate").val();
- //      var carriage_commission = $("#carriage_commission").val();
- //      var withholding_tax = $("#withholding_tax").val();
- //      var companycommission = $("#companycommission").val();
- //      var remaining_commission = $("#remaining_commission").val();
 
- //     // alert(destination_name);
-
- //      var proInfo = "<tr><td><input type='hidden' class='proSource' name='source[]'  value=''>"+ source_name +"</td><td><input type='hidden' class='proDest' name='destination[]'  value=''>"+ destination_name +"</td><td><input type='hidden' id='proID' class='proID' name='product_id[]'  value=''>"+ product_name +"</td><td><input type='hidden' class='proQty' name='product_quantity[]'  value=''>"+ product_quantity +"</td><td><input type='hidden' class='proTemp' name='product_temperature[]'  value=''>"+ product_temperature +"</td><td><input type='hidden' class='proGrav' name='product_gravity[]'  value=''>"+ product_gravity +"</td><td><input type='hidden' class='proFret' name='freight_rate[]'  value=''>"+ freight_rate +"</td><td><input type='hidden' class='proCarrg' name='carriage_commission[]'  value=''>"+ carriage_commission +"</td><td><input type='hidden' class='proWtax' name='withholding_tax[]'  value=''>"+ withholding_tax +"</td><td><input type='hidden' class='proCC' name='companycommission[]'  value=''>"+ companycommission +"</td><td><input type='hidden' class='proRecomm' name='remaining_commission[]'  value=''>"+ remaining_commission +"</td></tr>";
-
-
- //        $("#addpro").removeAttr('style');
-
- //        $('#prod_info').append(proInfo);
-
- //        $(".proID").val(product_id);
- //        $(".proSource").val(source_id);
- //        $(".proDest").val(destination_id);
- //        $(".proQty").val(product_quantity);
- //        $(".proTemp").val(product_temperature);
- //        $(".proGrav").val(product_gravity);
- //        $(".proFret").val(freight_rate);
- //        $(".proCarrg").val(carriage_commission);
- //        $(".proWtax").val(withholding_tax);
- //        $(".proCC").val(companycommission);
- //        $(".proRecomm").val(remaining_commission);
-
-
- //        $("#product_id").val("");
- //        //$("#product_id option:selected").text("");
- //        $("#source").val("");
- //        $("#destination").val("");
- //        $("#product_quantity").val("");
- //        $("#product_temperature").val("");
- //        $("#product_gravity").val("");
- //       // $("#destination option:selected").text("");
- //        $("#freight_rate").val("");
- //        $("#carriage_commission").val("");
- //        $("#withholding_tax").val("");
- //        $("#companycommission").val("");
- //        $("#remaining_commission").val("");
-
- //        $('#myform').bootstrapValidator('validate');
-
- 
- // }
 
 $(document).ready(function() {
   $('#myform').on('submit', function (e) {   
@@ -835,14 +781,14 @@ $(document).ready(function() {
                     }
                 },
 
-              end_meter_reading: {
-                   trigger:'change  blur',
-                    validators: {
-                        notEmpty: {
-                            message: 'field  is required and cannot be empty'
-                        }
-                    }
-                },
+              // end_meter_reading: {
+              //      trigger:'change  blur',
+              //       validators: {
+              //           notEmpty: {
+              //               message: 'field  is required and cannot be empty'
+              //           }
+              //       }
+              //   },
 
              'driver[]': {
                    trigger:'change  blur',

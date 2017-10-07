@@ -2,6 +2,8 @@
 <style>
 .content{
   background-color: #ecf0f5;
+    height: 200vh !important;
+
 }
 
 body    {
@@ -36,6 +38,8 @@ td,th{
 
   background: #fff !important;
 }
+
+
 
 </style>
 
@@ -441,7 +445,7 @@ var prod=$('#producttype').val();
 
 })
 });
-<<<<<<< HEAD
+
 
 
 $("#btn-print").click(function () {
@@ -460,9 +464,8 @@ $("#btn-print").click(function () {
             $(".l").show();
             $(".col1").show();
         });
-</script>
-=======
->>>>>>> 8330fdb0aee10582466a8b06c2f509134803eb1e
+
+
 
 function validateForm(form) {
   

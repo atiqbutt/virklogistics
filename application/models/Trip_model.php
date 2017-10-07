@@ -105,7 +105,7 @@ public function getAllRecords($table,$where,$by,$order) {
 
         $name = $this->db->select('name')->from('helperinformation')->where_in('id', $member_id);
 
-        $q=$this->db->get()->result_array()[0];
+        $q=$this->db->get()->result_array();
         return $q;
     
     }
@@ -113,11 +113,24 @@ public function getAllRecords($table,$where,$by,$order) {
 
     public function GetTripProducts($id)
     {
-       $this->db->select('*')->from('tripproduct')->where('trip_id', $id);
-        $query=$this->db->get()->result_array();
-        return $query;
-      
+       $this->db->select('*')->from('tripproduct')->join('product', 'tripproduct.product_id = product.id ', 'right')->where('trip_id', $id);
+       $query=$this->db->get()->result_array();
+       return $query;
     }
+
+
+    public function FilledBy($filledBy)
+    {
+
+       $this->db->select('name')->from('driverinformation')->where('id', $filledBy);
+       $query=$this->db->get()->row_array();
+
+
+       return $query;
+    }
+
+
+
 
 
 

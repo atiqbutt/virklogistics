@@ -17,15 +17,17 @@ function GetAllTrips($type="") {
         $w=$this->db->get();
 /*      var_dump($w->result_array());die();*/
       }
-        
+       // var_dump ($w->result_array());die;
         if ($w->num_rows() > 0){
+
+         // die();
         return $w->result_array();}
         else {return FALSE; }
     }
 function GetSpecificTrip($id) {
       $this->db->select()
         ->from('get_all_trips')
-        ->where('t.id',$id);
+        ->where('id',$id);
      //  ->order_by("id","DESC");
        $w=$this->db->get();
         if ($w->num_rows() > 0){
@@ -91,6 +93,44 @@ public function getAllRecords($table,$where,$by,$order) {
         else
             return FALSE;
     }
+
+
+    public function GetTripHelper($id)
+    {
+        $this->db->select('member_id')->from('trip_members')->where('trip_id', $id);
+        $query=$this->db->get()->result_array();
+      
+        $member_id = array_column($query, 'member_id');
+
+
+        $name = $this->db->select('name')->from('helperinformation')->where_in('id', $member_id);
+
+        $q=$this->db->get()->result_array();
+        return $q;
+    
+    }
+
+
+    public function GetTripProducts($id)
+    {
+       $this->db->select('*')->from('tripproduct')->join('product', 'tripproduct.product_id = product.id ', 'right')->where('trip_id', $id);
+       $query=$this->db->get()->result_array();
+       return $query;
+    }
+
+
+    public function FilledBy($filledBy)
+    {
+
+       $this->db->select('name')->from('driverinformation')->where('id', $filledBy);
+       $query=$this->db->get()->row_array();
+
+
+       return $query;
+    }
+
+
+
 
 
 

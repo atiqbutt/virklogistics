@@ -1,3 +1,9 @@
+<style> 
+.content{
+  height: 150vh !important;
+ } 
+
+</style>
 <form id="defaultForm" action="<?php echo base_url('Vehicle/save_vehicle')?>" class="form-horizontal" method="post" enctype="multipart/form-data">
 <section class="content">
     <div class="row">

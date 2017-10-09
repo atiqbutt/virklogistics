@@ -30,7 +30,9 @@
                               <input type="address" name="remarks" class="form-control"  value="<?php echo $edit->remarks?>" placeholder="remarks" >
                         </div>
                       </div>
-                     <input type="submit" name="myform" value="Update" class="col-md-offset-3 btn btn-primary">   
+                     <input type="submit" name="myform" value="Update" class="col-md-offset-3 btn btn-primary"> 
+                      <input id="zzz" class="btn btn-warning" type="reset" name="reset" value="Reset" />  
+                       <a type="submit" name="register" href='<?php echo base_url()?>Defination/view_expensetype' class="btn btn-danger">Cancel</a>  
                
                 </form>
             </div>
@@ -88,11 +90,11 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         }
                     },
                     
-                    amount: {
-                         trigger:'blur',
+                   name: {
+                        trigger:'blur',
                         validators: {
                             notEmpty: {
-                                message: 'The amount field is required'
+                                message: 'The name field is required'
                             }
                         }
                     },
@@ -114,97 +116,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
     
 
 $("#zzz").click(function(){
-   $('#shippingForm').bootstrapValidator("resetForm",true);    
-});
-
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBbDBcMA-rjt7I6ZryDcry9M72L7UlDERc&libraries=places"></script>
-
-<script>
- var map;
- function init() {
-   map = new google.maps.Map(document.getElementById('map-canvas'), {
-     center: {
-       lat: 31.468789208106767,
-       lng: 74.3184757232666
-     },
-     zoom: 17
-   });
-
-
-   var searchBox = new google.maps.places.SearchBox(document.getElementById('pac-input'));
-   map.controls[google.maps.ControlPosition.TOP_CENTER].push(document.getElementById('pac-input'));
-   google.maps.event.addListener(searchBox, 'places_changed', function() {
-     searchBox.set('map', null);
-
-
-     var places = searchBox.getPlaces();
-
-     var bounds = new google.maps.LatLngBounds();
-     var i, place;
-     for (i = 0; place = places[i]; i++) {
-       (function(place) {
-         var marker = new google.maps.Marker({
-
-           position: place.geometry.location
-         });
-         marker.bindTo('map', searchBox, 'map');
-         google.maps.event.addListener(marker, 'map_changed', function() {
-           if (!this.getMap()) {
-             this.unbindAll();
-           }
-         });
-         bounds.extend(place.geometry.location);
-
-
-       }(place));
-
-     }
-     map.fitBounds(bounds);
-     searchBox.set('map', map);
-     map.setZoom(Math.min(map.getZoom(),12));
-
-   });
-   google.maps.event.addListener(map, 'click', function (e) {
-               // alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
-                
-         //var long = e.latLng.lat();
-        // var lat  = e.latLng.lng();
-         
-         var info = e.latLng.lat() + "," + e.latLng.lng()
-         //alert(info);
-         
-         $('#cord').val(info );
-         
-                
-});
- }
- google.maps.event.addDomListener(window, 'load', init);
-
-</script>
-
-<script>
-$('#time_in').timepicker({
-    timeFormat: 'h:mm p',
-    interval: 30,
-    minTime: '9',
-    maxTime: '6:00pm',
-    defaultTime: '9',
-    startTime: '9:00',
-    dynamic: false,
-    dropdown: true,
-    scrollbar: true
-});
-
-$('#time_out').timepicker({
-    timeFormat: 'h:mm p',
-    interval: 30,
-    minTime: '6',
-    maxTime: '6:00pm',
-    defaultTime: '6pm',
-    dynamic: false,
-    dropdown: true,
-    scrollbar: true
+   $('#expense').bootstrapValidator("resetForm",true);    
 });
 
 </script>

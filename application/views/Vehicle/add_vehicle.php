@@ -85,7 +85,7 @@
                          <div class="form-group">
                         <label class="control-label col-sm-3">Scan Document:</label>
                         <div class="col-sm-9"> 
-                        <input class="form-control"  name="doc[]" multiple="accept" type="file" /> </div> </div> 
+                        <input class="form-control"  name="doc[]" multiple="accept" type="file" required="required" /> </div> </div> 
                      
                            <div class="form-group">
                             <div class="col-sm-9 col-sm-offset-3"> 

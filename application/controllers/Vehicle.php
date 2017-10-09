@@ -475,7 +475,6 @@ $this->vehicle_model->save('vehicle_document', $op);
          $data["modifiedAt"]=date("Y-m-d h:i:sa");
         $data["modifiedBy"]=$id;
         $this->db->insert('vehiclestatus', $data);
-        $this->generic_model->insert("producttype",$data,array("id"=>$id));
         $this->session->set_flashdata('msg', "Add vehicle status, Information has been added successfully");
         redirect('Vehicle/Vehicle_Status_list');
         }

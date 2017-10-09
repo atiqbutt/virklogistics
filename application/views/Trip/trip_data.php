@@ -3,8 +3,13 @@
             <?php
             if(!empty($tripmanagement)){
             foreach($tripmanagement as $amb){ 
-               ?>
-                <tr class="odd gradeX">
+               if ($amb['status'] == 0 ){ ?>
+                 
+                <tr class="odd gradeX" style="background: #98FB98">
+                  <?php }else {?>
+                                  <tr class="odd gradeX" >
+                                    <?php } ?>
+                
                 <td> <?php echo $amb["id"];?>  </td>
                 <td> <?php echo $amb["type"];?>  </td>
                 <td> <?php echo $amb["productname"];?>  </td>
@@ -15,7 +20,7 @@
                 $newDate = date("d/m/Y", strtotime($amb["filling_date"]));
                  echo $newDate;?> </td>
                 <td> <?php echo $amb["temperature"];?> </td>
-                <td> <?php echo $amb["meter_reading"];?> </td>
+                <td> <?php echo $amb["start_meter_reading"];?> </td>
                 <td> <?php echo $amb["gravity"];?> </td>
                 <td> <?php echo $amb["vehicleregisterationno"];?> </td>
                 <td> <?php echo $amb["quantity"];?> </td>
@@ -44,12 +49,12 @@
                       </div>
 
 
-                        <form name="myform" id="myform" action="<?php echo base_url() ?>trip/saveexpense_trip/<?php echo $amb['id'];?>" method="post" enctype="multipart/form-data">
+                        <form name="myform" id="myform" action="<?php echo base_url() ?>trip/expenseadd/<?php echo $amb['id'];?>" method="post" enctype="multipart/form-data">
 
                         <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                         <div class="modal-dialog" role="document">
                         <div class="modal-content">
-
+<input type="hidden" name="id" value="<?php echo $amb['id']?>">
                           
                         <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -62,7 +67,7 @@
                                         <div class="col-md-10">
                                             <label>Expense Type</label>
 
-                                          <select  class="form-control" name="expensetype_id[]" required>
+                                          <select  class="form-control alertbox" name="" id="Expense" required>
                                              <option value="">Select Options</option>       
                                               <?php if(!empty($expensetype)){
                                               foreach ($expensetype as $e){  ?>      
@@ -73,7 +78,7 @@
                                           </select>
                                         </div>  
 
-                                        <div class="col-md-10"><label>Expense Amount</label><input name="amount[]" type="text" class="form-control"></div>
+<!--                                         <div class="col-md-10"><label>Expense Amount</label><input name="amount[]" type="text" class="form-control"></div> -->
 
                                         <div class="col-md-2">  
                                          <button style="margin-top: 30px" id="addhelper" ><i class="fa fa-plus" aria-hidden="true"></i></button>
@@ -81,7 +86,7 @@
                                   </div>
 
 
-                                  <div class="col-lg-12" style="padding-top:20px;margin-top:20px;">       
+                                  <div class="col-lg-12" style="margin-top:20px;">       
                                     <div id="add_helper"></div>
                                   </div>
 
@@ -89,7 +94,7 @@
 
                                 <div class="modal-footer" style="padding-top:20px;margin-top:20px;">
                                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                  <input type="submit" class="btn btn-primary" value="add">
+                                  <input id="add" class="btn btn-primary" value="add">
                                 </div>
 
                                 </div>

@@ -2180,11 +2180,8 @@ public function delete_expense($id)
             $data=$this->input->post();
             $field=array(
           'name'=>$data['name'],
-<<<<<<< HEAD
           'remarks'=>$data['remarks']
-=======
-				 'remarks'=>$data['remarks']
->>>>>>> b4fb12427402345ce7223598d6649e7d98763dac
+
                 );
                 $done=$this->Defination_Model->insert('locationtype',$field);
                      if($done)

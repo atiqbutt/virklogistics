@@ -41,11 +41,11 @@
                 
 
 <div class="col-md-6">
- <form  enctype="multipart/form-data" method="post" action="<?php echo base_url()?>Defination/savelocationtype" >
+ <form  enctype="multipart/form-data" id="shippingForm" method="post" action="<?php echo base_url()?>Defination/savelocationtype" >
       <div class="item form-group col-lg-12" style="margin-bottom:10px;">
         <div class="col-lg-3">Title</div>
            <div class="col-lg-9">
-                  <input type="address" name="name" class="form-control"  placeholder="Title" >
+                  <input type="name" name="name" class="form-control"  placeholder="Title" >
            </div>       
       </div>
       	
@@ -91,7 +91,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
 </script>
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#expense')
+        $('#shippingForm')
             .on('init.form.bv', function(e, data) {
                 //console.log(data);
             })
@@ -107,7 +107,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         trigger:'blur',
                         validators: {
                             notEmpty: {
-                                message: 'The name field is required'
+                                message: 'The Title field is required'
                             }
                         }
                     },
@@ -333,7 +333,7 @@ function loadWeather(location, woeid) {
 </script>
 
 <script>
-var formaddress = document.getElementById("address");
+/*var formaddress = document.getElementById("address");
 
 formaddress.addEventListener("focusin", myFocusFunction);
 formaddress.addEventListener("focusout", myBlurFunction);
@@ -344,7 +344,7 @@ function myFocusFunction() {
 
 function myBlurFunction() {
     document.getElementById("weather").innerHTML = ""; 
-}
+}*/
 
 </script>
 

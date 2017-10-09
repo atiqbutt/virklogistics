@@ -92,11 +92,9 @@
 
                   <div class="col-lg-3  paddinglr5">
                       <div class="form-group">    
-                        <label>Vehicle</label>
-                        <?php if (!empty($trip_info['0']['vehiclename'])): ?>
-                          <input class="form-control" type="text" value="<?php echo  $trip_info['0']['vehiclename'] ?>" readonly/>
+                        <label>Vehicle</label>          
+                          <input class="form-control" type="text" value="<?php echo  !empty($trip_info['0']['vehiclename']) ? $trip_info['0']['vehiclename'] : ""  ?>" readonly/>
                         </div>
-                        <?php endif ?>
                   </div>
                   </div>
                   <!-- panel-body -->
@@ -181,7 +179,7 @@
 
             <div class="col-lg-12" style="margin-top: 20px">
 
-                <table id="middlecol" class="table table-bordered" style="margin-left: -15px">
+                <table id="middlecol" class="table table-bordered" style="margin-left: -20px">
                     <thead>
                       <tr>
                       <th>Product</th>

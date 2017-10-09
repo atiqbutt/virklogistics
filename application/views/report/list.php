@@ -54,7 +54,6 @@ td,th{
 
              <div class="col-md-12">
 
-             <div class="col-md-5">
                    <form class="form-horizontal" id="shippingForm"  onsubmit="return validateForm(this)" action="<?php echo base_url()?>Report/trip_reports" method="post" enctype="multipart/form-data">
                         
                     <div class="col-md-6">
@@ -414,7 +413,8 @@ td,th{
       <th> <input type="checkbox" value="col12"  name="col12"  checked></th>
       <th> <input type="checkbox" value="col13"  name="col13"  checked></th>
       <th> <input type="checkbox" value="col14"  name="col14"  checked></th>
-       <th> <input type="checkbox" value="col15"  name="col15"  checked></th>
+      <th> <input type="checkbox" value="col15"  name="col15"  checked></th>
+      <th> <input type="checkbox" value="col16"  name="col16"  checked></th>
 <!--      <th> <input type="checkbox" value="col16"  name="col16"  checked></th>
       <th> <input type="checkbox" value="col17"  name="col17"  checked></th>
       <th> <input type="checkbox" value="col18"  name="col18"  checked></th>
@@ -430,23 +430,24 @@ td,th{
   <thead style="background-color:#0292e0;color:white;border:1px solid grey" id="headers">
     <tr>
       <th class="col1">#</th>
-      <th class="col2">Type</th>
-      <th class="col3">Product</th>
-             <th class="col4">Source</th>
-      <th class="col5">Destination</th>
-       <th class="col6">Company</th>
-      <th class="col7">Contractor</th>
-             <th class="col8">Vehicle#</th>
+      <th class="col2">Trip Id</th>
+      <th class="col3">Type</th>
+      <th class="col4">Product</th>
+      <th class="col5">Source</th>
+      <th class="col6">Destination</th>
+       <th class="col7">Company</th>
+      <th class="col8">Contractor</th>
       <th class="col9">Meter Reading</th>
-       <th class="col0">Filling Date</th>
+      <th class="col10">Vehicle#</th>
+       <th class="col11">Filling Date</th>
 <!--       <th class="col6">Gravity</th> -->
-       <th class="col11">Carriage</th>
-      <th class="col12">W.H.T</th>
+       <th class="col12">Carriage</th>
+      <th class="col13">W.H.T</th>
 <!--        <th class="col9">Temperature</th> -->
-      <th class="col13">Freight%</th>
-       <th class="col14">Quantity</th>
+      <th class="col14">Freight%</th>
+       <th class="col15">Quantity</th>
 <!--       <th class="col12">Charges</th> -->
-       <th class="col15">Commission</th>
+       <th class="col16">Commission</th>
 <!--       <th class="col14">Status</th> -->
 
 <!--       <th class="col16">Chasis No</th>
@@ -495,23 +496,24 @@ td,th{
       <?php }?>
 
       <td class="col1"><?php echo $i?></td>
-      <td class="col2"><?php echo $value['type']?></td>
-      <td class="col3"><?php echo $value['productname']?></td>
-            <td class="col4"><?php echo $value['source']?></td>
-      <td class="col5"><?php echo $value['destination']?></td>
-      <td class="col6"><?php echo $value['comname']?></td>
-      <td class="col7"><?php echo $value['conname']?></td>
-      <td class="col8"><?php echo $value['meter_reading']?></td>
-      <td class="col9"><?php echo $value['vehicleregisterationno']?></td>
-      <td class="col10"><?php echo $value['filling_date']?></td>
+      <td class="col2"><?php echo $value['id']?></td>
+      <td class="col3"><?php echo $value['type']?></td>
+      <td class="col4"><?php echo $value['productname']?></td>
+      <td class="col5"><?php echo $value['source']?></td>
+      <td class="col6"><?php echo $value['destination']?></td>
+      <td class="col7"><?php echo $value['comname']?></td>
+      <td class="col8"><?php echo $value['conname']?></td>
+      <td class="col9"><?php echo $value['start_meter_reading']?></td>
+      <td class="col10"><?php echo $value['vehicleregisterationno']?></td>
+      <td class="col11"><?php echo $value['filling_date']?></td>
 <!--       <td><?php echo $value['gravity']?></td> -->
-      <td class="col11"><?php echo $value['carriage']?></td>
-      <td class="col12"><?php echo $value['withholdingtax']?></td>
+      <td class="col12"><?php echo $value['carriage']?></td>
+      <td class="col13"><?php echo $value['withholdingtax']?></td>
 <!--       <td><?php echo $value['temperature']?></td> -->
-      <td class="col13"><?php echo $value['freight_rate']?></td>
-      <td class="col14"><?php echo $value['quantity']?></td>
+      <td class="col14"><?php echo $value['freight_rate']?></td>
+      <td class="col15"><?php echo $value['quantity']?></td>
 <!--       <td><?php echo $value['servicecharges']?></td> -->
-      <td class="col15"><?php echo $value['remaining_commission']?></td>
+      <td class="col16"><?php echo $value['remaining_commission']?></td>
 <!--       <td><?php echo $value['status']?></td> -->
 
 <!--       <td><?php echo $value['vehiclename']?></td>
@@ -554,22 +556,7 @@ var prod=$('#producttype').val();
 
 })
 });
-$("#btn-print").click(function () {
-           
-             var tripData = [];
-            $.each($("input:checkbox:not(:checked)"), function(){            
-              dat="."+$(this).val();
-              $(dat).hide();
-            });
-            $(".l").hide();
-            $(".p").print();
-            $.each($("input:checkbox:not(:checked)"), function(){            
-              dat="."+$(this).val();
-              $(dat).show();
-            });
-            $(".l").show();
-            $(".col1").show();
-        });
+
 function validateForm(form) {
 
   var isValid=false;

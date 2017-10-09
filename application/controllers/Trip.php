@@ -358,8 +358,7 @@ public function all_close_trip()
                 $this->db->where("id",$id);
                 $this->db->update("tripmanagement",$data);
 
-}
-
+}}
 
         public function delete()
         {

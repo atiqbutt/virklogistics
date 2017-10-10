@@ -10,7 +10,7 @@
            <?php endif; ?>
   <div class="box box-info">
             <div class="box-header with-border">
-              <h2 class="box-title">Update data</h2>
+              <h2 class="box-title">Manage Product Type</h2>
             </div>      
             <!-- /.box-header -->
             <!-- form start -->
@@ -30,7 +30,7 @@
                   <label for="inputEmail3" class="col-sm-2 control-label">Description </label>
 
                   <div class="col-sm-6">
-                    <textarea name="dec" class="form-control" rows="4" cols="50"  required><?php echo $product->description?>
+                    <textarea name="dec" class="form-control" rows="4" cols="50"><?php echo $product->description?>
                     </textarea>
                   </div>
                 </div> 
@@ -38,7 +38,7 @@
               <!-- /.box-body -->
                     <div class="form-group" style="padding-bottom: 10px ">
                             <div class="col-sm-10 col-sm-offset-2"> 
-                               <input class="btn btn-success" type="submit" name="register" value="submit" />
+                               <input class="btn btn-success" type="submit" name="register" value="Update" />
                                <input class="btn btn-warning" type="reset" name="reset" value="Reset" />
                                <a class="btn btn-danger"href="<?php echo base_url() ?>product/index">Cancel</a>
                            </div>

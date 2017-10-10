@@ -51,7 +51,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                        
-                         <button type="submit" name="register" class="btn btn-success">Add</button>&nbsp&nbsp<button type="reset" class="btn btn-warning">Reset</button>&nbsp&nbsp<button type="submit" name="register"  onclick="window.location.href='<?php echo base_url()?>Vehicle/Vehicle_Status_list';" class="btn btn-danger">Cancel</button>
+                         <button type="submit" name="register" class="btn btn-success">Submit</button>&nbsp&nbsp<button type="reset" class="btn btn-warning">Reset</button>&nbsp&nbsp<button type="submit" name="register"  onclick="window.location.href='<?php echo base_url()?>Vehicle/Vehicle_Status_list';" class="btn btn-danger">Cancel</button>
             
                         </div>
                       </div>

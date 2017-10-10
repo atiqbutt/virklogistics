@@ -33,7 +33,7 @@
                   <label for="inputEmail3" class="col-sm-2 control-label">Product Type:</label>
 
                   <div class="col-sm-6">
-                   <select class="form-control" name="product_type" selected="selected"  required>
+                   <select class="form-control sel" name="product_type" selected="selected"  required>
                     <option>Select Product Type</option> 
                   <?php 
        $producttype= $this->db->select('*')->from('producttype')->where('is_deleted',0)->get()->result();
@@ -51,7 +51,7 @@
                   <label for="inputEmail3" class="col-sm-2 control-label">Units:</label>
 
                   <div class="col-sm-6">
-             <select class="form-control" name="unit_id" selected="selected"  required>
+             <select class="form-control sel" name="unit_id" selected="selected"  required>
               <option>Select Units   </option>    
                     <?php 
        $units= $this->db->select('*')->from('unit')->where('is_deleted',0)->get()->result();
@@ -86,7 +86,7 @@
               <!-- /.box-body -->
                         <div class="form-group" style="padding-bottom: 10px ">
                             <div class="col-sm-10 col-sm-offset-2"> 
-                               <input class="btn btn-success" type="submit" name="register" value="submit" />
+                               <input class="btn btn-success" type="submit" name="register" value="Update" />
                                <input class="btn btn-warning" type="reset" name="reset" value="Reset" />
                                <a class="btn btn-danger"href="<?php echo base_url() ?>product/list_prodcut">Cancel</a>
                            </div>
@@ -143,5 +143,18 @@ $(document).ready(function() {
         });
 });
 
+
+</script>
+
+
+<script>
+$('.sel').select2({
+      // tags: "true",
+    // minimumResultsForSearch: 20 ,
+    selectOnClose: true,
+   placeholder: "Select an option",
+    allowClear: true
+
+});
 
 </script>

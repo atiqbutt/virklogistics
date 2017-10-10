@@ -36,14 +36,14 @@
                   <label for="inputEmail3" class="col-sm-2 control-label">Description </label>
 
                   <div class="col-sm-6">
-                    <textarea name="dec" class="form-control" rows="4" cols="50"  required></textarea>
+                    <textarea name="dec" class="form-control" rows="4" cols="50"></textarea>
                   </div>
                 </div> 
               </div>
               <!-- /.box-body -->
                         <div class="form-group" style="padding-bottom: 10px ">
                             <div class="col-sm-10 col-sm-offset-2"> 
-                               <input class="btn btn-success" type="submit" name="register" value="Add" />
+                               <input class="btn btn-success" type="submit" name="register" value="Submit" />
                                <input class="btn btn-warning" type="submit" name="reset" value="Reset" />
                                <a class="btn btn-danger"href="<?php echo base_url() ?>unit/index">Cancel</a>
                            </div>

@@ -121,12 +121,14 @@ $this->vehicle_model->save('vehicle_document', $op);
 	            $this->vehicle_model->save("chambers", $data1); 
 
 	          } 
-	            $this->session->set_flashdata('msg', "Information has been added successfully");
+	            $this->session->set_flashdata('msg', "Record has been Added Successfully
+");
 		    redirect('Vehicle/show_vehicle');
 
 	        }else{
 
-	            $this->session->set_flashdata('error', "There are some errors. Please check and fill again");
+	            $this->session->set_flashdata('error', "Record has been not Added Successfully
+");
 	            redirect('Vehicle/show_vehicle');
 
 	        }
@@ -251,12 +253,14 @@ $this->vehicle_model->save('vehicle_document', $op);
                 ); 
                 $this->db->where('id',$data['idd'])->update('chambers',$data1);
 	            }
-            $this->session->set_flashdata('msg', "Information has been Updated successfully");
+            $this->session->set_flashdata('msg', "Record has been Updated Successfully
+");
             redirect('Vehicle/show_vehicle');
 }
             else{
 
-	            $this->session->set_flashdata('error', "There are some errors. Please check and fill again");
+	            $this->session->set_flashdata('error', "Record has been not Updated Successfully
+");
 	            redirect('Vehicle/show_vehicle');
 
 	        }
@@ -314,12 +318,14 @@ $this->vehicle_model->save('vehicle_document', $op);
             $done=$this->db->where('id',$id)->update('vehicle',array('is_deleted'=>1));
             if($done)
             {
-            $this->session->set_flashdata('msg', 'vechicles is Deleted!');
+            $this->session->set_flashdata('msg', 'Record has been Deleted Successfully
+');
             redirect('Vehicle/show_vehicle');
             }
             else 
             {
-            $this->session->set_flashdata('msg',' Error: vechicles is not Deleted');
+            $this->session->set_flashdata('msg',' Record has been not Deleted Successfully
+');
             redirect('Vehicle/show_vehicle');
             }
 
@@ -364,12 +370,14 @@ $this->vehicle_model->save('vehicle_document', $op);
         $done=$this->db->where('id',$id)->update('vehiclestatus',array('is_deleted'=>1));
         if($done)
         {
-        $this->session->set_flashdata('msg', 'vechicles is Deleted!');
+        $this->session->set_flashdata('msg', 'Record has been Deleted Successfully
+');
         redirect('Vehicle/Vehicle_Status_list');
         }
         else 
         {
-        $this->session->set_flashdata('msg',' Error: vechicles is not Deleted');
+        $this->session->set_flashdata('msg','Record has been Deleted Successfully
+');
         redirect('Vehicle/Vehicle_Status_list');
         }
 
@@ -475,12 +483,14 @@ $this->vehicle_model->save('vehicle_document', $op);
          $data["modifiedAt"]=date("Y-m-d h:i:sa");
         $data["modifiedBy"]=$id;
         $this->db->insert('vehiclestatus', $data);
-        $this->session->set_flashdata('msg', "Add vehicle status, Information has been added successfully");
+        $this->session->set_flashdata('msg', "Record has been Added Successfully
+");
         redirect('Vehicle/Vehicle_Status_list');
         }
 
         else{
-        $this->session->set_flashdata('msg', "Add vehicle status,id reference is missing or incorrect");
+        $this->session->set_flashdata('msg', "Record has been Added Successfully
+");
         redirect('Vehicle/Vehicle_Status_list');
         }
 
@@ -517,13 +527,15 @@ $this->vehicle_model->save('vehicle_document', $op);
         
 
 
-        $this->session->set_flashdata('msg', "Add vehicle status, Information has been added successfully");
+        $this->session->set_flashdata('msg', "Record has been Updated Successfully
+");
         redirect('Vehicle/Vehicle_Status_list');
 
         }
 
         else{
-        $this->session->set_flashdata('msg', "Add vehicle status,id reference is missing or incorrect");
+        $this->session->set_flashdata('msg', "Record has been not Updated Successfully
+");
         redirect('Vehicle/Vehicle_Status_list');
         }
 
@@ -551,12 +563,14 @@ $this->vehicle_model->save('vehicle_document', $op);
         $done=$this->db->where('id',$id)->update('vehicletype',array('is_deleted'=>1));
         if($done)
         {
-        $this->session->set_flashdata('msg', 'vechicles Type is Deleted!');
+        $this->session->set_flashdata('msg', 'Record has been Deleted Successfully
+');
         redirect('Vehicle/Vehicle_type_list');
         }
         else 
         {
-        $this->session->set_flashdata('msg',' Error: vechicles type is not Deleted');
+        $this->session->set_flashdata('msg','Record has been not Deleted Successfully
+');
         redirect('Vehicle/Vehicle_type_list');
         }
 
@@ -619,13 +633,15 @@ $this->vehicle_model->save('vehicle_document', $op);
         // $this->generic_model->insert("producttype",$data,array("id"=>$id));
 
 
-        $this->session->set_flashdata('msg', "Add vehicle type, Information has been added successfully");
+        $this->session->set_flashdata('msg', "Record has been Added Successfully
+");
         redirect('Vehicle/show_vehicle');
 
         }
 
         else{
-        $this->session->set_flashdata('msg', "Add vehicle type,id reference is missing or incorrect");
+        $this->session->set_flashdata('msg', "Record has been Not Added Successfully
+");
         redirect('Vehicle/show_vehicle');
         }
 
@@ -664,47 +680,18 @@ $this->vehicle_model->save('vehicle_document', $op);
         
 
 
-        $this->session->set_flashdata('msg', "Add vehicle type, Information has been added successfully");
+        $this->session->set_flashdata('msg', "Record has been Updated Successfully");
         redirect('Vehicle/Vehicle_type_list');
 
         }
 
         else{
-        $this->session->set_flashdata('msg', "Add vehicle Type,id reference is missing or incorrect");
+        $this->session->set_flashdata('msg', "Record has been not Updated Successfully
+");
         redirect('Vehicle/Vehicle_type_list');
         }
 
         } 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-
-
 
 
 

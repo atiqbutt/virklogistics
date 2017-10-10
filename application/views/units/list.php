@@ -8,7 +8,7 @@
           <?php endif; ?>
         <div class="col-xs-12">
              <div style="padding-left:0px;" class="panel-heading">
-                  <a  class="btn btn-success"  href="<?php echo base_url();?>unit/add/">Add units </a>
+                  <a  class="btn btn-success"  href="<?php echo base_url();?>unit/add/">Add Units </a>
  
               </div>
           <div class="box col-sm-12">

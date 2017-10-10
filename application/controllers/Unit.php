@@ -74,14 +74,16 @@ class unit extends CI_Controller {
     
 
 
-        $this->session->set_flashdata('msg', "Add unit, Information has been added successfully");
+        $this->session->set_flashdata('msg', "Record has been Added Successfully
+");
         redirect('unit/index');
     
      }
         }
 
         else{
-        $this->session->set_flashdata('msg', "Add unit,id reference is missing or incorrect");
+        $this->session->set_flashdata('msg', "Record has been not Added Successfully
+");
         redirect('unit/index');
         }
 
@@ -98,12 +100,14 @@ class unit extends CI_Controller {
         $done=$this->db->where('id',$id)->update('unit',array('is_deleted'=>1));
         if($done)
         {
-        $this->session->set_flashdata('msg', 'unit is Deleted!');
+        $this->session->set_flashdata('msg', 'Record has been Deleted Successfully
+');
         redirect('unit/index');
         }
         else 
         {
-        $this->session->set_flashdata('msg',' Error: unit is not Deleted');
+        $this->session->set_flashdata('msg',' Record has been not Deleted Successfully
+');
         redirect('unit/index');
         }
 
@@ -169,7 +173,8 @@ class unit extends CI_Controller {
         $data["modifiedAt"]=date("Y-m-d h:i:sa");
         $this->db->where('id',$id);
         $this->db->update('unit',$data);
-        $this->session->set_flashdata('msg', "unit record has been updated successfully");
+        $this->session->set_flashdata('msg', "Record has been Updated Successfully
+");
         redirect('unit/index');  
         }
 

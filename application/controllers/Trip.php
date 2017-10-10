@@ -250,11 +250,13 @@ class trip extends CI_Controller {
 	           	}
 
 	           	$this->db->insert_batch('trip_members', $insert_helper);
-	            $this->session->set_flashdata('success', "Add tripmanagement, Information has been added successfully");
+	            $this->session->set_flashdata('success', "Record has been Added Successfully
+");
 	            redirect('trip/index');
 	   	 
 	   		}else{
-	   			$this->session->set_flashdata('Errors', "There are some errors !!");
+	   			$this->session->set_flashdata('Errors', "Record has been not Added Successfully
+");
 	            redirect('trip/add_trip');
 	   		}
 

@@ -129,7 +129,7 @@ $(document).ready(function() {
                        <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <input class="btn btn-success" type="submit" name="register" value="Add" />
+                          <input class="btn btn-success" type="submit" name="register" value="Submit" />
                           <input id="zzz" class="btn btn-warning" type="reset" name="reset" value="Reset" />
                           <a type="submit" name="register" href='<?php echo base_url()?>Defination/companypage' class="btn btn-danger">Cancel</a>
             

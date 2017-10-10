@@ -89,7 +89,7 @@
                      
                            <div class="form-group">
                             <div class="col-sm-9 col-sm-offset-3"> 
-                               <input class="btn btn-success" type="submit" name="register" value="Add" />
+                               <input class="btn btn-success" type="submit" name="register" value="Submit" />
                                <input id="resetbtn" class="btn btn-warning" type="reset" name="reset" value="Reset" />
                                <a class="btn btn-danger" href="<?php echo base_url() ?>Vehicle/show_vehicle">Cancel</a>
                            </div>

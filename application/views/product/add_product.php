@@ -112,7 +112,7 @@ if ((event.keyCode < 45 || event.keyCode > 57))
               </div>
                          <div class="form-group" style="padding-bottom: 10px ">
                             <div class="col-sm-10 col-sm-offset-2"> 
-                               <input class="btn btn-success" type="submit" value="Add" name="register" value="submit" />
+                               <input class="btn btn-success" type="submit" value="Submit" name="register" value="submit" />
                                <input class="btn btn-warning" type="reset" name="reset" value="Reset" />
                                <a class="btn btn-danger"href="<?php echo base_url() ?>product/list_prodcut">Cancel</a>
                            </div>

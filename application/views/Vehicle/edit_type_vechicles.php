@@ -12,7 +12,7 @@
 
   <div class="box box-info">
             <div class="box-header with-border">
-              <h2 class="box-title">Update Vehicle Type</h2>
+              <h2 class="box-title">Manage Vehicle Type</h2>
                <p style="color:green;font-weight: bold;padding:10px;text-align: center"><?php echo $this->session->flashdata('msg');?></p>
  
             </div>
@@ -21,7 +21,7 @@
             <form class="form-horizontal" action="<?php echo base_url()?>Vehicle/Vehicle_type_update" method="post" enctype="multipart/formdata">
               <div class="box-body">
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Heading</label>
+                  <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
             <input type="hidden" name="id" value=<?php echo $vehicletype->id?>>
                   <div class="col-sm-6">
                       <input type="name" name="name" value=<?php echo $vehicletype->heading ?>  onkeypress="return maskAlphaWithSp(this,event);"  class="form-control" id="inputEmail3" placeholder="Name" required>

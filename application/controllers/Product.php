@@ -61,7 +61,7 @@ class product extends CI_Controller {
         if ($_POST )
         {
         $this->form_validation->set_rules('name', 'Name no', 'trim|required');
-        $this->form_validation->set_rules('dec', 'Description', 'trim|required');
+      
     if($this->form_validation->run()==False)
   {
       $data['menu'] = $this->load_model->menu();
@@ -80,14 +80,16 @@ class product extends CI_Controller {
         ;
 
 
-        $this->session->set_flashdata('msg', "Add producttype, Information has been added successfully");
+        $this->session->set_flashdata('msg', "Record has been Added Successfully
+");
         redirect('product/index');
     
      }
         }
 
         else{
-        $this->session->set_flashdata('msg', "Add producttype,id reference is missing or incorrect");
+        $this->session->set_flashdata('msg', "Record has been not Added Successfully
+");
         redirect('product/index');
         }
 
@@ -146,12 +148,14 @@ $this->db->join('product_histroy','product_histroy.p_id = product.id');
         $done=$this->db->where('id',$id)->update('producttype',array('is_deleted'=>1));
         if($done)
         {
-        $this->session->set_flashdata('msg', 'Product is Deleted!');
+        $this->session->set_flashdata('msg', 'Record has been Deleted Successfully
+');
         redirect('product/index');
         }
         else 
         {
-        $this->session->set_flashdata('msg',' Error: Product is not Deleted');
+        $this->session->set_flashdata('msg',' Record has been not Deleted Successfully
+');
         redirect('product/index');
         }
 
@@ -210,15 +214,15 @@ $this->db->join('product_histroy','product_histroy.p_id = product.id');
 
         public function update()
         {
-        //$this->load->model('generic_model');
-        // $id=decode_uri($this->uri->segment(2));
+       
         $id=$this->input->post('id');
         $data["name"]=$this->input->post('name');
         $data["description"]=$this->input->post('dec');
         $data["modifiedAt"]=date("Y-m-d h:i:sa");
         $this->db->where('id',$id);
         $this->db->update('producttype',$data);
-        $this->session->set_flashdata('msg', "producttype record has been updated successfully");
+        $this->session->set_flashdata('msg', "Record has been Updated Successfully
+");
         redirect('product/index');  
         }
 
@@ -345,12 +349,14 @@ public function eyelist_product($p='')
      
         
         
-        $this->session->set_flashdata('msg', "Add product, Information has been added successfully");
+        $this->session->set_flashdata('msg', "Record has been Added Successfully
+");
         redirect('product/list_prodcut');
         }
     }
         else{
-        $this->session->set_flashdata('msg', "Add product,  reference is missing or incorrect");
+        $this->session->set_flashdata('msg', "Record has been not Added Successfully
+");
         redirect('product/list_prodcut');
         }
 
@@ -362,12 +368,14 @@ public function eyelist_product($p='')
         $done=$this->db->where('id',$id)->update('product',array('is_deleted'=>1));
         if($done)
         {
-        $this->session->set_flashdata('msg', 'Product is Deleted!');
+        $this->session->set_flashdata('msg', 'Record has been Deleted Successfully
+');
         redirect('product/list_prodcut');
         }
         else 
         {
-        $this->session->set_flashdata('msg',' Error: Product is not Deleted');
+        $this->session->set_flashdata('msg',' Record has been not Deleted Successfully
+');
         redirect('product/list_prodcut');
         }
 
@@ -465,12 +473,14 @@ else{
                 $this->db->where('id',$id);
         $this->db->update('product',$data);
 
-        $this->session->set_flashdata('msg', "Update product, Information has been added successfully");
+        $this->session->set_flashdata('msg', "Record has been Updated Successfully
+");
         redirect('product/list_prodcut');
         }
     }
         else{
-        $this->session->set_flashdata('msg', "Update product,  reference is missing or incorrect");
+        $this->session->set_flashdata('msg', "Record has been not Updated Successfully
+");
         redirect('product/list_prodcut');
         }
         }

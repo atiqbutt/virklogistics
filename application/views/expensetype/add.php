@@ -32,7 +32,7 @@
                               <input type="address" name="remarks" class="form-control"  placeholder="remarks" >
                         </div>
                       </div>
-                     <input type="submit" name="myform" value="Add" class="col-md-offset-3 btn btn-primary"> 
+                     <input type="submit" name="myform" value="Submit" class="col-md-offset-3 btn btn-success"> 
                       <input id="zzz" class="btn btn-warning" type="reset" name="reset" value="Reset" />  
                        <a type="submit" name="register" href='<?php echo base_url()?>Defination/view_expensetype' class="btn btn-danger">Cancel</a>
                

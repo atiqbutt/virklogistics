@@ -10,7 +10,7 @@
            <?php endif; ?>
   <div class="box box-info">
             <div class="box-header with-border">
-              <h2 class="box-title">Update Vehicle Status</h2>
+              <h2 class="box-title">Manage Vehicle Status</h2>
                <p style="color:green;font-weight: bold;padding:10px;text-align: center"><?php echo $this->session->flashdata('msg');?></p>
  
             </div>
@@ -30,7 +30,7 @@
            
                          <div class="form-group" style="padding-bottom: 10px ">
                             <div class="col-sm-10 col-sm-offset-2"> 
-                               <input class="btn btn-success" type="submit" name="register" value="submit" />
+                               <input class="btn btn-success" type="submit" name="register" value="Update" />
                                <input class="btn btn-warning" type="reset" name="reset" value="Reset" />
                                <a class="btn btn-danger"href="<?php echo base_url() ?>Vehicle/Vehicle_Status_list">Cancel</a>
                            </div>

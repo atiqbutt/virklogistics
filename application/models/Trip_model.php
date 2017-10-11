@@ -24,6 +24,46 @@ function GetAllTrips($type="") {
         return $w->result_array();}
         else {return FALSE; }
     }
+
+ // public function update($id,$data)
+ //    {
+ //         $this->db->where('id',$id);
+ //         $this->db->update('expense',$data);
+ //    }
+    
+
+    public function insert($t="",$values=array())
+        
+    {
+        return $this->db->insert($t,$values);
+        
+    }
+    
+
+
+    public function trip($id)
+    {
+$er=$this->db->query("SELECT tripmanagement.id, driverinformation.name as name,ex.amount,et.name as expensetype FROM trip_members tm JOIN tripmanagement ON tm.trip_id=tripmanagement.id JOIN driverinformation ON driverinformation.id=tm.member_id join expense ex on ex.trip_id=tripmanagement.id and ex.payee=driverinformation.id join expensetype et on et.id=ex.expensetype_id where tripmanagement.is_deleted=0 AND tm.trip_id='$id' union SELECT tripmanagement.id,helperinformation.name as name,ex.amount,et.name as expensetype FROM tripmanagement JOIN trip_members tme on tme.trip_id=tripmanagement.id join helperinformation ON helperinformation.id=tme.member_id join expense ex on ex.trip_id=tripmanagement.id and ex.payee=helperinformation.id join expensetype et on et.id=ex.expensetype_id where tripmanagement.is_deleted=0 AND tme.trip_id='$id' GROUP BY tme.type")->result_array();
+return $er;
+    }
+
+//bilal
+function gettrips($id='')
+{
+$er=$this->db->query("SELECT tripmanagement.id,tm.type,driverinformation.id as did,driverinformation.name as name FROM trip_members tm JOIN tripmanagement ON tm.trip_id=tripmanagement.id JOIN driverinformation ON driverinformation.id=tm.member_id where tripmanagement.is_deleted=0 AND tm.trip_id='$id' union SELECT tripmanagement.id,tme.type,helperinformation.id as did,helperinformation.name as name FROM tripmanagement JOIN trip_members tme on tme.trip_id=tripmanagement.id join helperinformation ON helperinformation.id=tme.member_id where tripmanagement.is_deleted=0 AND tme.trip_id='$id' GROUP BY tme.type")->row();
+return $er;
+
+}
+
+function gettri($id='')
+{
+$er=$this->db->query("SELECT tripmanagement.id,tm.type,driverinformation.id as did,driverinformation.name as name FROM trip_members tm JOIN tripmanagement ON tm.trip_id=tripmanagement.id JOIN driverinformation ON driverinformation.id=tm.member_id where tripmanagement.is_deleted=0 AND tm.trip_id='$id' union SELECT tripmanagement.id,tme.type,helperinformation.id as did,helperinformation.name as name FROM tripmanagement JOIN trip_members tme on tme.trip_id=tripmanagement.id join helperinformation ON helperinformation.id=tme.member_id where tripmanagement.is_deleted=0 AND tme.trip_id='$id' GROUP BY tme.type")->result_array();
+return $er;
+
+}
+
+
+
 function GetSpecificTrip($id) {
       $this->db->select()
         ->from('get_all_trips')

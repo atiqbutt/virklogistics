@@ -76,7 +76,9 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button id="send" type="submit" class="btn btn-success">Add</button>
+                          <button id="send" type="submit" class="btn btn-success">Submit</button>
+                           <input id="zzz" class="btn btn-warning" type="reset" name="reset" value="Reset" />
+                          <a type="submit" name="register" href='<?php echo base_url()?>admin/user/view' class="btn btn-danger">Cancel</a>
                         </div>
                       </div>
                 </form>

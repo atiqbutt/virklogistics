@@ -70,10 +70,15 @@
                if ($amb['status'] == 0 ){ ?>
                  
                 <tr class="odd gradeX" style="background: #98FB98">
-                  <?php }else {?>
-                                  <tr class="odd gradeX" >
-                                    <?php } ?>
-                <td><a href="<?php echo base_url();?>Trip/close_trip/<?php echo $amb["id"];?>"><?php echo $amb["id"];?></a>   </td>
+                <?php }else {?>
+                <tr class="odd gradeX" >
+                <?php } ?>
+                <?php if ($amb['status'] == 1){ ?>
+                   <td><a href="<?php echo base_url();?>Trip/closed_trip/<?php echo $amb["id"];?>"><?php echo $amb["id"];?></a></td>
+                <?php }else{ ?>
+                  <td><a href="<?php echo base_url();?>Trip/close_trip/<?php echo $amb["id"];?>"><?php echo $amb["id"];?></a></td>
+                   <?php } ?>
+               
                 <td> <?php echo $amb["type"];?>  </td>
         				<td> <?php echo $amb["productname"];?>  </td>
         				<td> <?php echo $amb["comname"];?>  </td>
@@ -94,70 +99,70 @@
         				<td> <?php echo $amb["remaining_commission"];?> </td>
         				<td> <?php echo $amb["servicecharges"];?></td>
 						
-                      
+                
+              <td>
 
-                    <td>
-
-                      <div  class="" data-backdrop="static" data-toggle="modal" data-target="#exampleModal1" data-whatever="@mdo">
-                       <a href="#"><i  style="font-size:18px; color:#3C8DBC;" class="fa fa-flask" aria-hidden="true"></i></a>
-                      </div>
+                <div  class="" data-backdrop="static" data-toggle="modal" data-target="#exampleModal1" data-whatever="@mdo">
+                 <a href="#"><i  style="font-size:18px; color:#3C8DBC;" class="fa fa-flask" aria-hidden="true"></i></a>
+                </div>
 
 
-                        <form name="myform" id="myform" action="<?php echo base_url() ?>trip/expenseadd/<?php echo $amb['id'];?>" method="post" enctype="multipart/form-data">
+                  <form name="myform" id="myform" action="<?php echo base_url() ?>trip/expenseadd/<?php echo $amb['id'];?>" method="post" enctype="multipart/form-data">
 
-                        <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-                        <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-<input type="hidden" name="id" value="<?php echo $amb['id']?>">
-                          
-                        <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="exampleModalLabel">Add New Expense</h4>
-                        </div>
-                        <div class="modal-body">
-                        <!-- <?php //echo $amb['id'];?> -->
-                         
-                                  <div class="col-lg-12">
-                                        <div class="col-md-10">
-                                            <label>Expense Type</label>
+                  <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                  <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                
+                  <input type="hidden" name="id" value="<?php echo $amb['id']?>">
+                    
+                  <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="exampleModalLabel">Add New Expense</h4>
+                  </div>
+                  <div class="modal-body">
+                  <!-- <?php //echo $amb['id'];?> -->
+                   
+                            <div class="col-lg-12">
+                                  <div class="col-md-10">
+                                      <label>Expense Type</label>
 
-                                          <select  class="form-control alertbox" name="" id="Expense" required>
-                                             <option value="">Select Options</option>       
-                                              <?php if(!empty($expensetype)){
-                                              foreach ($expensetype as $e){  ?>      
-                                              <option value="<?php  echo  $e["id"];?>">
-                                              <?php  echo  $e["name"];?>
-                                              </option>               
-                                              <?php }} ?>
-                                          </select>
-                                        </div>  
+                                    <select  class="form-control alertbox" name="" id="Expense" required>
+                                       <option value="">Select Options</option>       
+                                        <?php if(!empty($expensetype)){
+                                        foreach ($expensetype as $e){  ?>      
+                                        <option value="<?php  echo  $e["id"];?>">
+                                        <?php  echo  $e["name"];?>
+                                        </option>               
+                                        <?php }} ?>
+                                    </select>
+                                  </div>  
 
-                        		            <!-- <div class="col-md-10"><label>Expense Amount</label><input name="amount" type="text" id="amount" class="form-control"></div>
- -->
-                                        <div class="col-md-2">  
-                                       <button style="margin-top: 30px" id="addhelper" ><i class="fa fa-plus" aria-hidden="true"></i></button>
-                                      
-                                        </div>
+                  		            <!-- <div class="col-md-10"><label>Expense Amount</label><input name="amount" type="text" id="amount" class="form-control"></div>
+-->
+                                  <div class="col-md-2">  
+                                 <button style="margin-top: 30px" id="addhelper" ><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                
                                   </div>
-
-
-                                  <div class="col-lg-12" style="margin-top:20px;">				
-                                    <div id="add_helpr"></div>
-                                  </div>
-
-                                 
-
-                                <div class="modal-footer" style="padding-top:20px;margin-top:20px;">
-                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                  <input value="Add"  id="add" class="btn btn-primary">
-                                </div>
-
-                                </div>
-                              </div>
                             </div>
-                        </form> 
 
-                     </td>
+
+                            <div class="col-lg-12" style="margin-top:20px;">				
+                              <div id="add_helpr"></div>
+                            </div>
+
+                           
+
+                          <div class="modal-footer" style="padding-top:20px;margin-top:20px;">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <input value="Add"  id="add" class="btn btn-primary">
+                          </div>
+
+                          </div>
+                        </div>
+                      </div>
+                  </form> 
+
+               </td>
                 </tr>
 	         <?php  } }?>
 

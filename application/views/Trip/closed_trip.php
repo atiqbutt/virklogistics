@@ -35,7 +35,7 @@
   <div class="box">
 
       <div class="box-header" style=" padding-bottom: 0;margin-bottom: 0;">
-          <h3 style="font-weight:bold; padding-top: 10px;" class="box-title pull-left">Close Trip
+          <h3 style="font-weight:bold; padding-top: 10px;" class="box-title pull-left">Trip Closed
        </h3>
           <div class="col-lg-3 vechinfo pull-right">
                     
@@ -112,14 +112,14 @@
                   <div class="col-lg-3">           
                       <div class="form-group"> 
                         <label>Start Meter Reading</label>
-                         <input id="emr" class="form-control" type="text" value="<?php echo $trip_info['0']['start_meter_reading']  ?>" readonly/>
+                         <input class="form-control" type="text" value="<?php echo $trip_info['0']['start_meter_reading']  ?>" readonly/>
                       </div>
                   </div>
 
                  <div class="col-lg-3 ">           
                       <div class="form-group"> 
                         <label>End Meter Reading</label>
-                          <input id="smr"  class="form-control"  type="text" name="end_meter_reading" onkeypress='return ValidateNumberOnly()'  />
+                          <input class="form-control"  type="text"  name="end_meter_reading" value="<?php echo $trip_info['0']['end_meter_reading']  ?>"  readonly/>
                       </div>
                   </div>
 
@@ -127,7 +127,7 @@
                   <div class="col-lg-3 ">           
                       <div class="form-group"> 
                         <label>Fuel</label>
-                          <input id="fuel" class="form-control" placeholder="Fuel Consumption"  type="text" name="fuel" onkeypress='return ValidateNumberOnly()' />
+                          <input class="form-control" placeholder="Fuel Consumption"  type="text" value="<?php echo $trip_info['0']['fuel']  ?>" name="fuel" readonly/>
                       </div>
                   </div>
 
@@ -135,7 +135,7 @@
                   <div class="col-lg-3 ">           
                     <div class="form-group"> 
                       <label>STN Number</label>
-                        <input class="form-control"  type="text" name="stn_no" onkeypress='return ValidateNumberOnly()'  />
+                        <input class="form-control"  type="number" name="stn_no" value="<?php echo $trip_info['0']['stn_no']  ?>" name="fuel" readonly/>
                     </div>
                  </div>
 
@@ -146,28 +146,29 @@
             <div class="col-lg-3 ">           
                 <div class="form-group"> 
                   <label>Closing Gravity</label>
-                    <input class="form-control"  type="text" name="closing_gravity" onkeypress='return ValidateNumberOnly()'  />
+                    <input class="form-control"  value="<?php echo $trip_info['0']['closing_gravity']  ?>"  type="number" name="closing_gravity"  readonly/>
                 </div>
              </div>
 
              <div class="col-lg-3 ">           
                 <div class="form-group"> 
                   <label>Closing Temperature</label>
-                    <input class="form-control"  type="text" name="closing_temp" onkeypress='return ValidateNumberOnly()'  />
+                    <input class="form-control"  value="<?php echo $trip_info['0']['closing_temp']  ?>"  type="number" name="closing_temp"   readonly/>
                 </div>
              </div>
 
-              <div class="col-lg-3 ">           
+             <div class="col-lg-3 ">           
                 <div class="form-group"> 
                   <label>Shortage</label>
-                    <input class="form-control"  type="text" name="shortage" onkeypress='return ValidateNumberOnly()'  />
+                    <input class="form-control"  value="<?php echo $trip_info['0']['shortage']  ?>"  type="number" name="shortage"   readonly/>
                 </div>
              </div>
 
              <div class="col-lg-3 ">           
                 <div class="form-group"> 
                   <label>Tracking Report</label>
-                    <input class="form-control"  type="file" name="userfile" onkeypress='return ValidateNumberOnly()'  />
+                      <p style="padding-top: 5px"><a href="<?php echo base_url(); ?>trip/download/<?php echo $trip_info['0']['tracking_report']  ?>"><i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i></a></p>
+                    <!-- <input class="form-control"  type="file" name="userfile"  /> -->
                 </div>
              </div>
 
@@ -176,54 +177,18 @@
           <!-- row -->
 
           <div class="row">
-            
-              <script>
-              
-                // $("#smr").on('blur', function(event) {
-                //   var smr = $(this).val();
-                // }); 
 
-                $("#smr").on('blur', function(event) {
-                  var emr = $(this).val();
-                  var smr = $("#emr").val();
-                  var res = emr - smr; 
-                  $("#travelledDis").html(res);
-
-                }); 
-
-                $("#fuel").on('blur', function(event) {
-                  var emr = $("#smr").val();
-                  var smr = $("#emr").val();
-                  var res = emr - smr; 
-                  var fuel = $(this).val();
-
-                    var res = res / fuel; 
-                    $("#fc").html(Number((res).toFixed(2)));
-
-                }); 
-
-
-
-              </script>
-
-            
-            <div class="col-lg-3 " style="padding-left: 25px">           
+              <div class="col-lg-3 " style="padding-left: 20px">           
                 <div class="form-group"> 
-                     <p ><Strong>Travelled Distance</Strong>:<span id="travelledDis"></span> </p>
-                     <p><Strong>Kilometer/Liter</Strong>:<span id="fc"></span>  </p>
+                     <p><Strong>Travelled Distance</Strong>: <?php echo $td =  $trip_info['0']['end_meter_reading'] - $trip_info['0']['start_meter_reading'] ?>&nbspKM</p>
+                     <p><Strong>Kilometer/Liter</Strong>: <?php echo $KML =  $td / $trip_info['0']['fuel'] ?>&nbspKM/L</p>
                 </div>
              </div>
 
+          </div>  
+          <!-- row -->
 
-          </div>
-            <!-- row -->
-
-
-
-
-
-
-      </div>            
+      </div>     
     </div>
 
       <!--Add Product -->
@@ -353,35 +318,22 @@
          <div class="panel panel-default">
               <div class="panel-heading"><i class="fa fa-clock-o" aria-hidden="true"></i> Closing Date</div>
                   <div class="panel-body">
-                    <div class="form-group">
-                      <label>Entry Date</label>
-                      <?php  $date = date('Y-m-d'); ?>
-                      <input class="form-control" type="date" name="closing_entry_date" value="<?php echo $date; ?>" palceholder="" >
+                       <div class="form-group">
+                      <p><Strong>Closing Entry Date</Strong>:&nbsp&nbsp <?php echo $trip_info['0']['closing_entry_date']; ?></p>                      
                     </div>  
 
                     <div class="form-group">
-                      <label>Email Date</label>
-                      <input class="form-control" type="date" name="closing_email_date" value="<?php echo $date; ?>" >
+                      <p><Strong>Closing Email Date</Strong>:&nbsp&nbsp <?php echo $trip_info['0']['closing_email_date']; ?></p>                        
                     </div> 
 
                      <div class="form-group">
-                      <label>Uncanned date</label>
-                      <input class="form-control" type="date" name="uncanned_date" value="<?php echo $date; ?>" >
+                      <p><Strong>Uncanned date</Strong>:&nbsp&nbsp <?php echo  $trip_info['0']['uncanned_date']; ?></p>
                     </div> 
 
-
-                    <div class="form-group">    
-                        <label>Uncanned By</label>
-                          <select  class="form-control" name="uncanned_by" >
-                             <option value="">Select Options</option>       
-                              <?php if(!empty($driver1)){
-                              foreach ($driver1 as $v){  ?>      
-                              <option value="<?php  echo  $v["did"];?>"   >
-                              <?php  echo  $v["name"];?>
-                              </option>               
-                              <?php }} ?>
-                          </select> 
-                      </div>
+                   <div class="form-group">  
+                      <?php  ?>
+                      <p><Strong>Uncanned By</Strong>:&nbsp&nbsp <?php echo $uncannedBy['name'] ?></p>
+                    </div>
                        
                   </div>
                   <!-- panel-body -->

@@ -23,6 +23,8 @@ class trip extends CI_Controller {
             $data['userInfo'] = $this->userInfo;  
 			$data["expensetype"]=$this->trip_model->getAllRecords("expensetype",array("is_delete"=>0),"id","DESC");	
 			$data["tripmanagement"]=$this->trip_model->GetAllTrips();
+            // var_dump ($data["tripmanagement"]);
+            // die();
 			$data["page"]='Trip/trip_list';
             $this->load->view('Template/main',$data);
 
@@ -88,9 +90,14 @@ class trip extends CI_Controller {
             $data['userInfo'] = $this->userInfo; 
 			$data['tripid'] = $id;
 			$data["trip_info"]=$this->trip_model->GetSpecificTrip($id);
+            $data["driver1"]=$this->db->query('select driverinformation.id as did,driverinformation.name as name FROM trip_members tm JOIN tripmanagement ON tm.trip_id=tripmanagement.id JOIN driverinformation ON driverinformation.id=tm.member_id where tripmanagement.is_deleted=0 AND tm.trip_id='.$id.' 
+union 
+SELECT helperinformation.id as did,helperinformation.name as name FROM tripmanagement JOIN trip_members tme on tme.trip_id=tripmanagement.id join helperinformation ON helperinformation.id=tme.member_id where tripmanagement.is_deleted=0 AND tme.trip_id='.$id.' GROUP BY tme.type')->result_array();
+
+            // var_dump ($data["driver1"]);
+            // die();
 
             $filledBy = $data["trip_info"][0]['filled_by'];
-
             $data["filledby"]=$this->trip_model->FilledBy($filledBy);
             $data["helper"]=$this->trip_model->GetTripHelper($id);
             $data["products"]=$this->trip_model->GetTripProducts($id);
@@ -99,8 +106,41 @@ class trip extends CI_Controller {
 			$data['page'] = 'Trip/close_trip';
             $this->load->view('Template/main', $data);
        } 
-       
 
+
+
+    public function closed_trip($id)
+           {
+
+            $data["driver1"]=$this->trip_model->getAllRecords("driverinformation",array("is_deleted"=>0, "status"=>0),"id","DESC");
+            $data['menu'] = $this->load_model->menu();
+            $data['base_url'] = base_url();
+            $data['userInfo'] = $this->userInfo; 
+            $data['tripid'] = $id;
+            $data["trip_info"]=$this->trip_model->GetSpecificTrip($id);
+
+             $filledBy = $data["trip_info"][0]['filled_by'];
+            $data["filledby"]=$this->trip_model->FilledBy($filledBy);
+
+            $uncannedBy = $data["trip_info"][0]['uncanned_by'];           
+
+            $data["uncannedBy"]=$this->trip_model->uncannedBy($uncannedBy);
+
+            // var_dump ($data["uncannedBy"]);
+            // die();
+
+
+            $data["helper"]=$this->trip_model->GetTripHelper($id);
+            $data["products"]=$this->trip_model->GetTripProducts($id);
+            $data["expensetype"]=$this->trip_model->getAllRecords("expensetype",array("is_delete"=>0),"id","DESC"); 
+
+            $data['page'] = 'Trip/closed_trip';
+            $this->load->view('Template/main', $data);
+           } 
+
+
+
+       
         public function save_trip_close()
         {
             // var_dump ($this->input->post());
@@ -116,7 +156,8 @@ class trip extends CI_Controller {
             $data["uncanned_date"]=$this->input->post('uncanned_date'); 
             $data["uncanned_by"]=$this->input->post('uncanned_by'); 
             $data["closing_gravity"]=$this->input->post('closing_gravity');
-            $data["closing_temp"]=$this->input->post('closing_temp'); 
+            $data["closing_temp"]=$this->input->post('closing_temp');
+            $data["shortage"]=$this->input->post('shortage'); 
             $file =$this->do_upload();  
 
             $data["tracking_report"]=$file["upload_data"]["file_name"];
@@ -435,6 +476,17 @@ public function all_close_trip()
                     //$this->load->view('upload_success', $data);
             }
         }
+    
+
+     public function download($file_name) {
+
+        $this->load->helper('download');
+        $path =  "./Uploads/". $file_name;
+        $file = force_download($path, NULL);
+        return $file;
+    }
+
+
 
 
 

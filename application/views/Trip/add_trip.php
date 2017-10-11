@@ -135,11 +135,11 @@
                    
 
 
-                   <div class="col-lg-3 paddinglr5">
+                 <!--   <div class="col-lg-3 paddinglr5">
                         <div class="form-group"> 
                           <label>Source </label>
                             <select class="form-control sel" name="source" selected="selected" required> 
-                            <option value="">Select Options</option>       
+                            <option value="">Select Options</option>    -->    
 
 
  <!--                        
@@ -148,12 +148,12 @@
                             <select id="pro" class="form-control" name="product_id" selected="selected" required> 
                             <option value="">Select Options</option>       
 
-                             <?php  if(!empty($product)){
-                             foreach ($product as $p){   ?>      
-                                <option value="<?php  echo  $p["id"];?>"   >
-                              <?php  echo  $p["heading"];?>
+                             <?php  //if(!empty($product)){
+                             //foreach ($product as $p){   ?>      
+                                <option value="<?php  //echo  $p["id"];?>"   >
+                              <?php  //echo  $p["heading"];?>
                                 </option>               
-                                <?php }} ?>
+                                <?php // }} ?>
                             </select> 
                         </div>
 
@@ -164,12 +164,12 @@
                             <select class="form-control" name="destination" selected="selected" required> 
                             <option value="">Select Options</option>       
 
-                             <?php  if(!empty($source)){
-                             foreach ($source as $p){   ?>      
-                                <option value="<?php  echo  $p["id"];?>"   >
-                              <?php  echo  $p["name"];?>
+                             <?php  //if(!empty($source)){
+                             //foreach ($source as $p){   ?>      
+                                <option value="<?php  //echo  $p["id"];?>"   >
+                              <?php  //echo  $p["name"];?>
                                 </option>               
-                                <?php }} ?>
+                                <?php //}} ?>
                             </select> 
                         </div>
                          

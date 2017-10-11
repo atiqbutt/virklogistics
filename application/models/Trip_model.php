@@ -124,8 +124,37 @@ public function getAllRecords($table,$where,$by,$order) {
 
        $this->db->select('name')->from('driverinformation')->where('id', $filledBy);
        $query=$this->db->get()->row_array();
+       return $query;
+    }
 
 
+
+    public function uncannedBy($uncannedBy)
+    {
+
+       $this->db->select('*')->from('trip_members')->where('member_id', $uncannedBy);
+       $res=$this->db->get()->row_array();
+
+         $tripType = $res['type'];
+   
+
+       if ($tripType = 'driver') {
+          $this->db->select('id, name')->from('driverinformation')->where('id', $uncannedBy);
+          $query=$this->db->get()->row_array();
+          return $query;
+       }else{
+          $this->db->select('id, name')->from('helperinformation')->where('id', $uncannedBy);
+          $query=$this->db->get()->row_array();
+          return $query;
+
+       }
+
+    }
+
+    public function get_closedTrip_data($id)
+    {
+       $this->db->select('*')->from('tripmanagement')->where('id', $id)->where('status', '1');
+       $query=$this->db->get()->row_array();
        return $query;
     }
 

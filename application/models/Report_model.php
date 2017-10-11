@@ -17,10 +17,10 @@ class Report_model extends CI_Model {
         return $this->db->select()->from('get_all_trips')->get()->result_array();
 
     }
-    public function getReportData($params,$startdate,$enddate)
+    public function getReportData($view,$params,$startdate,$enddate)
     {
         //var_dump($params);
-    $this->db->select()->from('get_all_trips');
+    $this->db->select()->from($view);
             $this->db->where($params);
             if($startdate!=""){
              $this->db->where('entry_date>=', $startdate);
@@ -29,6 +29,41 @@ class Report_model extends CI_Model {
          if($enddate!="")
              $this->db->where('entry_date <=', $enddate);
         return $this->db->get()->result_array();
+
+    }
+
+    public function get_all_expense($view,$params,$startdate,$enddate)
+    {
+        //var_dump($params);
+
+    $this->db->select()->from($view);
+            $this->db->where($params);
+            if($startdate!=""){
+             $this->db->where('entry_date>=', $startdate);
+             // var_dump($startdate);
+             }
+         if($enddate!="")
+             $this->db->where('entry_date <=', $enddate);
+        return $this->db->get()->result_array();
+
+    }
+    public function get_all_expenses()
+    {
+        return $this->db->from('get_expense_by_trips')->get()->result_array();
+
+/*        return $this->db->query("select t.id,e.date,e.amount,t.type,et.name,v.heading as vehicle,p.heading as product FROM `expense` e join tripmanagement t on t.id=e.`trip_id` join expensetype et on et.id=e.`expensetype_id`
+join vehicle v on t.vehicle_id=v.id join tripproduct tp on tp.trip_id=t.id join product p on p.id=tp.product_id
+ORDER BY t.id")->result_array();*/
+
+    }
+
+    public function get_all_expense_by_vehicle()
+    {
+        return $this->db->from('get_expense_by_vehicle')->get()->result_array();
+
+/*        return $this->db->query("select t.id,e.date,e.amount,t.type,et.name,v.heading as vehicle,p.heading as product FROM `expense` e join tripmanagement t on t.id=e.`trip_id` join expensetype et on et.id=e.`expensetype_id`
+join vehicle v on t.vehicle_id=v.id join tripproduct tp on tp.trip_id=t.id join product p on p.id=tp.product_id
+ORDER BY t.id")->result_array();*/
 
     }
 

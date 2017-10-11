@@ -61,9 +61,11 @@ $("#btn-print").click(function () {
 
         for (var j=0; j<tableRow.cells.length; j++) {
           //alert(tableRow.cells[j].outerHTML);
-           $.each(checks, function(key, value ){            
-              if(value==j+1){
-                table_prep +="<td>"+tableRow.cells[j].innerHTML.replace(/ /gi,'')+"</td>";
+           $.each(checks, function(key, value ){           
+           var c=tableRow.cells[j].className.replace('col','') 
+              if(value==c){
+                //alert(tableRow.cells[j].rowSpan);
+                table_prep +="<td%20rowspan='"+tableRow.cells[j].rowSpan+"'>"+tableRow.cells[j].innerHTML.replace(/ /gi,'')+"</td>";
               }
             });
             
@@ -124,24 +126,35 @@ $("#btn-print").click(function () {
     for (var i=2; i<table.rows.length; i++) {
 
         var tableRow = table.rows[i];
-        var rowData = {};
-
+        var rowData = [];
+        var skip=false;
+        var k=0;
         for (var j=0; j<tableRow.cells.length; j++) {
           //alert(tableRow.cells[j].outerHTML);
+          if(tableRow.cells[j].className.replace('col','')!="2" && k=="1")
+          {
+                            rowData[ k ] = "";
+                
+                j=j-1;
 
-            rowData[ j ] = tableRow.cells[j].innerHTML;
+          }
 
+              else{
+                                rowData[ k ] = tableRow.cells[j];    
+              }
+              k=k+1;
         }
 
         data.push(rowData);
-    }       
+    }
+
     var doc = new jsPDF('l','pt', 'letter', true);
         doc.text(350, 40, "Virk Logistics\n\n\n"+document.title);
         doc.cellInitialize();
         doc.setFontSize(8);
 doc.autoTable(headers,data,{
     startY: 120,
-    margin:5,
+    margin:30,
     rowWidth: 'auto',
     columnWidth: 'auto',
     styles: {

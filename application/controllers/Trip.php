@@ -23,10 +23,76 @@ class trip extends CI_Controller {
             $data['userInfo'] = $this->userInfo;  
 			$data["expensetype"]=$this->trip_model->getAllRecords("expensetype",array("is_delete"=>0),"id","DESC");	
 			$data["tripmanagement"]=$this->trip_model->GetAllTrips();
+
 			$data["page"]='Trip/trip_list';
             $this->load->view('Template/main',$data);
 
         }
+
+        public function edit_trip($id)
+        {
+
+            $data['menu'] = $this->load_model->menu();
+            $data['base_url'] = base_url();
+            $data['userInfo'] = $this->userInfo;
+            $data["expensetype"]=$this->trip_model->getAllRecords("expensetype",array("is_delete"=>0),"id","DESC"); 
+            $data["tripmanagement"]=$this->trip_model->gettrips($id);
+            $data["trip"]=$this->trip_model->trip($id);
+             $data["tri"]=$this->trip_model->gettri($id);
+            $data["page"]='Trip/tripexpense';
+            $this->load->view('Template/main',$data);
+
+
+        }
+
+        public function expenseadd()
+        {
+
+            $data['menu'] = $this->load_model->menu();
+            $data['base_url'] = base_url();
+            $data['userInfo'] = $this->userInfo;
+          
+            $id=$this->input->post('idt');
+             $ex=$this->input->post('expense');
+
+             $dr=$this->input->post('driver');
+             $ams=$this->input->post('amount');
+             $e1=$this->input->post('expensea[]');
+             $pay=$this->input->post('drivera[]');
+             $am=$this->input->post('amounta[]');
+                    $data=array(
+                    'trip_id'=>$id,
+                    'expensetype_id'=>$ex,
+                    'date'=>date("Y-m-d h:i:sa"),
+                    'amount'=>$ams,
+                    'payee'=>$dr
+                    );
+                                  
+               $this->trip_model->insert('expense',$data);
+                
+               for($i=0; $i<count($e1); $i++)
+               {
+
+                 $data2=array(
+                    'trip_id'=>$id,
+                    'expensetype_id'=>$e1[$i],
+                    'date'=>date("Y-m-d h:i:sa"),
+                    'amount'=>$am[$i],
+                    'payee'=>$pay[$i]
+                    );
+                 
+$this->trip_model->insert('expense',$data2);
+   
+               }
+                redirect('Trip/index');
+                 
+            
+}
+    
+
+
+        
+
 
         public function get_data($type1)
         {
@@ -125,12 +191,12 @@ class trip extends CI_Controller {
             $this->db->where('id', $tripid);
             $this->db->update("tripmanagement",$data);
 
-            $this->session->set_flashdata('success', "Add tripmanagement, Information has been added successfully");
+            $this->session->set_flashdata('success', "Record has been added successfully");
             redirect('trip/index');
 
             }else{
 
-            $this->session->set_flashdata('Errors', "There are some errors !!");
+            $this->session->set_flashdata('Errors', "Record has been not added successfully");
             redirect('trip/add_trip');
             }
             
@@ -285,12 +351,12 @@ class trip extends CI_Controller {
             $this->generic_model->insert("expense",$dataaa);
             }
 
-            $this->session->set_flashdata('success', "Add tripmanagement, Information has been added successfully");
+            $this->session->set_flashdata('success', "Record has been added successfully");
             redirect('trip/index');
 	   	 
 	   		}else{
 
-	   			$this->session->set_flashdata('Errors', "There are some errors !!");
+	   			$this->session->set_flashdata('Errors', "Record has been not added successfully");
 	            redirect('trip/add_trip');
 	   		}
 
@@ -309,28 +375,7 @@ class trip extends CI_Controller {
        //   $this->db->insert('expense',$data);
 
        // }
-       public function expenseadd()
-       {
-
-        $ex=$this->input->post('expensetype_id[]');
-
-        $id=$this->input->post('id');
-        $am=$this->input->post('amount[]');
-        for($i=0; $i<count($ex); $i++)
-        {
-            var_dump($ex[$i]);
-             $op=array(
-                'trip_id'=>$id,
-                'expensetype_id'=>$ex[$i],
-            'date'=>date("Y-m-d h:i:sa"),
-                    'amount'=>$am[$i]
-                );
-
-         $this->db->insert('expense',$op);   
-        }
-        
-
-       }
+      
 
 
 
@@ -368,12 +413,12 @@ public function all_close_trip()
             $done=$this->db->where('id',$id)->update('tripmanagement',array('is_deleted'=>1));
             if($done)
             {
-            $this->session->set_flashdata('msg', 'trip is Deleted!');
+            $this->session->set_flashdata('msg', 'Record has been Deleted successfully');
             redirect('trip/index');
             }
             else 
             {
-            $this->session->set_flashdata('msg',' Error: trip is not Deleted');
+            $this->session->set_flashdata('msg','Record has been Deleted successfully');
             redirect('trip/index');
             }
 

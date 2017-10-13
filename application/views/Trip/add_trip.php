@@ -331,9 +331,9 @@
                   <table class="table table-bordered">
                   <thead>
                     <tr>
+                      <th>Source</th>
+                      <th>Destinaktion</th>
                       <th>Product</th>
-                      <th>Product Quantity</th>
-                      <th>Product Temperature</th>
                       <th>Product Gravity</th>
                       <th>Destination</th>
                       <th>Freight Rate</th>

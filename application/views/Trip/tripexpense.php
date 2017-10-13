@@ -225,9 +225,9 @@ $(document).ready(function(){
      var wrapper = $(".bilal");
       var row ='<tr class="row_table">'
                    
-                     +'<td><input type="text" name="expensen[]" class="form-control" value="'+t+'" readonly><input type="hidden" name="expensea[]" value="'+id+'" type="text" class="form-control"></td>'+
+                     +'<td><input type="text" class="form-control" value="'+t+'" readonly><input type="hidden" name="expensea[]" value="'+id+'" type="text" class="form-control"></td>'+
            '<td>'
-                      +'<input type="text" name="drivern[]" class="form-control" value="'+c+'" readonly><input type="hidden" name="drivera[]" value="'+idd+'" type="text" class="form-control">'
+                      +'<input type="text"  class="form-control" value="'+c+'" readonly><input type="hidden" name="drivera[]" value="'+idd+'" type="text" class="form-control">'
                     +'</td>'
                     +'<td>'
                         +'<input type="text" name="amounta[]" readonly class="form-control" value="'+amo+'" onkeypress="return ValidateNumberOnly()" placeholder="Amount">'
@@ -265,12 +265,8 @@ if ((event.keyCode < 48 || event.keyCode > 57))
 
 <script>
 $('.sel').select2({
-      // tags: "true",
-    // minimumResultsForSearch: 20 ,
-    selectOnClose: true,
    placeholder: "Select an option",
     allowClear: true
 
 });
-$(".sel").select2("val", "");
 </script>

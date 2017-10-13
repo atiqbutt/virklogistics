@@ -207,7 +207,7 @@ td,th{
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Trip Type
                     </label>
                     <div class="col-md-9 col-sm-6 col-xs-12">
-                      <select class="form-control" name="type">
+                      <select class="form-control sel" name="type">
                         <option value="">Select Trip Type</option>
                         <option value="Self-Short">Self-Short</option>
                         <option value="Self-Long">Self-Long</option>
@@ -221,7 +221,7 @@ td,th{
                       <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Product
                       </label>
                       <div class="col-md-9 col-sm-6 col-xs-12">
-                     <select class="form-control" name="productid" id="productid" style="border-radius:5px !important;border:1px solid grey !important height:5px">
+                     <select class="form-control sel" name="productid" id="productid" style="border-radius:5px !important;border:1px solid grey !important height:5px">
                         <option value="">Select Product</option>
                           
                         </select>

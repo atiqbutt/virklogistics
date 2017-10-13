@@ -49,7 +49,6 @@ class Vehicle extends CI_Controller {
     $data['userInfo'] = $this->userInfo; 
     $data['menu'] = $this->load_model->menu();	
 	$data['vehicletype'] = $this->Vehicle_model->get_vehicleTyp();
-
 	$data['page'] = "Vehicle/add_vehicle";
 	$this->load->view('Template/main', $data);	
 	}

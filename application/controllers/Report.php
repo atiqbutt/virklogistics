@@ -79,8 +79,7 @@ class Report extends CI_Controller {
                 else{
         $data['data']=$this->Report_model->get_all_trip();
         }
-        $data['page']='report/list';
-                        
+        $data['page']='report/list';                        
         $this->load->view('Template/main',$data);
 
         }

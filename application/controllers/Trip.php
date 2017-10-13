@@ -38,7 +38,9 @@ class trip extends CI_Controller {
             $data["expensetype"]=$this->trip_model->getAllRecords("expensetype",array("is_delete"=>0),"id","DESC"); 
             $data["tripmanagement"]=$this->trip_model->gettrips($id);
             $data["trip"]=$this->trip_model->trip($id);
-             $data["tri"]=$this->trip_model->gettri($id);
+            // $data["tri"]=$this->trip_model->gettri($id);
+            $data['tri']=$this->trip_model->getagent();
+        
             $data["page"]='Trip/tripexpense';
             $this->load->view('Template/main',$data);
 
@@ -79,14 +81,11 @@ class trip extends CI_Controller {
                     'date'=>date("Y-m-d h:i:sa"),
                     'amount'=>$am[$i],
                     'payee'=>$pay[$i]
-                    );
-                 
-$this->trip_model->insert('expense',$data2);
-   
+                    );        
+         $this->trip_model->insert('expense',$data2);
                }
                 redirect('Trip/index');
                  
-            
 }
     
 
@@ -320,7 +319,6 @@ SELECT helperinformation.id as did,helperinformation.name as name FROM tripmanag
                    'product_temperature'=>$product_temperature[$i],
                    'product_quantity'=>$product_quantity[$i],
                    'product_id'=>$product_id[$i]
-
                     );
                 }
                                              

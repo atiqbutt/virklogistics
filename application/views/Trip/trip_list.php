@@ -56,13 +56,12 @@
                     <th class="paddinglr">Freight Rate</th>
                     <th class="paddinglr">Carriage Commission</th> 
                     <th class="paddinglr">W.H.T</th> 
+
                    
                     <th class="paddinglr">Gravity</th>
                      <th class="paddinglr">Remaining Commission</th>
                     <th class="paddinglr">Service Charges</th>
        			
-<!--                     <th class="paddinglr">Status</th>
-                    <th class="paddinglr">Action</th> --> 
 				            <th class="paddinglr">Expense</th>
                </tr>
             </thead>
@@ -70,10 +69,11 @@
             <?php
             if(!empty($tripmanagement)){
             foreach($tripmanagement as $amb){ 
-               if ($amb['status'] == 0 ){ ?>
-                <tr class="odd gradeX" style="background: #98FB98">
+
+               if($amb['stn_no'] == "" || $amb['tracking_report'] == "" || $amb['IsExpenseAdded'] == 0){ ?>
+                <tr class="odd gradeX" style="background: #ff0000" >
                 <?php }else {?>
-                <tr class="odd gradeX" >
+                <tr class="odd gradeX" style="background: #98FB98">
                 <?php } ?>
                 <?php if ($amb['status'] == 1){ ?>
                    <td><a href="<?php echo base_url();?>Trip/closed_trip/<?php echo $amb["id"];?>"><?php echo $amb["id"];?></a></td>
@@ -84,6 +84,7 @@
                   <td> <?php echo $amb["comname"];?>  </td>
         		<td> <?php echo $amb["conname"];?>  </td>
                 <td> <?php echo $amb["source"];?>  </td>
+<<<<<<< HEAD
                  <td> <?php
                 $newDate = date("d/m/Y", strtotime($amb["filling_date"]));
                  echo $newDate;?> </td>
@@ -91,22 +92,38 @@
                  <td> <?php echo $amb["start_meter_reading"];?> </td>
                  <td> <?php echo $amb["vehicleregisterationno"];?> </td>
                     <td> <?php echo $amb["productname"];?>  </td>
+=======
+        				<!-- <td> <?php //echo $amb["source"];?>  </td> -->
+                <td> <?php $newDate = date("d/m/Y", strtotime($amb["filling_date"]));
+                 echo $newDate;?> 
+                </td>
+>>>>>>> 112f33d7d9ae5bf172b1cdfd852971ad6faf4839
                 <td> <?php echo $amb["temperature"];?> </td>
                 <td> <?php echo $amb["quantity"];?> </td>
                  <td> <?php echo $amb["freight_rate"];?> </td>
                   <td> <?php echo $amb["carriage"];?> </td>
                      <td> <?php echo $amb["withholdingtax"];?> </td>
           			<td> <?php echo $amb["gravity"];?> </td>
+<<<<<<< HEAD
                   <td> <?php echo $amb["remaining_commission"];?> </td>
                 <td> <?php echo $amb["servicecharges"];?></td>
                
         <td style="width:100px"><a href="<?php echo base_url()?>Trip/edit_trip/<?php echo $amb['id'];?>"><i class="fa fa-eye"></i></a></td>
 
 
+=======
+                <td> <?php echo $amb["vehicleregisterationno"];?> </td>
+          			<td> <?php echo $amb["quantity"];?> </td>
+                <td> <?php echo $amb["freight_rate"];?> </td>
+                <td> <?php echo $amb["carriage"];?> </td>
+                <td> <?php echo $amb["withholdingtax"];?> </td>
+        				<td> <?php echo $amb["remaining_commission"];?> </td>
+        				<td> <?php echo $amb["servicecharges"];?></td>
+
+                <td style="width:100px"><a href="<?php echo base_url()?>Trip/edit_trip/<?php echo $amb['id'];?>"><i class="fa fa-eye"></i></a></td>
+>>>>>>> 112f33d7d9ae5bf172b1cdfd852971ad6faf4839
                 </tr>
 	         <?php  } }?>
-
-
                            
                   </tbody>
               </table>

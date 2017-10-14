@@ -5,7 +5,6 @@ class Report extends CI_Controller {
         public function __construct() 
         {
         parent::__construct();
-        
          $this->load->model('generic_model');
         $this->load->model('Generic_model');
         $this->load->model('user_model');
@@ -49,7 +48,7 @@ class Report extends CI_Controller {
         $data['vehicle']=$this->Dropdown_model->getAllRecords('vehicle',array('is_deleted'=>0));
         $data['contratctor']=$this->Dropdown_model->getAllRecords('contractorinformation',array('is_deleted'=>0));
         $data['source']=$this->Dropdown_model->getAllRecords('locationtype',array('is_delete'=>0));
-        $data['title']="Virk LogisTics Trip Report";
+        $data['title']="Virk Logistics Trip Report";
                       // var_dump($data['source']); 
                     if($this->input->post()){
 
@@ -80,8 +79,7 @@ class Report extends CI_Controller {
                 else{
         $data['data']=$this->Report_model->get_all_trip();
         }
-        $data['page']='report/list';
-                        
+        $data['page']='report/list';                        
         $this->load->view('Template/main',$data);
 
         }
@@ -102,7 +100,7 @@ class Report extends CI_Controller {
         $data['vehicle']=$this->Dropdown_model->getAllRecords('vehicle',array('is_deleted'=>0));
         $data['contratctor']=$this->Dropdown_model->getAllRecords('contractorinformation',array('is_deleted'=>0));
         $data['source']=$this->Dropdown_model->getAllRecords('locationtype',array('is_delete'=>0));
-        $data['title']="Virk LogisTics Trip Report";
+        $data['title']="Virk Logistics Trip Report";
          $data['count']=$this->db->query("select count(t.id) as cont,t.id FROM `expense` e join tripmanagement t on t.id=e.`trip_id` join expensetype et on et.id=e.`expensetype_id` GROUP BY t.id")->result_array();
                       // var_dump($data['source']); 
                     if($this->input->post()){
@@ -156,9 +154,9 @@ class Report extends CI_Controller {
         $data['vehicle']=$this->Dropdown_model->getAllRecords('vehicle',array('is_deleted'=>0));
         $data['contratctor']=$this->Dropdown_model->getAllRecords('contractorinformation',array('is_deleted'=>0));
         $data['source']=$this->Dropdown_model->getAllRecords('locationtype',array('is_delete'=>0));
-        $data['title']="Virk LogisTics Trip Report";
+        $data['title']="Virk Logistics Trip Report";
          $data['count']=$this->db->query("select count(vid) as cont,vid as id,id as trip from get_expense_by_vehicle GROUP by id")->result_array();
-         
+
                     if($this->input->post()){
 
                         $formdata=$this->input->post();

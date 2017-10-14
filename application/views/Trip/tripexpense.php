@@ -62,7 +62,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                     <div class=" form-group">    
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" >Expense Type</label>
                          <div class="col-md-6 col-sm-6 col-xs-12">
-                            <select class="form-control" name="expense" id="expense">
+                            <select class="form-control sel" name="expense" id="expense">
                                <option value="">Select Options</option>
                                 <?php if(!empty($expensetype)){
                                               foreach ($expensetype as $e){?>      
@@ -83,12 +83,12 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                        <div class=" form-group">    
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" >Paye</label>
                          <div class="col-md-6 col-sm-6 col-xs-12">
-                            <select class="form-control" name="driver" id="driver">
+                            <select class="form-control sel" name="driver" id="driver">
                                <option value="">Select Options</option>
                                 <?php if(!empty($tri)){
                                               foreach ($tri as $e){  
                                                ?>
-                                              <option value="<?php echo $e["did"];?>"><?php echo $e["name"];?></option>               
+                                              <option value="<?php echo $e["id"];?>"><?php echo $e["name"];?></option>               
                                               <?php }} ?>    
                                               </select> 
                           </div>
@@ -169,8 +169,8 @@ if ((event.keyCode < 48 || event.keyCode > 57))
      
             <td><?php echo $value['id']?></td>
       <td><?php echo $value['name']?></td>
-       <td><?php echo $value['amount']?></td>
-        <td><?php echo $value['expensetype']?></td>
+       <td><?php echo $value['am']?></td>
+        <td><?php echo $value['exn']?></td>
      
     </tr>
     <?php
@@ -257,4 +257,20 @@ if ((event.keyCode < 48 || event.keyCode > 57))
 }
 }
 
+</script>
+
+
+
+
+
+<script>
+$('.sel').select2({
+      // tags: "true",
+    // minimumResultsForSearch: 20 ,
+    selectOnClose: true,
+   placeholder: "Select an option",
+    allowClear: true
+
+});
+$(".sel").select2("val", "");
 </script>

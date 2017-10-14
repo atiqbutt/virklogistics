@@ -42,6 +42,7 @@
     <div class="box-body paddinglr0">
           <form name="myform" id="myform" action="<?php echo base_url() ?>trip/save_trip" method="post" enctype="multipart/form-data">
           
+<<<<<<< HEAD
   <div class="col-lg-9 paddinglr0">
       <div class="col-lg-12 paddinglr5">
           <div class="panel panel-default" style="padding-top:0px;padding-bottom:0px;margin-bottom:3px !important;">
@@ -64,6 +65,50 @@
                 </select>
               </div>
             </div>
+=======
+        <div class="col-lg-9 paddinglr0">
+            <div class="col-lg-12 paddinglr5">
+                <div class="panel panel-default" style="padding-top:0px;padding-bottom:0px;margin-bottom:3px !important;">
+                  <div class="panel-heading"><i class="fa fa-bus" aria-hidden="true"></i>
+                   Trip Information
+           
+                   </div>
+                  <div class="panel-body paddinglr0" style="padding-top:0px;padding-bottom:0px;">
+<div class="col-lg-3 paddinglr5" style="padding-top:0px;padding-bottom:0px;">
+                    <div class="form-group">
+                      <label>Type</label>
+                      <select class="form-control sel" name="type" > 
+                          <option value="">Select Options</option>       
+                          <option value="Self-Long">Self-Long</option>                                     
+                          <option value="Self-Short">Self-Short</option>
+                          <option value="General-Long">General-Long</option>                                     
+                          <option value="General-Short">General-Short</option>
+                      </select>
+                    </div>
+</div>        
+<div class="col-lg-3  paddinglr5">
+                     <div class="form-group"> 
+                        <label>Company</label>
+
+                          <select class="form-control sel" name="company_id" selected="selected" >
+
+                          <option value="">Select Options</option>       
+                           <?php  if(!empty($customer)){
+                            foreach ($customer as $c){ ?>        
+                            <option value="<?php  echo  $c["id"];?>"   >
+                            <?php  echo  $c["name"];?>
+                            </option>               
+                            <?php }} ?>
+                          </select> 
+                      </div>
+</div>        
+<div class="col-lg-3 paddinglr5">
+                    <div class="form-group">    
+                        <label>Contractor</label>
+
+                        <select class="form-control sel" name="contractor_id" selected="selected" >          
+                       <option value="">Select Options</option>       
+>>>>>>> 1ef3748fb2ec28fca851a8ca8dd4a9726bbbd8dc
 
              <div class="col-lg-3  paddinglr5">
                  <div class="form-group"> 
@@ -92,6 +137,26 @@
                             </option>               
                             <?php }} ?>
                         </select> 
+<<<<<<< HEAD
+=======
+                    </div>
+
+                </div>    
+
+                  <div class="col-lg-3  paddinglr5">
+                      <div class="form-group">    
+                        <label>Vehicle</label>
+                          <select id="veh" class="form-control sel" name="vehicle_id" >
+                             <option value="">Select Options</option>       
+                              <?php if(!empty($vehicle)){
+                              foreach ($vehicle as $v){  ?>      
+                              <option value="<?php  echo  $v["id"];?>"   >
+                              <?php  echo  $v["registerationno"];?>
+                              </option>               
+                              <?php }} ?>
+                          </select> 
+                        </div>
+>>>>>>> 1ef3748fb2ec28fca851a8ca8dd4a9726bbbd8dc
                   </div>
                 </div>
 
@@ -201,7 +266,7 @@
                     <div class="col-lg-3 paddinglr2">
                         <div class="form-group"> 
                           <label>Source </label>
-                            <select id="source" class="form-control" name="source" selected="selected" > 
+                            <select id="source" class="form-control sel" name="source" selected="selected" > 
                             <option value="">Select Options</option>       
 
                              <?php  if(!empty($source)){
@@ -217,7 +282,7 @@
                   <div class="col-lg-3 paddinglr2">
                     <div class="form-group"> 
                             <label>Destination </label>
-                              <select id="destination" class="form-control" name="destination" selected="selected" > 
+                              <select id="destination" class="form-control sel" name="destination" selected="selected" > 
                               <option value="">Select Options</option>       
 
                                <?php  if(!empty($source)){
@@ -234,7 +299,7 @@
                     <div class="col-lg-3 paddinglr2" style="float:left;">
                       <div class="form-group">
                       <label>Product </label>
-                      <select id="product_id"  class="form-control product" name="product_id"  ><option value="">Select Options</option><?php  if(!empty($product)){foreach ($product as $p){   ?><option value="<?php  echo  $p["id"];?>" ><?php  echo  $p["heading"];?></option><?php }} ?>
+                      <select id="product_id"  class="form-control product sel" name="product_id"  ><option value="">Select Options</option><?php  if(!empty($product)){foreach ($product as $p){   ?><option value="<?php  echo  $p["id"];?>" ><?php  echo  $p["heading"];?></option><?php }} ?>
                       </select>
                       </div>
                     </div>
@@ -319,10 +384,15 @@
                   <thead>
                     <tr>
                       <th>Source</th>
+<<<<<<< HEAD
                       <th>Destination</th>
                       <th>Product Name</th>
                       <th>Product Quantity</th>
                       <th>Product Temperature</th>
+=======
+                      <th>Destinaktion</th>
+                      <th>Product</th>
+>>>>>>> 1ef3748fb2ec28fca851a8ca8dd4a9726bbbd8dc
                       <th>Product Gravity</th>
                       <th>Product Rate</th>
                     </tr>
@@ -351,13 +421,17 @@
                             <label>Driver</label>
 
 
+<<<<<<< HEAD
                           <select class="form-control driver" name="driver[]" required>
+=======
+                          <select class="form-control driver sel" name="driver[]">
+>>>>>>> 1ef3748fb2ec28fca851a8ca8dd4a9726bbbd8dc
 
                              <option value="">Select Options</option>       
                               <?php if(!empty($driver1)){
                               foreach ($driver1 as $v){  ?>      
                               <option value="<?php  echo  $v["id"];?>"   >
-                              <?php  echo  $v["name"];?>
+                              <?php echo $v["name"];?>
                               </option>               
                               <?php }} ?>
                           </select>
@@ -374,12 +448,17 @@
                         <div class="col-md-10 paddinglr5">
                             <label>Helper</label>
 
+<<<<<<< HEAD
                           <select  class="form-control" name="helper[]" required>
+=======
+                <select class="form-control sel" name="helper[]" >
+
+>>>>>>> 1ef3748fb2ec28fca851a8ca8dd4a9726bbbd8dc
                              <option value="">Select Options</option>       
                               <?php if(!empty($helperinformation)){
                               foreach ($helperinformation as $v){  ?>      
                               <option value="<?php  echo  $v["id"];?>"   >
-                              <?php  echo  $v["name"];?>
+                              <?php echo $v["name"];?>
                               </option>               
                               <?php }} ?>
                           </select>
@@ -432,7 +511,27 @@
                       </select> 
                   </div>
 
+<<<<<<< HEAD
     
+=======
+                    <div class="form-group">    
+                        <label>Filled By</label>
+
+                          <select class="form-control sel" name="filled_by" >
+
+                             <option value="">Select Options</option>       
+                              <?php if(!empty($driver1)){
+                              foreach ($driver1 as $v){  ?>      
+                              <option value="<?php  echo  $v["id"];?>"   >
+                              <?php echo $v["name"];?>
+                              </option>               
+                              <?php }} ?>
+                          </select> 
+                      </div>
+
+
+                       
+>>>>>>> 1ef3748fb2ec28fca851a8ca8dd4a9726bbbd8dc
                   </div>
                   <!-- panel-body -->
               </div>
@@ -497,7 +596,7 @@ $(document).ready(function() {
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<div class="form-group paddinglr5"><div class="col-md-10 paddinglr5"><label>Driver</label><select id="helper" class="form-control" name="driver[]" required><option value="">Select Options</option><?php if(!empty($driver1)){  foreach ($driver1 as $v){  ?><option value="<?php  echo  $v["id"];?>"   ><?php  echo  $v["name"];?></option><?php }} ?></select></div><div class="col-md-2 paddinglr5"><button style="margin-top: 30px" id="p_driver"><i class="fa fa-minus" aria-hidden="true"></i></button></div></div>'); 
+            $(wrapper).append('<div class="form-group paddinglr5"><div class="col-md-10 paddinglr5"><label>Driver</label><select id="helper" class="form-control sel" name="driver[]" required><option value="">Select Options</option><?php if(!empty($driver1)){  foreach ($driver1 as $v){  ?><option value="<?php  echo  $v["id"];?>"><?php echo $v["name"];?></option><?php }} ?></select></div><div class="col-md-2 paddinglr5"><button style="margin-top: 30px" id="p_driver"><i class="fa fa-minus" aria-hidden="true"></i></button></div></div>'); 
             //add input box
         }
     });
@@ -993,3 +1092,75 @@ $(document).ready(function() {
 
 </script>
 
+<<<<<<< HEAD
+=======
+<script>
+//   $(document).on('keyup','#freight_rate',function(){
+//     var freight=$(this).val();
+//     var quantity=$(this).parent().parent().parent().find('.quantity').val();
+// //    var price=$(this).parent().parent().parent().find('.price').val();
+//     var remaining=$(this).parent().parent().parent().find('.remaining');
+//     //console.log(remaining);
+//     //console.log(freight,quantity,price);
+//     remaining.val((parseFloat(quantity)*parseFloat(freight)*(100))/(100));
+    
+//   });
+//   $(document).on('keyup','.quantity',function(){
+//     var quantity=$(this).val();
+//     var freight=$(this).parent().parent().parent().find('#freight_rate').val();
+//     var price=$(this).parent().parent().parent().find('.price').val();
+//     var remaining=$(this).parent().parent().parent().find('.remaining');
+    
+//     remaining.val((parseFloat(quantity)*parseFloat(freight)*(100))/(100));
+    
+//   });
+// });
+
+
+
+// $(document).ready(function() {
+//   $(document).on('change','#pro',function(event) {
+//      var id =  $(this).val();
+//    var pro=$(this);
+
+     
+//     $.ajax({
+//       url: '<?php echo base_url(); ?>Vehicle/get_productprice_by_id/'+id,
+//       type: 'POST',
+//       success:  function (response) {
+//       var result = eval(response);
+    
+//     var price=pro.parent().parent().parent().find('.pro_info');
+//     console.log(price);
+//     pro_info = "<input type='hidden' class='price' value='"+result['price']+"' />";
+//   //  pro_info = "<div><p>Product Price&nbsp <input type="text" /></p></div>"
+
+//    price.html(pro_info);}
+//     })
+//   });
+// });
+
+
+
+   // $(document).ready(function(){
+    //     $("#p").keyup(function(){
+    //         alert($(this).val());
+    //     });
+    // })
+
+</script>
+
+
+
+<script>
+$('.sel').select2({
+      // tags: "true",
+    // minimumResultsForSearch: 20 ,
+    selectOnClose: true,
+   placeholder: "Select an option",
+    allowClear: true
+
+});
+
+</script>
+>>>>>>> 1ef3748fb2ec28fca851a8ca8dd4a9726bbbd8dc

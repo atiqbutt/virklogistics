@@ -17,7 +17,7 @@
                       <div class="form-group">
                       <label class="control-label col-sm-3">Vehicle Type:</label>
                       <div class="col-sm-9">
-                        <select class="form-control" name="vehicle_type" selected="selected" required >                  
+                        <select class="form-control sel" name="vehicle_type" selected="selected" required >                  
                             <?php if(!empty($vehicletype)){ ?>
                             <option value="" >Select Options</option> 
                             <?php   foreach ($vehicletype as $v){ ?>        
@@ -326,5 +326,18 @@ $("#resetbtn").click(function(){
    $('#defaultForm').bootstrapValidator("resetForm",true);    
 });
 
+
+</script>
+
+
+<script>
+$('.sel').select2({
+      // tags: "true",
+    // minimumResultsForSearch: 20 ,
+    selectOnClose: true,
+   placeholder: "Select an option",
+    allowClear: true
+
+});
 
 </script>

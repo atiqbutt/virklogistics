@@ -4,6 +4,7 @@
   }
 
 .ms-options li{
+
   list-style-type: none;
   padding-left: 0px;
 }
@@ -24,7 +25,7 @@
 }
 .content{
   padding-top:40px !important;
-  height: auto !important;
+  height: 150vh !important;
 }
 
 </style>
@@ -33,39 +34,22 @@
 <section class="content paddinglr0">
   <div class="box">
 
-        <div class="box-header" style=" padding-bottom: 0;margin-bottom: 0;">
-              <h3 style="font-weight:bold; padding-top: 10px;" class="box-title pull-left">Start Trip
-           </h3>
-              
-        </div>
-
-    <div class="box-body paddinglr0">
-          <form name="myform" id="myform" action="<?php echo base_url() ?>trip/save_trip" method="post" enctype="multipart/form-data">
-          
-<<<<<<< HEAD
-  <div class="col-lg-9 paddinglr0">
-      <div class="col-lg-12 paddinglr5">
-          <div class="panel panel-default" style="padding-top:0px;padding-bottom:0px;margin-bottom:3px !important;">
-            <div class="panel-heading"><i class="fa fa-bus" aria-hidden="true"></i>
-                Trip Information
-             </div>
-
-      <div class="panel-body paddinglr0" style="padding-top:0px;padding-bottom:0px;">
-        <div class="row" style="margin-left: 0px; margin-right: 0">
-
-            <div class="col-lg-3 paddinglr5" style="padding-top:0px;padding-bottom:0px;">
-              <div class="form-group">
-                <label>Type</label>
-                <select class="form-control" name="type" > 
-                    <option value="">Select Options</option>       
-                    <option value="Self-Long">Self-Long</option>                                     
-                    <option value="Self-Short">Self-Short</option>
-                    <option value="General-Long">General-Long</option>                               
-                    <option value="General-Short">General-Short</option>
-                </select>
-              </div>
+    <div class="box-header" style=" padding-bottom: 0;margin-bottom: 0;">
+        <h3 style="font-weight:bold; padding-top: 10px;" class="box-title pull-left">Start Trip
+     </h3>
+        <div class="col-lg-3 vechinfo pull-right">
+                  
+          <div  style="padding:5px; margin-top: 5px; border: 1px solid  #D3D3D3" id="vech_info" class="panel-body">
+                        
+              <!-- panel-body -->
             </div>
-=======
+            <!-- panel panel-default -->
+      </div>
+</div>
+
+      <div class="box-body paddinglr0">
+            <form name="myform" id="myform" action="<?php echo base_url() ?>trip/save_trip" method="post" enctype="multipart/form-data">
+          
         <div class="col-lg-9 paddinglr0">
             <div class="col-lg-12 paddinglr5">
                 <div class="panel panel-default" style="padding-top:0px;padding-bottom:0px;margin-bottom:3px !important;">
@@ -108,28 +92,7 @@
 
                         <select class="form-control sel" name="contractor_id" selected="selected" >          
                        <option value="">Select Options</option>       
->>>>>>> 1ef3748fb2ec28fca851a8ca8dd4a9726bbbd8dc
 
-             <div class="col-lg-3  paddinglr5">
-                 <div class="form-group"> 
-                    <label>customer</label>
-                      <select id="customer" class="form-control" name="customer_id" selected="selected" >
-                      <option value="">Select Options</option>       
-                       <?php  if(!empty($customer)){
-                        foreach ($customer as $c){ ?>        
-                        <option value="<?php  echo  $c["id"];?>"   >
-                        <?php  echo  $c["name"];?>
-                        </option>               
-                        <?php }} ?>
-                      </select> 
-                  </div>
-                </div> 
-
-                <div class="col-lg-3 paddinglr5">
-                  <div class="form-group">    
-                      <label>Contractor</label>
-                      <select id="contractor" class="form-control" name="contractor_id" selected="selected" >          
-                        <option value="">Select Options</option>       
                          <?php  if(!empty($contractor)){
                             foreach ($contractor as $con){   ?>       
                             <option value="<?php  echo  $con["id"];?>"   >
@@ -137,8 +100,6 @@
                             </option>               
                             <?php }} ?>
                         </select> 
-<<<<<<< HEAD
-=======
                     </div>
 
                 </div>    
@@ -156,104 +117,101 @@
                               <?php }} ?>
                           </select> 
                         </div>
->>>>>>> 1ef3748fb2ec28fca851a8ca8dd4a9726bbbd8dc
                   </div>
-                </div>
 
-            <div class="col-lg-3  paddinglr5">
-                 <div class="form-group"> 
-                    <label>Company</label>
-                      <select id="company" class="form-control" name="company_id" selected="selected" >
-                      <option value="">Select Options</option>       
-                       <?php  if(!empty($company)){
-                        foreach ($company as $c){ ?>        
-                        <option value="<?php  echo  $c["id"];?>"   >
-                        <?php  echo  $c["name"];?>
-                        </option>               
-                        <?php }} ?>
-                      </select> 
                   </div>
-                </div>           
-
-         </div>
-         <!-- row -->
-    
-        <div class="row" style="margin-left: 0px; margin-right: 0">
-              <div class="col-lg-3  paddinglr5">
-                  <div class="form-group">    
-                    <label>Vehicle</label>
-                      <select id="veh" class="form-control" name="vehicle_id" >
-                         <option value="">Select Options</option>       
-                          <?php if(!empty($vehicle)){
-                          foreach ($vehicle as $v){  ?>      
-                          <option value="<?php  echo  $v["id"];?>"   >
-                          <?php  echo  $v["registerationno"];?>
-                          </option>               
-                          <?php }} ?>
-                      </select> 
-                    </div>
-              </div>
-
-              <div class="col-lg-3 paddinglr2">
-                <div class="form-group"><label>Carriage Commission</label><input id="carriage_commission" class="form-control" value=""  type="text" name="carriage_commission" onkeypress='return ValidateNumberOnly()' />
+                  <!-- panel-body -->
                 </div>
-              </div>
-
-
-              <div class="col-lg-3 paddinglr2">
-              <div class="form-group"><label>Withholding Tax</label><input class="form-control" id="withholding_tax" type="text" name="withholding_tax"  onkeypress='return ValidateNumberOnly()' />
-              </div>
-              </div>
-
-              <div class="col-lg-3 paddinglr2">
-              <div class="form-group"><label>Company Comission</label><input   id="company_commission" class="form-control companycommission" type="text" name="company_comission" onkeypress='return ValidateNumberOnly()' />
-              </div>
-              </div>
-
-          </div>
-          <!-- row -->
-
-          <div class="row" style="margin-left: -10px;">
-              <div class="col-lg-3 paddinglr2">
-                  <div class="form-group"><label>Remaining (For Customer)</label><input class="form-control" id="remaining_commission"  type="number" name="remaining_commission"  readonly /><span ></span>
-                  </div>  
-              </div>
-
-              <div class="col-lg-3 paddinglr5">           
-                <div class="form-group"> 
-                  <label>Start Meter Reading</label>
-                    <input class="form-control"  type="text" name="start_meter_reading" onkeypress='return ValidateNumberOnly()'  />
-                </div>
-              </div>
-
-              <div class="col-lg-3 paddinglr2">
-                 <div id="vech_info" style="margin-top: 20px; border: 1px solid #D3D3D3; display: none;"></div>
-              </div>
-    
-
-          </div>
-          <!-- row -->
-
-          </div>
-          <!-- panel-body -->
-        </div>
-        <!-- panel panel-default -->
-    </div>
-      <!-- col-lg-12 -->
+                <!-- panel panel-default -->
+            </div>
+              <!-- col-lg-12 -->
 
     <div class="col-lg-12  paddinglr5">
-<!-- 
+
         <div class="panel panel-default" style="margin-bottom:3px !important;" >
           <div class="panel-heading"><i class="fa fa-asterisk" aria-hidden="true"></i>
           Meter Reading </div>
             <div class="panel-body paddinglr0" style="padding-top:0px;padding-bottom:0px;"> 
-                                                                    
-            </div>            
-          </div> -->
+                   
+
+
+                 <!--   <div class="col-lg-3 paddinglr5">
+                        <div class="form-group"> 
+                          <label>Source </label>
+                            <select class="form-control sel" name="source" selected="selected" required> 
+                            <option value="">Select Options</option>    -->    
+
+
+ <!--                        
+                       <div class="form-group"> 
+                          <label>Product </label>
+                            <select id="pro" class="form-control" name="product_id" selected="selected" required> 
+                            <option value="">Select Options</option>       
+
+                             <?php  //if(!empty($product)){
+                             //foreach ($product as $p){   ?>      
+                                <option value="<?php  //echo  $p["id"];?>"   >
+                              <?php  //echo  $p["heading"];?>
+                                </option>               
+                                <?php // }} ?>
+                            </select> 
+                        </div>
+
+     
+
+                        <div class="form-group"> 
+                          <label>Destination </label>
+                            <select class="form-control" name="destination" selected="selected" required> 
+                            <option value="">Select Options</option>       
+
+                             <?php  //if(!empty($source)){
+                             //foreach ($source as $p){   ?>      
+                                <option value="<?php  //echo  $p["id"];?>"   >
+                              <?php  //echo  $p["name"];?>
+                                </option>               
+                                <?php //}} ?>
+                            </select> 
+                        </div>
+                         
+                     </div>
+                    -->                                                  
+          
+                   <div class="col-lg-3 paddinglr5">           
+                      <div class="form-group"> 
+                        <label>Start Meter Reading</label>
+                          <input class="form-control"  type="number" name="start_meter_reading" onkeypress='return ValidateNumberOnly()'  />
+                      </div>
+                  </div>
+<!-- 
+                 <div class="col-lg-3 paddinglr5">           
+                      <div class="form-group"> 
+                        <label>End Meter Reading</label>
+                          <input class="form-control"  type="number" name="end_meter_reading" onkeypress='return ValidateNumberOnly()'  />
+                      </div>
+                  </div> -->
+
+
+             <!--      <div class="col-lg-3 paddinglr5">           
+                      <div class="form-group"> 
+                        <label>Fuel</label>
+                          <input class="form-control" placeholder="Fuel Consumption"  type="number" name="fuel" onkeypress='return ValidateNumberOnly()' />
+                      </div>
+                  </div> -->
+
+
+        <!--       <div class="col-lg-3 paddinglr5">           
+                <div class="form-group"> 
+                  <label>Net Meter</label>
+                    <input class="form-control"  type="text" name="net_meter" onkeypress='return ValidateNumberOnly()'  readonly/>
+                </div>
+             </div> -->
+
+      </div>            
+    </div>
 
       <!--Add Product -->
                 
-         <div class="panel panel-default pview" style="margin-bottom:0px;margin-top:0px;padding-top:0px;padding-bottom:0px;">
+         <div class="panel panel-default" style="margin-bottom:0px;margin-top:0px;padding-top:0px;padding-bottom:0px;">
           <div class="panel-heading"><i class="fa fa-bus" aria-hidden="true"></i>
            Add Product 
    
@@ -278,7 +236,8 @@
                             </select> 
                         </div>
                   </div>
-                   
+
+                    
                   <div class="col-lg-3 paddinglr2">
                     <div class="form-group"> 
                             <label>Destination </label>
@@ -303,115 +262,109 @@
                       </select>
                       </div>
                     </div>
-
-                  <div class="col-lg-3 paddinglr2">
-                    <div class="form-group"><label>Quantity</label><input  id="product_quantity"  class="quantity form-control"  type="text" name="product_quantity" onkeypress='return ValidateNumberOnly()'/>
+                    <div class="col-lg-3 paddinglr2">
+                    <div class="form-group"><label>Quantity</label><input onkeyup="sum1()" id="product_quantity"  class="quantity form-control"  type="number" name="product_quantity" />
                     </div>
-                  </div>
-              </div>
-
-
+                    </div>
+             </div>
          <div class="row">
          
               <div class="col-lg-3 paddinglr2">
-                <div class="form-group"><label>Temperature</label><input class="form-control" id="product_temperature"   type="text" name="product_temperature"   onkeypress='return ValidateNumberOnly()' />
-                </div>
+              <div class="form-group"><label>Temperature</label><input class="form-control" id="product_temperature"   type="number" name="product_temperature"    />
               </div>
-
+              </div>
               <div class="col-lg-3 paddinglr2">
-                <div class="form-group"><label>Gravity</label>
-                <input id="product_gravity" class="form-control" type="text" name="product_gravity"  onkeypress='return ValidateNumberOnly()' />
-                </div>
+              <div class="form-group"><label>Gravity</label>
+              <input id="product_gravity" class="form-control"  type="number" name="product_gravity"   />
+              </div>
               </div> 
-
               <div class="col-lg-3 paddinglr2">
-                <div class="form-group"><label>Freight Rate</label>
-                <input id="freight_rate" class="form-control"  type="text" id="freight_rate" name="freight_rate"  onkeypress='return ValidateNumberOnly()' />
-                </div> 
+              <div class="form-group"><label>Freight Rate</label>
+              <input id="freight_rate" class="form-control"   type="number" id="freight_rate" name="freight_rate"   />
+              </div> 
+              </div>
+              <div class="col-lg-3 paddinglr2">
+              <div class="form-group"><label>Carriage Commission</label><input id="carriage_commission" class="form-control"  type="number" name="carriage_commission"  />
+              </div>
               </div>
 
           </div>
-          <!-- row -->
 
           <div class="row">
-            
-            <div class="col-lg-2 paddinglr2">
-              <strong>Total-Frt:&nbsp&nbsp </strong><span id="Total_Frt"></span>
-            </div>
 
-            <div class="col-lg-2 paddinglr2">
-              <strong>Cont-Comsn:&nbsp&nbsp </strong><span id="Cont_Comsn"></span>
-            </div>
+              <div class="col-lg-3 paddinglr2">
+              <div class="form-group"><label>Withholding Tax</label><input class="form-control" id="withholding_tax" type="number" name="withholding_tax"   />
+              </div>
+              </div>
 
-            <div class="col-lg-2 paddinglr2">
-            <strong>Comp-Comsn:&nbsp&nbsp</strong><span id="Comp_Comsn"></span>
-            </div>
+              <div class="col-lg-3 paddinglr2">
+              <div class="form-group"><label>Company Comission</label><input onkeydown="sum1()"  id="companycommission" class="form-control companycommission"     type="number" name="company_comission"  />
+              </div>
+              </div>
 
-            <div class="col-lg-2 paddinglr2">
-              <strong>W.H.T:&nbsp&nbsp</strong><span id="wht"></span>
-            </div>
+              <div class="col-lg-3 paddinglr2">
+              <div class="form-group"><label>Remaining (For Customer)</label><input class="form-control" id="remaining_commission"  type="number" name="remaining_commission"  readonly /><span ></span>
+              </div>  
+              </div>
+              
+              <div  class="col-lg-3 paddinglr2">
+              <a id="add_pro" style="margin-top:25px; " class="remove_field btn btn-success">Add Product</a>
+              </div>
 
-            <div class="col-lg-2 paddinglr2">
-              <strong>Cstm-Frt:&nbsp&nbsp</strong><span id="Cstm_Frt"></span>
             </div>
+          
 
+            </div>  
+         
           </div>
-          <!-- row -->
-
-
-          <div class="row">
-            <div  class="col-lg-3 paddinglr2">
-              <a id="add_pro" style="margin: 20px 0" class="remove_field btn btn-success">Add Product</a>
-            </div>
         </div>
-       <!-- row -->
-
-        </div>
-        <!-- col-lg-12 -->
-     
-      </div>
-    </div>
-    <!-- panel-body -->
+        <!-- panel-body -->
            
      </div>
      <!-- col-lg-12 -->  
         <div id="addpro" class="col-md-12" style="display: none">
           <div class="row" style="padding-left: 5px; padding-right: 5px; margin-top: 10px">
-              <div class="panel panel-default ">
+              <div class="panel panel-default">
               <div class="panel-heading">Products View</div>
-                <div class="panel-body" style="padding-left: 10px">
+                <div class="panel-body" style="padding-left: 0">
+
                   <table class="table table-bordered">
                   <thead>
                     <tr>
-                      <th>Source</th>
-<<<<<<< HEAD
-                      <th>Destination</th>
-                      <th>Product Name</th>
+                      <th>Product</th>
                       <th>Product Quantity</th>
                       <th>Product Temperature</th>
-=======
-                      <th>Destinaktion</th>
-                      <th>Product</th>
->>>>>>> 1ef3748fb2ec28fca851a8ca8dd4a9726bbbd8dc
                       <th>Product Gravity</th>
-                      <th>Product Rate</th>
+                      <th>Destination</th>
+                      <th>Freight Rate</th>
+                      <th>Carriage Commission</th>
+                      <th>Withholding Tax</th>
+                      <th>Company Commission</th>
+                      <th>Remaining Commission</th>
                     </tr>
-                   </thead>
-                    <tbody id="prod_info" >
-                  
-                    </tbody>
-                  </table>
+                  </thead>
+                  <tbody id="prod_info" >
+                
+                  </tbody>
+                </table>
+
                 </div>
               </div>
-        </div>
-      </div>
-  </div>
-<!-- col-lg-7 -->  
+                    
+              </div>
+
+            </div>
+
+
+    </div>
+  <!-- col-lg-7 -->  
 
         <!-- ============================================================= -->
 
+
       <div class="col-lg-3 paddinglr5">
         
+
             <div class="panel panel-default">
               <div class="panel-heading"><i class="fa fa-car" aria-hidden="true"></i> Drivers & Helpers  Info </div>
                <div class="panel-body paddinglr0">
@@ -421,11 +374,7 @@
                             <label>Driver</label>
 
 
-<<<<<<< HEAD
-                          <select class="form-control driver" name="driver[]" required>
-=======
                           <select class="form-control driver sel" name="driver[]">
->>>>>>> 1ef3748fb2ec28fca851a8ca8dd4a9726bbbd8dc
 
                              <option value="">Select Options</option>       
                               <?php if(!empty($driver1)){
@@ -448,12 +397,8 @@
                         <div class="col-md-10 paddinglr5">
                             <label>Helper</label>
 
-<<<<<<< HEAD
-                          <select  class="form-control" name="helper[]" required>
-=======
                 <select class="form-control sel" name="helper[]" >
 
->>>>>>> 1ef3748fb2ec28fca851a8ca8dd4a9726bbbd8dc
                              <option value="">Select Options</option>       
                               <?php if(!empty($helperinformation)){
                               foreach ($helperinformation as $v){  ?>      
@@ -464,12 +409,14 @@
                           </select>
                         </div>  
 
-                      <div class="col-md-2 paddinglr5">  
-                       <button style="margin-top: 30px" id="addhelper" ><i class="fa fa-plus" aria-hidden="true"></i></button>
+                        <div class="col-md-2 paddinglr5">  
+                         <button style="margin-top: 30px" id="addhelper" ><i class="fa fa-plus" aria-hidden="true"></i></button>
+                        </div>
                       </div>
-                    </div>
-                                               
-                  <div class="paddinglr0" id="add_helper"></div>
+                         
+                        
+
+                    <div class="paddinglr0" id="add_helper"></div>
 
                 </div>
                 <!-- panel-body -->
@@ -497,23 +444,7 @@
                       <input class="form-control" type="date" name="filling_date" value="<?php echo $date; ?>" >
                     </div> 
 
-                   <div class="form-group">    
-                    <label>Filled By</label>
 
-                      <select  class="form-control" name="filled_by" required>
-                         <option value="">Select Options</option>       
-                          <?php if(!empty($driver1)){
-                          foreach ($driver1 as $v){  ?>      
-                          <option value="<?php  echo  $v["id"];?>"   >
-                          <?php  echo  $v["name"];?>
-                          </option>               
-                          <?php }} ?>
-                      </select> 
-                  </div>
-
-<<<<<<< HEAD
-    
-=======
                     <div class="form-group">    
                         <label>Filled By</label>
 
@@ -531,20 +462,18 @@
 
 
                        
->>>>>>> 1ef3748fb2ec28fca851a8ca8dd4a9726bbbd8dc
                   </div>
                   <!-- panel-body -->
-              </div>
-              <!-- panel panel-default -->
+                </div>
+                <!-- panel panel-default -->
          
 
-            </div>
-            <!-- col-lg-4 -->
-            
-              <div class="col-lg-12 col-md-12 col-sm-12" style="margin-top: 25px">
-                  <input id="trip_save" class="btn btn-primary" type="submit" name="register" value="Save Trip" />
-              </div>  
+        </div>
+        <!-- col-lg-4 -->
 
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <input id="trip_save" class="btn btn-primary" type="submit" name="register" value="Save Trip" />
+            </div>  
 
         </form>
      </div>
@@ -553,11 +482,55 @@
   <!-- box -->
 </section>
 
-
   <!-- =================================================    -->
 
 
 
+
+<script>
+    function sum1()
+          {
+   //    document.getElementById('2d').innerHTML =document.getElementById("quantity").value;
+//alert("#2d");
+//        document.getElementById('2d').innerHTML =document.getElementById("result").value;
+ //alert(2d);      
+//    document.getElementById('4d').innerHTML =document.getElementById("numb").value;
+       // document.getElementById('customertype').innerHTML =document.getElementById("customertype").value;
+ // alert("hi");
+// var name= $('.product').val();
+// var name1= $('.companycommission').val();
+//alert(name1);
+      //var quantity = document.getElementsByName("quantity")[0].value;
+      //var discountPrct = document.getElementsByName("percent")[0].value;
+//             var total = document.myform.quantity.value;
+   //alert(quantity);
+  //           var n = document.myform.number1.value;
+          //   alert(n);
+    //   var sum11 = parseInt(name)*parseInt(name1);
+//document.getElementsByClassName('sum1')[0].value=sum11;            
+    // document.myform.b.value = sum1;
+//alert(sum1[0].value);   
+   }
+
+
+</script>
+<!-- <input type="hidden" onkeydown="sum1()">                   
+<label Class="c"></label>
+<label Class="c1"></label>
+<label Class="sum1"></label> -->
+
+
+<script>
+$('.sel').select2({
+      // tags: "true",
+    // minimumResultsForSearch: 20 ,
+    selectOnClose: true,
+   placeholder: "Select an option",
+    allowClear: true
+
+});
+
+</script>
 <script>
   
 $(document).ready(function() {
@@ -609,12 +582,16 @@ $(document).ready(function() {
 
 
 
-</script>
 
+
+</script>
+<script>
+
+
+</script>
 <script>
 
 $(document).ready(function() {
-  
   $('#veh').change(function(event) {
      var id =  $(this).val();
 
@@ -627,11 +604,10 @@ $(document).ready(function() {
         
         $('.vechinfo').removeClass('vechinfo');
 
-        var vech_info = "<div><strong>Chassis Number:</strong>" +"&nbsp&nbsp;"+ result['chassisno'] +"<br><strong> Engine Number: </strong>" +"&nbsp&nbsp"+ result['engineno'] +"</div>"
+        vech_info = "<div><strong>Chassis Number:</strong>" +"&nbsp;"+ result['chassisno'] +"&nbsp&nbsp&nbsp<strong> Engine Number: </strong>" +"&nbsp"+ result['engineno'] +"</div>"
         
-        var input = '<input type="hidden" id="test" value="'+ result['numberofchamber1'] + '">';
+        $('#vech_info').html(vech_info);
 
-          $('#vech_info').html(vech_info + input).show();
            
         }
     })
@@ -639,138 +615,6 @@ $(document).ready(function() {
     
 
   });
-
-
-
-  $("#contractor").change(function() {
-
-    var contractor_id =  $('#contractor').val();
-    
-    var customer_id =  $("#customer").val();
-
-    $.ajax({
-      url: '<?php echo base_url(); ?>Commission/get_customer_comm',
-      type: 'POST',
-      data: {customerid:customer_id,contractorid: contractor_id},
-      
-      success:  function (response) {
-         var result =JSON.parse(response);
-         var carriageCommission = result[0].freight_commission;
-         $('#carriage_commission').val(carriageCommission);
-         
-            }
-        })
-     
-     
-    });
-
-
-
-  $('#company').change(function(event) {
-
-    var contractor_id =  $(this).val();
-    var company_id =  $("#contractor").val();
-
-    var carriage_commission =  $("#carriage_commission").val();
-
-    $.ajax({
-      url: '<?php echo base_url(); ?>Commission/get_company_comm',
-      type: 'POST',
-      data: {contractorid: contractor_id, companyid:company_id},
-      
-         success:  function (response) {
-         var result =JSON.parse(response);
-
-         var company_commission = result[0].commission_1;
-         var withholding_tax = result[0].withholding_tax;
-         
-         $('#company_commission').val(company_commission);
-         $('#withholding_tax').val(withholding_tax);
-          var total_commission = 100; 
-
-          var fcc = parseInt(total_commission) - parseInt(carriage_commission);
-          $('#remaining_commission').val(fcc);
-         
-        }
-
-      })
-   
-      
-  });
-
-
-
-  $('#carriage_commission').keyup(function(event) {
-
-    var carriage_commission =  $(this).val();
-    var total_commission = 100; 
-
-    var fcc = parseInt(total_commission) - parseInt(carriage_commission);
-    $('#remaining_commission').val(fcc);
-         
-
-      
-  });
-
-
-
-    $('#freight_rate').keyup(function(event) {
-
-      var freight_rate =  $(this).val();
-
-      var quantity = $("#product_quantity").val();
-      var carriage_commission = $("#carriage_commission").val();
-      var company_commission = $("#company_commission").val();
-      var withholding_tax = $("#withholding_tax").val();
-      var remaining_commission = $("#remaining_commission").val();
-
-
-      var total_freight = parseInt(quantity) * parseInt(freight_rate);
-      var Cont_Comsn = parseInt(carriage_commission)/100 * parseInt(total_freight);
-      var Comp_Comsn = parseInt(company_commission)/100 * parseInt(total_freight);
-      var wht = parseInt(withholding_tax)/100 * parseInt(total_freight);
-      var Cstm_Frt = parseInt(remaining_commission)/100 * parseInt(total_freight);
-
-      $('#Total_Frt').html(isNaN(total_freight) ? 0 : total_freight.toFixed(2));
-      $('#Cont_Comsn').html(isNaN(Cont_Comsn) ? 0 : Cont_Comsn.toFixed(2));
-      $('#Comp_Comsn').html(isNaN(Comp_Comsn) ? 0 : Comp_Comsn.toFixed(2));
-      $('#wht').html(isNaN(wht) ? 0 : wht.toFixed(2));
-      $('#Cstm_Frt').html(isNaN(Cstm_Frt) ? 0 : Cstm_Frt.toFixed(2));
-
-      
-  });
-
-
- $('#product_quantity').keyup(function(event) {
-
-      var quantity =  $(this).val();
-
-      var freight_rate = $("#freight_rate").val();
-      var carriage_commission = $("#carriage_commission").val();
-      var company_commission = $("#company_commission").val();
-      var withholding_tax = $("#withholding_tax").val();
-      var remaining_commission = $("#remaining_commission").val();
-
-
-      var total_freight = parseInt(quantity) * parseInt(freight_rate);
-      var Cont_Comsn = parseInt(carriage_commission)/100 * parseInt(total_freight);
-      var Comp_Comsn = parseInt(company_commission)/100 * parseInt(total_freight);
-      var wht = parseInt(withholding_tax)/100 * parseInt(total_freight);
-      var Cstm_Frt = parseInt(remaining_commission)/100 * parseInt(total_freight);
-
-      $('#Total_Frt').html(isNaN(total_freight) ? 0 : total_freight.toFixed(2));
-      $('#Cont_Comsn').html(isNaN(Cont_Comsn) ? 0 : Cont_Comsn.toFixed(2));
-      $('#Comp_Comsn').html(isNaN(Comp_Comsn) ? 0 : Comp_Comsn.toFixed(2));
-      $('#wht').html(isNaN(wht) ? 0 : wht.toFixed(2));
-      $('#Cstm_Frt').html(isNaN(Cstm_Frt) ? 0 : Cstm_Frt.toFixed(2));
-
-      
-  });
-
-
-
-
-
 });
 
 
@@ -794,29 +638,24 @@ $(document).ready(function() {
       var product_temperature = $("#product_temperature").val();
       var product_gravity = $("#product_gravity").val();
       var freight_rate = $("#freight_rate").val();
+      var carriage_commission = $("#carriage_commission").val();
+      var withholding_tax = $("#withholding_tax").val();
+      var companycommission = $("#companycommission").val();
+      var remaining_commission = $("#remaining_commission").val();
 
 
-
-      var proInfo = "<tr><td><input type='hidden' class='proSource' name='source[]'  value='' >"+ source_name +"</td><td><input type='hidden' class='proDest' name='destination[]'  value='' >"+ destination_name +"</td><td><input type='hidden' id='proID' class='proID' name='product_id[]'  value=''>"+ product_name +"</td><td><input type='hidden' class='proQty' name='product_quantity[]'  value=''>"+ product_quantity +"</td><td><input type='hidden' class='proTemp' name='product_temperature[]'  value=''>"+ product_temperature +"</td><td><input type='hidden' class='proGrav' name='product_gravity[]'  value=''>"+ product_gravity +"</td><td><input type='hidden' class='proFret' name='freight_rate[]'  value=''>"+ freight_rate +"</td></tr>";
-
+      var proInfo = "<tr><td><input type='hidden' class='proSource' name='source[]'  value='' >"+ source_name +"</td><td><input type='hidden' class='proDest' name='destination[]'  value='' >"+ destination_name +"</td><td><input type='hidden' id='proID' class='proID' name='product_id[]'  value=''>"+ product_name +"</td><td><input type='hidden' class='proQty' name='product_quantity[]'  value=''>"+ product_quantity +"</td><td><input type='hidden' class='proTemp' name='product_temperature[]'  value=''>"+ product_temperature +"</td><td><input type='hidden' class='proGrav' name='product_gravity[]'  value=''>"+ product_gravity +"</td><td><input type='hidden' class='proFret' name='freight_rate[]'  value=''>"+ freight_rate +"</td><td><input type='hidden' class='proCarrg' name='carriage_commission[]'  value=''>"+ carriage_commission +"</td><td><input type='hidden' class='proWtax' name='withholding_tax[]'  value=''>"+ withholding_tax +"</td><td><input type='hidden' class='proCC' name='companycommission[]'  value=''>"+ companycommission +"</td><td><input type='hidden' class='proRecomm' name='remaining_commission[]'  value=''>"+ remaining_commission +"</td></tr>";
 
 
         $("#addpro").removeAttr('style');
 
-
-
-        if (product_id == "" ) {
+        if (product_id == "") {
           alert("Please fill all fields");
         }else{
 
          $('#prod_info').append(proInfo);
 
         }
-         
-         console.log($('.proQty').length);
-         if($('.proQty').length==$('#test').val()){
-          $('.pview').hide();
-         }
 
 
         $(".proID").val(product_id);
@@ -826,7 +665,10 @@ $(document).ready(function() {
         $(".proTemp").val(product_temperature);
         $(".proGrav").val(product_gravity);
         $(".proFret").val(freight_rate);
-
+        $(".proCarrg").val(carriage_commission);
+        $(".proWtax").val(withholding_tax);
+        $(".proCC").val(companycommission);
+        $(".proRecomm").val(remaining_commission);
 
 
         $("#product_id").val("");
@@ -836,38 +678,36 @@ $(document).ready(function() {
         $("#product_temperature").val("");
         $("#product_gravity").val("");
         $("#freight_rate").val("");
-
-
-        $('#Total_Frt').html("");
-        $('#Cont_Comsn').html("");
-        $('#Comp_Comsn').html("");
-        $('#wht').html("");
-        $('#Cstm_Frt').html("");
+        $("#carriage_commission").val("");
+        $("#withholding_tax").val("");
+        $("#companycommission").val("");
+        $("#remaining_commission").val("");
 
 
         $("#trip_save").removeAttr('disabled');
 
     });
-
   });
 
 
-  $(document).ready(function() {
-    $('#myform').on('submit', function (e) {   
-          console.log($("#proID").length);
-        if($("#proID").length == 0){  
-          alert("Please add atleat one product !");
-          e.preventDefault();
-        }
-        else{
-          $(this).unbind('submit').submit();
-          $(this).submit();
-        }
 
 
-      });
+$(document).ready(function() {
+  $('#myform').on('submit', function (e) {   
+        console.log($("#proID").length);
+      if($("#proID").length == 0){  
+        alert("Please add atleat one product !");
+        e.preventDefault();
+      }
+      else{
+        $(this).unbind('submit').submit();
+        $(this).submit();
+      }
 
-  });
+
+    });
+
+});
 
 
 </script>
@@ -878,12 +718,10 @@ $(document).ready(function() {
 
 function ValidateNumberOnly()
 {
-
-if ((event.keyCode < 48 || event.keyCode > 57) && event.keyCode != 46  ) 
+if ((event.keyCode < 45 || event.keyCode > 57)) 
 {
    event.returnValue = false;
 }
-
 }
 
 </script>
@@ -914,15 +752,14 @@ $(document).ready(function() {
                         }
                     }
                 },
-
-            contractor_id: {
-               trigger:'change  blur',
-                validators: {
-                    notEmpty: {
-                        message: 'field  is required and cannot be empty'
+                    contractor_id: {
+                   trigger:'change  blur',
+                    validators: {
+                        notEmpty: {
+                            message: 'field  is required and cannot be empty'
+                        }
                     }
-                }
-              },
+                },
 
                vehicle_id: {
                    trigger:'change  blur',
@@ -974,6 +811,14 @@ $(document).ready(function() {
                     }
                 },
 
+              // end_meter_reading: {
+              //      trigger:'change  blur',
+              //       validators: {
+              //           notEmpty: {
+              //               message: 'field  is required and cannot be empty'
+              //           }
+              //       }
+              //   },
 
              'driver[]': {
                    trigger:'change  blur',
@@ -1092,8 +937,6 @@ $(document).ready(function() {
 
 </script>
 
-<<<<<<< HEAD
-=======
 <script>
 //   $(document).on('keyup','#freight_rate',function(){
 //     var freight=$(this).val();
@@ -1158,9 +1001,8 @@ $('.sel').select2({
     // minimumResultsForSearch: 20 ,
     selectOnClose: true,
    placeholder: "Select an option",
-    allowClear: true
+  
 
 });
 
 </script>
->>>>>>> 1ef3748fb2ec28fca851a8ca8dd4a9726bbbd8dc

@@ -19,7 +19,6 @@ function GetAllTrips($type="") {
       }
        // var_dump ($w->result_array());die;
         if ($w->num_rows() > 0){
-
          // die();
         return $w->result_array();}
         else {return FALSE; }
@@ -43,8 +42,10 @@ function GetAllTrips($type="") {
 
     public function trip($id)
     {
+   //   
+   //  
 //$er=$this->db->query("SELECT tripmanagement.id, driverinformation.name as name,ex.amount,et.name as expensetype FROM trip_members tm JOIN tripmanagement ON tm.trip_id=tripmanagement.id JOIN driverinformation ON driverinformation.id=tm.member_id join expense ex on ex.trip_id=tripmanagement.id and ex.payee=driverinformation.id join expensetype et on et.id=ex.expensetype_id where tripmanagement.is_deleted=0 AND tm.trip_id='$id' union SELECT tripmanagement.id,helperinformation.name as name,ex.amount,et.name as expensetype FROM tripmanagement JOIN trip_members tme on tme.trip_id=tripmanagement.id join helperinformation ON helperinformation.id=tme.member_id join expense ex on ex.trip_id=tripmanagement.id and ex.payee=helperinformation.id join expensetype et on et.id=ex.expensetype_id where tripmanagement.is_deleted=0 AND tme.trip_id='$id' GROUP BY tme.type")->result_array();
-      $er=$this->db->query("SELECT tripmanagement.id as idd,expense.amount as am,expensetype.name as exn,expense.payee,agentinformation.id,agentinformation.name FROM tripmanagement INNER JOIN expense ON tripmanagement.id=expense.trip_id INNER JOIN expensetype ON expensetype.id=expense.expensetype_id INNER JOIN agentinformation ON expense.payee=agentinformation.id and tripmanagement.is_deleted=0")->result_array();
+      $er=$this->db->query("SELECT tripmanagement.id as idd,expense.amount as am,expensetype.name as exn,expense.payee,agentinformation.id,agentinformation.name FROM tripmanagement INNER JOIN expense ON tripmanagement.id=expense.trip_id INNER JOIN expensetype ON expensetype.id=expense.expensetype_id INNER JOIN agentinformation ON expense.payee=agentinformation.id and tripmanagement.is_deleted=0 AND tripmanagement.id='$id'")->result_array();
 return $er;
     }
 
@@ -175,18 +176,18 @@ public function getAllRecords($table,$where,$by,$order) {
 
 
 
-    public function uncannedBy($uncannedBy, $id)
+    public function uncannedBy($uncannedBy)
     {
 
-       $this->db->select('*')->from('trip_members')->where('member_id', $uncannedBy)->where('trip_id', $id);
+       $this->db->select('*')->from('trip_members')->where('member_id', $uncannedBy);
        $res=$this->db->get()->row_array();
 
          $tripType = $res['type'];
    
-       if ($tripType == 'driver') {
+
+       if ($tripType = 'driver') {
           $this->db->select('id, name')->from('driverinformation')->where('id', $uncannedBy);
           $query=$this->db->get()->row_array();
-
           return $query;
        }else{
           $this->db->select('id, name')->from('helperinformation')->where('id', $uncannedBy);
@@ -205,12 +206,7 @@ public function getAllRecords($table,$where,$by,$order) {
     }
 
 
-  public function GetSourceOrDest($id)
-  {
-       $this->db->select('*')->from('locationtype')->where('id', $id)->where('is_delete', '0');
-       $query=$this->db->get()->row_array();
-       return $query;
-  }
+
 
 
 

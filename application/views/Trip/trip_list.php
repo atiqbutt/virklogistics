@@ -43,23 +43,25 @@
                 <tr class="paddinglr">
                     <th class="paddinglr">Id</th>  
                     <th class="paddinglr">Type</th>
-          					<th class="paddinglr">Product</th>
           					<th class="paddinglr">Company</th>
           					<th class="paddinglr">Contractor</th>
           					<th class="paddinglr">Source</th>
-                    <th class="paddinglr">Filling Date</th>                     
+                    <th class="paddinglr">Filling Date</th> 
+                   
+                     <th class="paddinglr">Meter Reading</th>
+                    <th class="paddinglr">Vehicle</th>
+                    <th class="paddinglr">Product</th>                    
                     <th class="paddinglr">Temperature</th>
-                    <th class="paddinglr">Meter Reading</th>
-          					<th class="paddinglr">Gravity</th>
-          					<th class="paddinglr">Vehicle</th>
           					<th class="paddinglr">Quantity</th>					
                     <th class="paddinglr">Freight Rate</th>
                     <th class="paddinglr">Carriage Commission</th> 
                     <th class="paddinglr">W.H.T</th> 
-          					<th class="paddinglr">Remaining Commission</th>
-          					<th class="paddinglr">Service Charges</th>
-<!--                <th class="paddinglr">Status</th>
-                    <th class="paddinglr">Action</th> --> 
+
+                   
+                    <th class="paddinglr">Gravity</th>
+                     <th class="paddinglr">Remaining Commission</th>
+                    <th class="paddinglr">Service Charges</th>
+       			
 				            <th class="paddinglr">Expense</th>
                </tr>
             </thead>
@@ -74,23 +76,32 @@
                 <tr class="odd gradeX" style="background: #98FB98">
                 <?php } ?>
                 <?php if ($amb['status'] == 1){ ?>
-                   <td><a href="<?php echo base_url();?>Trip/closed_trip/<?php echo $amb["id"];?>"><?php echo $amb["id"];?></a></td>
+                   <td><a href="<?php echo base_url();?>Trip/closed_trip/<?php echo $amb["id"];?>" target="_blank"><?php echo $amb["id"];?></a></td>
                 <?php }else{ ?>
-                  <td><a href="<?php echo base_url();?>Trip/close_trip/<?php echo $amb["id"];?>"><?php echo $amb["id"];?></a></td>
+                  <td><a href="<?php echo base_url();?>Trip/close_trip/<?php echo $amb["id"];?>" target="_blank"><?php echo $amb["id"];?></a></td>
                    <?php } ?>
-               
-                <td> <?php echo $amb["type"];?>  </td>
-        				<td> <?php echo $amb["productname"];?>  </td>
-        				<td> <?php echo $amb["comname"];?>  </td>
-        				<td> <?php echo $amb["conname"];?>  </td>
+            <td> <?php echo $amb["type"];?>  </td>
+                  <td> <?php echo $amb["comname"];?>  </td>
+        		<td> <?php echo $amb["conname"];?>  </td>
                 <td> <?php echo $amb["source"];?>  </td>
-        				<!-- <td> <?php //echo $amb["source"];?>  </td> -->
-                <td> <?php $newDate = date("d/m/Y", strtotime($amb["filling_date"]));
-                 echo $newDate;?> 
-                </td>
+                 <td> <?php
+                $newDate = date("d/m/Y", strtotime($amb["filling_date"]));
+                 echo $newDate;?> </td>
+        				<!-- <td> <?php echo $amb["source"];?>  </td> -->
+                 <td> <?php echo $amb["start_meter_reading"];?> </td>
+                 <td> <?php echo $amb["vehicleregisterationno"];?> </td>
+                    <td> <?php echo $amb["productname"];?>  </td>
+
                 <td> <?php echo $amb["temperature"];?> </td>
-                <td> <?php echo $amb["start_meter_reading"];?> </td>
+                <td> <?php echo $amb["quantity"];?> </td>
+                 <td> <?php echo $amb["freight_rate"];?> </td>
+                  <td> <?php echo $amb["carriage"];?> </td>
+                     <td> <?php echo $amb["withholdingtax"];?> </td>
           			<td> <?php echo $amb["gravity"];?> </td>
+                  <td> <?php echo $amb["remaining_commission"];?> </td>
+                <td> <?php echo $amb["servicecharges"];?></td>
+               
+        <td style="width:100px"><a href="<?php echo base_url()?>Trip/edit_trip/<?php echo $amb['id'];?>"><i class="fa fa-eye"></i></a></td>
                 <td> <?php echo $amb["vehicleregisterationno"];?> </td>
           			<td> <?php echo $amb["quantity"];?> </td>
                 <td> <?php echo $amb["freight_rate"];?> </td>
@@ -98,8 +109,12 @@
                 <td> <?php echo $amb["withholdingtax"];?> </td>
         				<td> <?php echo $amb["remaining_commission"];?> </td>
         				<td> <?php echo $amb["servicecharges"];?></td>
+						
+                
 
-                <td style="width:100px"><a href="<?php echo base_url()?>Trip/edit_trip/<?php echo $amb['id'];?>"><i class="fa fa-eye"></i></a></td>
+                <td style="width:100px"><a href="<?php echo base_url()?>Trip/edit_trip/<?php echo $amb['id'];?>" target="_blank"><i class="fa fa-eye"></i></a></td>
+
+
                 </tr>
 	         <?php  } }?>
                            

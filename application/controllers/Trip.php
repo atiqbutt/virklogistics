@@ -40,7 +40,7 @@ class trip extends CI_Controller {
             $data["trip"]=$this->trip_model->trip($id);
             // $data["tri"]=$this->trip_model->gettri($id);
             $data['tri']=$this->trip_model->getagent();
-        
+
             $data["page"]='Trip/tripexpense';
             $this->load->view('Template/main',$data);
 
@@ -59,28 +59,30 @@ class trip extends CI_Controller {
 
              $dr=$this->input->post('driver');
              $ams=$this->input->post('amount');
-             $e1=$this->input->post('expensea[]');
-             $pay=$this->input->post('drivera[]');
-             $am=$this->input->post('amounta[]');
-                    $data=array(
-                    'trip_id'=>$id,
-                    'expensetype_id'=>$ex,
-                    'date'=>date("Y-m-d h:i:sa"),
-                    'amount'=>$ams,
-                    'payee'=>$dr
-                    );
+             $e1=$this->input->post('expensea');
+             $pay=$this->input->post('drivera');
+             $am=$this->input->post('amounta');
+             
+
+               //      $data=array(
+               //      'trip_id'=>$id,
+               //      'expensetype_id'=>$ex,
+               //      'date'=>date("Y-m-d h:i:sa"),
+               //      'amount'=>$ams,
+               //      'payee'=>$dr
+               //      );
                                   
-               $this->trip_model->insert('expense',$data);
-                
+               // $this->trip_model->insert('expense',$data);
+                $data2=array();
                for($i=0; $i<count($e1); $i++)
                {
-
-                 $data2=array(
+                     $data2[]=array(
                     'trip_id'=>$id,
                     'expensetype_id'=>$e1[$i],
                     'date'=>date("Y-m-d h:i:sa"),
                     'amount'=>$am[$i],
                     'payee'=>$pay[$i]
+<<<<<<< HEAD
 
                     );
                  
@@ -95,16 +97,72 @@ class trip extends CI_Controller {
                }
                  
         }
+=======
+                    );        
+                    
+        
+               }
+               $this->db->insert_batch('expense',$data2);
+                
+                redirect('Trip/index');                 
+}
+>>>>>>> 1029260b55da79d90eb02ecb96dac1eb088caffe
     
 
-    public function get_data($type1)
+
+        
+
+
+        public function get_data($type1)
         {
         $data["expensetype"]=$this->trip_model->getAllRecords("expensetype",array("is_delete"=>0),"id","DESC"); 
         $data["tripmanagement"]=$this->trip_model->GetAllTrips($type1);
         return $this->load->view('Trip/trip_data',$data);
 
         }
+/*
+        public function self_long()
+        {
+            $data['menu'] = $this->load_model->menu();
+            $data['base_url'] = base_url();
+            $data['userInfo'] = $this->userInfo;  
+			$data["tripmanagement"]=$this->trip_model->GetAllTripsSelfLong();
+			$data["page"]='Trip/self_long';
+            $this->load->view('Template/main',$data);
 
+        }
+		
+        public function self_short()
+        {
+            $data['menu'] = $this->load_model->menu();
+            $data['base_url'] = base_url();
+            $data['userInfo'] = $this->userInfo;  
+			$data["tripmanagement"]=$this->trip_model->GetAllTripsSelfShort();
+			$data["page"]='Trip/self_short';
+            $this->load->view('Template/main',$data);
+
+        }
+        public function general_long()
+        {
+            $data['menu'] = $this->load_model->menu();
+            $data['base_url'] = base_url();
+            $data['userInfo'] = $this->userInfo;  
+			$data["tripmanagement"]=$this->trip_model->GetAllTripsGeneralLong();
+			$data["page"]='Trip/general_long';
+            $this->load->view('Template/main',$data);
+
+        }
+		   public function general_short()
+        {
+            $data['menu'] = $this->load_model->menu();
+            $data['base_url'] = base_url();
+            $data['userInfo'] = $this->userInfo;  
+			$data["tripmanagement"]=$this->trip_model->GetAllTripsGeneralShort();
+			$data["page"]='Trip/general_short';
+            $this->load->view('Template/main',$data);
+
+        }
+*/
 
 	public function close_trip($id)
        {
@@ -115,92 +173,22 @@ class trip extends CI_Controller {
             $data['userInfo'] = $this->userInfo; 
 			$data['tripid'] = $id;
 			$data["trip_info"]=$this->trip_model->GetSpecificTrip($id);
+            $data["driver1"]=$this->db->query('select driverinformation.id as did,driverinformation.name as name FROM trip_members tm JOIN tripmanagement ON tm.trip_id=tripmanagement.id JOIN driverinformation ON driverinformation.id=tm.member_id where tripmanagement.is_deleted=0 AND tm.trip_id='.$id.' 
+union 
+SELECT helperinformation.id as did,helperinformation.name as name FROM tripmanagement JOIN trip_members tme on tme.trip_id=tripmanagement.id join helperinformation ON helperinformation.id=tme.member_id where tripmanagement.is_deleted=0 AND tme.trip_id='.$id.' GROUP BY tme.type')->result_array();
 
-
-
-            $data["driver1"]=$this->db->query('select driverinformation.id as did,driverinformation.name as name FROM trip_members tm JOIN tripmanagement ON tm.trip_id=tripmanagement.id JOIN driverinformation ON driverinformation.id=tm.member_id where tripmanagement.is_deleted=0 AND tm.trip_id='.$id.' union SELECT helperinformation.id as did,helperinformation.name as name FROM tripmanagement JOIN trip_members tme on tme.trip_id=tripmanagement.id join helperinformation ON helperinformation.id=tme.member_id where tripmanagement.is_deleted=0 AND tme.trip_id='.$id.' GROUP BY tme.type')->result_array();
-
-
+            // var_dump ($data["driver1"]);
+            // die();
 
             $filledBy = $data["trip_info"][0]['filled_by'];
             $data["filledby"]=$this->trip_model->FilledBy($filledBy);
             $data["helper"]=$this->trip_model->GetTripHelper($id);
             $data["products"]=$this->trip_model->GetTripProducts($id);
-
-
-            $data["source"]=$this->trip_model->GetSourceOrDest($data["products"][0]['source']);
-
-            $data["destination"]=$this->trip_model->GetSourceOrDest($data["products"][0]['destination']);
-
 			$data["expensetype"]=$this->trip_model->getAllRecords("expensetype",array("is_delete"=>0),"id","DESC");	
 
 			$data['page'] = 'Trip/close_trip';
             $this->load->view('Template/main', $data);
        } 
-
-
-       
-    public function save_trip_close()
-        {
-
-
-            if ($this->input->post()) {
-            $tripid = $this->input->post('tripid');
-            $data["fuel"]=$this->input->post('fuel'); 
-            $data["stn_no"]=$this->input->post('stn_no'); 
-            $data["end_meter_reading"]=$this->input->post('end_meter_reading'); 
-            $data["closing_entry_date"]=$this->input->post('closing_entry_date'); 
-            $data["closing_email_date"]=$this->input->post('closing_email_date'); 
-            $data["uncanned_date"]=$this->input->post('uncanned_date'); 
-            $data["uncanned_by"]=$this->input->post('uncanned_by'); 
-            $data["closing_gravity"]=$this->input->post('closing_gravity');
-            $data["closing_temp"]=$this->input->post('closing_temp');
-            $file =$this->do_upload();  
-
-            $data["tracking_report"]=$file["upload_data"]["file_name"];
-            $data["status"]= 1; 
-
-            $shrt_at_dest  = $this->input->post('shrt_at_dest[]'); 
-            $shrt_at_decan = $this->input->post('shrt_at_decan[]'); 
-
-
-            $insrt_shrt_at_dest = array();
-                foreach ($shrt_at_dest as $value) {
-                $insrt_shrt_at_dest[]=array(
-                    'shrt_at_dest'=>$value,
-                    'trip_id' => $tripid
-                    );
-                }
-
-            $this->db->update_batch('tripproduct', $insrt_shrt_at_dest, 'trip_id');
-
-
-              $insrt_shrt_at_decan = array();
-                foreach ($shrt_at_decan as $value) {
-                $insrt_shrt_at_decan[]=array(
-                    'shrt_at_decan'=>$value,
-                    'trip_id' => $tripid
-                    );
-                }
-
-            $this->db->update_batch('tripproduct', $insrt_shrt_at_decan, 'trip_id');
-                    
-            $this->db->where('id', $tripid);
-            $this->db->update("tripmanagement",$data);
-
-
-
-
-            $this->session->set_flashdata('success', "Record has been added successfully");
-            redirect('trip/index');
-
-            }else{
-
-            $this->session->set_flashdata('Errors', "Record has been not added successfully");
-            redirect('trip/add_trip');
-            }
-            
-        }
 
 
 
@@ -214,21 +202,19 @@ class trip extends CI_Controller {
             $data['tripid'] = $id;
             $data["trip_info"]=$this->trip_model->GetSpecificTrip($id);
 
-            $filledBy = $data["trip_info"][0]['filled_by'];
+             $filledBy = $data["trip_info"][0]['filled_by'];
             $data["filledby"]=$this->trip_model->FilledBy($filledBy);
 
             $uncannedBy = $data["trip_info"][0]['uncanned_by'];           
 
-            $data["uncannedBy"]=$this->trip_model->uncannedBy($uncannedBy, $id);
+            $data["uncannedBy"]=$this->trip_model->uncannedBy($uncannedBy);
+
+            // var_dump ($data["uncannedBy"]);
+            // die();
+
 
             $data["helper"]=$this->trip_model->GetTripHelper($id);
             $data["products"]=$this->trip_model->GetTripProducts($id);
-
-
-            $data["source"]=$this->trip_model->GetSourceOrDest($data["products"][0]['source']);
-
-            $data["destination"]=$this->trip_model->GetSourceOrDest($data["products"][0]['destination']);
-
             $data["expensetype"]=$this->trip_model->getAllRecords("expensetype",array("is_delete"=>0),"id","DESC"); 
 
             $data['page'] = 'Trip/closed_trip';
@@ -237,6 +223,42 @@ class trip extends CI_Controller {
 
 
 
+       
+        public function save_trip_close()
+        {
+            // var_dump ($this->input->post());
+            // die();
+
+            if ($this->input->post()) {
+            $tripid =$this->input->post('tripid');
+            $data["fuel"]=$this->input->post('fuel'); 
+            $data["stn_no"]=$this->input->post('stn_no'); 
+            $data["end_meter_reading"]=$this->input->post('end_meter_reading'); 
+            $data["closing_entry_date"]=$this->input->post('closing_entry_date'); 
+            $data["closing_email_date"]=$this->input->post('closing_email_date'); 
+            $data["uncanned_date"]=$this->input->post('uncanned_date'); 
+            $data["uncanned_by"]=$this->input->post('uncanned_by'); 
+            $data["closing_gravity"]=$this->input->post('closing_gravity');
+            $data["closing_temp"]=$this->input->post('closing_temp');
+            $data["shortage"]=$this->input->post('shortage'); 
+            $file =$this->do_upload();  
+
+            $data["tracking_report"]=$file["upload_data"]["file_name"];
+            $data["status"]= 1; 
+        
+            $this->db->where('id', $tripid);
+            $this->db->update("tripmanagement",$data);
+
+            $this->session->set_flashdata('success', "Record has been added successfully");
+            redirect('trip/index');
+
+            }else{
+
+            $this->session->set_flashdata('Errors', "Record has been not added successfully");
+            redirect('trip/add_trip');
+            }
+            
+        }
 
 
 
@@ -253,7 +275,6 @@ class trip extends CI_Controller {
         $data["product"]=$this->trip_model->getAllRecords("product",array("is_deleted"=>0,"status"=>0),"id","DESC");	
         $data["contractor"]=$this->trip_model->getAllRecords("contractorinformation",array("is_deleted"=>0,"status"=>0),"id","DESC");	
         $data["customer"]=$this->trip_model->getAllRecords("customerinformation",array("is_deleted"=>0,"status"=>0),"id","DESC");
-         $data["company"]=$this->trip_model->getAllRecords("companyinformation",array("is_deleted"=>0,"status"=>0),"id","DESC");
         $data["routedefination"]=$this->trip_model->getAllRecords("routedefination",array("is_deleted"=>0),"id","DESC");	
 		$data["expensetype"]=$this->trip_model->getAllRecords("expensetype",array("is_delete"=>0),"id","DESC");	
 
@@ -265,17 +286,15 @@ class trip extends CI_Controller {
 	public function save_trip()
 	   {
 
-        // var_dump ($this->input->post());
-        // die();
-
           if ($this->input->post()) {
 
             $data["type"]=$this->input->post('type');
-            $data["customer_id"]=$this->input->post('customer_id'); 
             $data["company_id"]=$this->input->post('company_id'); 
             $data["contractor_id"]=$this->input->post('contractor_id'); 
             $data["vehicle_id"]=$this->input->post('vehicle_id'); 
             $data["start_meter_reading"]=$this->input->post('start_meter_reading');
+            // $data["end_meter_reading"]=$this->input->post('end_meter_reading');
+            // $data["fuel"]=$this->input->post('fuel'); 
             $data["entry_date"]=$this->input->post('entry_date'); 
             $data["email_date"]=$this->input->post('email_date'); 
             $data["filling_date"]=$this->input->post('filling_date'); 
@@ -283,28 +302,39 @@ class trip extends CI_Controller {
 
 
             $this->db->insert("tripmanagement",$data);
-           
+
             $tripid = $this->db->insert_id();
 
-            $product_id = $this->input->post('product_id');
-            $source = $this->input->post('source');
-            $destination = $this->input->post('destination');
-            $product_quantity = $this->input->post('product_quantity');
-            $product_temperature = $this->input->post('product_temperature');
-            $product_gravity = $this->input->post('product_gravity');
-            $freight_rate = $this->input->post('freight_rate');
+                $product_id = $this->input->post('product_id');
+                $source = $this->input->post('source');
+                $destination = $this->input->post('destination');
+                $product_quantity = $this->input->post('product_quantity');
+                $product_temperature = $this->input->post('product_temperature');
+                $product_gravity = $this->input->post('product_gravity');
+                $destination = $this->input->post('destination');
+                $freight_rate = $this->input->post('freight_rate');
+                $carriage_commission = $this->input->post('carriage_commission');
+                $withholding_tax = $this->input->post('withholding_tax');
+                $company_commission = $this->input->post('company_commission');
+                $remaining_commission = $this->input->post('remaining_commission');
 
 
             if (!empty($product_quantity)) {
 
-                $insert_product=array();
-                for ($i=0;$i<count($product_id);$i++) {
+
+                    $insert_product=array();
+                    for ($i=0;$i<count($product_id);$i++) {
 
                     $insert_product[]=array(
                    'trip_id'=>$tripid,
                    'source'=>$source[$i],
-                   'destination'=>$destination[$i],       
+                   'destination'=>$destination[$i],
+                   'remaining_commission'=>$remaining_commission[$i],
+                   'company_comission'=>$company_commission[$i],
+                   'withholding_tax'=>$withholding_tax[$i],
+                   'carriage_commission'=> $carriage_commission[$i],           
                    'freight_rate'=>$freight_rate[$i],
+                   'destination'=>$destination[$i],
                    'product_gravity'=>$product_gravity[$i],
                    'product_temperature'=>$product_temperature[$i],
                    'product_quantity'=>$product_quantity[$i],
@@ -361,9 +391,7 @@ class trip extends CI_Controller {
 
 	   {
 	    $tripid=$this->uri->segment(3);
-	     var_dump ($tripid);
-         die();
-         if ($this->input->post()) {
+	   if ($this->input->post()) {
 		    
             $cc=$this->input->post();
 
@@ -375,14 +403,9 @@ class trip extends CI_Controller {
             'amount'=>$cc['amount'][$ii]
 
               );  
-
             $dataaa["trip_id"]=$tripid;
             $dataaa["date"]=date("Y-m-d h:i:sa");
             $this->generic_model->insert("expense",$dataaa);
-
-
-
-
             }
 
             $this->session->set_flashdata('success', "Record has been added successfully");
@@ -398,6 +421,18 @@ class trip extends CI_Controller {
 	   }
 
 
+
+       // public function expenseadd($a,$b)
+       // {
+        
+       //  $data=array(
+       //      'expensetype_id'=>$a,
+       //          'amount'=>$b
+       //      );
+       //   $this->db->insert('expense',$data);
+
+       // }
+      
 
 
 
@@ -512,49 +547,6 @@ public function all_close_trip()
         return $file;
     }
 
-/*
-        public function self_long()
-        {
-            $data['menu'] = $this->load_model->menu();
-            $data['base_url'] = base_url();
-            $data['userInfo'] = $this->userInfo;  
-            $data["tripmanagement"]=$this->trip_model->GetAllTripsSelfLong();
-            $data["page"]='Trip/self_long';
-            $this->load->view('Template/main',$data);
-
-        }
-        
-        public function self_short()
-        {
-            $data['menu'] = $this->load_model->menu();
-            $data['base_url'] = base_url();
-            $data['userInfo'] = $this->userInfo;  
-            $data["tripmanagement"]=$this->trip_model->GetAllTripsSelfShort();
-            $data["page"]='Trip/self_short';
-            $this->load->view('Template/main',$data);
-
-        }
-        public function general_long()
-        {
-            $data['menu'] = $this->load_model->menu();
-            $data['base_url'] = base_url();
-            $data['userInfo'] = $this->userInfo;  
-            $data["tripmanagement"]=$this->trip_model->GetAllTripsGeneralLong();
-            $data["page"]='Trip/general_long';
-            $this->load->view('Template/main',$data);
-
-        }
-           public function general_short()
-        {
-            $data['menu'] = $this->load_model->menu();
-            $data['base_url'] = base_url();
-            $data['userInfo'] = $this->userInfo;  
-            $data["tripmanagement"]=$this->trip_model->GetAllTripsGeneralShort();
-            $data["page"]='Trip/general_short';
-            $this->load->view('Template/main',$data);
-
-        }
-*/
 
 
 

@@ -40,7 +40,17 @@ td,th{
   background: #fff !important;
 }
 
-
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #3c8dbc !important;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    cursor: default;
+    float: left;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding: 0 5px; 
+  
+  }
 
 </style>
 
@@ -52,7 +62,7 @@ td,th{
 
             <div class="box-body">
 
-             <div class="col-md-12">
+             <div class="col-md-10">
 
                    <form class="form-horizontal" id="shippingForm"  onsubmit="return validateForm(this)" action="<?php echo base_url()?>Report/trip_reports" method="post" enctype="multipart/form-data">
                         
@@ -145,7 +155,7 @@ td,th{
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Vehicle
                         </label>
                         <div class="col-md-8 col-sm-6 col-xs-12">            
-                        <select class="form-control sel" name="vechileid">
+                        <select class="form-control sel" name="vehicleid[]" multiple="multiple">
                         <option value="">Select Vehicle</option>
                          <?php
                           foreach ($vehicle as $value) {
@@ -389,7 +399,7 @@ td,th{
 
 
        
-<table class="table table-bordered p" id="list" style="width:1080px;border:2px solid grey" >
+<table class="table table-bordered p" id="list" style="width:1250px;border:2px solid grey" >
 <!-- <thead style="background-color:#0292e0;color:white;border:1px solid grey" id="headers">
   <tr>
     <td >
@@ -415,13 +425,8 @@ td,th{
       <th> <input type="checkbox" value="col14"  name="col14"  checked></th>
       <th> <input type="checkbox" value="col15"  name="col15"  checked></th>
       <th> <input type="checkbox" value="col16"  name="col16"  checked></th>
-<!--      <th> <input type="checkbox" value="col16"  name="col16"  checked></th>
-      <th> <input type="checkbox" value="col17"  name="col17"  checked></th>
-      <th> <input type="checkbox" value="col18"  name="col18"  checked></th>
-      <th> <input type="checkbox" value="col19"  name="col19"  checked></th>
-      <th> <input type="checkbox" value="col20"  name="col20"  checked></th>
-      <th> <input type="checkbox" value="col21"  name="col21"  checked></th>
-      <th> <input type="checkbox" value="col22"  name="col22"  checked></th> -->
+     <th> <input type="checkbox" value="col17"  name="col16"  checked></th>
+      <th> <input type="checkbox" value="col18"  name="col17"  checked></th>
     </tr>
       </thead>
 
@@ -437,51 +442,17 @@ td,th{
       <th class="col6">Destination</th>
        <th class="col7">Company</th>
       <th class="col8">Contractor</th>
-      <th class="col9">Meter Reading</th>
-      <th class="col10">Vehicle#</th>
-       <th class="col11">Filling Date</th>
-<!--       <th class="col6">Gravity</th> -->
-       <th class="col12">Carriage</th>
-      <th class="col13">W.H.T</th>
-<!--        <th class="col9">Temperature</th> -->
-      <th class="col14">Freight%</th>
-       <th class="col15">Quantity</th>
-<!--       <th class="col12">Charges</th> -->
-       <th class="col16">Commission</th>
-<!--       <th class="col14">Status</th> -->
-
-<!--       <th class="col16">Chasis No</th>
-       <th class="col17">Vehicle Name</th>
-      <th class="col18">Engine</th> -->
-
-    </tr>
-<!--     <tr>
-      <th>#</th>
-      <th>Type</th>
-      <th>Product</th>
-       <th>Source</th>
-      <th>Destination</th>
-       <th>Company</th>
-       <th>Contractor</th>
-      <th>Vehicle#</th>
-      <th>Meter Reading</th>
-       <th>Filling Date</th>
-    <th>Gravity</th>
-       <th>Carriage</th>
-      <th>W.H.T</th>
-        <th>Temperature</th>
-      <th>Freight%</th>
-       <th>Quantity</th>
-       <th>Charges</th>
-       <th>Commission</th>
-       <th>Status</th>
-
-       <th>Chasis No</th>
-       <th>Vehicle Name</th>
-      <th>Engine</th> --> 
-
-      
-    
+      <th class="col9">Start Reading</th>
+      <th class="col10">End Reading</th>
+      <th class="col11">Vehicle#</th>
+      <th class="col12">Filling Date</th>
+      <th class="col13">Decaning Date</th>
+       <th class="col14">Carriage</th>
+      <th class="col15">W.H.T</th>
+      <th class="col16">Freight%</th>
+       <th class="col17">Quantity</th>
+       <th class="col18">Commission</th>
+    </tr>    
   <tbody >
     <?php
       $i=1;foreach ($data as $value)  { 
@@ -504,23 +475,15 @@ td,th{
       <td class="col7"><?php echo $value['comname']?></td>
       <td class="col8"><?php echo $value['conname']?></td>
       <td class="col9"><?php echo $value['start_meter_reading']?></td>
-      <td class="col10"><?php echo $value['vehicleregisterationno']?></td>
-      <td class="col11"><?php echo $value['filling_date']?></td>
-<!--       <td><?php echo $value['gravity']?></td> -->
-      <td class="col12"><?php echo $value['carriage']?></td>
-      <td class="col13"><?php echo $value['withholdingtax']?></td>
-<!--       <td><?php echo $value['temperature']?></td> -->
-      <td class="col14"><?php echo $value['freight_rate']?></td>
-      <td class="col15"><?php echo $value['quantity']?></td>
-<!--       <td><?php echo $value['servicecharges']?></td> -->
-      <td class="col16"><?php echo $value['remaining_commission']?></td>
-<!--       <td><?php echo $value['status']?></td> -->
-
-<!--       <td><?php echo $value['vehiclename']?></td>
-      <td><?php echo $value['vehicleengineno']?></td>
-      <th><?php echo $value['vehicleengineno']?></th> -->
-
-
+      <td class="col10"><?php echo $value['end_meter_reading']?></td>
+      <td class="col11"><?php echo $value['vehicleregisterationno']?></td>
+      <td class="col12"><?php echo $value['filling_date']?></td>
+      <td class="col13"><?php echo $value['uncanned_date']?></td>
+      <td class="col14"><?php echo $value['carriage']?></td>
+      <td class="col15"><?php echo $value['withholdingtax']?></td>
+      <td class="col16"><?php echo $value['freight_rate']?></td>
+      <td class="col17"><?php echo $value['quantity']?></td>
+      <td class="col18"><?php echo $value['remaining_commission']?></td>
 
     </tr>
   
@@ -688,6 +651,3 @@ $(document).ready(function() {
 </script>
 </div>
 </section>
-
-
-

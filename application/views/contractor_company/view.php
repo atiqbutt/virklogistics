@@ -21,6 +21,7 @@
                           <th>company</th>
                           <th>Commission_1</th>
                           <th>W.H.T</th>
+                          <th>W.H.T</th>
                           <th>Commission_3</th>
                         </tr>
                       </thead>

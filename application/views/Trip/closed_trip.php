@@ -181,7 +181,7 @@
               <div class="col-lg-3 " style="padding-left: 20px">           
                 <div class="form-group"> 
                      <p><Strong>Travelled Distance</Strong>: <?php echo $td =  $trip_info['0']['end_meter_reading'] - $trip_info['0']['start_meter_reading'] ?>&nbspKM</p>
-                     <p><Strong>Kilometer/Liter</Strong>: <?php echo $KML =  $td / $trip_info['0']['fuel'] ?>&nbspKM/L</p>
+                     <p><Strong>Kilometer/Liter</Strong>: <?php $KML =  $td / $trip_info['0']['fuel']; echo round($KML,2) ?>&nbspKM/L</p>
                 </div>
              </div>
 
@@ -204,31 +204,25 @@
                 <table id="middlecol" class="table table-bordered" style="margin-left: -20px">
                     <thead>
                       <tr>
-                      <th>Product</th>
-                      <th>Product Quantity</th>
-                      <th>Product Temperature</th>
-                      <th>Product Gravity</th>
-                      <th>Destination</th>
-                      <th>Freight Rate</th>
-                      <th>Carriage Commission</th>
-                      <th>Withholding Tax</th>
-                      <th>Company Commission</th>
-                      <th>Remaining Commission</th>
+                        <th>Source</th>
+                        <th>Destination</th>
+                        <th>Product</th>
+                        <th>Product Quantity</th>
+                        <th>Product Temperature</th>
+                        <th>Product Gravity</th>
+                        <th>Freight Rate</th>
                       </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($products as $value): ?> 
+                      <?php foreach ($products as $value): ?> 
                       <tr>
+                          <td><?php echo $source['name'];; ?></td>
+                          <td><?php echo $destination['name'];; ?></td>
                           <td><?php echo $value['heading']; ?></td>
                           <td><?php echo $value['product_quantity']; ?></td>
                           <td><?php echo $value['product_temperature']; ?></td> 
                           <td><?php echo $value['product_gravity']; ?></td>
-                          <td><?php echo $value['destination']; ?></td>
                           <td><?php echo $value['freight_rate']; ?></td> 
-                          <td><?php echo $value['carriage_commission']; ?></td>
-                          <td><?php echo $value['withholding_tax']; ?></td>
-                          <td><?php echo $value['company_comission']; ?></td>
-                          <td><?php echo $value['remaining_commission']; ?></td>
                       </tr>   
                     <?php endforeach ?>                 
                     </tbody>

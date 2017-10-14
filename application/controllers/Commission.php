@@ -130,6 +130,36 @@ public function delete_contractor_customer($id)
 
 
 
+	public function get_customer_comm()
+	{		
+
+		$customer_id = $this->input->post('customerid', TRUE);
+		$contractor_id = $this->input->post('contractorid', TRUE);
+
+		$array = array('contractor_id' => $contractor_id, 'customer_id' => $customer_id);
+
+		$query = $this->db->select('*')->from('contractor_customer')->where($array)->get()->result_array();
+
+		echo json_encode($query) ;
+
+	}
+
+
+	public function get_company_comm()
+	{		
+
+		$contractor_id = $this->input->post('contractorid', TRUE);
+		$company_id = $this->input->post('companyid', TRUE);
+
+		$array = array('contractor_id' => $contractor_id, 'company_id' => $company_id);
+		$query = $this->db->select('*')->from('contractor_company')->where($array)->get()->result_array();
+		echo json_encode($query) ;
+
+	}
+
+
+
+
 
 }
 

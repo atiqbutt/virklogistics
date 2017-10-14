@@ -157,12 +157,12 @@
                 </div>
              </div>
 
-              <div class="col-lg-3 ">           
+          <!--     <div class="col-lg-3 ">           
                 <div class="form-group"> 
                   <label>Shortage</label>
                     <input class="form-control"  type="text" name="shortage" onkeypress='return ValidateNumberOnly()'  />
                 </div>
-             </div>
+             </div> -->
 
              <div class="col-lg-3 ">           
                 <div class="form-group"> 
@@ -220,9 +220,6 @@
 
 
 
-
-
-
       </div>            
     </div>
 
@@ -236,34 +233,34 @@
 
             <div class="col-lg-12" style="margin-top: 20px">
 
-                <table id="middlecol" class="table table-bordered" style="margin-left: -20px">
+                <table id="middlecol" class="table table-bordered" >
                     <thead>
                       <tr>
-                      <th>Product</th>
-                      <th>Product Quantity</th>
-                      <th>Product Temperature</th>
-                      <th>Product Gravity</th>
-                      <th>Destination</th>
-                      <th>Freight Rate</th>
-                      <th>Carriage Commission</th>
-                      <th>Withholding Tax</th>
-                      <th>Company Commission</th>
-                      <th>Remaining Commission</th>
+                        <th>Source</th>
+                        <th>Destination</th>
+                        <th>Product</th>
+                        <th>Product Quantity</th>
+                        <th>Product Temperature</th>
+                        <th>Product Gravity</th>
+                        <th>Freight Rate</th>
+                        <th>Shrt At Destination  </th>
+                        <th>Shrt After Decan</th>
                       </tr>
                     </thead>
                     <tbody>
                     <?php foreach ($products as $value): ?> 
                       <tr>
+                          <td><?php echo $source['name']; ?></td>
+                          <td><?php echo $destination['name']; ?></td>
                           <td><?php echo $value['heading']; ?></td>
                           <td><?php echo $value['product_quantity']; ?></td>
                           <td><?php echo $value['product_temperature']; ?></td> 
                           <td><?php echo $value['product_gravity']; ?></td>
-                          <td><?php echo $value['destination']; ?></td>
                           <td><?php echo $value['freight_rate']; ?></td> 
-                          <td><?php echo $value['carriage_commission']; ?></td>
-                          <td><?php echo $value['withholding_tax']; ?></td>
-                          <td><?php echo $value['company_comission']; ?></td>
-                          <td><?php echo $value['remaining_commission']; ?></td>
+                          <td><input class="form-control"  type="text" name="shrt_at_dest[]" onkeypress='return ValidateNumberOnly()'  />
+                          </td>
+                          <td><input class="form-control"  type="text" name="shrt_at_decan[]" onkeypress='return ValidateNumberOnly()'  />
+                          </td>
                       </tr>   
                     <?php endforeach ?>                 
                     </tbody>
@@ -372,7 +369,7 @@
 
                     <div class="form-group">    
                         <label>Uncanned By</label>
-                          <select  class="form-control" name="uncanned_by" >
+                          <select  class="form-control" name="uncanned_by" required>
                              <option value="">Select Options</option>       
                               <?php if(!empty($driver1)){
                               foreach ($driver1 as $v){  ?>      
@@ -405,16 +402,16 @@
 
 
 
-
-
 <script>
 
 function ValidateNumberOnly()
 {
-if ((event.keyCode < 48 || event.keyCode > 57)) 
+
+if ((event.keyCode < 48 || event.keyCode > 57) && event.keyCode != 46  ) 
 {
    event.returnValue = false;
 }
+
 }
 
 </script>

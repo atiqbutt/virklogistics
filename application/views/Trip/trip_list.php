@@ -74,9 +74,9 @@
                 <tr class="odd gradeX" >
                 <?php } ?>
                 <?php if ($amb['status'] == 1){ ?>
-                   <td><a href="<?php echo base_url();?>Trip/closed_trip/<?php echo $amb["id"];?>"><?php echo $amb["id"];?></a></td>
+                   <td><a href="<?php echo base_url();?>Trip/closed_trip/<?php echo $amb["id"];?>" target="_blank"><?php echo $amb["id"];?></a></td>
                 <?php }else{ ?>
-                  <td><a href="<?php echo base_url();?>Trip/close_trip/<?php echo $amb["id"];?>"><?php echo $amb["id"];?></a></td>
+                  <td><a href="<?php echo base_url();?>Trip/close_trip/<?php echo $amb["id"];?>" target="_blank"><?php echo $amb["id"];?></a></td>
                    <?php } ?>
                
                 <td> <?php echo $amb["type"];?>  </td>
@@ -102,7 +102,7 @@
 						
                 
 
-                <td style="width:100px"><a href="<?php echo base_url()?>Trip/edit_trip/<?php echo $amb['id'];?>"><i class="fa fa-eye"></i></a></td>
+                <td style="width:100px"><a href="<?php echo base_url()?>Trip/edit_trip/<?php echo $amb['id'];?>" target="_blank"><i class="fa fa-eye"></i></a></td>
 
 
                 </tr>

@@ -68,7 +68,7 @@ class Commission extends CI_Controller {
 			$data = $this->input->post();
 
 			$this->db->insert('contractor_customer', $data);
-			redirect('Commission/contractor_customer','refresh');
+			redirect('Commission/contractor_customer_view','refresh');
 		}
 
 	}
@@ -97,7 +97,7 @@ class Commission extends CI_Controller {
 			$data = $this->input->post();
 
 			$this->db->insert('contractor_company', $data);
-			redirect('Commission/contractor_company','refresh');
+			redirect('Commission/contractor_company_view','refresh');
 		}
 
 	}

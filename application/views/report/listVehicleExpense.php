@@ -246,17 +246,11 @@ td,th{
       <th> <input type="checkbox" value="col5"   name="col5"  checked></th>
       <th> <input type="checkbox" value="col6"   name="col6"  checked></th>
       <th> <input type="checkbox" value="col7"   name="col7"  checked></th>
-<!--       <th> <input type="checkbox" value="col8"   name="col6"  checked></th> -->
-<!--       <th> <input type="checkbox" value="col7"   name="col7"  checked></th>
-      <th> <input type="checkbox" value="col8"   name="col8"  checked></th>
+      <th> <input type="checkbox" value="col8"   name="col6"  checked></th>
       <th> <input type="checkbox" value="col9"   name="col9"  checked></th>
       <th> <input type="checkbox" value="col10"  name="col10"  checked></th>
       <th> <input type="checkbox" value="col11"  name="col11"  checked></th>
       <th> <input type="checkbox" value="col12"  name="col12"  checked></th>
-      <th> <input type="checkbox" value="col13"  name="col13"  checked></th>
-      <th> <input type="checkbox" value="col14"  name="col14"  checked></th>
-      <th> <input type="checkbox" value="col15"  name="col15"  checked></th>
-      <th> <input type="checkbox" value="col16"  name="col16"  checked></th> -->
     </tr>
       </thead>
 
@@ -269,28 +263,13 @@ td,th{
       <th class="col3">Type</th>
       <th class="col4">Product</th>
       <th class="col5">Trip Id</th>
-      <th class="col6">Amount</th>
-<!--       <th class="col7">Expense</th> -->
-      <th class="col7">Date</th>
-<!--        <th class="col7">Company</th>
-      <th class="col8">Contractor</th>
-      <th class="col9">Meter Reading</th>
-      <th class="col10">Vehicle#</th>
-       <th class="col11">Filling Date</th> -->
-<!--       <th class="col6">Gravity</th> -->
-<!--        <th class="col12">Carriage</th>
-      <th class="col13">W.H.T</th> -->
-<!--        <th class="col9">Temperature</th> -->
-<!--       <th class="col14">Freight%</th>
-       <th class="col15">Quantity</th> -->
-<!--       <th class="col12">Charges</th> -->
-       
-<!--       <th class="col14">Status</th> -->
-
-<!--       <th class="col16">Chasis No</th>
-       <th class="col17">Vehicle Name</th>
-      <th class="col18">Engine</th> -->
-
+      <th class="col6">Start Reading</th>
+      <th class="col7">End Reading</th>
+      <th class="col8">Total Travel</th>
+      <th class="col9">Fuel</th>
+      <th class="col10">Avarage</th>
+      <th class="col11">Expense Amount</th>
+      <th class="col12">Date</th>
     </tr>      
     
   <tbody >
@@ -319,23 +298,13 @@ td,th{
       <td class="col3"><?php echo $value['type']?></td>
       <td class="col4"><?php echo $value['product']?></td>
       <td class="col5"><?php echo $value['id']?></td>
-      <td class="col6"><?php echo $value['amount']?></td>
-<!--       <td class="col7"><?php echo $value['name']?></td> -->
-      <td class="col7"><?php echo $value['entry_date']?></td>
-<!--       <td class="col7"><?php echo $value['comname']?></td>
-      <td class="col8"><?php echo $value['conname']?></td>
-      <td class="col9"><?php echo $value['start_meter_reading']?></td>
-      <td class="col10"><?php echo $value['vehicleregisterationno']?></td>
-      <td class="col11"><?php echo $value['filling_date']?></td> -->
-<!--       <td><?php echo $value['gravity']?></td> -->
-<!--       <td class="col12"><?php echo $value['carriage']?></td>
-      <td class="col13"><?php echo $value['withholdingtax']?></td> -->
-<!--       <td><?php echo $value['temperature']?></td> -->
-<!--       <td class="col14"><?php echo $value['freight_rate']?></td>
-      <td class="col15"><?php echo $value['quantity']?></td> -->
-
-
-
+      <td class="col6"><?php echo $value['startreading'].'Km'?></td>
+      <td class="col7"><?php echo $value['endreading'].'Km'?></td>
+      <td class="col8"><?php echo $value['endreading']-$value['startreading'].'Km'?></td>
+      <td class="col9"><?php echo $value['fuel'].'L'?></td>
+      <td class="col10"><?php echo round(($value['endreading']-$value['startreading'])/$value['fuel'],3).'Km/L'?></td>
+      <td class="col11"><?php echo $value['amount']?></td>
+      <td class="col12"><?php echo $value['entry_date']?></td>
     </tr>
   
     <?php $i +=1; $id=$value['id'];  }  ?>

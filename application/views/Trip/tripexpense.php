@@ -62,7 +62,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                     <div class=" form-group">    
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" >Expense Type</label>
                          <div class="col-md-6 col-sm-6 col-xs-12">
-                            <select class="form-control sel" name="expense" id="expense">
+                            <select class="form-control sel" name="expensea[]" id="expense">
                                <option value="">Select Options</option>
                                 <?php if(!empty($expensetype)){
                                               foreach ($expensetype as $e){?>      
@@ -83,7 +83,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                        <div class=" form-group">    
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" >Paye</label>
                          <div class="col-md-6 col-sm-6 col-xs-12">
-                            <select class="form-control sel" name="driver" id="driver">
+                            <select class="form-control sel" name="drivera[]" id="driver">
                                <option value="">Select Options</option>
                                 <?php if(!empty($tri)){
                                               foreach ($tri as $e){  
@@ -100,7 +100,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Amount <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" name="amount" class="form-control" id="amount" onkeypress='return ValidateNumberOnly()' placeholder="Amount">
+              <input type="text" name="amounta[]" class="form-control" id="amount" onkeypress='return ValidateNumberOnly()' placeholder="Amount">
                         </div>
                       </div>
 
@@ -167,7 +167,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
 ?>
       <tr>
      
-            <td><?php echo $value['id']?></td>
+      <td><?php echo $value['idd']?></td>
       <td><?php echo $value['name']?></td>
        <td><?php echo $value['am']?></td>
         <td><?php echo $value['exn']?></td>
@@ -217,7 +217,7 @@ $(document).ready(function(){
      var b=$('#driver').val();
     var c=$('#driver option:selected').text();
     var idd=$('#driver option:selected').val();
-    if(a=='' || b=='')
+    if(a=='' || b=='' || amo=='')
     {
       alert('fill the field');
       return false;
@@ -225,9 +225,9 @@ $(document).ready(function(){
      var wrapper = $(".bilal");
       var row ='<tr class="row_table">'
                    
-                     +'<td><input type="text" name="expensen[]" class="form-control" value="'+t+'" readonly><input type="hidden" name="expensea[]" value="'+id+'" type="text" class="form-control"></td>'+
+                     +'<td><input type="text" class="form-control" value="'+t+'" readonly><input type="hidden" name="expensea[]" value="'+id+'" type="text" class="form-control"></td>'+
            '<td>'
-                      +'<input type="text" name="drivern[]" class="form-control" value="'+c+'" readonly><input type="hidden" name="drivera[]" value="'+idd+'" type="text" class="form-control">'
+                      +'<input type="text"  class="form-control" value="'+c+'" readonly><input type="hidden" name="drivera[]" value="'+idd+'" type="text" class="form-control">'
                     +'</td>'
                     +'<td>'
                         +'<input type="text" name="amounta[]" readonly class="form-control" value="'+amo+'" onkeypress="return ValidateNumberOnly()" placeholder="Amount">'
@@ -265,12 +265,8 @@ if ((event.keyCode < 48 || event.keyCode > 57))
 
 <script>
 $('.sel').select2({
-      // tags: "true",
-    // minimumResultsForSearch: 20 ,
-    selectOnClose: true,
    placeholder: "Select an option",
     allowClear: true
 
 });
-$(".sel").select2("val", "");
 </script>

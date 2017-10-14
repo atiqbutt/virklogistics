@@ -40,7 +40,7 @@ class trip extends CI_Controller {
             $data["trip"]=$this->trip_model->trip($id);
             // $data["tri"]=$this->trip_model->gettri($id);
             $data['tri']=$this->trip_model->getagent();
-        
+
             $data["page"]='Trip/tripexpense';
             $this->load->view('Template/main',$data);
 
@@ -59,33 +59,36 @@ class trip extends CI_Controller {
 
              $dr=$this->input->post('driver');
              $ams=$this->input->post('amount');
-             $e1=$this->input->post('expensea[]');
-             $pay=$this->input->post('drivera[]');
-             $am=$this->input->post('amounta[]');
-                    $data=array(
-                    'trip_id'=>$id,
-                    'expensetype_id'=>$ex,
-                    'date'=>date("Y-m-d h:i:sa"),
-                    'amount'=>$ams,
-                    'payee'=>$dr
-                    );
+             $e1=$this->input->post('expensea');
+             $pay=$this->input->post('drivera');
+             $am=$this->input->post('amounta');
+             
+
+               //      $data=array(
+               //      'trip_id'=>$id,
+               //      'expensetype_id'=>$ex,
+               //      'date'=>date("Y-m-d h:i:sa"),
+               //      'amount'=>$ams,
+               //      'payee'=>$dr
+               //      );
                                   
-               $this->trip_model->insert('expense',$data);
-                
+               // $this->trip_model->insert('expense',$data);
+                $data2=array();
                for($i=0; $i<count($e1); $i++)
                {
-
-                 $data2=array(
+                     $data2[]=array(
                     'trip_id'=>$id,
                     'expensetype_id'=>$e1[$i],
                     'date'=>date("Y-m-d h:i:sa"),
                     'amount'=>$am[$i],
                     'payee'=>$pay[$i]
                     );        
-         $this->trip_model->insert('expense',$data2);
+                    
+        
                }
-                redirect('Trip/index');
-                 
+               $this->db->insert_batch('expense',$data2);
+                
+                redirect('Trip/index');                 
 }
     
 

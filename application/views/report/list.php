@@ -40,7 +40,17 @@ td,th{
   background: #fff !important;
 }
 
-
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #3c8dbc !important;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    cursor: default;
+    float: left;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding: 0 5px; 
+  
+  }
 
 </style>
 
@@ -145,7 +155,7 @@ td,th{
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Vehicle
                         </label>
                         <div class="col-md-8 col-sm-6 col-xs-12">            
-                        <select class="form-control sel" name="vechileid">
+                        <select class="form-control sel" name="vehicleid[]" multiple="multiple">
                         <option value="">Select Vehicle</option>
                          <?php
                           foreach ($vehicle as $value) {
@@ -641,6 +651,3 @@ $(document).ready(function() {
 </script>
 </div>
 </section>
-
-
-

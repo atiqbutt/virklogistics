@@ -65,6 +65,13 @@ class Vehicle extends CI_Controller {
     $chas= $this->input->post('chassisno');
     $eng= $this->input->post('engineno');
     $cham= $this->input->post('numberofchambe');
+
+    $token= $this->input->post('token');
+    $calib= $this->input->post('calibration');
+    $fitness= $this->input->post('fitness');
+    $route= $this->input->post('route');
+    $licesnce= $this->input->post('License');
+
    
     $totfuel= $this->input->post('totalfuelcapacity');
     $color= $this->input->post('color');
@@ -89,9 +96,15 @@ class Vehicle extends CI_Controller {
                     'modifiedAt'=>date("Y-m-d h:i:sa"),
                     'modifiedBy'=>$id,
                     'color'=>$color,
-                    'model'=>$mod
+                    'model'=>$mod,
+                    'Token_Expiry'=>$token,
+                    'Calibration'=>$calib,
+                    'Route_Permit'=>$route,
+                    'License'=>$licesnce,
+                    'Fitness_Certificate'=>$fitness
+
                     );
-                               
+                             
 		   $vehicle_id = $this->vehicle_model->save('vehicle',$field);
            $op=array();
             foreach ($url2 as $key => $value) {

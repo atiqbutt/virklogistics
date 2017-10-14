@@ -5,6 +5,7 @@ class Report extends CI_Controller {
         public function __construct() 
         {
         parent::__construct();
+        
          $this->load->model('generic_model');
         $this->load->model('Generic_model');
         $this->load->model('user_model');
@@ -48,7 +49,7 @@ class Report extends CI_Controller {
         $data['vehicle']=$this->Dropdown_model->getAllRecords('vehicle',array('is_deleted'=>0));
         $data['contratctor']=$this->Dropdown_model->getAllRecords('contractorinformation',array('is_deleted'=>0));
         $data['source']=$this->Dropdown_model->getAllRecords('locationtype',array('is_delete'=>0));
-        $data['title']="Virk Logistics Trip Report";
+        $data['title']="Virk LogisTics Trip Report";
                       // var_dump($data['source']); 
                     if($this->input->post()){
 
@@ -56,25 +57,30 @@ class Report extends CI_Controller {
                         $params=array();
                         $startdate="";
                         $enddate="";
+                        $vehicle;
                         
                         foreach ($formdata as $key => $value) {
-                            if($value!="" && $value!="submit" && $key!="datefrom" && $key!="dateto"){
+                            
+                            if($value!="" && $value!="submit" && $key!="datefrom" && $key!="dateto" && $key!="vehicleid"){
                                 $params[$key] =$value;
                                 $data[$key]=$value;
                                
                             }
+                            if($key=="vehicleid" && $value!=""){
+                                $vehicle=$value;
+                            }
+                                   
                             if($key=="datefrom" && $value!=""){
                                 $startdate=$value;
                                 $data[$key]=$value;
                             }
-                                                        if($key=="dateto" && $value!=""){
+                            if($key=="dateto" && $value!=""){
                                 $enddate=$value;
                                 $data[$key]=$value;
                             }
                         }
-
-                      $data['data']= $this->Report_model->getReportData('get_all_trips',$params,$startdate,$enddate);
-                        
+                      $data['data']= $this->Report_model->getReportData('get_all_trips',$params,$startdate,$enddate,$vehicle);
+        
                     }
                 else{
         $data['data']=$this->Report_model->get_all_trip();
@@ -100,7 +106,7 @@ class Report extends CI_Controller {
         $data['vehicle']=$this->Dropdown_model->getAllRecords('vehicle',array('is_deleted'=>0));
         $data['contratctor']=$this->Dropdown_model->getAllRecords('contractorinformation',array('is_deleted'=>0));
         $data['source']=$this->Dropdown_model->getAllRecords('locationtype',array('is_delete'=>0));
-        $data['title']="Virk Logistics Trip Report";
+        $data['title']="Virk LogisTics Trip Report";
          $data['count']=$this->db->query("select count(t.id) as cont,t.id FROM `expense` e join tripmanagement t on t.id=e.`trip_id` join expensetype et on et.id=e.`expensetype_id` GROUP BY t.id")->result_array();
                       // var_dump($data['source']); 
                     if($this->input->post()){
@@ -109,24 +115,30 @@ class Report extends CI_Controller {
                         $params=array();
                         $startdate="";
                         $enddate="";
+                         $vehicle;
                         
                         foreach ($formdata as $key => $value) {
-                            if($value!="" && $value!="submit" && $key!="datefrom" && $key!="dateto"){
+                            if($value!="" && $value!="submit" && $key!="datefrom" && $key!="dateto" && $key!="vechileid"){
                                 $params[$key] =$value;
                                 $data[$key]=$value;
                                
                             }
+                            if($key=="vechileid" && $value!=""){
+                                $vehicle=$value;
+                            }
+
                             if($key=="datefrom" && $value!=""){
                                 $startdate=$value;
                                 $data[$key]=$value;
                             }
-                                                        if($key=="dateto" && $value!=""){
+                            
+                            if($key=="dateto" && $value!=""){
                                 $enddate=$value;
                                 $data[$key]=$value;
                             }
                         }
 
-                      $data['data']= $this->Report_model->getReportData('get_expense_by_trips',$params,$startdate,$enddate);
+                      $data['data']= $this->Report_model->getReportData('get_expense_by_trips',$params,$startdate,$enddate,$vehicle);
                                
                     }
                 else{
@@ -154,43 +166,48 @@ class Report extends CI_Controller {
         $data['vehicle']=$this->Dropdown_model->getAllRecords('vehicle',array('is_deleted'=>0));
         $data['contratctor']=$this->Dropdown_model->getAllRecords('contractorinformation',array('is_deleted'=>0));
         $data['source']=$this->Dropdown_model->getAllRecords('locationtype',array('is_delete'=>0));
-        $data['title']="Virk Logistics Trip Report";
+        $data['title']="Virk LogisTics Trip Report";
          $data['count']=$this->db->query("select count(vid) as cont,vid as id,id as trip from get_expense_by_vehicle GROUP by id")->result_array();
-
+         
                     if($this->input->post()){
 
                         $formdata=$this->input->post();
                         $params=array();
                         $startdate="";
                         $enddate="";
+                         $vehicle;
                         
                         foreach ($formdata as $key => $value) {
-                            if($value!="" && $value!="submit" && $key!="datefrom" && $key!="dateto"){
+                            if($value!="" && $value!="submit" && $key!="datefrom" && $key!="dateto" && $key!="vechileid"){
                                 $params[$key] =$value;
                                 $data[$key]=$value;
                                
                             }
+                            
+                             if($key=="vechileid" && $value!=""){
+                                $vehicle=$value;
+                            }
+
                             if($key=="datefrom" && $value!=""){
                                 $startdate=$value;
                                 $data[$key]=$value;
                             }
-                                                        if($key=="dateto" && $value!=""){
+                                
+                                if($key=="dateto" && $value!=""){
                                 $enddate=$value;
                                 $data[$key]=$value;
                             }
                         }
-
-                      $data['data']= $this->Report_model->getReportData('get_expense_by_vehicle',$params,$startdate,$enddate);
-                               
+                        
+        
+                          $data['data']= $this->Report_model->getReportData('get_expense_by_vehicle',$params,$startdate,$enddate,$vehicle);
+                        
                     }
                 else{
         $data['data']=$this->Report_model->get_all_expense_by_vehicle();
         //var_dump($data['data']);
         }
-
-        $data['page']='report/listVehicleExpense';
-                
-                        
+        $data['page']='report/listVehicleExpense';               
         $this->load->view('Template/main',$data);
 
         }

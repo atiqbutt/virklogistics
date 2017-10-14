@@ -73,7 +73,7 @@ class trip extends CI_Controller {
                //      );
                                   
                // $this->trip_model->insert('expense',$data);
-                
+                $data2=array();
                for($i=0; $i<count($e1); $i++)
                {
                      $data2[]=array(
@@ -83,7 +83,7 @@ class trip extends CI_Controller {
                     'amount'=>$am[$i],
                     'payee'=>$pay[$i]
                     );        
-                     
+                    
         
                }
                $this->db->insert_batch('expense',$data2);

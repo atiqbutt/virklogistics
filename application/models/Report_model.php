@@ -17,7 +17,7 @@ class Report_model extends CI_Model {
         return $this->db->select()->from('get_all_trips')->get()->result_array();
 
     }
-    public function getReportData($view,$params,$startdate,$enddate)
+    public function getReportData($view,$params,$startdate,$enddate,$vehicle)
     {
         //var_dump($params);
     $this->db->select()->from($view);
@@ -25,6 +25,9 @@ class Report_model extends CI_Model {
             if($startdate!=""){
              $this->db->where('entry_date>=', $startdate);
              // var_dump($startdate);
+             }
+             if($vehicle!=""){
+                $this->db->where_in('vechileid',$vehicle);
              }
          if($enddate!="")
              $this->db->where('entry_date <=', $enddate);

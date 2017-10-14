@@ -1001,7 +1001,7 @@ $('.sel').select2({
     // minimumResultsForSearch: 20 ,
     selectOnClose: true,
    placeholder: "Select an option",
-    allowClear: true
+  
 
 });
 
